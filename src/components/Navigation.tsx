@@ -239,11 +239,11 @@ export default function Navigation({ activeSection, onChangeSection, isDark, onT
             layout
             onClick={() => setIsExpanded(!isExpanded)}
             animate={{ 
-              width: isExpanded ? 54 : 320,
+              width: isExpanded ? 54 : 380,
               borderRadius: 27
             }}
             transition={{ type: "spring", stiffness: 220, damping: 25 }}
-            className={`flex items-center justify-between h-[54px] border transition-colors cursor-pointer shadow-lg relative overflow-hidden group select-none ${
+            className={`flex items-center justify-between h-[54px] border transition-colors cursor-pointer shadow-lg relative overflow-hidden group select-none max-w-[calc(100vw-32px)] ${
               isDark 
                 ? "bg-[#141412]/95 border-white/[0.08] text-white hover:bg-[#1c1c1a]" 
                 : "bg-[#fcfbfa]/95 border-black/[0.08] text-[#0a0a0a] hover:bg-[#f5f4f2]"
@@ -267,13 +267,17 @@ export default function Navigation({ activeSection, onChangeSection, isDark, onT
                 />
               </div>
 
-              {/* Center: Active route name */}
-              <span className="font-sans text-xs tracking-[0.2em] font-bold uppercase text-center flex-grow">
+              {/* Center: Active route name with dynamic sizing for ACHIEVEMENTS to prevent overflow */}
+              <span className={`font-sans font-bold uppercase text-center flex-grow transition-all duration-300 ${
+                activeSection === "achievements" 
+                  ? "text-[9.5px] sm:text-xs tracking-[0.05em] sm:tracking-[0.15em]" 
+                  : "text-xs tracking-[0.2em]"
+              }`}>
                 {activeSection === "clients" ? "PARTNERS" : activeSection === "achievements" ? "ACHIEVEMENTS" : activeSection.toUpperCase()}
               </span>
 
               {/* Right: Thin Hamburger icon */}
-              <div className="flex items-center justify-end w-24 flex-shrink-0">
+              <div className="flex items-center justify-end w-24 flex-shrink-0 pr-1">
                 <div className="flex flex-col gap-[4px] w-5 items-end justify-center">
                   <span className="h-[1px] w-full bg-current transition-colors"></span>
                   <span className="h-[1px] w-3/4 bg-current transition-colors"></span>

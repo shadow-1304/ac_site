@@ -14,7 +14,7 @@ export function ScrollRevealText({ text, className = "", delay = 0 }: ScrollReve
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: 0.03, // slower stagger for premium experience
+        staggerChildren: 0.045, // slower stagger for premium experience
         delayChildren: delay,
       },
     },
@@ -31,7 +31,7 @@ export function ScrollRevealText({ text, className = "", delay = 0 }: ScrollReve
     visible: {
       y: 0,
       transition: {
-        duration: 1.3, // slower smooth duration
+        duration: 1.65, // slower smooth duration
         ease: [0.16, 1, 0.3, 1],
       },
     },
@@ -67,7 +67,7 @@ export function ScrollRevealLines({ lines, className = "", delay = 0 }: ScrollRe
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: 0.15,
+        staggerChildren: 0.2,
         delayChildren: delay,
       },
     },
@@ -84,7 +84,7 @@ export function ScrollRevealLines({ lines, className = "", delay = 0 }: ScrollRe
     visible: {
       y: 0,
       transition: {
-        duration: 1.4,
+        duration: 1.75, // slower smooth duration
         ease: [0.16, 1, 0.3, 1],
       },
     },

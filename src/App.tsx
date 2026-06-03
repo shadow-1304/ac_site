@@ -1,19 +1,19 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { 
-  ArrowRight, 
-  ArrowUpRight, 
-  Check, 
-  ChevronRight, 
-  ChevronDown, 
-  Award, 
-  ShieldCheck, 
-  Activity, 
-  Sparkles, 
-  Wind, 
-  Clock, 
-  CheckCircle2, 
-  FileText, 
+import {
+  ArrowRight,
+  ArrowUpRight,
+  Check,
+  ChevronRight,
+  ChevronDown,
+  Award,
+  ShieldCheck,
+  Activity,
+  Sparkles,
+  Wind,
+  Clock,
+  CheckCircle2,
+  FileText,
   HelpCircle,
   TrendingUp,
   Flame,
@@ -35,6 +35,17 @@ import { ScrollRevealText, ScrollRevealLines, ParallaxImage, useSmoothScroll } f
 export default function App() {
   useSmoothScroll();
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
+  const [showContent, setShowContent] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (isLoaded) {
+      const timer = setTimeout(() => {
+        setShowContent(true);
+      }, 900); // Wait 900ms for preloader to mostly slide up and away
+      return () => clearTimeout(timer);
+    }
+  }, [isLoaded]);
+
   const [activeSection, setActiveSection] = useState<SectionType>("home");
   const [isDark, setIsDark] = useState<boolean>(false); // Default to a pristine sleek light high-contrast sheet
   const [activeServiceTab, setActiveServiceTab] = useState<string | null>("vrf-systems");
@@ -61,33 +72,34 @@ export default function App() {
   };
 
   // Helper filter projects
-  const filteredProjects = projectFilter === "All" 
-    ? PROJECTS 
+  const filteredProjects = projectFilter === "All"
+    ? PROJECTS
     : PROJECTS.filter(p => p.category === projectFilter);
 
   return (
-    <div 
-      className={`min-h-screen flex flex-col font-sans transition-all duration-500 overflow-x-hidden ${
-        isDark 
-          ? "bg-[#0a0a0a] text-white" 
+    <div
+      className={`min-h-screen flex flex-col font-sans transition-all duration-500 overflow-x-hidden ${isDark
+          ? "bg-[#0a0a0a] text-white"
           : "bg-[#f3f0ec] text-[#0a0a0a]"
-      }`}
+        }`}
     >
       {/* 1. PREMIUM ARCHITECTURAL PRELOADER SEQUENCE */}
       <Preloader onComplete={() => setIsLoaded(true)} />
 
       {/* 2. DUAL NAVIGATION MODULE */}
-      {isLoaded && (
-        <Navigation 
-          activeSection={activeSection} 
-          onChangeSection={setActiveSection} 
-          isDark={isDark} 
-          onToggleTheme={handleToggleTheme} 
+      {showContent && (
+        <Navigation
+          activeSection={activeSection}
+          onChangeSection={setActiveSection}
+          isDark={isDark}
+          onToggleTheme={handleToggleTheme}
         />
       )}
 
       {/* 3. MAIN COMPARTMENT ENTRY LAYER */}
-      <main className="flex-grow pt-24 md:pt-[100px] pb-32 max-w-[1600px] w-full mx-auto px-6 relative z-10">
+      {showContent && (
+        <>
+          <main className="flex-grow pt-24 md:pt-[100px] pb-32 max-w-[1600px] w-full mx-auto px-6 relative z-10">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeSection}
@@ -102,41 +114,48 @@ export default function App() {
             {/* ========================================================= */}
             {activeSection === "home" && (
               <div id="section-home" className="flex flex-col gap-16 md:gap-24">
-                
+
                 {/* A. Massive Hero Section */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-8 pb-12 md:pb-20 w-full">
                   {/* Left Column: Hero Text & CTAs */}
                   <div className="lg:col-span-7 flex flex-col justify-center">
                     {/* Category tag */}
-                    <div className="flex items-center gap-3 font-mono text-[10px] tracking-[0.4em] uppercase mb-6 text-blue-600 font-bold">
+                    <motion.div
+                      initial={{ opacity: 0, y: 15 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 1.65, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+                      className="flex items-center gap-3 font-mono text-[10px] tracking-[0.4em] uppercase mb-6 text-blue-600 font-bold"
+                    >
                       <span>◆</span>
                       <span>INTEL AIR GROUP • CLIMATE ARCHITECTS</span>
-                    </div>
+                    </motion.div>
 
-                    <h1 className={`text-4xl sm:text-6xl md:text-[76px] xl:text-[84px] leading-[0.85] font-bold tracking-tight uppercase mb-8 ${
-                      isDark ? "text-white" : "text-[#0a0a0a]"
-                    }`}>
-                      <ScrollRevealText text="We engineer" /> <span className="text-blue-600 font-normal italic"><ScrollRevealText text="natural air flow." /></span><br/>
+                    <h1 className={`text-4xl sm:text-6xl md:text-[76px] xl:text-[84px] leading-[0.85] font-bold tracking-tight uppercase mb-8 ${isDark ? "text-white" : "text-[#0a0a0a]"
+                      }`}>
+                      <ScrollRevealText text="We engineer" /> <span className="text-blue-600 font-normal italic"><ScrollRevealText text="natural air flow." /></span><br />
                       <span className={isDark ? "text-neutral-700" : "text-gray-300"}><ScrollRevealText text="We design" /></span> <ScrollRevealText text="climate." />
                     </h1>
 
-                    <p className={`mt-10 max-w-xl text-base sm:text-lg leading-relaxed ${
-                      isDark ? "text-neutral-400" : "text-gray-500"
-                    }`}>
+                    <p className={`mt-10 max-w-xl text-base sm:text-lg leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"
+                      }`}>
                       <ScrollRevealText text="Transforming modern layouts into comfortable spaces through thermal engineering, computational ventilation models, and low-GWP energy architectures. Designed for structural designers, hotels, and hospitals." delay={0.2} />
                     </p>
                   </div>
 
                   {/* Right Column: Animated AC HVAC Sketch */}
-                  <div className="lg:col-span-5 flex items-center justify-center relative w-full h-[450px] md:h-[500px] lg:h-[550px]">
+                  <motion.div
+                    initial={{ opacity: 0, y: 30, scale: 0.98 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ duration: 1.65, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+                    className="lg:col-span-5 flex items-center justify-center relative w-full h-[450px] md:h-[500px] lg:h-[550px]"
+                  >
                     <ACSketch isDark={isDark} />
-                  </div>
+                  </motion.div>
                 </div>
 
                 {/* B. UNIQUE ACTIVE HVAC SIMULATOR */}
-                <div className={`p-6 sm:p-8 border rounded-none relative overflow-hidden ${
-                  isDark ? "bg-[#111] border-neutral-800" : "bg-transparent border-black/10"
-                }`}>
+                <div className={`p-6 sm:p-8 border rounded-none relative overflow-hidden ${isDark ? "bg-[#111] border-neutral-800" : "bg-transparent border-black/10"
+                  }`}>
                   <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{
                     backgroundImage: "radial-gradient(circle, #2563eb 1px, transparent 1px)",
                     backgroundSize: "20px 20px"
@@ -148,9 +167,8 @@ export default function App() {
                         <Activity className="w-4 h-4 text-blue-600 animate-pulse" />
                         <span>INTERACTIVE HVAC SCHEMATIC SIMULATOR [V_2.0]</span>
                       </div>
-                      <h3 className={`text-2xl font-bold tracking-tight mt-1.5 uppercase ${
-                        isDark ? "text-neutral-100" : "text-[#0a0a0a]"
-                      }`}>
+                      <h3 className={`text-2xl font-bold tracking-tight mt-1.5 uppercase ${isDark ? "text-neutral-100" : "text-[#0a0a0a]"
+                        }`}>
                         Thermodynamic Air Vector Wave currents
                       </h3>
                       <p className={`text-xs mt-1 max-w-md ${isDark ? "text-neutral-500" : "text-gray-500"}`}>
@@ -159,9 +177,8 @@ export default function App() {
                     </div>
 
                     {/* Wind control buttons */}
-                    <div className={`flex items-center gap-2 p-1.5 rounded-none border font-mono text-xs ${
-                      isDark ? "bg-neutral-900/50 border-neutral-800" : "bg-transparent border-black/10"
-                    }`}>
+                    <div className={`flex items-center gap-2 p-1.5 rounded-none border font-mono text-xs ${isDark ? "bg-neutral-900/50 border-neutral-800" : "bg-transparent border-black/10"
+                      }`}>
                       <span className="text-[9px] text-neutral-400 uppercase tracking-[0.25em] px-2 font-bold">
                         FLOW VELOCITY:
                       </span>
@@ -169,11 +186,10 @@ export default function App() {
                         <button
                           key={multiplier}
                           onClick={() => setCustomSpeedMultiplier(multiplier)}
-                          className={`px-3 py-1.5 rounded-none font-bold uppercase tracking-wider text-[10px] transition-colors cursor-pointer ${
-                            customSpeedMultiplier === multiplier
+                          className={`px-3 py-1.5 rounded-none font-bold uppercase tracking-wider text-[10px] transition-colors cursor-pointer ${customSpeedMultiplier === multiplier
                               ? "bg-black text-white dark:bg-white dark:text-black"
                               : "hover:bg-neutral-500/10 text-neutral-500"
-                          }`}
+                            }`}
                         >
                           {multiplier === 1 && "LOW"}
                           {multiplier === 2.5 && "MID"}
@@ -185,18 +201,20 @@ export default function App() {
 
                   {/* Simulated Air Vector currents (Bespoke dynamic SVG wave pattern) */}
                   <div className="h-44 flex items-center justify-center relative mt-6 bg-neutral-500/5 rounded-2xl border border-neutral-500/5 overflow-hidden">
-                    <svg viewBox="0 0 1000 150" className="w-full h-full text-blue-500" fill="none">
+                    <svg key={customSpeedMultiplier} viewBox="0 0 1000 150" className="w-full h-full text-blue-500" fill="none">
                       {/* Wave 1 - Ambient air carrier */}
                       <motion.path
                         d="M 0 75 Q 125 45, 250 75 T 500 75 T 750 75 T 1000 75"
                         stroke="currentColor"
                         strokeWidth="1.5"
                         className="opacity-40"
-                        animate={{ d: [
-                          "M 0 75 Q 125 35, 250 75 T 500 75 T 750 75 T 1000 75",
-                          "M 0 75 Q 125 115, 250 75 T 500 75 T 750 75 T 1000 75",
-                          "M 0 75 Q 125 35, 250 75 T 500 75 T 750 75 T 1000 75"
-                        ]}}
+                        animate={{
+                          d: [
+                            "M 0 75 Q 125 35, 250 75 T 500 75 T 750 75 T 1000 75",
+                            "M 0 75 Q 125 115, 250 75 T 500 75 T 750 75 T 1000 75",
+                            "M 0 75 Q 125 35, 250 75 T 500 75 T 750 75 T 1000 75"
+                          ]
+                        }}
                         transition={{ duration: 6 / customSpeedMultiplier, repeat: Infinity, ease: "easeInOut" }}
                       />
 
@@ -206,11 +224,13 @@ export default function App() {
                         stroke="#60a5fa"
                         strokeWidth="2.5"
                         className="opacity-70"
-                        animate={{ d: [
-                          "M 0 75 Q 250 110, 500 75 T 1000 75",
-                          "M 0 75 Q 250 40, 500 75 T 1000 75",
-                          "M 0 75 Q 250 110, 500 75 T 1000 75"
-                        ]}}
+                        animate={{
+                          d: [
+                            "M 0 75 Q 250 110, 500 75 T 1000 75",
+                            "M 0 75 Q 250 40, 500 75 T 1000 75",
+                            "M 0 75 Q 250 110, 500 75 T 1000 75"
+                          ]
+                        }}
                         transition={{ duration: 4.5 / customSpeedMultiplier, repeat: Infinity, ease: "easeInOut" }}
                       />
 
@@ -220,11 +240,13 @@ export default function App() {
                         stroke="#3b82f6"
                         strokeWidth="1"
                         className="opacity-30"
-                        animate={{ d: [
-                          "M 0 100 Q 150 130, 300 100 T 600 100 T 900 100 T 1000 100",
-                          "M 0 100 Q 150 70, 300 100 T 600 100 T 900 100 T 1000 100",
-                          "M 0 100 Q 150 130, 300 100 T 600 100 T 900 100 T 1000 100"
-                        ]}}
+                        animate={{
+                          d: [
+                            "M 0 100 Q 150 130, 300 100 T 600 100 T 900 100 T 1000 100",
+                            "M 0 100 Q 150 70, 300 100 T 600 100 T 900 100 T 1000 100",
+                            "M 0 100 Q 150 130, 300 100 T 600 100 T 900 100 T 1000 100"
+                          ]
+                        }}
                         transition={{ duration: 8 / customSpeedMultiplier, repeat: Infinity, ease: "easeInOut" }}
                       />
 
@@ -237,15 +259,15 @@ export default function App() {
                           r="3"
                           fill="#3b82f6"
                           className="opacity-80 shadow-[0_0_8px_#3b82f6]"
-                          animate={{ 
+                          animate={{
                             x: [0, 80],
                             y: [0, (i % 2 === 0 ? 10 : -10), 0]
                           }}
-                          transition={{ 
-                            duration: 3 / customSpeedMultiplier, 
-                            repeat: Infinity, 
+                          transition={{
+                            duration: 3 / customSpeedMultiplier,
+                            repeat: Infinity,
                             ease: "linear",
-                            delay: i * 0.15 
+                            delay: i * 0.15
                           }}
                         />
                       ))}
@@ -254,20 +276,20 @@ export default function App() {
                     <div className="absolute bottom-4 left-4 flex gap-4 font-mono text-[9px] text-neutral-400">
                       <div className="flex items-center gap-1">
                         <Snowflake className="w-3 h-3 text-blue-400 animate-spin" />
-                        <span>SYSTEM LOAD: ~72%</span>
+                        <span>SYSTEM LOAD: ~{customSpeedMultiplier === 1 ? 28 : customSpeedMultiplier === 2.5 ? 64 : 94}%</span>
                       </div>
                       <div className="flex items-center gap-1">
                         <Flame className="w-3 h-3 text-red-400" />
-                        <span>RECOVERY COP: 4.85</span>
+                        <span>RECOVERY COP: {customSpeedMultiplier === 1 ? "5.45" : customSpeedMultiplier === 2.5 ? "4.85" : "4.12"}</span>
                       </div>
                     </div>
                   </div>
                 </div>
 
                 {/* C. Company Introduction & Stats */}
-                <SectionHeader 
-                  number="01" 
-                  tag="WHO WE ARE" 
+                <SectionHeader
+                  number="01"
+                  tag="WHO WE ARE"
                   title="Over 26 years of high-end mechanical climate engineering."
                   description="We don't simply supply air conditioning. We partner with leading real-estate teams and sanitational designers to architect custom centralized systems that breathe in total harmony with modern glass layout aesthetics, maximizing heat load dissipation."
                   isDark={isDark}
@@ -275,22 +297,20 @@ export default function App() {
 
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
                   {STATISTICS.map((stat, i) => (
-                    <motion.div 
-                      key={i} 
+                    <motion.div
+                      key={i}
                       initial={{ opacity: 0, y: 30 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true, margin: "-150px" }}
                       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: i * 0.1 }}
-                      className={`p-6 border rounded-none ${
-                        isDark ? "bg-neutral-900/40 border-neutral-900" : "bg-transparent border-black/10"
-                      }`}
+                      className={`p-6 border rounded-none ${isDark ? "bg-neutral-900/40 border-neutral-900" : "bg-transparent border-black/10"
+                        }`}
                     >
                       <span className="block font-mono text-xs text-blue-600 uppercase tracking-widest mb-2 font-bold">
                         METRIC {i + 1}
                       </span>
-                      <strong className={`block text-3xl sm:text-5xl font-bold tracking-tight ${
-                        isDark ? "text-neutral-100" : "text-[#0a0a0a]"
-                      }`}>
+                      <strong className={`block text-3xl sm:text-5xl font-bold tracking-tight ${isDark ? "text-neutral-100" : "text-[#0a0a0a]"
+                        }`}>
                         {stat.value}
                       </strong>
                       <span className="block text-xs mt-2 text-neutral-500 uppercase font-mono tracking-wider font-semibold">
@@ -301,9 +321,9 @@ export default function App() {
                 </div>
 
                 {/* D. Comprehensive Services Highlights */}
-                <SectionHeader 
-                  number="02" 
-                  tag="SERVICES OVERVIEW" 
+                <SectionHeader
+                  number="02"
+                  tag="SERVICES OVERVIEW"
                   title="Tailored HVAC architectures. Precision commissioning."
                   description="From simultaneous oceanic recovery VRFs to clinical isolation air chambers compliant with medical standards, discover our engineering range."
                   isDark={isDark}
@@ -311,7 +331,7 @@ export default function App() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                   {SERVICES.slice(0, 4).map((service, i) => (
-                    <motion.div 
+                    <motion.div
                       key={service.id}
                       onClick={() => {
                         setActiveServiceTab(service.id);
@@ -321,26 +341,23 @@ export default function App() {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true, margin: "-150px" }}
                       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: i * 0.1 }}
-                      className={`p-6 border rounded-none cursor-pointer group transition-all duration-300 ${
-                        isDark 
-                          ? "bg-[#111] border-neutral-900 hover:border-neutral-700" 
+                      className={`p-6 border rounded-none cursor-pointer group transition-all duration-300 ${isDark
+                          ? "bg-[#111] border-neutral-900 hover:border-neutral-700"
                           : "bg-transparent border-black/10 hover:border-black/30"
-                      }`}
+                        }`}
                     >
                       <span className="text-[10px] font-mono text-neutral-500 leading-none mb-4 block font-semibold">
                         COGNIZANT FLUIDS // {service.id.toUpperCase().replace("-", " ")}
                       </span>
-                      <h3 className={`text-xl font-bold tracking-tight uppercase leading-tight mb-4 ${
-                        isDark ? "text-white" : "text-[#0a0a0a]"
-                      }`}>
+                      <h3 className={`text-xl font-bold tracking-tight uppercase leading-tight mb-4 ${isDark ? "text-white" : "text-[#0a0a0a]"
+                        }`}>
                         {service.title.split(" Systems")[0].split(" Systems")[0]}
                       </h3>
-                      <p className={`text-xs leading-relaxed mb-6 ${
-                        isDark ? "text-neutral-400" : "text-gray-500"
-                      }`}>
+                      <p className={`text-xs leading-relaxed mb-6 ${isDark ? "text-neutral-400" : "text-gray-500"
+                        }`}>
                         {service.shortDesc}
                       </p>
-                      
+
                       <div className="flex items-center gap-2 text-xs font-mono text-blue-600 group-hover:translate-x-1.5 transition-transform font-bold">
                         <span>EXPLORE SPECS</span>
                         <ArrowRight className="w-3.5 h-3.5" />
@@ -350,9 +367,8 @@ export default function App() {
                 </div>
 
                 {/* E. Large Testimonial Highlight */}
-                <div className={`p-8 md:p-12 border rounded-none relative overflow-hidden mt-6 ${
-                  isDark ? "bg-[#111] border-neutral-900" : "bg-transparent border-black/10"
-                }`}>
+                <div className={`p-8 md:p-12 border rounded-none relative overflow-hidden mt-6 ${isDark ? "bg-[#111] border-neutral-900" : "bg-transparent border-black/10"
+                  }`}>
                   <span className="absolute top-8 right-8 text-[9px] font-mono tracking-widest text-[#3b82f63d]">
                     COGNIZANT AUDITED INTEGRITY
                   </span>
@@ -370,17 +386,15 @@ export default function App() {
                       transition={{ duration: 0.5 }}
                       className="max-w-4xl"
                     >
-                      <blockquote className={`text-lg sm:text-2xl font-light italic leading-relaxed ${
-                        isDark ? "text-neutral-200" : "text-neutral-800"
-                      }`}>
+                      <blockquote className={`text-lg sm:text-2xl font-light italic leading-relaxed ${isDark ? "text-neutral-200" : "text-neutral-800"
+                        }`}>
                         "{TESTIMONIALS[currentTestimonialIndex].quote}"
                       </blockquote>
 
                       <div className="mt-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                         <div>
-                          <strong className={`block text-sm font-semibold tracking-wide ${
-                            isDark ? "text-neutral-100" : "text-neutral-900"
-                          }`}>
+                          <strong className={`block text-sm font-semibold tracking-wide ${isDark ? "text-neutral-100" : "text-neutral-900"
+                            }`}>
                             {TESTIMONIALS[currentTestimonialIndex].author}
                           </strong>
                           <span className="block text-xs font-mono text-neutral-500 uppercase tracking-wider mt-1">
@@ -394,9 +408,8 @@ export default function App() {
                             <button
                               key={i}
                               onClick={() => setCurrentTestimonialIndex(i)}
-                              className={`h-1 transition-all cursor-pointer ${
-                                currentTestimonialIndex === i ? "bg-blue-600 w-8" : "bg-neutral-500/30 w-4"
-                              }`}
+                              className={`h-1 transition-all cursor-pointer ${currentTestimonialIndex === i ? "bg-blue-600 w-8" : "bg-neutral-500/30 w-4"
+                                }`}
                               aria-label={`Go to testimonial ${i + 1}`}
                             />
                           ))}
@@ -407,9 +420,8 @@ export default function App() {
                 </div>
 
                 {/* F. CTA banner block */}
-                <div className={`p-8 md:p-14 border rounded-none text-center relative overflow-hidden flex flex-col items-center gap-6 ${
-                  isDark ? "bg-[#111] border-neutral-900" : "bg-transparent border-black/10"
-                }`}>
+                <div className={`p-8 md:p-14 border rounded-none text-center relative overflow-hidden flex flex-col items-center gap-6 ${isDark ? "bg-[#111] border-neutral-900" : "bg-transparent border-black/10"
+                  }`}>
                   {/* Subtle airflow vortex SVG background decoration */}
                   <div className="absolute inset-0 opacity-[0.02] pointer-events-none flex items-center justify-center">
                     <svg viewBox="0 0 100 100" className="w-1/2 h-1/2 text-white animate-spin-slow">
@@ -420,10 +432,9 @@ export default function App() {
                   <span className="text-[10px] font-mono tracking-widest text-blue-600 uppercase font-bold leading-none">
                     ◆ INTERDISCIPLINARY COOPERATION
                   </span>
-                  
-                  <h3 className={`text-2xl sm:text-4xl font-bold tracking-tight uppercase max-w-xl leading-tight ${
-                    isDark ? "text-white" : "text-[#0a0a0a]"
-                  }`}>
+
+                  <h3 className={`text-2xl sm:text-4xl font-bold tracking-tight uppercase max-w-xl leading-tight ${isDark ? "text-white" : "text-[#0a0a0a]"
+                    }`}>
                     Have an ambitious architectural design pending HVAC layout?
                   </h3>
 
@@ -434,11 +445,10 @@ export default function App() {
                   <button
                     id="home-cta-contact"
                     onClick={() => setActiveSection("contact")}
-                    className={`px-8 py-3.5 rounded-none border hover:bg-blue-600 hover:text-white text-xs font-mono tracking-[0.2em] uppercase transition-all flex items-center gap-2 cursor-pointer font-bold ${
-                      isDark 
-                        ? "bg-blue-600/10 border-blue-500/30 text-blue-400" 
+                    className={`px-8 py-3.5 rounded-none border hover:bg-blue-600 hover:text-white text-xs font-mono tracking-[0.2em] uppercase transition-all flex items-center gap-2 cursor-pointer font-bold ${isDark
+                        ? "bg-blue-600/10 border-blue-500/30 text-blue-400"
                         : "bg-blue-50 border-blue-200 text-blue-600"
-                    }`}
+                      }`}
                   >
                     <span>CO-DESIGN WITH INTEL AIR</span>
                     <ArrowUpRight className="w-4 h-4" />
@@ -453,9 +463,9 @@ export default function App() {
             {/* ========================================================= */}
             {activeSection === "about" && (
               <div id="section-about" className="flex flex-col gap-16 md:gap-24">
-                <SectionHeader 
-                  number="02" 
-                  tag="COMPANY PROFILE" 
+                <SectionHeader
+                  number="02"
+                  tag="COMPANY PROFILE"
                   title="We balance temperature, acoustics, and air filtration parameters."
                   description="Intel Air Group is an elite mechanical contractor specialized in full-cycle HVAC consultation, multi-room VRV zoning, and heavy chiller distribution systems."
                   isDark={isDark}
@@ -463,7 +473,7 @@ export default function App() {
 
                 {/* Company Leadership & Founder Story */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-                  <motion.div 
+                  <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
@@ -477,14 +487,14 @@ export default function App() {
                       Founder Legacy
                     </h3>
                     <p className={`text-sm leading-relaxed ${isDark ? "text-neutral-400" : "text-neutral-600"}`}>
-                      Under the active guidance of <strong>Mr. Dhaval Dave</strong> (28 years of experience) and <strong>Mr. Mihir Shah</strong> (26 years of experience), Intel Air Group expanded into a leading national HVAC engineering consultancy. 
+                      Under the active guidance of <strong>Mr. Dhaval Dave</strong> (28 years of experience) and <strong>Mr. Mihir Shah</strong> (26 years of experience), Intel Air Group expanded into a leading national HVAC engineering consultancy.
                     </p>
                     <p className={`text-sm leading-relaxed ${isDark ? "text-neutral-400" : "text-neutral-600"}`}>
                       Our core engineering philosophy treats air as an active architectural element. By designing systems that blend into structural elements, we preserve building aesthetics while maintaining thermal efficiency and low operation noise.
                     </p>
                   </motion.div>
 
-                  <motion.div 
+                  <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
@@ -492,9 +502,8 @@ export default function App() {
                     className="lg:col-span-7"
                   >
                     {/* Visual corporate profile card */}
-                    <div className={`p-8 border rounded-none flex flex-col gap-6 relative overflow-hidden ${
-                      isDark ? "bg-[#111] border-neutral-900" : "bg-transparent border-black/10"
-                    }`}>
+                    <div className={`p-8 border rounded-none flex flex-col gap-6 relative overflow-hidden ${isDark ? "bg-[#111] border-neutral-900" : "bg-transparent border-black/10"
+                      }`}>
                       <span className="absolute bottom-6 right-6 text-[9px] font-mono text-neutral-500">
                         OFFICIAL LEDGER SYSTEM
                       </span>
@@ -549,7 +558,7 @@ export default function App() {
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <motion.div 
+                    <motion.div
                       initial={{ opacity: 0, y: 30 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true, margin: "-100px" }}
@@ -567,7 +576,7 @@ export default function App() {
                       </p>
                     </motion.div>
 
-                    <motion.div 
+                    <motion.div
                       initial={{ opacity: 0, y: 30 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true, margin: "-100px" }}
@@ -585,7 +594,7 @@ export default function App() {
                       </p>
                     </motion.div>
 
-                    <motion.div 
+                    <motion.div
                       initial={{ opacity: 0, y: 30 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true, margin: "-100px" }}
@@ -608,7 +617,7 @@ export default function App() {
                 {/* Interactive Почему выбирают нас (Why Choose Us) */}
                 <div className={`lg:border-t pt-10 ${isDark ? "border-neutral-900" : "border-gray-100"}`}>
                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                    <motion.div 
+                    <motion.div
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true, margin: "-100px" }}
@@ -627,11 +636,10 @@ export default function App() {
 
                       <button
                         onClick={() => setActiveSection("contact")}
-                        className={`px-6 py-3 rounded-none text-xs font-mono tracking-[0.2em] uppercase font-bold transition-all border flex items-center gap-2 cursor-pointer ${
-                          isDark 
-                            ? "bg-white border-white text-black hover:bg-transparent hover:text-white" 
+                        className={`px-6 py-3 rounded-none text-xs font-mono tracking-[0.2em] uppercase font-bold transition-all border flex items-center gap-2 cursor-pointer ${isDark
+                            ? "bg-white border-white text-black hover:bg-transparent hover:text-white"
                             : "bg-black border-black text-white hover:bg-transparent hover:text-black"
-                        }`}
+                          }`}
                       >
                         <span>BOOK BLUEPRINT REVIEW</span>
                         <ArrowRight className="w-3.5 h-3.5" />
@@ -645,15 +653,14 @@ export default function App() {
                         { title: "Eco-Friendly Refrigerant Policy", desc: "All system parameters are pre-engineered to run on the latest eco-friendly cooling gases (R-32, R-410A) with very low Global Warming Potential." },
                         { title: "Transparent Cost Structures", desc: "No hidden charges. We outline clean linear budgets with itemized bills, structural copper sizing matrices, and AMC metrics transparently." }
                       ].map((item, index) => (
-                        <motion.div 
-                          key={index} 
+                        <motion.div
+                          key={index}
                           initial={{ opacity: 0, x: 20 }}
                           whileInView={{ opacity: 1, x: 0 }}
                           viewport={{ once: true, margin: "-50px" }}
                           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: index * 0.1 }}
-                          className={`p-5 rounded-none border flex gap-4 ${
-                            isDark ? "bg-[#111] border-neutral-900 hover:border-neutral-800" : "bg-transparent border-black/10"
-                          }`}
+                          className={`p-5 rounded-none border flex gap-4 ${isDark ? "bg-[#111] border-neutral-900 hover:border-neutral-800" : "bg-transparent border-black/10"
+                            }`}
                         >
                           <div className="p-2 w-8 h-8 rounded-none bg-blue-600/10 border border-blue-500/30 flex items-center justify-center shrink-0">
                             <Check className="w-4 h-4 text-blue-600" />
@@ -680,9 +687,9 @@ export default function App() {
             {/* ========================================================= */}
             {activeSection === "services" && (
               <div id="section-services" className="flex flex-col gap-16 md:gap-24">
-                <SectionHeader 
-                  number="03" 
-                  tag="OUR HVAC SERVICES" 
+                <SectionHeader
+                  number="03"
+                  tag="OUR HVAC SERVICES"
                   title="Advanced thermal zoning. Precise mechanical installations."
                   description="We analyze building layouts, thermodynamic targets, and physical structural parameters to select the ideal VRF setup or heavy chiller configuration for the project scope."
                   isDark={isDark}
@@ -690,26 +697,25 @@ export default function App() {
 
                 {/* Interactive Custom Tab System for detailed Services */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                  
+
                   {/* LEFT: Clickable Service Tabs */}
                   <div className="lg:col-span-5 flex flex-col gap-3">
                     <span className="text-[10px] font-mono text-neutral-500 tracking-widest p-2 block font-bold">
                       ◇ CLIMATE CAPABILITIES MENU
                     </span>
-                    
+
                     {SERVICES.map((s) => {
                       const isActive = activeServiceTab === s.id;
                       return (
                         <button
                           key={s.id}
                           onClick={() => setActiveServiceTab(s.id)}
-                          className={`w-full p-4 rounded-none border text-left flex items-center justify-between transition-all group cursor-pointer ${
-                            isActive
+                          className={`w-full p-4 rounded-none border text-left flex items-center justify-between transition-all group cursor-pointer ${isActive
                               ? "bg-blue-600/10 border-blue-600 text-blue-600 font-bold"
                               : isDark
                                 ? "bg-neutral-900/40 border-neutral-900 text-neutral-400 hover:border-neutral-800 hover:text-white"
                                 : "bg-transparent border-black/10 text-neutral-600 hover:border-gray-400 hover:text-black"
-                          }`}
+                            }`}
                         >
                           <div className="flex flex-col">
                             <span className="text-[8px] font-mono text-neutral-500 block uppercase tracking-wide mb-1 font-bold">
@@ -719,9 +725,8 @@ export default function App() {
                               {s.title}
                             </span>
                           </div>
-                          <ChevronRight className={`w-4 h-4 transition-transform group-hover:translate-x-1 ${
-                            isActive ? "text-blue-600 rotate-90" : "text-neutral-500"
-                          }`} />
+                          <ChevronRight className={`w-4 h-4 transition-transform group-hover:translate-x-1 ${isActive ? "text-blue-600 rotate-90" : "text-neutral-500"
+                            }`} />
                         </button>
                       );
                     })}
@@ -737,9 +742,8 @@ export default function App() {
                           animate={{ opacity: 1, x: 0 }}
                           exit={{ opacity: 0, x: -15 }}
                           transition={{ duration: 0.4 }}
-                          className={`p-6 sm:p-8 border rounded-none relative overflow-hidden flex flex-col gap-6 ${
-                            isDark ? "bg-[#111] border-neutral-900" : "bg-transparent border-black/10"
-                          }`}
+                          className={`p-6 sm:p-8 border rounded-none relative overflow-hidden flex flex-col gap-6 ${isDark ? "bg-[#111] border-neutral-900" : "bg-transparent border-black/10"
+                            }`}
                         >
                           {/* Aesthetic backdrop placeholder with parallax */}
                           <div className="h-56 w-full rounded-none overflow-hidden relative border border-neutral-500/10">
@@ -750,7 +754,7 @@ export default function App() {
                               ratio={0.15}
                             />
                             <div className="absolute inset-0 bg-neutral-950/20 mix-blend-multiply pointer-events-none" />
-                            
+
                             {/* Blue Accent gradient box */}
                             <div className="absolute bottom-4 left-4 bg-blue-600 text-white font-mono text-[9px] tracking-widest uppercase px-3 py-1.5 rounded-none border border-blue-400/30 font-bold z-10">
                               ACTIVE BLUEPRINT SELECTOR
@@ -761,7 +765,7 @@ export default function App() {
                             <span className="text-[10px] font-mono text-neutral-500 uppercase block tracking-widest mb-1.5">
                               03 // FLUID COMPORTMENT DETAILS
                             </span>
-                            
+
                             <h3 className={`text-2xl font-light uppercase tracking-wide ${isDark ? "text-white" : "text-neutral-900"}`}>
                               {SERVICES.find(s => s.id === activeServiceTab)?.title}
                             </h3>
@@ -829,15 +833,14 @@ export default function App() {
                       { step: "04", name: "Commissioning", desc: "Formal dry nitrogen holding runs, vacuum holds down to 500 microns, and structural balance." },
                       { step: "05", name: "AMC Handover", desc: "Define quarterly thermal audits, diagnostic routines, coil deep-wash plans, and proactive care." }
                     ].map((proc, index) => (
-                      <motion.div 
-                        key={index} 
+                      <motion.div
+                        key={index}
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-50px" }}
                         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: index * 0.1 }}
-                        className={`p-5 rounded-none border relative flex flex-col gap-4 ${
-                          isDark ? "bg-[#111] border-neutral-900" : "bg-transparent border-black/10"
-                        }`}
+                        className={`p-5 rounded-none border relative flex flex-col gap-4 ${isDark ? "bg-[#111] border-neutral-900" : "bg-transparent border-black/10"
+                          }`}
                       >
                         <span className="text-3xl font-mono font-bold text-blue-600">
                           {proc.step}
@@ -863,35 +866,33 @@ export default function App() {
             {/* ========================================================= */}
             {activeSection === "projects" && (
               <div id="section-projects" className="flex flex-col gap-16 md:gap-24">
-                <SectionHeader 
-                  number="04" 
-                  tag="PORTFOLIO HIGHLIGHTS" 
+                <SectionHeader
+                  number="04"
+                  tag="PORTFOLIO HIGHLIGHTS"
                   title="Thermodynamically balanced spaces for critical sectors."
                   description="Explore our filterable commercial catalog spanning hospital intensive wings, oceanwide resorts, and minimalist corporate offices."
                   isDark={isDark}
                 />
 
                 {/* Categories Filter Hub (Thin styled list aligned like Fluid Glass Contact menu) */}
-                <div className={`border-b pb-4 flex flex-wrap items-center gap-2 mb-4 font-mono text-xs ${
-                  isDark ? "border-neutral-900" : "border-gray-200"
-                }`}>
+                <div className={`border-b pb-4 flex flex-wrap items-center gap-2 mb-4 font-mono text-xs ${isDark ? "border-neutral-900" : "border-gray-200"
+                  }`}>
                   <span className="text-[10px] text-neutral-400 uppercase tracking-widest mr-4 font-bold">
                     FILTER BY BUILDING SECTOR:
                   </span>
-                  
+
                   {["All", "Hospitals", "Hotels", "Offices", "Showrooms", "Institutions", "Residential"].map((cat) => {
                     const isSelected = projectFilter === cat;
                     return (
                       <button
                         key={cat}
                         onClick={() => setProjectFilter(cat)}
-                        className={`px-4 py-2 rounded-none border transition-all cursor-pointer font-bold duration-200 text-[10px] tracking-wider ${
-                          isSelected
+                        className={`px-4 py-2 rounded-none border transition-all cursor-pointer font-bold duration-200 text-[10px] tracking-wider ${isSelected
                             ? "bg-black text-white dark:bg-white dark:text-black border-black dark:border-white"
                             : isDark
                               ? "bg-neutral-900 border-neutral-800 text-neutral-450 hover:text-white"
                               : "bg-transparent border-black/10 text-neutral-500 hover:text-black hover:border-gray-400"
-                        }`}
+                          }`}
                       >
                         {cat.toUpperCase()}
                       </button>
@@ -910,9 +911,8 @@ export default function App() {
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0.98 }}
                         transition={{ duration: 0.4 }}
-                        className={`border rounded-none overflow-hidden flex flex-col justify-between group h-full ${
-                          isDark ? "bg-[#111] border-neutral-900" : "bg-transparent border-black/10"
-                        }`}
+                        className={`border rounded-none overflow-hidden flex flex-col justify-between group h-full ${isDark ? "bg-[#111] border-neutral-900" : "bg-transparent border-black/10"
+                          }`}
                       >
                         <div className="h-64 sm:h-72 w-full overflow-hidden relative border-b border-gray-100 dark:border-neutral-900/80">
                           <ParallaxImage
@@ -921,7 +921,7 @@ export default function App() {
                             className="w-full h-full grayscale group-hover:grayscale-0 transition-all duration-500"
                             ratio={0.12}
                           />
-                          
+
                           {/* Tag sector */}
                           <div className="absolute top-4 left-4 bg-black border border-neutral-800 text-white font-mono text-[9px] tracking-widest uppercase px-3 py-1 rounded-none font-bold z-10">
                             {project.category} // CAL {project.year}
@@ -934,10 +934,9 @@ export default function App() {
                             <span className="text-[10px] font-mono text-neutral-500 uppercase block tracking-wider leading-none font-bold">
                               LOC: {project.location.split(",")[0].toUpperCase()} • CLIENT: {project.client.toUpperCase()}
                             </span>
-                            
-                            <h3 className={`text-xl font-bold uppercase tracking-tight leading-snug ${
-                              isDark ? "text-white" : "text-[#0a0a0a]"
-                            }`}>
+
+                            <h3 className={`text-xl font-bold uppercase tracking-tight leading-snug ${isDark ? "text-white" : "text-[#0a0a0a]"
+                              }`}>
                               {project.title}
                             </h3>
 
@@ -967,39 +966,37 @@ export default function App() {
             {/* ========================================================= */}
             {activeSection === "clients" && (
               <div id="section-clients" className="flex flex-col gap-16 md:gap-24">
-                <SectionHeader 
-                  number="05" 
-                  tag="OUR CLIENT BASE" 
+                <SectionHeader
+                  number="05"
+                  tag="OUR CLIENT BASE"
                   title="Over 7,000 satisfied facilities. Engineered trust."
                   description="We service high-demand medical systems, heavy real-estate complexes, premium beachfront resorts, and education institutes across coastal and urban areas."
                   isDark={isDark}
                 />
 
                 {/* Aesthetic Client Logo Wall / Custom Grid using brand partnerships text tags */}
-                <div className={`border p-8 rounded-none flex flex-col gap-8 ${
-                  isDark ? "bg-[#111] border-neutral-900" : "bg-transparent border-black/10"
-                }`}>
+                <div className={`border p-8 rounded-none flex flex-col gap-8 ${isDark ? "bg-[#111] border-neutral-900" : "bg-transparent border-black/10"
+                  }`}>
                   <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest block leading-none font-bold">
                     ◇ CERTIFIED BRAND INTEGRATORS & OUTLET PARTNERS:
                   </span>
 
                   <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
                     {BRAND_PARTNERS.map((brand, i) => (
-                      <motion.div 
-                        key={i} 
+                      <motion.div
+                        key={i}
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-100px" }}
                         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: i * 0.1 }}
-                        className={`p-6 border rounded-none flex flex-col justify-between h-44 ${
-                          isDark ? "bg-neutral-950/40 border-neutral-855 dark:border-neutral-850" : "bg-transparent border-black/10"
-                        }`}
+                        className={`p-6 border rounded-none flex flex-col justify-between h-44 ${isDark ? "bg-neutral-950/40 border-neutral-855 dark:border-neutral-850" : "bg-transparent border-black/10"
+                          }`}
                       >
                         <div className="flex items-center justify-between">
                           <strong className={`font-sans text-lg tracking-[0.15em] uppercase font-bold ${isDark ? "text-white" : "text-[#0a0a0a]"}`}>
-                            {brand.name.split(" ")[0]} 
+                            {brand.name.split(" ")[0]}
                           </strong>
-                          
+
                           <span className="text-[10px] font-mono text-blue-600 bg-blue-50 border border-blue-200 px-2 py-0.5 rounded-none font-bold dark:bg-blue-900/10 dark:border-blue-500/30 dark:text-blue-400">
                             {brand.acronym}
                           </span>
@@ -1040,15 +1037,14 @@ export default function App() {
                       { sector: "Science Institutions", demand: "Precision Relative Humidity (RH) holds, displacement air ducts", share_of_installations: "High-dome auditorium auditoriums, ancient archives" },
                       { sector: "Luxury Residential Estates", demand: "Whisper-silent cassette integration, slim line grilles layout, Home automation", share_of_installations: "Duplex townhomes, high-tier penthouse villas" }
                     ].map((item, index) => (
-                      <motion.div 
-                        key={index} 
+                      <motion.div
+                        key={index}
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-100px" }}
                         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: index * 0.1 }}
-                        className={`p-5 rounded-none border flex flex-col gap-3 ${
-                          isDark ? "bg-[#111] border-neutral-900" : "bg-transparent border-black/10"
-                        }`}
+                        className={`p-5 rounded-none border flex flex-col gap-3 ${isDark ? "bg-[#111] border-neutral-900" : "bg-transparent border-black/10"
+                          }`}
                       >
                         <h4 className={`text-sm font-mono font-bold uppercase tracking-wider text-blue-600`}>
                           {item.sector}
@@ -1078,26 +1074,26 @@ export default function App() {
             {/* ========================================================= */}
             {activeSection === "achievements" && (
               <div id="section-achievements" className="flex flex-col gap-16 md:gap-24">
-                <SectionHeader 
-                  number="06" 
-                  tag="ACHIEVEMENTS TIMELINE" 
+                <SectionHeader
+                  number="06"
+                  tag="ACHIEVEMENTS TIMELINE"
                   title="Twenty-six years of national climate expertise."
                   description="Review the milestones and green energy certifications that position Intel Air Group as a respected engineering authority."
                   isDark={isDark}
                 />
 
-                 {/* Chronological Compliance Timeline */}
+                {/* Chronological Compliance Timeline */}
                 <div className="relative border-l border-blue-600 pl-6 ml-4 flex flex-col gap-12">
                   {COMPLAINCE_TIMELINE.map((time, i) => (
-                    <motion.div 
-                      key={i} 
+                    <motion.div
+                      key={i}
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true, margin: "-50px" }}
                       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: i * 0.1 }}
                       className="relative group"
                     >
-                      
+
                       {/* Interactive dot */}
                       <span className="absolute -left-[31px] top-1.5 flex h-4 w-4 items-center justify-center">
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-none bg-blue-400 opacity-75"></span>
@@ -1136,15 +1132,14 @@ export default function App() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {CERTIFICATIONS.map((cert, index) => (
-                      <motion.div 
-                        key={index} 
+                      <motion.div
+                        key={index}
                         initial={{ opacity: 0, scale: 0.96 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true, margin: "-50px" }}
                         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: index * 0.1 }}
-                        className={`p-5 rounded-none border flex gap-4 ${
-                          isDark ? "bg-[#111] border-neutral-900 hover:border-neutral-800" : "bg-transparent border-black/10"
-                        }`}
+                        className={`p-5 rounded-none border flex gap-4 ${isDark ? "bg-[#111] border-neutral-900 hover:border-neutral-800" : "bg-transparent border-black/10"
+                          }`}
                       >
                         <div className="w-12 h-12 rounded-none bg-blue-600/10 border border-blue-500/30 flex items-center justify-center shrink-0">
                           <CheckCircle2 className="w-5 h-5 text-blue-600" />
@@ -1166,22 +1161,20 @@ export default function App() {
                 </div>
 
                 {/* Manufacturer standard logos block */}
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 0.8 }}
-                  className={`p-8 border rounded-none text-center relative overflow-hidden flex flex-col items-center gap-6 ${
-                    isDark ? "bg-[#111] border-neutral-900" : "bg-transparent border-black/10"
-                  }`}
+                  className={`p-8 border rounded-none text-center relative overflow-hidden flex flex-col items-center gap-6 ${isDark ? "bg-[#111] border-neutral-900" : "bg-transparent border-black/10"
+                    }`}
                 >
                   <span className="text-[10px] font-mono tracking-widest text-[#2563eb6a] uppercase font-bold">
                     ◆ CERTIFICATION PARTNER ASSURANCE
                   </span>
-                  
-                  <h3 className={`text-xl sm:text-2xl font-bold tracking-tight uppercase max-w-xl leading-tight ${
-                    isDark ? "text-white" : "text-[#0a0a0a]"
-                  }`}>
+
+                  <h3 className={`text-xl sm:text-2xl font-bold tracking-tight uppercase max-w-xl leading-tight ${isDark ? "text-white" : "text-[#0a0a0a]"
+                    }`}>
                     We carry official certifications for original item stocks and system installations.
                   </h3>
                 </motion.div>
@@ -1195,7 +1188,7 @@ export default function App() {
             {activeSection === "contact" && (
               <div id="section-contact" className="flex flex-col gap-16 md:gap-24">
                 {/* Visual Header matching the screenshot of fluid.glass/contact */}
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -1207,19 +1200,17 @@ export default function App() {
                     <span>CONTACT INDEX</span>
                   </div>
 
-                  <h2 className={`text-4xl sm:text-6xl md:text-[5.5rem] font-bold tracking-tight uppercase leading-[0.85] ${
-                    isDark ? "text-white" : "text-[#0a0a0a]"
-                  }`}>
+                  <h2 className={`text-4xl sm:text-6xl md:text-[5.5rem] font-bold tracking-tight uppercase leading-[0.85] ${isDark ? "text-white" : "text-[#0a0a0a]"
+                    }`}>
                     Bringing architectural ideas to <span className="font-normal italic text-blue-600">micro-temperatures</span>.
                   </h2>
                 </motion.div>
 
                 {/* Sub Contact block layout with details */}
-                <div className={`border-t pt-10 grid grid-cols-1 lg:grid-cols-12 gap-8 font-mono text-[11px] leading-relaxed ${
-                  isDark ? "border-neutral-900 text-neutral-400" : "border-gray-200 text-neutral-650"
-                }`}>
+                <div className={`border-t pt-10 grid grid-cols-1 lg:grid-cols-12 gap-8 font-mono text-[11px] leading-relaxed ${isDark ? "border-neutral-900 text-neutral-400" : "border-gray-200 text-neutral-650"
+                  }`}>
                   {/* Talk to us */}
-                  <motion.div 
+                  <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -1227,9 +1218,8 @@ export default function App() {
                     className="lg:col-span-4 flex flex-col gap-3"
                   >
                     <span className="text-neutral-500 uppercase tracking-widest block text-[9px] font-bold">◇ TALK TO US</span>
-                    <a href="tel:+917405399550" className={`text-base font-bold block hover:text-blue-600 transition-colors uppercase ${
-                      isDark ? "text-neutral-100" : "text-[#0a0a0a]"
-                    }`}>
+                    <a href="tel:+917405399550" className={`text-base font-bold block hover:text-blue-600 transition-colors uppercase ${isDark ? "text-neutral-100" : "text-[#0a0a0a]"
+                      }`}>
                       +91 74053 99550
                     </a>
                     <span className="text-xs text-neutral-400 font-semibold block leading-none">
@@ -1238,7 +1228,7 @@ export default function App() {
                   </motion.div>
 
                   {/* Write to us */}
-                  <motion.div 
+                  <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -1246,9 +1236,8 @@ export default function App() {
                     className="lg:col-span-4 flex flex-col gap-3"
                   >
                     <span className="text-neutral-500 uppercase tracking-widest block text-[9px] font-bold">◇ WRITE TO US</span>
-                    <a href="mailto:sales@intelairgroup.com" className={`text-base font-bold block hover:text-blue-600 transition-colors underline uppercase ${
-                      isDark ? "text-neutral-100" : "text-[#0a0a0a]"
-                    }`}>
+                    <a href="mailto:sales@intelairgroup.com" className={`text-base font-bold block hover:text-blue-600 transition-colors underline uppercase ${isDark ? "text-neutral-100" : "text-[#0a0a0a]"
+                      }`}>
                       sales@intelairgroup.com
                     </a>
                     <span className="text-xs text-neutral-400 font-semibold block leading-none">
@@ -1257,7 +1246,7 @@ export default function App() {
                   </motion.div>
 
                   {/* Visit us */}
-                  <motion.div 
+                  <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -1265,9 +1254,8 @@ export default function App() {
                     className="lg:col-span-4 flex flex-col gap-3"
                   >
                     <span className="text-neutral-500 uppercase tracking-widest block text-[9px] font-bold">◇ VISIT HEADQUARTERS</span>
-                    <address className={`text-xs font-sans not-italic font-bold block leading-relaxed ${
-                      isDark ? "text-neutral-200" : "text-neutral-800"
-                    }`}>
+                    <address className={`text-xs font-sans not-italic font-bold block leading-relaxed ${isDark ? "text-neutral-200" : "text-neutral-800"
+                      }`}>
                       A-217 to 220, Popular Plaza, near Someshwara Jain Derasar, <br />
                       Shyamal Cross Road, Satellite, Ahmedabad 380 015, Gujarat, India
                     </address>
@@ -1317,13 +1305,12 @@ export default function App() {
       {/* ========================================================= */}
       {/* 4. FOOTER COMPARTMENT                                      */}
       {/* ========================================================= */}
-      <footer 
-        className={`border-t pt-16 pb-24 text-[11px] font-mono text-neutral-500 transition-colors duration-500 ${
-          isDark ? "bg-[#080808] border-neutral-900" : "bg-[#f3f0ec] border-black/10"
-        }`}
+      <footer
+        className={`border-t pt-16 pb-24 text-[11px] font-mono text-neutral-500 transition-colors duration-500 ${isDark ? "bg-[#080808] border-neutral-900" : "bg-[#f3f0ec] border-black/10"
+          }`}
       >
         <div className="max-w-[1600px] mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-8">
-          
+
           {/* Logo signature and legal disclaimer */}
           <div className="md:col-span-4 flex flex-col gap-4">
             <div className="flex items-center gap-2">
@@ -1380,6 +1367,8 @@ export default function App() {
 
         </div>
       </footer>
-    </div>
+    </>
+  )}
+</div>
   );
 }
