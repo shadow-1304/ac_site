@@ -5,26 +5,37 @@ interface PreloaderProps {
   onComplete?: () => void;
 }
 
+// Altitude / speed readouts — pure aviation flavour
+const telemetry = [
+  { label: "ALT", value: "FL 350" },
+  { label: "SPD", value: "0.85M" },
+  { label: "HDG", value: "270°" },
+  { label: "TEMP", value: "+22 °C" },
+];
+
 export default function Preloader({ onComplete }: PreloaderProps) {
   const [loading, setLoading] = useState(true);
-  const [step, setStep] = useState(0);
+  const [step, setStep]       = useState(0);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    // Stage 1 text change
-    const t1 = setTimeout(() => setStep(1), 800);
-    // Stage 2 logo fade in
-    const t2 = setTimeout(() => setStep(2), 1600);
-    // Complete
+    // Ramp the progress bar from 0→100 over ~2.2 s
+    const interval = setInterval(() => {
+      setProgress(p => {
+        if (p >= 100) { clearInterval(interval); return 100; }
+        // Ease-out: faster at start, slow near the end
+        return p + Math.max(0.6, (100 - p) * 0.04);
+      });
+    }, 20);
+
+    const t1 = setTimeout(() => setStep(1), 700);
+    const t2 = setTimeout(() => setStep(2), 1500);
     const t3 = setTimeout(() => {
       setLoading(false);
-      if (onComplete) onComplete();
+      onComplete?.();
     }, 2800);
 
-    return () => {
-      clearTimeout(t1);
-      clearTimeout(t2);
-      clearTimeout(t3);
-    };
+    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); clearInterval(interval); };
   }, []);
 
   return (
@@ -32,141 +43,131 @@ export default function Preloader({ onComplete }: PreloaderProps) {
       {loading && (
         <motion.div
           id="preloader-container"
-          className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#f3f0ec] text-[#0a0a0a] select-none overflow-hidden"
-          exit={{ y: "-100%", transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] } }}
+          className="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden select-none"
+          style={{ background: "#f3f0ec" }}
+          exit={{ y: "-100%", transition: { duration: 0.85, ease: [0.76, 0, 0.24, 1] } }}
         >
-          {/* Ambient blueprint grid in background */}
-          <div className="absolute inset-0 opacity-[0.05] pointer-events-none" style={{
-            backgroundImage: "radial-gradient(circle, #2563eb 1px, transparent 1px)",
-            backgroundSize: "24px 24px"
-          }} />
+          {/* ── Subtle dot-grid blueprint ── */}
+          <div
+            className="absolute inset-0 pointer-events-none opacity-[0.04]"
+            style={{
+              backgroundImage: "radial-gradient(circle, #2563eb 1px, transparent 1px)",
+              backgroundSize: "28px 28px",
+            }}
+          />
 
-          {/* Core content wrapper */}
-          <div className="relative flex flex-col items-center justify-center max-w-md px-6 text-center">
-            
-            {/* Spinning aerodynamic turbine logo */}
-            <div className="relative w-36 h-36 mb-10 flex items-center justify-center">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8, rotate: -45 }}
-                animate={{ 
-                  opacity: step >= 0 ? 1 : 0, 
-                  scale: step >= 0 ? 1 : 0.8,
-                  rotate: 720 
-                }}
-                transition={{ 
-                  opacity: { duration: 1, ease: "easeOut" },
-                  scale: { duration: 1.2, ease: "easeOut" },
-                  rotate: { duration: 3, ease: [0.25, 1, 0.5, 1] } 
-                }}
-                className="absolute inset-0 flex items-center justify-center"
-              >
-                {/* Custom Elegant HVAC Blade / Turbine SVG */}
-                <svg viewBox="0 0 100 100" className="w-full h-full text-blue-600 drop-shadow-[0_0_15px_rgba(37,99,235,0.15)]" fill="none" stroke="currentColor">
-                  {/* Outer delicate architectural boundary ring */}
-                  <circle cx="50" cy="50" r="46" strokeWidth="0.75" className="opacity-20 stroke-gray-400" strokeDasharray="3 3" />
-                  <circle cx="50" cy="50" r="42" strokeWidth="1" className="opacity-40" />
-                  <circle cx="50" cy="50" r="16" strokeWidth="1.5" />
-                  
-                  {/* Blade curves (vortex geometry representing dynamic pressure) */}
-                  <path d="M 50 8 C 65 24, 65 38, 50 34 C 35 38, 35 24, 50 8" strokeWidth="1" className="stroke-[#0a0a0a]" />
-                  <path d="M 50 92 C 35 76, 35 62, 50 66 C 65 62, 65 76, 50 92" strokeWidth="1" className="stroke-[#0a0a0a]" />
-                  <path d="M 8 50 C 24 35, 38 35, 34 50 C 38 65, 24 65, 8 50" strokeWidth="1" className="stroke-[#0a0a0a]" />
-                  <path d="M 92 50 C 76 65, 62 65, 66 50 C 62 35, 76 35, 92 50" strokeWidth="1" className="stroke-[#0a0a0a]" />
-                  
-                  {/* Diagonals */}
-                  <path d="M 20.36 20.36 C 35 25, 42 35, 38.68 38.68 L 20.36 20.36" strokeWidth="1" className="stroke-blue-600" />
-                  <path d="M 79.64 79.64 C 65 75, 58 65, 61.32 61.32 L 79.64 79.64" strokeWidth="1" className="stroke-blue-600" />
-                  <path d="M 79.64 20.36 C 75 35, 65 42, 61.32 38.68 L 79.64 20.36" strokeWidth="1" className="stroke-blue-600" />
-                  <path d="M 20.36 79.64 C 25 65, 35 58, 38.68 61.32 L 20.36 79.64" strokeWidth="1" className="stroke-blue-600" />
-                  
-                  {/* Core hub indicator */}
-                  <circle cx="50" cy="50" r="4" fill="currentColor" className="text-[#0a0a0a]" />
-                </svg>
-              </motion.div>
-              
-              {/* Outer halo overlay rotating counter */}
-              <motion.div
-                animate={{ rotate: -360 }}
-                transition={{ duration: 6, ease: "linear", repeat: Infinity }}
-                className="absolute inset-0 scale-[1.12]"
-              >
-                <svg viewBox="0 0 120 120" className="w-full h-full text-blue-600/20" stroke="currentColor" fill="none">
-                  <circle cx="60" cy="60" r="54" strokeWidth="0.5" strokeDasharray="10 40 80 10" />
-                </svg>
-              </motion.div>
-            </div>
+          {/* ── Thin horizon scan line (sweeps top → bottom once) ── */}
+          <motion.div
+            initial={{ top: "-2px" }}
+            animate={{ top: "100%" }}
+            transition={{ duration: 2.6, ease: "easeInOut" }}
+            className="absolute left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-blue-600/40 to-transparent pointer-events-none"
+            style={{ zIndex: 1 }}
+          />
 
-            {/* Typography brand name */}
-            <div className="overflow-hidden mb-3">
+          {/* ── Main centred content ── */}
+          <div className="relative z-10 flex flex-col items-center gap-10 px-8 text-center w-full max-w-xl">
+
+            {/* Logo image — fades in cleanly */}
+            <motion.img
+              src="/logo_Intel300.png"
+              alt="Intel Air Group"
+              initial={{ opacity: 0, y: 12, scale: 0.94 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+              className="h-20 md:h-24 w-auto object-contain"
+            />
+
+            {/* ── Company name staggered letter reveal ── */}
+            <div className="overflow-hidden">
               <motion.h1
                 initial={{ y: 40, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-                className="text-2xl md:text-3xl font-bold tracking-[0.35em] uppercase text-[#0a0a0a] font-sans"
+                transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
+                className="font-sans font-bold tracking-[0.3em] uppercase text-[#0a0a0a] text-xl md:text-2xl leading-none"
               >
                 INTEL AIR GROUP
               </motion.h1>
             </div>
 
-            {/* Editorial tagline */}
-            <div className="h-6 overflow-hidden">
+            {/* ── Cycling tagline ── */}
+            <div className="h-5 overflow-hidden w-full flex justify-center">
               <AnimatePresence mode="wait">
                 {step === 0 && (
-                  <motion.p
-                    key="tag0"
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 0.7 }}
-                    exit={{ y: -20, opacity: 0 }}
-                    transition={{ duration: 0.4 }}
-                    className="text-xs uppercase tracking-[0.25em] text-neutral-500 font-mono font-bold"
-                  >
-                    Thermodynamic Architectures
-                  </motion.p>
+                  <motion.p key="t0"
+                    initial={{ y: 16, opacity: 0 }} animate={{ y: 0, opacity: 0.6 }} exit={{ y: -16, opacity: 0 }}
+                    transition={{ duration: 0.35 }}
+                    className="font-mono text-[10px] uppercase tracking-[0.28em] text-neutral-500 font-bold absolute"
+                  >Excellence with Integrity</motion.p>
                 )}
                 {step === 1 && (
-                  <motion.p
-                    key="tag1"
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 0.9 }}
-                    exit={{ y: -20, opacity: 0 }}
-                    transition={{ duration: 0.4 }}
-                    className="text-xs uppercase tracking-[0.25em] text-blue-600 font-mono font-bold"
-                  >
-                    CALIBRATING THERMAL COILS
-                  </motion.p>
+                  <motion.p key="t1"
+                    initial={{ y: 16, opacity: 0 }} animate={{ y: 0, opacity: 0.85 }} exit={{ y: -16, opacity: 0 }}
+                    transition={{ duration: 0.35 }}
+                    className="font-mono text-[10px] uppercase tracking-[0.28em] text-blue-600 font-bold absolute"
+                  >Air · Ground · Precision</motion.p>
                 )}
                 {step >= 2 && (
-                  <motion.p
-                    key="tag2"
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    exit={{ y: -20, opacity: 0 }}
-                    transition={{ duration: 0.4 }}
-                    className="text-xs uppercase tracking-[0.25em] font-bold text-[#0a0a0a] font-mono"
-                  >
-                    INTEGRITY • PRECISION • FLOW
-                  </motion.p>
+                  <motion.p key="t2"
+                    initial={{ y: 16, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: -16, opacity: 0 }}
+                    transition={{ duration: 0.35 }}
+                    className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#0a0a0a] font-bold absolute"
+                  >Preparing your experience…</motion.p>
                 )}
               </AnimatePresence>
             </div>
 
-            {/* Subtle loading horizontal scale bar */}
-            <div className="w-48 h-[1px] bg-gray-200 mt-8 rounded-full overflow-hidden relative">
-              <motion.div
-                initial={{ left: "-100%" }}
-                animate={{ left: "100%" }}
-                transition={{ duration: 2.4, ease: "easeInOut", repeat: 0 }}
-                className="absolute top-0 bottom-0 w-2/3 bg-gradient-to-r from-transparent via-blue-600 to-transparent"
-              />
+            {/* ── Progress track ── */}
+            <div className="w-56 flex flex-col gap-1.5">
+              <div className="w-full h-[1.5px] bg-black/8 rounded-full overflow-hidden">
+                <motion.div
+                  animate={{ width: `${Math.min(progress, 100)}%` }}
+                  transition={{ ease: "linear", duration: 0.05 }}
+                  className="h-full bg-gradient-to-r from-blue-600/60 via-blue-500 to-blue-600/60 rounded-full"
+                />
+              </div>
+              <div className="flex justify-between">
+                <span className="font-mono text-[9px] text-neutral-400 tracking-widest uppercase">Loading</span>
+                <span className="font-mono text-[9px] text-neutral-400 tracking-widest">{Math.round(Math.min(progress, 100))}%</span>
+              </div>
             </div>
+
           </div>
 
-          <div className="absolute bottom-10 left-10 text-[10px] text-neutral-500 font-mono tracking-widest uppercase font-bold">
-            EST. 2000
-          </div>
-          <div className="absolute bottom-10 right-10 text-[10px] text-neutral-500 font-mono tracking-widest uppercase font-bold">
-            AISTUDIO REDESIGN SYSTEM
-          </div>
+          {/* ── Bottom telemetry strip — aviation HUD feel ── */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.6 }}
+            className="absolute bottom-8 left-0 right-0 flex justify-center gap-8 px-10"
+          >
+            {telemetry.map(({ label, value }) => (
+              <div key={label} className="flex flex-col items-center gap-0.5">
+                <span className="font-mono text-[8px] text-neutral-400 tracking-[0.2em] uppercase">{label}</span>
+                <span className="font-mono text-[11px] font-bold text-neutral-600 tracking-wider">{value}</span>
+              </div>
+            ))}
+          </motion.div>
+
+          {/* ── Corner marks ── */}
+          {[
+            "top-6 left-6",
+            "top-6 right-6 rotate-90",
+            "bottom-6 left-6 -rotate-90",
+            "bottom-6 right-6 rotate-180",
+          ].map((pos, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.18 }}
+              transition={{ delay: 0.3 + i * 0.08, duration: 0.4 }}
+              className={`absolute ${pos} w-5 h-5 pointer-events-none`}
+            >
+              <svg viewBox="0 0 20 20" fill="none" stroke="#0a0a0a" strokeWidth="1">
+                <path d="M 0 10 L 0 0 L 10 0" />
+              </svg>
+            </motion.div>
+          ))}
         </motion.div>
       )}
     </AnimatePresence>

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { X, Menu } from "lucide-react";
+import { X } from "lucide-react";
 import { SectionType } from "../types";
 import ThemeToggle from "./ThemeToggle";
 
@@ -63,9 +63,7 @@ export default function Navigation({ activeSection, onChangeSection, isDark, onT
   // Coordinated close and section change
   const handleLinkClick = (id: SectionType) => {
     setIsExpanded(false);
-    setTimeout(() => {
-      onChangeSection(id);
-    }, 600);
+    onChangeSection(id);
   };
 
   return (
@@ -164,7 +162,7 @@ export default function Navigation({ activeSection, onChangeSection, isDark, onT
                         <motion.div variants={itemVariants}>
                           <button
                             onClick={() => handleLinkClick(item.id)}
-                            className="text-left group cursor-pointer w-fit block line-roll-container"
+                            className="text-left group cursor-pointer w-fit flex items-center gap-3 line-roll-container"
                           >
                             <span className={`font-sans text-[40px] leading-[1.1] font-light tracking-tight transition-all duration-300 block relative line-mask ${
                               isActive 
@@ -174,10 +172,10 @@ export default function Navigation({ activeSection, onChangeSection, isDark, onT
                               <span className="line-roll block" data-hover={item.label.toUpperCase()}>
                                 {item.label.toUpperCase()}
                               </span>
-                              {isActive && (
-                                <span className="w-1.5 h-1.5 rounded-full bg-blue-600 inline-block ml-3 align-middle shadow-[0_0_8px_#2563eb]" />
-                              )}
                             </span>
+                            {isActive && (
+                              <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shadow-[0_0_8px_#2563eb] flex-shrink-0" />
+                            )}
                           </button>
                         </motion.div>
                       </div>
@@ -203,7 +201,7 @@ export default function Navigation({ activeSection, onChangeSection, isDark, onT
 
                     {/* Right Column */}
                     <div className="flex flex-col gap-1.5 font-sans text-[13px] text-neutral-400 leading-normal text-right sm:text-left">
-                      <a href="tel:+911145617290" className="hover:text-current transition-colors block w-fit ml-auto sm:ml-0">+91 (011) 4561 7290</a>
+                      <a href="tel:+917405399550" className="hover:text-current transition-colors block w-fit ml-auto sm:ml-0">+91 74053 99550</a>
                       <a href="mailto:sales@intelairgroup.com" className="hover:text-current transition-colors block w-fit ml-auto sm:ml-0 font-medium">sales@intelairgroup.com</a>
                     </div>
                   </motion.div>
@@ -259,13 +257,14 @@ export default function Navigation({ activeSection, onChangeSection, isDark, onT
               className="flex items-center justify-between w-full h-full pointer-events-none"
               style={{ display: isExpanded ? "none" : "flex" }}
             >
-              {/* Left: Custom Hexagonal Logo */}
-              <div className="flex items-center justify-start w-8">
-                <svg viewBox="0 0 100 100" className="w-6.5 h-6.5 text-blue-600 transition-transform group-hover:scale-105" fill="none" stroke="currentColor" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round">
-                  <polygon points="50,12 88,34 88,76 50,98 12,76 12,34" />
-                  <path d="M32,40 L50,30 L68,40 L68,60 L50,70 L32,60" />
-                  <path d="M32,50 L50,60" />
-                </svg>
+              {/* Left: Real Company Logo (PNG) */}
+              <div className="flex items-center justify-start w-24 flex-shrink-0">
+                <img
+                  src="/logo_Intel300.png"
+                  alt="Intel Air Group"
+                  className="h-9 w-auto object-contain transition-transform group-hover:scale-105"
+                  style={{ filter: isDark ? "brightness(0) invert(1)" : "none" }}
+                />
               </div>
 
               {/* Center: Active route name */}
@@ -274,10 +273,12 @@ export default function Navigation({ activeSection, onChangeSection, isDark, onT
               </span>
 
               {/* Right: Thin Hamburger icon */}
-              <div className="flex flex-col gap-[4px] w-5 items-end justify-center w-8">
-                <span className="h-[1px] w-full bg-current transition-colors"></span>
-                <span className="h-[1px] w-3/4 bg-current transition-colors"></span>
-                <span className="h-[1px] w-full bg-current transition-colors"></span>
+              <div className="flex items-center justify-end w-24 flex-shrink-0">
+                <div className="flex flex-col gap-[4px] w-5 items-end justify-center">
+                  <span className="h-[1px] w-full bg-current transition-colors"></span>
+                  <span className="h-[1px] w-3/4 bg-current transition-colors"></span>
+                  <span className="h-[1px] w-full bg-current transition-colors"></span>
+                </div>
               </div>
             </motion.div>
 

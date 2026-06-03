@@ -95,3 +95,30 @@
   animation: spin-slow 20s linear infinite;
 }
 
+/* Premium Logo High Contrast Filters */
+.dark-logo-filter {
+  filter: invert(1) hue-rotate(180deg) brightness(1.25) contrast(1.15);
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+.light-logo-filter {
+  filter: brightness(0.96) contrast(1.15);
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* Breathing pulse animation for preloader logo */
+@keyframes logo-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06);
+  }
+}
+
+.animate-logo-pulse {
+  animation: logo-pulse 2s ease-in-out infinite;
+}
+

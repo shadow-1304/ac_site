@@ -1,29 +1,5 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
-
-// Hook to track active scroll direction
-function useScrollDirection() {
-  const [direction, setDirection] = useState<"down" | "up">("down");
-
-  useEffect(() => {
-    let lastScrollY = window.scrollY;
-    
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      // Filter out micro-scroll changes to avoid jitter
-      if (Math.abs(scrollY - lastScrollY) > 4) {
-        const dir = scrollY > lastScrollY ? "down" : "up";
-        setDirection(dir);
-        lastScrollY = scrollY;
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  return direction;
-}
 
 interface ScrollRevealTextProps {
   text: string;
@@ -33,13 +9,12 @@ interface ScrollRevealTextProps {
 
 export function ScrollRevealText({ text, className = "", delay = 0 }: ScrollRevealTextProps) {
   const words = text.split(" ");
-  const direction = useScrollDirection();
 
   const container = {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: 0.03, // slower stagger
+        staggerChildren: 0.03, // slower stagger for premium experience
         delayChildren: delay,
       },
     },
@@ -47,16 +22,16 @@ export function ScrollRevealText({ text, className = "", delay = 0 }: ScrollReve
 
   const child = {
     hidden: { 
-      y: direction === "down" ? "130%" : "-130%",
+      y: "115%",
       transition: {
-        duration: 0.3,
+        duration: 0.25,
         ease: "easeIn"
       }
     },
     visible: {
       y: 0,
       transition: {
-        duration: 1.3, // slower duration for smooth experience
+        duration: 1.3, // slower smooth duration
         ease: [0.16, 1, 0.3, 1],
       },
     },
@@ -88,13 +63,11 @@ interface ScrollRevealLinesProps {
 }
 
 export function ScrollRevealLines({ lines, className = "", delay = 0 }: ScrollRevealLinesProps) {
-  const direction = useScrollDirection();
-
   const container = {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: 0.15, // slower stagger
+        staggerChildren: 0.15,
         delayChildren: delay,
       },
     },
@@ -102,16 +75,16 @@ export function ScrollRevealLines({ lines, className = "", delay = 0 }: ScrollRe
 
   const child = {
     hidden: { 
-      y: direction === "down" ? "120%" : "-120%",
+      y: "115%",
       transition: {
-        duration: 0.3,
+        duration: 0.25,
         ease: "easeIn"
       }
     },
     visible: {
       y: 0,
       transition: {
-        duration: 1.4, // slower duration
+        duration: 1.4,
         ease: [0.16, 1, 0.3, 1],
       },
     },
@@ -229,4 +202,3 @@ export function useSmoothScroll() {
     };
   }, []);
 }
-

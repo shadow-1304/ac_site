@@ -268,14 +268,14 @@ export default function MapMock({ isDark }: { isDark: boolean }) {
             </span>
           </div>
           <span className="text-[9px] font-mono text-neutral-400">
-            PLOT NO 144, INDUSTRIAL AREA PHASE II, NEW DELHI
+            A-217 TO 220, POPULAR PLAZA, SATELLITE, AHMEDABAD
           </span>
         </div>
 
         {/* High-quality embedded interactive Google map, styled with custom monochrome filters */}
         <div className="relative w-full h-[300px] md:h-[400px] rounded-2xl overflow-hidden border border-neutral-500/10 grayscale contrast-[1.1] invert-[0] dark:invert-[0.9] dark:contrast-[1.2]">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.6892557550324!2d77.29177217528373!3d28.549045775711654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce3faaaabef71%3A0xb3debb7700e57ba5!2sPlot%20No.%20144%2C%20Okhla%20Phase%20III%2C%20Okhla%20Industrial%20Estate%2C%20New%20Delhi%2C%20Delhi%20110020!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.9348259648216!2d72.52981577520023!3d23.018788479177114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e84d41e755259%3A0xe103ee22709ad5fa!2sPopular%20Plaza!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
             width="100%"
             height="100%"
             style={{ border: 0 }}

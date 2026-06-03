@@ -29,6 +29,7 @@ import Navigation from "./components/Navigation";
 import SectionHeader from "./components/SectionHeader";
 import MapMock from "./components/MapMock";
 import InquiryForm from "./components/InquiryForm";
+import ACSketch from "./components/ACSketch";
 import { ScrollRevealText, ScrollRevealLines, ParallaxImage, useSmoothScroll } from "./components/ScrollReveal";
 
 export default function App() {
@@ -103,61 +104,32 @@ export default function App() {
               <div id="section-home" className="flex flex-col gap-16 md:gap-24">
                 
                 {/* A. Massive Hero Section */}
-                <div className="relative pt-8 pb-12 md:pb-20 max-w-5xl">
-                  {/* Category tag */}
-                  <div className="flex items-center gap-3 font-mono text-[10px] tracking-[0.4em] uppercase mb-6 text-blue-600 font-bold">
-                    <span>◆</span>
-                    <span>INTEL AIR GROUP • CLIMATE ARCHITECTS</span>
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-8 pb-12 md:pb-20 w-full">
+                  {/* Left Column: Hero Text & CTAs */}
+                  <div className="lg:col-span-7 flex flex-col justify-center">
+                    {/* Category tag */}
+                    <div className="flex items-center gap-3 font-mono text-[10px] tracking-[0.4em] uppercase mb-6 text-blue-600 font-bold">
+                      <span>◆</span>
+                      <span>INTEL AIR GROUP • CLIMATE ARCHITECTS</span>
+                    </div>
+
+                    <h1 className={`text-4xl sm:text-6xl md:text-[76px] xl:text-[84px] leading-[0.85] font-bold tracking-tight uppercase mb-8 ${
+                      isDark ? "text-white" : "text-[#0a0a0a]"
+                    }`}>
+                      <ScrollRevealText text="We engineer" /> <span className="text-blue-600 font-normal italic"><ScrollRevealText text="natural air flow." /></span><br/>
+                      <span className={isDark ? "text-neutral-700" : "text-gray-300"}><ScrollRevealText text="We design" /></span> <ScrollRevealText text="climate." />
+                    </h1>
+
+                    <p className={`mt-10 max-w-xl text-base sm:text-lg leading-relaxed ${
+                      isDark ? "text-neutral-400" : "text-gray-500"
+                    }`}>
+                      <ScrollRevealText text="Transforming modern layouts into comfortable spaces through thermal engineering, computational ventilation models, and low-GWP energy architectures. Designed for structural designers, hotels, and hospitals." delay={0.2} />
+                    </p>
                   </div>
 
-                  <h1 className={`text-4xl sm:text-6xl md:text-[84px] leading-[0.85] font-bold tracking-tight uppercase mb-8 ${
-                    isDark ? "text-white" : "text-[#0a0a0a]"
-                  }`}>
-                    <ScrollRevealText text="We engineer" /> <span className="text-blue-600 font-normal italic"><ScrollRevealText text="natural air flow." /></span><br/>
-                    <span className={isDark ? "text-neutral-700" : "text-gray-300"}><ScrollRevealText text="We design" /></span> <ScrollRevealText text="climate." />
-                  </h1>
-
-                  <p className={`mt-10 max-w-xl text-base sm:text-lg leading-relaxed ${
-                    isDark ? "text-neutral-400" : "text-gray-500"
-                  }`}>
-                    <ScrollRevealText text="Transforming modern layouts into comfortable spaces through thermal engineering, computational ventilation models, and low-GWP energy architectures. Designed for structural designers, hotels, and hospitals." delay={0.2} />
-                  </p>
-
-                  {/* Micro interaction - Hero CTAs */}
-                  <div className="flex flex-wrap items-center gap-4 mt-12 font-mono">
-                    <button
-                      id="hero-explore-services"
-                      onClick={() => setActiveSection("services")}
-                      className={`line-roll-container px-6 py-3 rounded-none text-xs tracking-[0.2em] uppercase font-bold transition-all duration-300 border flex items-center gap-2 cursor-pointer ${
-                        isDark 
-                          ? "bg-white border-white text-black hover:bg-transparent hover:text-white" 
-                          : "bg-black border-black text-white hover:bg-transparent hover:text-black"
-                      }`}
-                    >
-                      <span className="line-mask">
-                        <span className="line-roll" data-hover="OUR SERVICES">
-                          OUR SERVICES
-                        </span>
-                      </span>
-                      <ChevronRight className="w-4 h-4 text-blue-600" />
-                    </button>
-
-                    <button
-                      id="hero-request-proposal"
-                      onClick={() => setActiveSection("contact")}
-                      className={`line-roll-container px-6 py-3 rounded-none text-xs tracking-[0.2em] uppercase font-bold transition-all duration-300 border flex items-center gap-2 cursor-pointer ${
-                        isDark 
-                          ? "bg-blue-600/10 border-blue-500/30 text-blue-400 hover:bg-blue-600/20" 
-                          : "bg-blue-50 border-blue-100 text-blue-600 hover:bg-blue-100"
-                      }`}
-                    >
-                      <span className="line-mask">
-                        <span className="line-roll" data-hover="REQUEST SYSTEM AUDIT">
-                          REQUEST SYSTEM AUDIT
-                        </span>
-                      </span>
-                      <ArrowUpRight className="w-3.5 h-3.5" />
-                    </button>
+                  {/* Right Column: Animated AC HVAC Sketch */}
+                  <div className="lg:col-span-5 flex items-center justify-center relative w-full h-[450px] md:h-[500px] lg:h-[550px]">
+                    <ACSketch isDark={isDark} />
                   </div>
                 </div>
 
@@ -505,7 +477,7 @@ export default function App() {
                       Founder Legacy
                     </h3>
                     <p className={`text-sm leading-relaxed ${isDark ? "text-neutral-400" : "text-neutral-600"}`}>
-                      Under the active guidance of <strong>Mr. Satish Prajapati</strong> (Managing Partner), Intel Air Group expanded from a specialized ventilation installation crew into a leading national HVAC engineering consultancy. 
+                      Under the active guidance of <strong>Mr. Dhaval Dave</strong> (28 years of experience) and <strong>Mr. Mihir Shah</strong> (26 years of experience), Intel Air Group expanded into a leading national HVAC engineering consultancy. 
                     </p>
                     <p className={`text-sm leading-relaxed ${isDark ? "text-neutral-400" : "text-neutral-600"}`}>
                       Our core engineering philosophy treats air as an active architectural element. By designing systems that blend into structural elements, we preserve building aesthetics while maintaining thermal efficiency and low operation noise.
@@ -533,10 +505,10 @@ export default function App() {
                         </div>
                         <div>
                           <strong className={`block text-base font-bold uppercase ${isDark ? "text-white" : "text-[#0F0F0F]"}`}>
-                            Mr. Satish Prajapati
+                            Mr. Dhaval Dave & Mr. Mihir Shah
                           </strong>
                           <span className="block text-xs font-mono text-neutral-400 font-semibold">
-                            Founder & Principal Managing Partner
+                            Managing Partners & Principal HVAC Consultants
                           </span>
                         </div>
                       </div>
@@ -1255,12 +1227,14 @@ export default function App() {
                     className="lg:col-span-4 flex flex-col gap-3"
                   >
                     <span className="text-neutral-500 uppercase tracking-widest block text-[9px] font-bold">◇ TALK TO US</span>
-                    <a href="tel:+911145617290" className={`text-base font-bold block hover:text-blue-600 transition-colors uppercase ${
+                    <a href="tel:+917405399550" className={`text-base font-bold block hover:text-blue-600 transition-colors uppercase ${
                       isDark ? "text-neutral-100" : "text-[#0a0a0a]"
                     }`}>
-                      +91 (011) 4561 7290
+                      +91 74053 99550
                     </a>
-                    <span className="font-semibold">Senior HVAC Engineering Office</span>
+                    <span className="text-xs text-neutral-400 font-semibold block leading-none">
+                      Landlines: 079 40359594 / 40059594
+                    </span>
                   </motion.div>
 
                   {/* Write to us */}
@@ -1277,7 +1251,9 @@ export default function App() {
                     }`}>
                       sales@intelairgroup.com
                     </a>
-                    <span className="font-semibold">Estimations & Design Proposals Desk</span>
+                    <span className="text-xs text-neutral-400 font-semibold block leading-none">
+                      projects@intelairgroup.com
+                    </span>
                   </motion.div>
 
                   {/* Visit us */}
@@ -1289,13 +1265,13 @@ export default function App() {
                     className="lg:col-span-4 flex flex-col gap-3"
                   >
                     <span className="text-neutral-500 uppercase tracking-widest block text-[9px] font-bold">◇ VISIT HEADQUARTERS</span>
-                    <address className={`text-xs font-sans not-italic font-bold block ${
+                    <address className={`text-xs font-sans not-italic font-bold block leading-relaxed ${
                       isDark ? "text-neutral-200" : "text-neutral-800"
                     }`}>
-                      Plot No. 144, Okhla Industrial Area Phase III, <br />
-                      New Delhi, Delhi 110020, India
+                      A-217 to 220, Popular Plaza, near Someshwara Jain Derasar, <br />
+                      Shyamal Cross Road, Satellite, Ahmedabad 380 015, Gujarat, India
                     </address>
-                    <span className="font-semibold">Main mechanical drafting office layout.</span>
+                    <span className="font-semibold">Main mechanical drafting and estimates office layout.</span>
                   </motion.div>
                 </div>
 
