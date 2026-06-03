@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+@layer base {
+  html {
+    scroll-behavior: auto;
+    scroll-padding-top: 100px;
+    -webkit-overflow-scrolling: touch;
+    font-size: 16px;
+  }
+
+  @media (min-width: 768px) {
+    html {
+      font-size: clamp(13px, calc((100vw / 1440) * 16), 18px);
+    }
+  }
+  
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.15);
+  }
+  .dark ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+  }
+}
+
+/* Slide-Up Text Mask Hover Utilities */
+.line-mask {
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  vertical-align: bottom;
+}
+
+.line-roll {
+  display: inline-block;
+  position: relative;
+  transform: translateY(0);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.line-roll::after {
+  content: attr(data-hover);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  white-space: nowrap;
+  width: 100%;
+  text-align: inherit;
+}
+
+.line-roll-container:hover .line-roll {
+  transform: translateY(-100%);
+}
+
+
+/* Glassmorphism Luxury Utilities */
+.glass-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+.luxury-text-glow {
+  transition: text-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.luxury-text-glow:hover {
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.45), 0 0 30px rgba(147, 197, 253, 0.25);
+}
+
+.reflection-line {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.03) 25%,
+    rgba(255, 255, 255, 0.25) 50%,
+    rgba(255, 255, 255, 0.03) 75%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
