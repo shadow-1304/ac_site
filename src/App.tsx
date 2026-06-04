@@ -209,8 +209,8 @@ export default function App() {
                                 }`}
                             >
                               {multiplier === 1 && "LOW"}
-                              {multiplier === 2.5 && "MID"}
-                              {multiplier === 5 && "MAX"}
+                              {multiplier === 2.5 && "DESIGN"}
+                              {multiplier === 5 && "PEAK"}
                             </button>
                           ))}
                         </div>
@@ -289,17 +289,6 @@ export default function App() {
                             />
                           ))}
                         </svg>
-
-                        <div className="absolute bottom-4 left-4 flex gap-4 font-mono text-[9px] text-neutral-400">
-                          <div className="flex items-center gap-1">
-                            <Snowflake className="w-3 h-3 text-blue-400 animate-spin" />
-                            <span>SYSTEM LOAD: ~{customSpeedMultiplier === 1 ? 28 : customSpeedMultiplier === 2.5 ? 64 : 94}%</span>
-                          </div>
-                          <div className="flex items-center gap-1">
-                            <Flame className="w-3 h-3 text-red-400" />
-                            <span>RECOVERY COP: {customSpeedMultiplier === 1 ? "5.45" : customSpeedMultiplier === 2.5 ? "4.85" : "4.12"}</span>
-                          </div>
-                        </div>
                       </div>
                     </div>
 
