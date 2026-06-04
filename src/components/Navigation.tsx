@@ -243,10 +243,10 @@ export default function Navigation({ activeSection, onChangeSection, isDark, onT
               borderRadius: 27
             }}
             transition={{ type: "spring", stiffness: 220, damping: 25 }}
-            className={`flex items-center justify-between h-[54px] border transition-colors cursor-pointer shadow-lg relative overflow-hidden group select-none max-w-[calc(100vw-32px)] ${
+            className={`flex items-center justify-between h-[54px] border transition-colors cursor-pointer shadow-lg relative overflow-hidden group select-none max-w-[calc(100vw-32px)] backdrop-blur-md ${
               isDark 
-                ? "bg-[#141412]/95 border-white/[0.08] text-white hover:bg-[#1c1c1a]" 
-                : "bg-[#fcfbfa]/95 border-black/[0.08] text-[#0a0a0a] hover:bg-[#f5f4f2]"
+                ? "bg-[#222222cc]/80 border-white/[0.08] text-white hover:bg-[#2e2e2ecc]/80" 
+                : "bg-[#fcfbfacc]/80 border-black/[0.08] text-[#0a0a0a] hover:bg-[#f5f4f2cc]/80"
             }`}
             style={{ padding: isExpanded ? 0 : "0 22px" }}
           >
