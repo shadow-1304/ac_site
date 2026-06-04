@@ -433,8 +433,12 @@ export const PROJECTS: ProjectItem[] = [
   {
     id: "eklavya-school",
     title: "Eklavya School",
+    client: "Eklavya School",
+    location: "Ahmedabad, Gujarat",
     category: "Educational Institutions",
-    metrics: "120 TR"
+    metrics: "120 TR Capacity",
+    image: "/projects/eklavya school .jpeg",
+    description: "High-efficiency central air flow layout and ducted package AC installations for clean, optimized climate control in classrooms and educational facilities."
   },
   {
     id: "shree-mahavir-jain",
