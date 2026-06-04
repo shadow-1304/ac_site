@@ -37,6 +37,15 @@ import EnergyCalculator from "./components/EnergyCalculator";
 import ACSketch from "./components/ACSketch";
 import { ScrollRevealText, ScrollRevealLines, ParallaxImage, useSmoothScroll } from "./components/ScrollReveal";
 
+const PARTNER_LOGOS = [
+  { name: "Mitsubishi Electric", src: "/logos/mitshubishi.png" },
+  { name: "Blue Star", src: "/logos/bluestar.png", className: "h-22" },
+  { name: "Carrier", src: "/logos/carrier.png", className: "h-24" },
+  { name: "Hitachi", src: "/logos/Hitachi_logo_PNG1.png" },
+  { name: "Midea", src: "/logos/.png" },
+  { name: "Toshiba", src: "/logos/482120c0fa2a71cb0408a4e0275fec3d.png", invertInDark: true, className: "h-24" }
+];
+
 export default function App() {
   useSmoothScroll();
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
@@ -983,43 +992,30 @@ export default function App() {
                 />
 
                 {/* Aesthetic Client Logo Wall / Custom Grid using brand partnerships text tags */}
-                <div className={`border p-8 rounded-none flex flex-col gap-8 ${isDark ? "bg-[#111] border-neutral-900" : "bg-transparent border-black/10"
+                <div className={`border p-8 rounded-none flex flex-col gap-6 ${isDark ? "bg-[#111] border-neutral-900" : "bg-transparent border-black/10"
                   }`}>
                   <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest block leading-none font-bold">
                     ◇ CERTIFIED BRAND INTEGRATORS & OUTLET PARTNERS:
                   </span>
 
-                  <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
-                    {BRAND_PARTNERS.map((brand, i) => (
-                      <motion.div
-                        key={i}
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, margin: "-100px" }}
-                        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: i * 0.1 }}
-                        className={`p-6 border rounded-none flex flex-col justify-between h-44 ${isDark ? "bg-neutral-950/40 border-neutral-855 dark:border-neutral-850" : "bg-transparent border-black/10"
-                          }`}
-                      >
-                        <div className="flex items-center justify-between">
-                          <strong className={`font-sans text-lg tracking-[0.15em] uppercase font-bold ${isDark ? "text-white" : "text-[#0a0a0a]"}`}>
-                            {brand.name.split(" ")[0]}
-                          </strong>
-
-                          <span className="text-[10px] font-mono text-blue-600 bg-blue-50 border border-blue-200 px-2 py-0.5 rounded-none font-bold dark:bg-blue-900/10 dark:border-blue-500/30 dark:text-blue-400">
-                            {brand.acronym}
-                          </span>
+                  {/* Infinite Logo Marquee */}
+                  <div className="relative w-full overflow-hidden py-8 mask-image-fade">
+                    <div className="flex items-center animate-marquee gap-12 w-max">
+                      {[...PARTNER_LOGOS, ...PARTNER_LOGOS].map((logo, i) => (
+                        <div
+                          key={i}
+                          className="flex items-center justify-center h-32 w-80 shrink-0 transition-all duration-300 group"
+                        >
+                          <img
+                            src={logo.src}
+                            alt={logo.name}
+                            className={`w-auto max-w-[85%] object-contain transition-opacity duration-300 opacity-80 group-hover:opacity-100 ${
+                              logo.className || "h-16"
+                            } ${isDark && logo.invertInDark ? "brightness-0 invert" : ""}`}
+                          />
                         </div>
-
-                        <div>
-                          <span className="block text-[8px] font-mono text-neutral-500 uppercase tracking-wider mb-1 font-bold">
-                            {brand.tier}
-                          </span>
-                          <p className={`text-[11px] leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
-                            {brand.description}
-                          </p>
-                        </div>
-                      </motion.div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
                 </div>
 
