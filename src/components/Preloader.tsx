@@ -17,18 +17,18 @@ export default function Preloader({ onComplete }: PreloaderProps) {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    // Faster progress ramp-up to match the shortened preloader duration
+    // Slower progress ramp-up to match the premium 2-second preloader duration
     const interval = setInterval(() => {
       setProgress(p => {
         if (p >= 100) { clearInterval(interval); return 100; }
-        return p + Math.max(1.5, (100 - p) * 0.08);
+        return p + Math.max(1.8, (100 - p) * 0.07);
       });
     }, 20);
 
     const t = setTimeout(() => {
       setLoading(false);
       onComplete?.();
-    }, 1700);
+    }, 2000);
 
     return () => { clearTimeout(t); clearInterval(interval); };
   }, []);
@@ -40,7 +40,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
           id="preloader-container"
           className="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden select-none"
           style={{ background: "#f3f0ec" }}
-          exit={{ y: "-100%", transition: { duration: 1.2, ease: [0.76, 0, 0.24, 1] } }}
+          exit={{ y: "-100%", transition: { duration: 2.2, ease: [0.76, 0, 0.24, 1] } }}
         >
           {/* ── Subtle dot-grid blueprint background ── */}
           <div
@@ -63,13 +63,13 @@ export default function Preloader({ onComplete }: PreloaderProps) {
           {/* ── Main centred content ── */}
           <div className="relative z-10 flex flex-col items-center gap-9 px-8 text-center w-full max-w-xl">
 
-            {/* Logo image — increased size and glides in from the right */}
+            {/* Logo image — increased size and glides in visibly from the right */}
             <motion.img
               src="/logo_Intel300.png"
               alt="Intel Air Group"
-              initial={{ opacity: 0, x: 280 }}
+              initial={{ opacity: 0, x: 480 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 2.0, ease: [0.16, 1, 0.3, 1] }}
               className="h-44 md:h-48 w-auto object-contain"
             />
 
@@ -77,7 +77,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
             <motion.div
               initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.65, ease: "easeOut" }}
+              transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
               className="flex flex-col items-center gap-6 w-full"
             >
               {/* Clean, minimalist text below the logo */}
