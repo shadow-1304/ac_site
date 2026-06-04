@@ -1,11 +1,17 @@
 @import "tailwindcss";
 
 @layer base {
-  html {
+  html, body {
     scroll-behavior: auto;
     scroll-padding-top: 100px;
     -webkit-overflow-scrolling: touch;
     font-size: 16px;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+
+  html::-webkit-scrollbar, body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
   }
 
   @media (min-width: 768px) {
@@ -13,19 +19,14 @@
       font-size: clamp(13px, calc((100vw / 1440) * 16), 18px);
     }
   }
-  
-  ::-webkit-scrollbar {
-    width: 6px;
-  }
-  ::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.15);
-  }
-  .dark ::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.15);
-  }
+}
+
+.calculator-modal-scroll-container {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+.calculator-modal-scroll-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 
 /* Slide-Up Text Mask Hover Utilities */

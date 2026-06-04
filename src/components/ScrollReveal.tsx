@@ -153,6 +153,31 @@ export function useSmoothScroll() {
     const ease = 0.05;
 
     const handleWheel = (e: WheelEvent) => {
+      // If the scroll target is inside the calculator modal scroll container, bypass smooth scroll and allow native scroll
+      if (e.target instanceof Element) {
+        if (e.target.closest(".calculator-modal-scroll-container")) {
+          return;
+        }
+
+        // Generic fallback check for other scrollable elements
+        let parent: Element | null = e.target;
+        while (parent && parent !== document.body && parent !== document.documentElement) {
+          const style = window.getComputedStyle(parent);
+          const overflowY = style.overflowY || style.overflow || "";
+          const isScrollableOverflow = overflowY === "auto" || overflowY === "scroll";
+          const hasScrollableContent = parent.scrollHeight > parent.clientHeight;
+          if (isScrollableOverflow && hasScrollableContent) {
+            return;
+          }
+          parent = parent.parentElement;
+        }
+      }
+
+      // If body scroll is locked (e.g., when a modal is open), allow native scrolling inside it and bypass smooth scroll
+      if (document.body.style.overflow === "hidden") {
+        return;
+      }
+
       // Prevent browser native jumpy scroll
       e.preventDefault();
       

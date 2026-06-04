@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { MapPin, Info, HardDrive, Wind, Thermometer, ShieldCheck } from "lucide-react";
+import { MapPin, Info, HardDrive, Wind, Thermometer, ShieldCheck, ArrowUpRight } from "lucide-react";
 
 interface MapNode {
   id: string;
@@ -263,19 +263,31 @@ export default function MapMock({ isDark }: { isDark: boolean }) {
         <div className="flex items-center justify-between mb-3 px-2">
           <div className="flex items-center gap-2">
             <MapPin className="w-4 h-4 text-blue-500 animate-bounce" />
-            <span className={`text-xs font-mono tracking-widest uppercase ${isDark ? "text-neutral-400" : "text-neutral-600"}`}>
-              CORPORATE HQ • GOOGLE MAPS EMBED
-            </span>
+            <a 
+              href="https://www.google.com/maps/place/Intel+Air+Group/@23.0163475,72.5297721,17z/data=!3m1!4b1!4m6!3m5!1s0x395e85058889d977:0xc513613367d8bb65!8m2!3d23.0163475!4d72.5297721!16s%2Fg%2F11ry3bv_l4?hl=en-GB&entry=ttu"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`text-xs font-mono tracking-widest uppercase hover:text-blue-500 hover:underline transition-colors flex items-center gap-1.5 font-bold ${isDark ? "text-neutral-400" : "text-neutral-600"}`}
+            >
+              CORPORATE HQ • GOOGLE MAPS EMBED <ArrowUpRight className="w-3.5 h-3.5" />
+            </a>
           </div>
-          <span className="text-[9px] font-mono text-neutral-400">
-            A-217 TO 220, POPULAR PLAZA, SATELLITE, AHMEDABAD
-          </span>
+          <a
+            href="https://www.google.com/maps/place/Intel+Air+Group/@23.0163475,72.5297721,17z/data=!3m1!4b1!4m6!3m5!1s0x395e85058889d977:0xc513613367d8bb65!8m2!3d23.0163475!4d72.5297721!16s%2Fg%2F11ry3bv_l4?hl=en-GB&entry=ttu"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[9px] font-mono text-neutral-400 hover:text-blue-500 hover:underline transition-colors font-bold"
+          >
+            A-217 TO 220, POPULAR PLAZA, SATELLITE, AHMEDABAD (GET DIRECTIONS)
+          </a>
         </div>
 
         {/* High-quality embedded interactive Google map, styled with custom monochrome filters */}
-        <div className="relative w-full h-[300px] md:h-[400px] rounded-2xl overflow-hidden border border-neutral-500/10 grayscale contrast-[1.1] invert-[0] dark:invert-[0.9] dark:contrast-[1.2]">
+        <div className={`relative w-full h-[300px] md:h-[400px] rounded-2xl overflow-hidden border border-neutral-500/10 ${
+          isDark ? "" : "grayscale contrast-[1.1]"
+        }`}>
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.9348259648216!2d72.52981577520023!3d23.018788479177114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e84d41e755259%3A0xe103ee22709ad5fa!2sPopular%20Plaza!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.0305883838536!2d72.52719717535557!3d23.016347479178972!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e85058889d977%3A0xc513613367d8bb65!2sIntel%20Air%20Group!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
             width="100%"
             height="100%"
             style={{ border: 0 }}
@@ -284,6 +296,17 @@ export default function MapMock({ isDark }: { isDark: boolean }) {
             referrerPolicy="no-referrer-when-downgrade"
             title="Intel Air Group Headquarters Location Map"
           />
+
+          {/* Floating Get Directions overlay */}
+          <a
+            href="https://www.google.com/maps/place/Intel+Air+Group/@23.0163475,72.5297721,17z/data=!3m1!4b1!4m6!3m5!1s0x395e85058889d977:0xc513613367d8bb65!8m2!3d23.0163475!4d72.5297721!16s%2Fg%2F11ry3bv_l4?hl=en-GB&entry=ttu"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute bottom-4 right-4 bg-blue-600 text-white font-mono text-[10px] tracking-widest uppercase px-4 py-2 rounded-none border border-blue-400/30 font-bold hover:bg-blue-700 transition-all flex items-center gap-1.5 shadow-lg z-10"
+          >
+            <span>GET DIRECTIONS</span>
+            <ArrowUpRight className="w-3.5 h-3.5" />
+          </a>
         </div>
       </div>
     </div>

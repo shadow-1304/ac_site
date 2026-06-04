@@ -17,7 +17,11 @@ import {
   HelpCircle,
   TrendingUp,
   Flame,
-  Snowflake
+  Snowflake,
+  Instagram,
+  Facebook,
+  Calculator,
+  X
 } from "lucide-react";
 
 import { SectionType, ServiceItem, ProjectItem } from "./types";
@@ -29,6 +33,7 @@ import Navigation from "./components/Navigation";
 import SectionHeader from "./components/SectionHeader";
 import MapMock from "./components/MapMock";
 import InquiryForm from "./components/InquiryForm";
+import EnergyCalculator from "./components/EnergyCalculator";
 import ACSketch from "./components/ACSketch";
 import { ScrollRevealText, ScrollRevealLines, ParallaxImage, useSmoothScroll } from "./components/ScrollReveal";
 
@@ -52,6 +57,9 @@ export default function App() {
   const [projectFilter, setProjectFilter] = useState<string>("All");
   const [customSpeedMultiplier, setCustomSpeedMultiplier] = useState<number>(1);
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
+  const [isCalculatorOpen, setIsCalculatorOpen] = useState<boolean>(false);
+
+  // Background scrolling is kept active, scroll events are intercepted dynamically based on pointer position.
 
   // Sync scroll position to top when section changes
   useEffect(() => {
@@ -1271,10 +1279,10 @@ export default function App() {
                         ◇ TACTILE INQUIRY SYSTEM
                       </span>
                       <h3 className={`text-2xl font-bold uppercase tracking-tight ${isDark ? "text-white" : "text-neutral-900"}`}>
-                        Submit HVAC Project Parameters
+                        Submit Specification Inquiry
                       </h3>
                       <p className={`text-xs leading-relaxed max-w-md mt-2 ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
-                        Adjust our thermodynamic configurator to draft your estimated spatial load targets. We inspect system curves and draft official responses.
+                        Select your preferred AC system types and submit your requirements. We will coordinate a direct project scope call shortly.
                       </p>
                     </div>
                   </div>
@@ -1326,47 +1334,155 @@ export default function App() {
             <p className="leading-relaxed max-w-xs text-[10px] text-neutral-400">
               &copy; {new Date().getFullYear()} Intel Air Group Operations LLC. All rights engineered. Designed with luxury material grid parameters matching standard specifications.
             </p>
-          </div>
 
-          {/* Core Channels links */}
-          <div className="md:col-span-4 flex flex-col gap-3">
-            <span className={`text-[10px] uppercase font-bold tracking-[0.15em] ${isDark ? "text-neutral-400" : "text-neutral-700"}`}>
-              ◇ CHANNELS LINKS
-            </span>
-            <div className="grid grid-cols-2 gap-2 text-[10px] uppercase tracking-wider font-bold">
-              <button onClick={() => setActiveSection("home")} className="text-left hover:text-blue-600 transition-colors cursor-pointer">01 // Home Grid</button>
-              <button onClick={() => setActiveSection("about")} className="text-left hover:text-blue-600 transition-colors cursor-pointer">02 // About story</button>
-              <button onClick={() => setActiveSection("services")} className="text-left hover:text-blue-600 transition-colors cursor-pointer">03 // Services Tab</button>
-              <button onClick={() => setActiveSection("projects")} className="text-left hover:text-blue-600 transition-colors cursor-pointer">04 // Portfolio list</button>
-              <button onClick={() => setActiveSection("clients")} className="text-left hover:text-blue-600 transition-colors cursor-pointer">05 // Brand wall</button>
-              <button onClick={() => setActiveSection("achievements")} className="text-left hover:text-blue-600 transition-colors cursor-pointer">06 // Timeline log</button>
-              <button onClick={() => setActiveSection("contact")} className="text-left hover:text-blue-600 transition-colors cursor-pointer">07 // Contact desk</button>
+            <div className="flex flex-col gap-2.5 mt-3">
+              <a 
+                href="https://www.instagram.com/intelairgroup?igsh=MWRlanYzcTI0MDZwdw=="
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`flex items-center gap-2 w-fit text-xs uppercase tracking-wider font-bold transition-colors duration-300 ${
+                  isDark ? "text-neutral-400 hover:text-pink-400" : "text-neutral-600 hover:text-pink-600"
+                }`}
+              >
+                <Instagram className="w-[18px] h-[18px]" />
+                <span>Instagram</span>
+              </a>
+
+              <a 
+                href="https://www.facebook.com/intelairgroup/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`flex items-center gap-2 w-fit text-xs uppercase tracking-wider font-bold transition-colors duration-300 ${
+                  isDark ? "text-neutral-400 hover:text-blue-500" : "text-neutral-600 hover:text-blue-600"
+                }`}
+              >
+                <Facebook className="w-[18px] h-[18px]" />
+                <span>Facebook</span>
+              </a>
             </div>
           </div>
 
-          {/* Structural system indices */}
-          <div className="md:col-span-4 flex flex-col gap-3">
+          {/* Contact Inquiries */}
+          <div className="md:col-span-4 flex flex-col gap-4">
             <span className={`text-[10px] uppercase font-bold tracking-[0.15em] ${isDark ? "text-neutral-400" : "text-neutral-700"}`}>
-              ◇ SYSTEM METADATA INDEX
+              ◇ CONTACT INQUIRIES
             </span>
-            <div className="flex flex-col gap-1.5 text-[10px] font-bold">
-              <div className="flex justify-between">
-                <span>PORTAL VERSION:</span>
-                <span className={isDark ? "text-neutral-300" : "text-neutral-800"}>AISTUDIO_BUILD_1.05</span>
+            <div className="flex flex-col gap-3.5">
+              <div className="flex flex-col">
+                <span className="text-[9px] text-neutral-500 uppercase leading-none mb-1 font-bold">Phone</span>
+                <a href="tel:+917405399550" className={`text-xs font-bold hover:text-blue-600 transition-colors uppercase ${isDark ? "text-neutral-200" : "text-neutral-800"}`}>
+                  +91 74053 99550
+                </a>
               </div>
-              <div className="flex justify-between">
-                <span>REFRIGERANT LIMIT:</span>
-                <span className={isDark ? "text-neutral-300" : "text-neutral-800"}>ASHRAE CO2_EQ SAFE</span>
+              <div className="flex flex-col">
+                <span className="text-[9px] text-neutral-500 uppercase leading-none mb-1 font-bold">Landlines</span>
+                <span className={`text-xs font-bold ${isDark ? "text-neutral-350" : "text-neutral-750"}`}>
+                  079 40359594 / 40059594
+                </span>
               </div>
-              <div className="flex justify-between">
-                <span>LAMINAR FREQUENCY:</span>
-                <span className={isDark ? "text-neutral-300" : "text-neutral-800"}>50 HZ // STEADY</span>
+              <div className="flex flex-col">
+                <span className="text-[9px] text-neutral-500 uppercase leading-none mb-1 font-bold">Email</span>
+                <a href="mailto:sales@intelairgroup.com" className={`text-xs font-bold hover:text-blue-600 transition-colors underline uppercase ${isDark ? "text-neutral-200" : "text-neutral-800"}`}>
+                  sales@intelairgroup.com
+                </a>
+                <a href="mailto:projects@intelairgroup.com" className={`text-xs font-bold hover:text-blue-600 transition-colors underline uppercase mt-1 ${isDark ? "text-neutral-200" : "text-neutral-800"}`}>
+                  projects@intelairgroup.com
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Headquarters */}
+          <div className="md:col-span-4 flex flex-col gap-4">
+            <span className={`text-[10px] uppercase font-bold tracking-[0.15em] ${isDark ? "text-neutral-400" : "text-neutral-700"}`}>
+              ◇ HEADQUARTERS
+            </span>
+            <div className="flex flex-col gap-3.5">
+              <div className="flex flex-col">
+                <span className="text-[9px] text-neutral-500 uppercase leading-none mb-1.5 font-bold">Address</span>
+                <address className={`text-xs font-sans not-italic font-bold leading-relaxed ${isDark ? "text-neutral-200" : "text-neutral-800"}`}>
+                  A-217 to 220, Popular Plaza, near Someshwara Jain Derasar,<br />
+                  Shyamal Cross Road, Satellite, Ahmedabad 380 015,<br />
+                  Gujarat, India
+                </address>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[9px] text-neutral-500 uppercase leading-none mb-1 font-bold">Layout</span>
+                <span className={`text-[10px] font-bold ${isDark ? "text-neutral-400" : "text-neutral-600"}`}>
+                  Estimates & Drafting Office Layout
+                </span>
               </div>
             </div>
           </div>
 
         </div>
       </footer>
+
+      {/* Floating Energy Calculator Toggle Button */}
+      <button 
+        onClick={() => setIsCalculatorOpen(true)}
+        className={`fixed right-0 top-1/2 -translate-y-1/2 z-40 py-4 px-2.5 rounded-l-xl shadow-2xl flex flex-col items-center gap-2 transition-all duration-300 font-mono text-[9px] tracking-widest font-bold cursor-pointer group hover:pl-3.5 ${
+          isDark 
+            ? "bg-white hover:bg-neutral-100 text-black border border-r-0 border-white/20" 
+            : "bg-black hover:bg-neutral-900 text-white border border-r-0 border-neutral-800/80"
+        }`}
+        title="Open AC Energy Cost Calculator"
+      >
+        <Calculator className={`w-4 h-4 group-hover:scale-110 transition-transform ${isDark ? "text-black" : "text-white"}`} />
+        <span className={`writing-mode-vertical uppercase [writing-mode:vertical-lr] rotate-180 font-mono ${isDark ? "text-black" : "text-white"}`}>
+          ENERGY CALCULATOR
+        </span>
+      </button>
+
+      {/* Centered Modal Overlay & Calculator Modal */}
+      <AnimatePresence>
+        {isCalculatorOpen && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+            {/* Backdrop Overlay */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsCalculatorOpen(false)}
+              className="fixed inset-0 bg-black/60 backdrop-blur-xs cursor-pointer"
+            />
+
+            {/* Centered Modal Content Card */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className={`relative w-full max-w-lg max-h-[90vh] flex flex-col border shadow-2xl overflow-hidden rounded-none z-10 ${
+                isDark ? "bg-[#0d0d0d] text-white border-neutral-800" : "bg-white text-neutral-900 border-black/10"
+              }`}
+            >
+              {/* Modal Header */}
+              <div className="flex items-center justify-between p-6 border-b border-neutral-500/10 shrink-0">
+                <div className="flex items-center gap-2">
+                  <Calculator className="w-4 h-4 text-blue-600 animate-pulse" />
+                  <span className={`text-[11px] font-mono tracking-widest uppercase font-bold ${isDark ? "text-neutral-300" : "text-neutral-700"}`}>
+                    ◇ AC POWER ESTIMATOR
+                  </span>
+                </div>
+                <button
+                  onClick={() => setIsCalculatorOpen(false)}
+                  className={`p-1.5 rounded-none hover:bg-neutral-800/10 dark:hover:bg-neutral-100/10 transition-colors cursor-pointer ${
+                    isDark ? "text-neutral-400 hover:text-white" : "text-neutral-500 hover:text-black"
+                  }`}
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+
+              {/* Scrollable Modal Content */}
+              <div className="calculator-modal-scroll-container flex-grow overflow-y-auto overscroll-contain p-6 md:p-8">
+                <EnergyCalculator isDark={isDark} />
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </>
   )}
 </div>
