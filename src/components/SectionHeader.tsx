@@ -11,7 +11,7 @@ interface SectionHeaderProps {
 
 export default function SectionHeader({ number, tag, title, description, isDark, className = "" }: SectionHeaderProps) {
   return (
-    <div className={`relative w-full pt-12 pb-16 md:pt-16 md:pb-24 border-t ${
+    <div className={`relative w-full pt-8 pb-8 md:pt-10 md:pb-12 border-t ${
       isDark ? "border-neutral-900" : "border-gray-100"
     } ${className}`}>
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">

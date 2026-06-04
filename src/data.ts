@@ -1,7 +1,7 @@
 import { ServiceItem, ProjectItem, TestimonialItem, AchievementTimelineItem, BrandPartner, CertificationItem } from './types';
 
 export const STATISTICS = [
-  { value: "26+", label: "Years of Trust" },
+  { value: "13+", label: "Years of Trust" },
   { value: "7,000+", label: "Clients Served" },
   { value: "32+", label: "Permanent Engineers" },
   { value: "80+", label: "Total Workforce" }
@@ -726,14 +726,9 @@ export const TESTIMONIALS: TestimonialItem[] = [
 
 export const COMPLAINCE_TIMELINE: AchievementTimelineItem[] = [
   {
-    year: "2000",
+    year: "2013",
     title: "Firm Establishment",
-    description: "Intel Air Group is formed by partners Dhaval Dave and Mihir Shah, establishing dedicated entities: Intel Air Technologies, Intel Enterprises, and Innovative Airconditioners."
-  },
-  {
-    year: "2008",
-    title: "Exclusive Mitsubishi Electric Brand Shop",
-    description: "Inaugurated an exclusive brand showroom for Mitsubishi Electric, standardizing premium inverter split and VRF units for the Gujarat region."
+    description: "Intel Air Group is formed by partners Dhaval Dave and Mihir Shah, establishing three specialized entities: Intel Air Technologies, Intel Enterprises, and Innovative Airconditioners."
   },
   {
     year: "2015",
@@ -741,14 +736,34 @@ export const COMPLAINCE_TIMELINE: AchievementTimelineItem[] = [
     description: "Expanded our commercial portfolio to handle single-site installations exceeding 300+ TR, partnering with tech hubs and banks."
   },
   {
+    year: "2018",
+    title: "TOSHIBA National Sales Award",
+    description: "Awarded by TOSHIBA for the highest sales dealer of Hi-Wall products (All India)."
+  },
+  {
+    year: "2019",
+    title: "TOSHIBA National Cassette Award",
+    description: "Awarded by TOSHIBA for the highest sales dealer of Cassette products (All India)."
+  },
+  {
     year: "2020",
     title: "Pharma & Cleanroom Expansion",
     description: "Bespoke cleanroom ducting systems implemented for pharmaceutical units (like Troikaa Pharma), complying with ISO standards."
   },
   {
+    year: "2021 - 2022",
+    title: "TOSHIBA Multi-Category National Award",
+    description: "Awarded by TOSHIBA for the highest sales dealer across Cassette, Hi-Wall, and all Light Commercial (LC) products (All India)."
+  },
+  {
     year: "2024",
     title: "7,000+ Successful Sites",
     description: "Milestone achievement of serving 7,000+ residential and commercial clients across Gujarat, backed by a permanent engineering team of 32."
+  },
+  {
+    year: "2024 - 2025",
+    title: "Mitsubishi Electric Gujarat Award",
+    description: "Awarded by Mitsubishi Electric for the highest sales dealer of VRF products in Gujarat."
   }
 ];
 

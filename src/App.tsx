@@ -21,7 +21,10 @@ import {
   Instagram,
   Facebook,
   Calculator,
-  X
+  X,
+  Phone,
+  Mail,
+  Building2
 } from "lucide-react";
 
 import { SectionType, ServiceItem, ProjectItem } from "./types";
@@ -322,7 +325,7 @@ export default function App() {
                     <SectionHeader
                       number="01"
                       tag="WHO WE ARE"
-                      title="Over 26 years of high-end mechanical climate engineering."
+                      title="Over 13 years of high-end mechanical climate engineering."
                       description="We don't simply supply air conditioning. We partner with leading real-estate teams and sanitational designers to architect custom centralized systems that breathe in total harmony with modern glass layout aesthetics, maximizing heat load dissipation."
                       isDark={isDark}
                     />
@@ -494,7 +497,7 @@ export default function App() {
                 {/* 2. ABOUT SECTION                                          */}
                 {/* ========================================================= */}
                 {activeSection === "about" && (
-                  <div id="section-about" className="flex flex-col gap-16 md:gap-24">
+                  <div id="section-about" className="flex flex-col gap-8 md:gap-12">
                     <SectionHeader
                       number="02"
                       tag="COMPANY PROFILE"
@@ -504,76 +507,313 @@ export default function App() {
                     />
 
                     {/* Company Leadership & Founder Story */}
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
                       <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, margin: "-100px" }}
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
                         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                        className="lg:col-span-5 flex flex-col gap-6"
+                        className="lg:col-span-5 flex flex-col pt-0 gap-6"
                       >
-                        <div className="flex items-center gap-2 text-xs font-mono text-blue-500 uppercase tracking-widest">
-                          <span>◇</span> THE MANAGING PERSPECTIVE
+                        <div className="flex flex-col gap-1">
+                          <div className="flex items-center gap-2 text-xs font-mono text-blue-500 uppercase tracking-widest">
+                            <span>◇</span> STRUCTURE & PORTFOLIO
+                          </div>
+                          <h3 className={`text-2xl sm:text-3xl font-light tracking-wide uppercase ${isDark ? "text-white" : "text-neutral-900"}`}>
+                            Intel Air Group
+                          </h3>
                         </div>
-                        <h3 className={`text-2xl sm:text-3xl font-light tracking-wide uppercase ${isDark ? "text-white" : "text-neutral-900"}`}>
-                          Founder Legacy
-                        </h3>
                         <p className={`text-sm leading-relaxed ${isDark ? "text-neutral-400" : "text-neutral-600"}`}>
-                          Under the active guidance of <strong>Mr. Dhaval Dave</strong> (28 years of experience) and <strong>Mr. Mihir Shah</strong> (26 years of experience), Intel Air Group expanded into a leading national HVAC engineering consultancy.
+                          Intel Air Group is a fast-growing partnership firm promoted by two industry-leading partners. Established in 2013, we operate from Ahmedabad and provide professional sales and services across the entire region of Gujarat.
                         </p>
                         <p className={`text-sm leading-relaxed ${isDark ? "text-neutral-400" : "text-neutral-600"}`}>
-                          Our core engineering philosophy treats air as an active architectural element. By designing systems that blend into structural elements, we preserve building aesthetics while maintaining thermal efficiency and low operation noise.
+                          We operate as a consortium of three partnership companies:
+                        </p>
+                        <div className="flex flex-col gap-3 my-2">
+                          {[
+                            "INTEL AIR TECHNOLOGIES",
+                            "INTEL ENTERPRISES",
+                            "INNOVATIVE AIRCONDITIONERS"
+                          ].map((comp, idx) => (
+                            <div
+                              key={idx}
+                              className={`p-4 border flex items-center gap-3 transition-all duration-300 hover:scale-[1.02] ${
+                                isDark
+                                  ? "bg-neutral-900/40 border-neutral-850 hover:border-blue-500/40 hover:bg-neutral-900"
+                                  : "bg-white border-neutral-200 hover:border-blue-500/40 hover:shadow-md"
+                              }`}
+                            >
+                              <div className="p-2 bg-blue-600/10 border border-blue-500/30 flex items-center justify-center rounded-none shrink-0">
+                                <Building2 className="w-4 h-4 text-blue-600" />
+                              </div>
+                              <span className={`text-xs font-mono tracking-wider font-bold ${isDark ? "text-neutral-250" : "text-neutral-800"}`}>
+                                {comp}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                        <p className={`text-xs leading-relaxed ${isDark ? "text-neutral-400" : "text-neutral-600"}`}>
+                          As authorized Sales & Service Dealers and Distributors, we represent leading multinational HVAC brands including <strong className={isDark ? "text-white" : "text-neutral-900"}>Toshiba, Carrier, Hitachi, Blue Star, and Mitsubishi Electric</strong>.
                         </p>
                       </motion.div>
 
-                      <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, margin: "-100px" }}
-                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-                        className="lg:col-span-7"
-                      >
-                        {/* Visual corporate profile card */}
-                        <div className={`p-8 border rounded-none flex flex-col gap-6 relative overflow-hidden ${isDark ? "bg-[#111] border-neutral-900" : "bg-transparent border-black/10"
-                          }`}>
-                          <span className="absolute bottom-6 right-6 text-[9px] font-mono text-neutral-500">
-                            OFFICIAL LEDGER SYSTEM
+                      <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-6 w-full h-full">
+                        {/* Dhaval Dave Card */}
+                        <motion.div
+                          initial={{ opacity: 0 }}
+                          whileInView={{ opacity: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+                          className={`h-full p-6 border rounded-none flex flex-col justify-between gap-6 relative overflow-hidden ${
+                            isDark ? "bg-[#111] border-neutral-900" : "bg-white/80 border-black/10 hover:shadow-md"
+                          }`}
+                        >
+
+                          <div className="flex flex-col gap-4">
+                            <div className="flex items-center gap-3">
+                              <div className="w-10 h-10 rounded-none bg-blue-600/10 border border-blue-500/30 flex items-center justify-center shrink-0">
+                                <Award className="w-4 h-4 text-blue-600" />
+                              </div>
+                              <div>
+                                <strong className={`block text-sm font-bold uppercase ${isDark ? "text-white" : "text-[#0F0F0F]"}`}>
+                                  Mr. Dhaval Dave
+                                </strong>
+                                <span className="block text-[10px] font-mono text-neutral-400 font-semibold uppercase">
+                                  Co-Founder & Partner
+                                </span>
+                              </div>
+                            </div>
+
+                            <div className="flex flex-col gap-1">
+                              <span className="text-[9px] font-mono text-neutral-500 uppercase leading-none font-bold">EXPERIENCE</span>
+                              <span className={`text-xs font-bold ${isDark ? "text-neutral-200" : "text-neutral-800"}`}>
+                                30 Years of HVAC Field Expertise
+                              </span>
+                            </div>
+
+                            <div className="flex flex-col gap-2">
+                              <span className="text-[9px] font-mono text-neutral-500 uppercase leading-none font-bold">AREAS OF OPERATION</span>
+                              <div className="flex flex-wrap gap-1.5 pt-0.5">
+                                {[
+                                  "Services",
+                                  "Sales",
+                                  "Distribution Sales",
+                                  "Customer Relations",
+                                  "Accounts",
+                                  "Stores"
+                                ].map((profile, i) => (
+                                  <span
+                                    key={i}
+                                    className={`px-2 py-0.5 text-[9px] font-mono tracking-wider uppercase font-semibold ${
+                                      isDark
+                                        ? "bg-neutral-900 border border-neutral-805 text-neutral-450"
+                                        : "bg-neutral-100 border border-neutral-205 text-neutral-700"
+                                    }`}
+                                  >
+                                    {profile}
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
+
+                            <div className="flex flex-col gap-1.5 mt-2">
+                              <span className="text-[9px] font-mono text-neutral-500 uppercase leading-none font-bold">PROFESSIONAL FOCUS</span>
+                              <p className={`text-[11px] leading-relaxed italic ${isDark ? "text-neutral-450" : "text-gray-600"}`}>
+                                "Optimizes distribution sales channels, financial planning, and stores management to ensure reliable logistics and service dispatch operations."
+                              </p>
+                            </div>
+                          </div>
+
+                          <div className="border-t border-gray-150 dark:border-neutral-850 pt-4 flex flex-col gap-2 mt-4">
+                            <a
+                              href="tel:9879789594"
+                              className={`w-full py-2.5 px-3 flex items-center justify-center gap-2 text-xs font-mono tracking-wider font-bold transition-all border ${
+                                isDark
+                                  ? "bg-neutral-900 border-neutral-800 text-white hover:bg-neutral-800"
+                                  : "bg-neutral-50 border-neutral-200 text-neutral-855 hover:bg-neutral-100"
+                              }`}
+                            >
+                              <Phone className="w-3.5 h-3.5 text-blue-600" />
+                              <span>+91 9879789594</span>
+                            </a>
+                            <a
+                              href="mailto:Sales@intelairgroup.com"
+                              className={`w-full py-2.5 px-3 flex items-center justify-center gap-2 text-xs font-mono tracking-wider font-bold transition-all border ${
+                                isDark
+                                  ? "bg-blue-600 border-blue-650 text-white hover:bg-blue-700"
+                                  : "bg-blue-600 border-blue-600 text-white hover:bg-blue-750"
+                              }`}
+                            >
+                              <Mail className="w-3.5 h-3.5 text-white" />
+                              <span className="truncate">Sales@intelairgroup.com</span>
+                            </a>
+                          </div>
+                        </motion.div>
+
+                        {/* Mihir Shah Card */}
+                        <motion.div
+                          initial={{ opacity: 0 }}
+                          whileInView={{ opacity: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+                          className={`h-full p-6 border rounded-none flex flex-col justify-between gap-6 relative overflow-hidden ${
+                            isDark ? "bg-[#111] border-neutral-900" : "bg-white/80 border-black/10 hover:shadow-md"
+                          }`}
+                        >
+
+                          <div className="flex flex-col gap-4">
+                            <div className="flex items-center gap-3">
+                              <div className="w-10 h-10 rounded-none bg-blue-600/10 border border-blue-500/30 flex items-center justify-center shrink-0">
+                                <Award className="w-4 h-4 text-blue-600" />
+                              </div>
+                              <div>
+                                <strong className={`block text-sm font-bold uppercase ${isDark ? "text-white" : "text-[#0F0F0F]"}`}>
+                                  Mr. Mihir Shah
+                                </strong>
+                                <span className="block text-[10px] font-mono text-neutral-400 font-semibold uppercase">
+                                  Co-Founder & Partner
+                                </span>
+                              </div>
+                            </div>
+
+                            <div className="flex flex-col gap-1">
+                              <span className="text-[9px] font-mono text-neutral-500 uppercase leading-none font-bold">EXPERIENCE</span>
+                              <span className={`text-xs font-bold ${isDark ? "text-neutral-200" : "text-neutral-800"}`}>
+                                28 Years of HVAC Field Expertise
+                              </span>
+                            </div>
+
+                            <div className="flex flex-col gap-2">
+                              <span className="text-[9px] font-mono text-neutral-500 uppercase leading-none font-bold">AREAS OF OPERATION</span>
+                              <div className="flex flex-wrap gap-1.5 pt-0.5">
+                                {[
+                                  "Services",
+                                  "Sales",
+                                  "Customer Relations",
+                                  "Project Sales",
+                                  "Management"
+                                ].map((profile, i) => (
+                                  <span
+                                    key={i}
+                                    className={`px-2 py-0.5 text-[9px] font-mono tracking-wider uppercase font-semibold ${
+                                      isDark
+                                        ? "bg-neutral-900 border border-neutral-805 text-neutral-450"
+                                        : "bg-neutral-100 border border-neutral-205 text-neutral-700"
+                                    }`}
+                                  >
+                                    {profile}
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
+
+                            <div className="flex flex-col gap-1.5 mt-2">
+                              <span className="text-[9px] font-mono text-neutral-500 uppercase leading-none font-bold">PROFESSIONAL FOCUS</span>
+                              <p className={`text-[11px] leading-relaxed italic ${isDark ? "text-neutral-400" : "text-gray-600"}`}>
+                                "Directs large-scale project sales, HVAC engineering calculations, project management, and coordinating senior technician workflows across Gujarat."
+                              </p>
+                            </div>
+                          </div>
+
+                          <div className="border-t border-gray-150 dark:border-neutral-850 pt-4 flex flex-col gap-2 mt-4">
+                            <a
+                              href="tel:9825523028"
+                              className={`w-full py-2.5 px-3 flex items-center justify-center gap-2 text-xs font-mono tracking-wider font-bold transition-all border ${
+                                isDark
+                                  ? "bg-neutral-900 border-neutral-800 text-white hover:bg-neutral-800"
+                                  : "bg-neutral-50 border-neutral-200 text-neutral-855 hover:bg-neutral-100"
+                              }`}
+                            >
+                              <Phone className="w-3.5 h-3.5 text-blue-600" />
+                              <span>+91 9825523028</span>
+                            </a>
+                            
+                            <div className="flex flex-col gap-2">
+                              <a
+                                href="mailto:Projects@intelairgroup.com"
+                                className={`w-full py-2.5 px-3 flex items-center justify-center gap-2 text-xs font-mono tracking-wider font-bold transition-all border ${
+                                  isDark
+                                    ? "bg-blue-600 border-blue-650 text-white hover:bg-blue-700"
+                                    : "bg-blue-600 border-blue-600 text-white hover:bg-blue-750"
+                                }`}
+                              >
+                                <Mail className="w-3.5 h-3.5 text-white" />
+                                <span className="truncate">Projects@intelairgroup.com</span>
+                              </a>
+                              <a
+                                href="mailto:intelairtech@gmail.com"
+                                className={`w-full py-2.5 px-3 flex items-center justify-center gap-2 text-xs font-mono tracking-wider font-bold transition-all border ${
+                                  isDark
+                                    ? "bg-blue-500/10 border-blue-500/30 text-blue-400 hover:bg-blue-500/20"
+                                    : "bg-blue-50 border-blue-200 text-blue-650 hover:bg-blue-100"
+                                }`}
+                              >
+                                <Mail className="w-3.5 h-3.5 text-blue-600" />
+                                <span className="truncate">intelairtech@gmail.com</span>
+                              </a>
+                            </div>
+                          </div>
+                        </motion.div>
+                      </div>
+                    </div>
+
+                    {/* Things We Deal In */}
+                    <div className={`border-t pt-16 ${isDark ? "border-neutral-900" : "border-gray-100"}`}>
+                      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-10">
+                        <div className="lg:col-span-6">
+                          <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-[0.2em] block mb-2 font-bold">
+                            ◇ COMPREHENSIVE Offerings
                           </span>
-
-                          <div className="flex items-center gap-3">
-                            <div className="w-12 h-12 rounded-none bg-blue-600/10 border border-blue-500/30 flex items-center justify-center">
-                              <Award className="w-5 h-5 text-blue-600" />
-                            </div>
-                            <div>
-                              <strong className={`block text-base font-bold uppercase ${isDark ? "text-white" : "text-[#0F0F0F]"}`}>
-                                Mr. Dhaval Dave & Mr. Mihir Shah
-                              </strong>
-                              <span className="block text-xs font-mono text-neutral-400 font-semibold">
-                                Managing Partners & Principal HVAC Consultants
-                              </span>
-                            </div>
-                          </div>
-
-                          <blockquote className="text-xs font-mono text-blue-600 uppercase tracking-wider italic font-bold">
-                            "Engineering is about precision. Every linear meter of copper duct or duct line must reflect a real thermodynamics loading calculation, keeping energy use low and structures pristine."
-                          </blockquote>
-
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-gray-150 dark:border-neutral-800/80 pt-6 mt-2">
-                            <div className="flex flex-col gap-1">
-                              <span className="text-[10px] font-mono text-neutral-500 uppercase leading-none font-bold">REGISTRATION</span>
-                              <span className={`text-sm font-bold ${isDark ? "text-neutral-200" : "text-neutral-800"}`}>
-                                Established Since 2000
-                              </span>
-                            </div>
-                            <div className="flex flex-col gap-1">
-                              <span className="text-[10px] font-mono text-neutral-500 uppercase leading-none font-bold">CORE AUDIT STANDARD</span>
-                              <span className={`text-sm font-bold ${isDark ? "text-neutral-200" : "text-neutral-800"}`}>
-                                ASHRAE, ISHRAE, LEED, ISO
-                              </span>
-                            </div>
-                          </div>
+                          <h4 className={`text-2xl font-bold uppercase tracking-tight ${isDark ? "text-white" : "text-[#0F0F0F]"}`}>
+                            Air Conditioning & Ventilation Systems
+                          </h4>
+                          <p className={`text-sm mt-2 leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
+                            From micro-zoned residential luxury villas to massive industrial ventilation setups, we design, deploy, and maintain custom thermodynamic configurations.
+                          </p>
                         </div>
-                      </motion.div>
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {[
+                          { title: "VRF Air Conditioning System", desc: "Variable Refrigerant Flow cooling circuits optimizing single and multi-outdoor zone load sharing.", icon: Wind },
+                          { title: "Packaged Air Conditioning System", desc: "Self-contained high-capacity roof or side mount modular packages for commercial operations.", icon: ShieldCheck },
+                          { title: "Ductable Air Conditioning System", desc: "Sleek concealed ceiling-mounted split systems directing uniform thermal lines across larger zones.", icon: Activity },
+                          { title: "Cassette Air Conditioners", desc: "4-way direct air distribution panels fitting seamlessly into standard aesthetic ceiling grids.", icon: Sparkles },
+                          { title: "Floor Mounted / Tower Air Conditioners", desc: "Stately tower packages offering rapid static cooling for large retail and community halls.", icon: FileText },
+                          { title: "Split Air Conditioners", desc: "Premium wall-mounted whisper silent inverter modules with hyper-filtration capabilities.", icon: Snowflake },
+                          { title: "Window Air Conditioners", desc: "Rugged and efficient single-unit cooling architectures suited for immediate installation setups.", icon: Flame },
+                          { title: "Customized Air Conditioning System", desc: "Tailored thermodynamics cooling design parameters customized to specific industrial processes.", icon: Calculator },
+                          { title: "Different Type Ventilation System", desc: "Axial and centrifugal mechanical fresh air loops, smoke exhaust, and duct exhaust matrices.", icon: Wind }
+                        ].map((system, index) => {
+                          const IconComponent = system.icon;
+                          return (
+                            <motion.div
+                              key={index}
+                              initial={{ opacity: 0, y: 25 }}
+                              whileInView={{ opacity: 1, y: 0 }}
+                              viewport={{ once: true, margin: "-50px" }}
+                              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: index * 0.05 }}
+                              className={`p-6 border rounded-none flex flex-col gap-4 group transition-all duration-300 hover:scale-[1.01] ${
+                                isDark 
+                                  ? "bg-neutral-950/40 border-neutral-900 hover:border-blue-500/30 hover:bg-neutral-950" 
+                                  : "bg-transparent border-black/10 hover:border-blue-500/30 hover:shadow-md"
+                              }`}
+                            >
+                              <div className="w-10 h-10 bg-blue-600/10 border border-blue-500/20 flex items-center justify-center rounded-none group-hover:border-blue-500/40 transition-colors">
+                                <IconComponent className="w-4 h-4 text-blue-600" />
+                              </div>
+                              <div>
+                                <h5 className={`text-sm font-bold uppercase mb-1 tracking-wide ${isDark ? "text-white" : "text-[#0f0f0f]"}`}>
+                                  {system.title}
+                                </h5>
+                                <p className={`text-xs leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
+                                  {system.desc}
+                                </p>
+                              </div>
+                            </motion.div>
+                          );
+                        })}
+                      </div>
                     </div>
 
                     {/* Pillars of strength: Editorial Grid layout */}
@@ -1178,7 +1418,7 @@ export default function App() {
                     <SectionHeader
                       number="06"
                       tag="ACHIEVEMENTS TIMELINE"
-                      title="Twenty-six years of national climate expertise."
+                      title="Thirteen years of national climate expertise."
                       description="Review the milestones and green energy certifications that position Intel Air Group as a respected engineering authority."
                       isDark={isDark}
                     />
