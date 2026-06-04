@@ -182,7 +182,7 @@ export default function App() {
                         <div>
                           <div className="flex items-center gap-2 text-blue-600 font-mono text-[10px] tracking-[0.2em] uppercase font-bold">
                             <Activity className="w-4 h-4 text-blue-600 animate-pulse" />
-                            <span>INTERACTIVE HVAC SCHEMATIC SIMULATOR [V_2.0]</span>
+                            <span>INTERACTIVE HVAC AIRFLOW VISUALIZATION</span>
                           </div>
                           <h3 className={`text-2xl font-bold tracking-tight mt-1.5 uppercase ${isDark ? "text-neutral-100" : "text-[#0a0a0a]"
                             }`}>
