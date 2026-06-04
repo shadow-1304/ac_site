@@ -897,19 +897,20 @@ export default function App() {
                 {/* 4. PROJECTS SECTION                                       */}
                 {/* ========================================================= */}
                 {activeSection === "projects" && (
-                  <div id="section-projects" className="flex flex-col gap-16 md:gap-24">
+                  <div id="section-projects" className="flex flex-col gap-6 md:gap-8">
                     <SectionHeader
                       number="04"
                       tag="PORTFOLIO HIGHLIGHTS"
                       title="Thermodynamically balanced spaces for critical sectors."
                       description="Explore our filterable commercial catalog spanning hospital intensive wings, oceanwide resorts, and minimalist corporate offices."
                       isDark={isDark}
+                      className="!pb-2 md:!pb-4"
                     />
 
                     {/* Categories Filter Hub (Thin styled list aligned like Fluid Glass Contact menu) */}
-                    <div className={`border-b pb-4 flex flex-wrap items-center gap-2 mb-4 font-mono text-xs ${isDark ? "border-neutral-900" : "border-gray-200"
+                    <div className={`border-b pb-2 flex flex-wrap items-center gap-2 mb-2 font-mono text-xs ${isDark ? "border-neutral-900" : "border-gray-200"
                       }`}>
-                      <span className="text-[10px] text-neutral-400 uppercase tracking-widest mr-4 font-bold">
+                      <span className={`text-[11px] sm:text-xs uppercase tracking-widest mr-4 font-extrabold ${isDark ? "text-neutral-250" : "text-neutral-850"}`}>
                         FILTER BY BUILDING SECTOR:
                       </span>
 
@@ -928,7 +929,7 @@ export default function App() {
                           <button
                             key={cat}
                             onClick={() => setProjectFilter(cat)}
-                            className={`px-4 py-2 rounded-none border transition-all cursor-pointer font-bold duration-200 text-[10px] tracking-wider ${isSelected
+                            className={`px-4 py-2 rounded-none border transition-all cursor-pointer font-bold duration-200 text-[11px] sm:text-xs tracking-wider ${isSelected
                               ? "bg-black text-white dark:bg-white dark:text-black border-black dark:border-white"
                               : isDark
                                 ? "bg-neutral-900 border-neutral-800 text-neutral-450 hover:text-white"

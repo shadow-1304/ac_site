@@ -526,7 +526,7 @@ export const PROJECTS: ProjectItem[] = [
     client: "Agora Group",
     location: "Ahmedabad, Gujarat",
     category: "Showrooms & Retail",
-    metrics: "150 TR Capacity",
+    metrics: "749 TR Capacity",
     image: "/projects/agora mall.jpeg",
     description: "Central chilled-water loop integration and high-capacity package ducting design for retail showroom pathways and central corridors."
   },
@@ -538,7 +538,7 @@ export const PROJECTS: ProjectItem[] = [
     client: "AVANT Projects",
     location: "Ahmedabad, Gujarat",
     category: "Residence / Luxury Villas",
-    metrics: "120 TR Capacity",
+    metrics: "738 TR Capacity",
     image: "/projects/AVANT  evolved living.jpeg",
     description: "High-end multi-VRF climate grid for premium residential apartments, featuring concealed ducting lines and slim linear diffusers."
   },

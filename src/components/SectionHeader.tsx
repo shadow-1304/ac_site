@@ -6,13 +6,14 @@ interface SectionHeaderProps {
   title: string;
   description?: string;
   isDark: boolean;
+  className?: string;
 }
 
-export default function SectionHeader({ number, tag, title, description, isDark }: SectionHeaderProps) {
+export default function SectionHeader({ number, tag, title, description, isDark, className = "" }: SectionHeaderProps) {
   return (
     <div className={`relative w-full pt-12 pb-16 md:pt-16 md:pb-24 border-t ${
       isDark ? "border-neutral-900" : "border-gray-100"
-    }`}>
+    } ${className}`}>
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Left indicators (Standard fluid alignment) */}
         <div className="lg:col-span-4 flex items-center justify-between lg:flex-col lg:items-start gap-4">
