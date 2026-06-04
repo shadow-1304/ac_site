@@ -13,15 +13,22 @@ export interface ServiceItem {
 export interface ProjectItem {
   id: string;
   title: string;
-  client: string;
-  location: string;
-  scope: string;
-  category: 'Hospitals' | 'Hotels' | 'Offices' | 'Showrooms' | 'Institutions' | 'Residential';
-  year: number;
-  featured: boolean;
+  client?: string;
+  location?: string;
+  scope?: string;
+  category:
+    | 'Restaurants & Banquets'
+    | 'Hotels, Resorts & Hospitality'
+    | 'Corporate Offices / Industries'
+    | 'Educational Institutions'
+    | 'Showrooms & Retail'
+    | 'Residence / Luxury Villas'
+    | 'Hospitals / Health Care';
+  year?: number;
+  featured?: boolean;
   metrics: string;
-  description: string;
-  image: string;
+  description?: string;
+  image?: string;
 }
 
 export interface TestimonialItem {

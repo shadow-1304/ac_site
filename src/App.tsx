@@ -67,6 +67,22 @@ export default function App() {
   const [customSpeedMultiplier, setCustomSpeedMultiplier] = useState<number>(1);
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
   const [isCalculatorOpen, setIsCalculatorOpen] = useState<boolean>(false);
+  const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
+  const [aspectRatio, setAspectRatio] = useState<"portrait" | "landscape">("landscape");
+
+  useEffect(() => {
+    if (selectedProject?.image) {
+      const img = new window.Image();
+      img.src = selectedProject.image;
+      img.onload = () => {
+        if (img.height > img.width) {
+          setAspectRatio("portrait");
+        } else {
+          setAspectRatio("landscape");
+        }
+      };
+    }
+  }, [selectedProject]);
 
   // Background scrolling is kept active, scroll events are intercepted dynamically based on pointer position.
 
@@ -89,9 +105,19 @@ export default function App() {
   };
 
   // Helper filter projects
-  const filteredProjects = projectFilter === "All"
-    ? PROJECTS
-    : PROJECTS.filter(p => p.category === projectFilter);
+  const filteredProjects = (projectFilter === "All"
+    ? PROJECTS.filter(p => ["swagat-agacia", "avant-living", "grand-eulogia", "hotel-eulogia-inn", "agora-mall"].includes(p.id))
+    : PROJECTS.filter(p => p.category === projectFilter)
+  ).sort((a, b) => {
+    const getTr = (m: string) => {
+      const match = m.match(/([\d.]+)\s*TR/i);
+      return match ? parseFloat(match[1]) : 0;
+    };
+    return getTr(b.metrics) - getTr(a.metrics);
+  });
+
+  const projectsWithImages = filteredProjects.filter(p => p.image);
+  const projectsWithoutImages = filteredProjects.filter(p => !p.image);
 
   return (
     <div
@@ -887,7 +913,16 @@ export default function App() {
                         FILTER BY BUILDING SECTOR:
                       </span>
 
-                      {["All", "Hospitals", "Hotels", "Offices", "Showrooms", "Institutions", "Residential"].map((cat) => {
+                      {[
+                        "All",
+                        "Restaurants & Banquets",
+                        "Hotels, Resorts & Hospitality",
+                        "Corporate Offices / Industries",
+                        "Educational Institutions",
+                        "Showrooms & Retail",
+                        "Residence / Luxury Villas",
+                        "Hospitals / Health Care"
+                      ].map((cat) => {
                         const isSelected = projectFilter === cat;
                         return (
                           <button
@@ -906,66 +941,136 @@ export default function App() {
                       })}
                     </div>
 
-                    {/* Grid Portfolio representation */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                      <AnimatePresence mode="popLayout">
-                        {filteredProjects.map((project) => (
-                          <motion.div
-                            layout
-                            key={project.id}
-                            initial={{ opacity: 0, scale: 0.98 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            exit={{ opacity: 0, scale: 0.98 }}
-                            transition={{ duration: 0.4 }}
-                            className={`border rounded-none overflow-hidden flex flex-col justify-between group h-full ${isDark ? "bg-[#111] border-neutral-900" : "bg-transparent border-black/10"
-                              }`}
-                          >
-                            <div className="h-64 sm:h-72 w-full overflow-hidden relative border-b border-gray-100 dark:border-neutral-900/80">
-                              <ParallaxImage
-                                src={project.image}
-                                alt={project.title}
-                                className="w-full h-full grayscale group-hover:grayscale-0 transition-all duration-500"
-                                ratio={0.12}
-                              />
+                    {/* Grid & List Portfolio wrapper with smooth transition on filter change */}
+                    <motion.div layout transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }} className="w-full">
+                      <AnimatePresence mode="wait">
+                      <motion.div
+                        key={projectFilter}
+                        initial={{ opacity: 0, y: 15 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -15 }}
+                        transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                        className="w-full flex flex-col"
+                      >
+                        {/* Grid Portfolio representation */}
+                        {projectsWithImages.length > 0 && (
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            {projectsWithImages.map((project) => (
+                              <motion.div
+                                key={project.id}
+                                onClick={() => setSelectedProject(project)}
+                                initial={{ opacity: 0, scale: 0.98 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ duration: 0.4 }}
+                                className={`border rounded-none overflow-hidden flex flex-col justify-between group h-full cursor-pointer hover:border-blue-500/40 transition-all duration-305 ${isDark ? "bg-[#111] border-neutral-900" : "bg-transparent border-black/10"
+                                  }`}
+                              >
+                                <div className="h-64 sm:h-72 w-full overflow-hidden relative border-b border-gray-100 dark:border-neutral-900/80">
+                                  {project.image && (
+                                    <ParallaxImage
+                                      src={project.image}
+                                      alt={project.title}
+                                      className="w-full h-full"
+                                      ratio={0.12}
+                                    />
+                                  )}
 
-                              {/* Tag sector */}
-                              <div className="absolute top-4 left-4 bg-black border border-neutral-800 text-white font-mono text-[9px] tracking-widest uppercase px-3 py-1 rounded-none font-bold z-10">
-                                {project.category} // CAL {project.year}
-                              </div>
-                            </div>
+                                  {/* Tag sector */}
+                                  <div className="absolute top-4 left-4 bg-black border border-neutral-800 text-white font-mono text-[9px] tracking-widest uppercase px-3 py-1 rounded-none font-bold z-10">
+                                    {project.category} {project.year ? `// CAL ${project.year}` : ""}
+                                  </div>
+                                </div>
 
-                            {/* Content portfolio */}
-                            <div className="p-6 md:p-8 flex-grow flex flex-col justify-between">
-                              <div className="flex flex-col gap-4">
-                                <span className="text-[10px] font-mono text-neutral-500 uppercase block tracking-wider leading-none font-bold">
-                                  LOC: {project.location.split(",")[0].toUpperCase()} • CLIENT: {project.client.toUpperCase()}
+                                {/* Content portfolio */}
+                                <div className="p-6 md:p-8 flex-grow flex flex-col justify-between">
+                                  <div className="flex flex-col gap-4">
+                                    <span className="text-[10px] font-mono text-neutral-500 uppercase block tracking-wider leading-none font-bold">
+                                      {project.location ? `LOC: ${project.location.split(",")[0].toUpperCase()}` : ""}
+                                      {project.location && project.client ? " • " : ""}
+                                      {project.client ? `CLIENT: ${project.client.toUpperCase()}` : ""}
+                                    </span>
+
+                                    <h3 className={`text-xl font-bold uppercase tracking-tight leading-snug ${isDark ? "text-white" : "text-[#0a0a0a]"
+                                      }`}>
+                                      {project.title}
+                                    </h3>
+
+                                    {project.description && (
+                                      <p className={`text-xs leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
+                                        {project.description}
+                                      </p>
+                                    )}
+                                  </div>
+
+                                  {/* Technical metrics label inside portfolio */}
+                                  <div className="mt-8 pt-6 border-t border-gray-150 dark:border-neutral-900/80 flex flex-col gap-2 font-mono text-[10px]/[1.5]">
+                                    <span className="text-neutral-400 uppercase leading-none font-bold">VERIFIED ENERGY METRICS:</span>
+                                    <span className={`font-bold ${isDark ? "text-blue-400" : "text-blue-600"}`}>
+                                      {project.metrics}
+                                    </span>
+                                  </div>
+                                </div>
+                              </motion.div>
+                            ))}
+                          </div>
+                        )}
+
+                        {/* List-only projects */}
+                        {projectsWithoutImages.length > 0 && (
+                          <div className={`mt-6 border-t pt-6 ${isDark ? "border-neutral-900" : "border-gray-200"}`}>
+                            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+                              <div>
+                                <span className="text-blue-600 font-mono text-[10px] tracking-[0.2em] uppercase font-bold">
+                                  ◆ COMPREHENSIVE COMMISSIONED LOGS
                                 </span>
-
-                                <h3 className={`text-xl font-bold uppercase tracking-tight leading-snug ${isDark ? "text-white" : "text-[#0a0a0a]"
-                                  }`}>
-                                  {project.title}
+                                <h3 className={`text-2xl font-bold uppercase tracking-tight mt-1.5 ${isDark ? "text-white" : "text-[#0a0a0a]"}`}>
+                                  Other Notable Project Deployments
                                 </h3>
-
-                                <p className={`text-xs leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
-                                  {project.description}
-                                </p>
                               </div>
-
-                              {/* Technical metrics label inside portfolio */}
-                              <div className="mt-8 pt-6 border-t border-gray-150 dark:border-neutral-900/80 flex flex-col gap-2 font-mono text-[10px]/[1.5]">
-                                <span className="text-neutral-400 uppercase leading-none font-bold">VERIFIED ENERGY METRICS:</span>
-                                <span className={`font-bold ${isDark ? "text-blue-400" : "text-blue-600"}`}>
-                                  {project.metrics}
-                                </span>
-                              </div>
+                              <span className="text-xs font-mono text-neutral-500 tracking-wider">
+                                {projectsWithoutImages.length} SYSTEMS LISTED
+                              </span>
                             </div>
-                          </motion.div>
-                        ))}
-                      </AnimatePresence>
-                    </div>
 
-                  </div>
-                )}
+                            {/* List Grid Layout */}
+                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-4">
+                              {projectsWithoutImages.map((project, index) => (
+                                <div
+                                  key={project.id}
+                                  className={`flex items-center justify-between py-4 border-b group transition-colors ${isDark ? "border-neutral-900 hover:bg-white/[0.02]" : "border-black/5 hover:bg-black/[0.01]"
+                                    } px-2`}
+                                >
+                                  <div className="flex items-center gap-4">
+                                    <span className="font-mono text-xs text-blue-500 font-bold">
+                                      {String(index + 1).padStart(2, "0")}
+                                    </span>
+                                    <div>
+                                      <h4 className={`text-sm font-semibold uppercase tracking-wide transition-colors ${isDark ? "text-neutral-200 group-hover:text-white" : "text-neutral-800 group-hover:text-black"
+                                        }`}>
+                                        {project.title}
+                                      </h4>
+                                      <span className="block text-[8px] font-mono text-neutral-500 uppercase tracking-widest mt-0.5">
+                                        {project.category}
+                                      </span>
+                                    </div>
+                                  </div>
+                                  <div className="flex items-center gap-2 font-mono">
+                                    <span className="text-[10px] text-neutral-400 font-bold uppercase hidden sm:inline">CAPACITY:</span>
+                                    <span className={`text-xs font-bold ${isDark ? "text-blue-400" : "text-blue-600"}`}>
+                                      {project.metrics}
+                                    </span>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                      </motion.div>
+                    </AnimatePresence>
+                  </motion.div>
+
+                </div>
+              )}
 
                 {/* ========================================================= */}
                 {/* 5. CLIENTS SECTION                                        */}
@@ -1024,12 +1129,13 @@ export default function App() {
 
                       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                         {[
-                          { sector: "Hospitals & Diagnostics", demand: "ISO 5 Positive or Negative Pressure Airflow, HEPA Cleanliness", share_of_installations: "Hospital surgery zones, diagnostic path wings" },
-                          { sector: "Hotels & Eco Resorts", demand: "Simultaneous Cooling VRF, Anti-Corrosion Salt Coating, Low Acoustical Decibels", share_of_installations: "Ocean shore grand resorts, 500+ guestroom suites" },
-                          { sector: "Corporate Head Offices", demand: "High-ton water chiller towers, computerized VAV ducts, Smart BMS console links", share_of_installations: "Multi-floor tech corridors, open floor layouts" },
-                          { sector: "Auto Showrooms", demand: "Continuous high airflow cassetes, low displacement floor barriers", share_of_installations: "Automotive dealerships, dual-story transparent facades" },
-                          { sector: "Science Institutions", demand: "Precision Relative Humidity (RH) holds, displacement air ducts", share_of_installations: "High-dome auditorium auditoriums, ancient archives" },
-                          { sector: "Luxury Residential Estates", demand: "Whisper-silent cassette integration, slim line grilles layout, Home automation", share_of_installations: "Duplex townhomes, high-tier penthouse villas" }
+                          { sector: "Restaurants & Banquets", demand: "High-volume air changes, advanced odor extraction, quiet cooling during peak capacity events", share_of_installations: "Luxury banquet lawns, fine-dining restaurants, celebration halls" },
+                          { sector: "Hotels, Resorts & Hospitality", demand: "Simultaneous Cooling VRF, Anti-Corrosion Salt Coating, Low Acoustical Decibels", share_of_installations: "Ocean shore grand resorts, 500+ guestroom suites, lobbies" },
+                          { sector: "Corporate Offices / Industries", demand: "High-ton water chiller towers, computerized VAV ducts, Smart BMS console links", share_of_installations: "Multi-floor tech corridors, open floor layouts, manufacturing plants" },
+                          { sector: "Educational Institutions", demand: "Precision decibel environments, optimal fresh air changes (ACH), classroom zoning controls", share_of_installations: "University campus blocks, archival libraries, primary school rooms" },
+                          { sector: "Showrooms & Retail", demand: "Continuous high airflow cassettes, thermal jet air curtains, floor barriers", share_of_installations: "Automotive showrooms, premium boutiques, shopping mall layouts" },
+                          { sector: "Residence / Luxury Villas", demand: "Whisper-silent cassette integration, slim line grilles layout, Home automation", share_of_installations: "Duplex townhomes, high-tier penthouse villas, private estates" },
+                          { sector: "Hospitals / Health Care", demand: "ISO 5 Positive or Negative Pressure Airflow, HEPA Cleanliness", share_of_installations: "Hospital surgery zones, diagnostic path wings, isolation chambers" }
                         ].map((item, index) => (
                           <motion.div
                             key={index}
@@ -1459,6 +1565,127 @@ export default function App() {
                   {/* Scrollable Modal Content */}
                   <div className="calculator-modal-scroll-container flex-grow overflow-y-auto overscroll-contain p-6 md:p-8">
                     <EnergyCalculator isDark={isDark} />
+                  </div>
+                </motion.div>
+              </div>
+            )}
+          </AnimatePresence>
+
+          {/* Project Details Modal */}
+          <AnimatePresence>
+            {selectedProject && (
+              <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10 overflow-y-auto">
+                {/* Backdrop Overlay */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.55, ease: "easeInOut" }}
+                  onClick={() => setSelectedProject(null)}
+                  className="fixed inset-0 bg-black/80 backdrop-blur-md cursor-pointer"
+                />
+
+                {/* Modal Container */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                  transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+                  className={`relative w-full border shadow-2xl overflow-hidden rounded-none z-10 flex flex-col md:flex-row ${
+                    aspectRatio === "portrait" ? "max-w-3xl" : "max-w-5xl"
+                  } ${
+                    isDark ? "bg-[#0d0d0d] text-white border-neutral-800" : "bg-white text-neutral-900 border-black/10"
+                  }`}
+                  style={{ minHeight: "500px" }}
+                >
+                  {/* Left Column: Image */}
+                  <div className={`${
+                    aspectRatio === "portrait" ? "md:w-1/2" : "md:w-3/5"
+                  } relative min-h-[300px] md:min-h-[500px] ${
+                    isDark ? "bg-[#0d0d0d]" : "bg-white"
+                  } border-r ${
+                    isDark ? "border-neutral-800" : "border-black/5"
+                  }`}>
+                    <img
+                      src={selectedProject.image}
+                      alt={selectedProject.title}
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                    <div className="absolute top-4 left-4 bg-black/70 border border-neutral-800 text-white font-mono text-[9px] tracking-widest uppercase px-3 py-1 rounded-none font-bold">
+                      {selectedProject.category}
+                    </div>
+                  </div>
+
+                  {/* Right Column: Details */}
+                  <div className={`${
+                    aspectRatio === "portrait" ? "md:w-1/2" : "md:w-2/5"
+                  } p-8 md:p-10 flex flex-col justify-between relative`}>
+                    {/* Close button at top right */}
+                    <button
+                      onClick={() => setSelectedProject(null)}
+                      className={`absolute top-4 right-4 p-2 rounded-none hover:bg-neutral-800/10 dark:hover:bg-white/10 transition-colors cursor-pointer ${
+                        isDark ? "text-neutral-400 hover:text-white" : "text-neutral-550 hover:text-black"
+                      }`}
+                    >
+                      <X className="w-5 h-5" />
+                    </button>
+
+                    <div className="flex flex-col gap-6">
+                      <div>
+                        <span className="text-blue-600 font-mono text-[10px] tracking-[0.25em] uppercase font-bold block mb-2">
+                          ◆ PROJECT ANALYSIS REPORT
+                        </span>
+                        <h2 className={`text-2xl sm:text-3xl font-bold uppercase tracking-tight leading-tight ${
+                          isDark ? "text-white" : "text-neutral-900"
+                        }`}>
+                          {selectedProject.title}
+                        </h2>
+                      </div>
+
+                      {/* Detail fields */}
+                      <div className="flex flex-col gap-4 font-mono text-[11px] border-t border-b border-neutral-500/10 py-6">
+                        {selectedProject.client && (
+                          <div className="flex justify-between">
+                            <span className="text-neutral-500 uppercase font-bold">Client:</span>
+                            <span className={`font-bold text-right ${isDark ? "text-neutral-250" : "text-neutral-750"}`}>
+                              {selectedProject.client.toUpperCase()}
+                            </span>
+                          </div>
+                        )}
+                        {selectedProject.location && (
+                          <div className="flex justify-between">
+                            <span className="text-neutral-500 uppercase font-bold">Location:</span>
+                            <span className={`font-bold text-right ${isDark ? "text-neutral-250" : "text-neutral-750"}`}>
+                              {selectedProject.location.toUpperCase()}
+                            </span>
+                          </div>
+                        )}
+                        {selectedProject.metrics && (
+                          <div className="flex justify-between">
+                            <span className="text-neutral-500 uppercase font-bold">System Capacity:</span>
+                            <span className={`font-bold text-right ${isDark ? "text-blue-400" : "text-blue-600"}`}>
+                              {selectedProject.metrics.toUpperCase()}
+                            </span>
+                          </div>
+                        )}
+                      </div>
+
+                      {selectedProject.description && (
+                        <div>
+                          <span className="text-[9px] font-mono text-neutral-500 uppercase tracking-widest block mb-2 font-bold">
+                            ENGINEERING SCOPE & DEPLOYMENT:
+                          </span>
+                          <p className={`text-xs leading-relaxed ${isDark ? "text-neutral-450" : "text-neutral-600"}`}>
+                            {selectedProject.description}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="mt-8 pt-6 border-t border-neutral-500/10 flex items-center justify-between text-[10px] font-mono text-neutral-500">
+                      <span>STATUS: COMMISSIONED</span>
+                      <span>IAG GLOBAL DESIGNS</span>
+                    </div>
                   </div>
                 </motion.div>
               </div>

@@ -131,7 +131,7 @@ export function ParallaxImage({ src, alt, className = "", ratio = 0.15 }: Parall
         src={src}
         alt={alt}
         style={{ y, scale: 1.2 }}
-        className="w-full h-full object-cover grayscale contrast-[1.1] brightness-[0.8] transition-all duration-300"
+        className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:brightness-100 group-hover:contrast-100 transition-all duration-500 contrast-[1.1] brightness-[0.8]"
         referrerPolicy="no-referrer"
       />
     </div>

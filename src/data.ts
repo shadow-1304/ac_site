@@ -155,83 +155,544 @@ export const SERVICES: ServiceItem[] = [
 ];
 
 export const PROJECTS: ProjectItem[] = [
+  // --- Restaurants & Banquets ---
+  {
+    id: "pihu-baug",
+    title: "Pihu Baug",
+    client: "Pihu Baug Group",
+    location: "Ahmedabad, Gujarat",
+    category: "Restaurants & Banquets",
+    metrics: "240 TR Capacity",
+    image: "/projects/pihubaug.jpeg",
+    description: "Sleek cooling system designed for a high-occupancy luxury banquet lawn and dining environment. Implemented heavy central ductable units to maintain steady temperatures during grand gatherings."
+  },
+  {
+    id: "the-rock-gandhinagar",
+    title: "The Rock, Gandhinagar",
+    client: "The Rock Hospitality",
+    location: "Gandhinagar, Gujarat",
+    category: "Restaurants & Banquets",
+    metrics: "148 TR Capacity",
+    image: "/projects/the rock 1.jpg.jpeg",
+    description: "Custom thermal engineering for a modern glass-front restaurant and banquet hall, utilizing split VRF technology to maintain a quiet, comfortable indoor climate."
+  },
+  {
+    id: "tastee-meal",
+    title: "Tastee Meal",
+    client: "Tastee Meal",
+    location: "Ahmedabad, Gujarat",
+    category: "Restaurants & Banquets",
+    metrics: "120 TR Capacity",
+    image: "/projects/Tasty meals.jpg.jpeg",
+    description: "High-volume packaged AC ducting and ventilation units installed for a fast-casual dining environment."
+  },
+  {
+    id: "bliss-restaurant",
+    title: "Bliss Restaurant & Banquet",
+    client: "Bliss Restaurant",
+    location: "Ahmedabad, Gujarat",
+    category: "Restaurants & Banquets",
+    metrics: "115 TR Capacity",
+    image: "/projects/Bliss dine.jpg.jpeg",
+    description: "Centralized mechanical airflow integration for large-scale banquet spaces and dining zones."
+  },
+  {
+    id: "fountain-valley",
+    title: "Fountain Valley",
+    category: "Restaurants & Banquets",
+    metrics: "112 TR"
+  },
+  {
+    id: "qurrar-banquet",
+    title: "Qurrar Banquet",
+    category: "Restaurants & Banquets",
+    metrics: "110 TR"
+  },
+  {
+    id: "mayur-banquet",
+    title: "Mayur Banquets & Restaurants",
+    category: "Restaurants & Banquets",
+    metrics: "106 TR"
+  },
+  {
+    id: "divine-retreat",
+    title: "Divine Retreat LA Festiva",
+    category: "Restaurants & Banquets",
+    metrics: "105 TR"
+  },
+  {
+    id: "highway-eats",
+    title: "The Highway Eats",
+    category: "Restaurants & Banquets",
+    metrics: "90 TR"
+  },
+  {
+    id: "grand-dinnerbell",
+    title: "The Grand Dinnerbell",
+    category: "Restaurants & Banquets",
+    metrics: "70 TR"
+  },
+
+  // --- Hotels, Resorts & Hospitality ---
+  {
+    id: "grand-eulogia",
+    title: "Grand Eulogia",
+    client: "Eulogia Hospitality Group",
+    location: "Ahmedabad, Gujarat",
+    category: "Hotels, Resorts & Hospitality",
+    metrics: "1198 TR Capacity",
+    image: "/projects/Grand Eulogia 1.jpg.jpeg",
+    description: "A colossal centralized water chiller and ductable packaged air conditioning network spanning a luxury hotel complex, providing multi-zone temperature comfort."
+  },
+  {
+    id: "hotel-eulogia-inn",
+    title: "Hotel Eulogia Inn, Gota",
+    client: "Eulogia Hospitality Group",
+    location: "Gota, Ahmedabad",
+    category: "Hotels, Resorts & Hospitality",
+    metrics: "428 TR Capacity",
+    image: "/projects/eulogia_gota.jpeg",
+    description: "Centrally zoned cooling architecture and package HVAC system layout installed for spacious banquet halls and visitor rooms."
+  },
+  {
+    id: "hotel-vintana-himmatnagar",
+    title: "Hotel Vintana, Himmatnagar",
+    client: "Vintana Hotels",
+    location: "Himmatnagar, Gujarat",
+    category: "Hotels, Resorts & Hospitality",
+    metrics: "412 TR Capacity",
+    image: "/projects/Hotel Vintana Himmatnagar.jpg.jpeg",
+    description: "Integrated VRF zoning design for multi-room luxury suites and public lobbies, optimizing energy efficiency across seasonal outdoor temperature shifts."
+  },
+  {
+    id: "hotel-vintana-dalpur",
+    title: "Hotel Vintana, Dalpur",
+    category: "Hotels, Resorts & Hospitality",
+    metrics: "334 TR"
+  },
+  {
+    id: "hotel-millennium",
+    title: "Hotel Millennium",
+    category: "Hotels, Resorts & Hospitality",
+    metrics: "140 TR"
+  },
+  {
+    id: "hotel-altura",
+    title: "Hotel Altura, Chhatral",
+    client: "Hotel Altura",
+    location: "Chhatral, Gujarat",
+    category: "Hotels, Resorts & Hospitality",
+    metrics: "138 TR Capacity",
+    image: "/projects/Hotel altura.jpg.jpeg",
+    description: "Bespoke VRF system design and installations for multiple guest rooms and corridors, prioritizing high-efficiency and low noise."
+  },
+  {
+    id: "hotel-grand-shivalik",
+    title: "Hotel Grand Shivalik",
+    client: "Shivalik Group",
+    location: "Chhatral, Gujarat",
+    category: "Hotels, Resorts & Hospitality",
+    metrics: "130 TR Capacity",
+    image: "/projects/hotel_shivalik.jpg.jpeg",
+    description: "Reliable centralized climatization for hotel guest wings and corporate conference rooms, featuring low-decibel airflow systems for optimal guest comfort."
+  },
+  {
+    id: "oriental-hospitality",
+    title: "Oriental Hospitality",
+    category: "Hotels, Resorts & Hospitality",
+    metrics: "80 TR"
+  },
+  {
+    id: "bhagyodaya-hotel",
+    title: "Bhagyodaya Hotel",
+    category: "Hotels, Resorts & Hospitality",
+    metrics: "80 TR"
+  },
+  {
+    id: "jalpaan-hotel",
+    title: "Jalpaan Hotel",
+    category: "Hotels, Resorts & Hospitality",
+    metrics: "22 TR"
+  },
+
+  // --- Corporate Offices / Industries ---
   {
     id: "bharti-airtel",
-    title: "Bharti Airtel Regional HQ & Corporate Offices",
+    title: "Bharti Airtel Ltd.",
     client: "Bharti Airtel Ltd.",
     location: "Ahmedabad, Gujarat",
-    scope: "Heavy packaged and ductable central cooling systems.",
-    category: "Offices",
-    year: 2023,
-    featured: true,
-    metrics: "427 TR central packaged AC layout successfully commissioned.",
-    description: "Design, ducting layout, and installation of a massive centralized packaged air conditioning network for Airtel's regional corporate offices. Engineered soundproof air handlers and optimized return air layouts.",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200&auto=format&fit=crop"
+    category: "Corporate Offices / Industries",
+    metrics: "427 TR Capacity",
+    image: "/projects/Airtel.jpg.jpeg",
+    description: "Large-scale centralized air conditioning design and ducting layout for regional corporate headquarters, optimizing air flow and heat dissipation."
   },
   {
-    id: "maruti-technolabs",
-    title: "Maruti Technolabs Software Center",
+    id: "transformers-rectifiers",
+    title: "Transformers & Rectifiers India Ltd.",
+    client: "Transformers & Rectifiers India Ltd.",
+    location: "Chhatral, Gujarat",
+    category: "Corporate Offices / Industries",
+    metrics: "288 TR Capacity",
+    image: "/projects/transformers and rectifiers.jpeg",
+    description: "Heavy industrial ventilation and package AC system commissioned for production zones and high-load control offices."
+  },
+  {
+    id: "maruti-techlabs",
+    title: "Maruti Techlabs",
     client: "Maruti Technolabs Pvt. Ltd.",
     location: "Ahmedabad, Gujarat",
-    scope: "VRF air conditioning and zoned fresh air ventilation.",
-    category: "Offices",
-    year: 2024,
-    featured: true,
-    metrics: "178 TR VRF layout maintaining steady whisper-quiet acoustics.",
-    description: "Bespoke VRF climate design spanning multiple floors of high-performance coding zones. Implemented localized smart thermostats and fresh air inputs to maximize indoor air quality and comfort.",
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop"
+    category: "Corporate Offices / Industries",
+    metrics: "212 TR Capacity",
+    image: "/projects/Maruti techlabs.jpg.jpeg",
+    description: "Multi-floor zoning VRF climate system design featuring localized smart thermostats and indoor air quality sensors."
   },
   {
-    id: "zaveri-realty",
-    title: "Zaveri Realty - 31Five Commercial Complex",
+    id: "zaveri-realty-31five",
+    title: "Zaveri Realty 31Five",
     client: "Zaveri Realty",
     location: "Satellite, Ahmedabad",
-    scope: "Zoned ductable splits and multi-VRF climatization.",
-    category: "Offices",
-    year: 2023,
-    featured: true,
-    metrics: "130 TR load distribution with minimalist aesthetic linear grills.",
-    description: "Collaborated directly with structural architects to draft and install flush-ceiling ducted units and slim-profile linear diffusers, maintaining the building's aesthetic integrity while providing stable cooling.",
-    image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1200&auto=format&fit=crop"
+    category: "Corporate Offices / Industries",
+    metrics: "130 TR Capacity",
+    image: "/projects/ZAVERI REALITY.jpg.jpeg",
+    description: "Sleek concealed duct split arrays and minimal linear diffuser grilles commissioned for luxury corporate floors."
   },
   {
-    id: "mg-concept-showroom",
-    title: "MG Concept Showroom",
-    client: "MG Concept Cars",
-    location: "Naroda, Ahmedabad",
-    scope: "High-volume ductable air conditioning and thermal air curtains.",
-    category: "Showrooms",
-    year: 2023,
-    featured: false,
-    metrics: "114 TR packaged and ductable units with entry-point jet locks.",
-    description: "Designed a high-capacity HVAC system for a massive automobile showroom. Integrated perimeter air jet curtains near large glass panels to block hot external air, maintaining interior comfort.",
-    image: "https://images.unsplash.com/photo-1563720223185-11003d516935?q=80&w=1200&auto=format&fit=crop"
+    id: "deep-industries",
+    title: "Deep Industries Ltd.",
+    category: "Corporate Offices / Industries",
+    metrics: "112 TR"
+  },
+  {
+    id: "hitech-projects",
+    title: "Hi Tech Projects",
+    client: "Hi Tech Projects Ltd.",
+    location: "Ahmedabad, Gujarat",
+    category: "Corporate Offices / Industries",
+    metrics: "101 TR Capacity",
+    image: "/projects/hitech.jpeg",
+    description: "Centralized mechanical airflow integration for modern multi-story corporate headquarters with energy-saving recovery ventilators."
+  },
+  {
+    id: "gk-chokshi",
+    title: "G.K. Chokshi Office",
+    category: "Corporate Offices / Industries",
+    metrics: "96 TR"
+  },
+  {
+    id: "incuspaze",
+    title: "Incuspaze",
+    category: "Corporate Offices / Industries",
+    metrics: "90 TR"
+  },
+  {
+    id: "ng-patel",
+    title: "N.G. Patel Group",
+    category: "Corporate Offices / Industries",
+    metrics: "78 TR"
+  },
+  {
+    id: "harsh-exim",
+    title: "Harsh Exim",
+    category: "Corporate Offices / Industries",
+    metrics: "70 TR"
+  },
+
+  // --- Educational Institutions ---
+  {
+    id: "raksha-shakti-university",
+    title: "Raksha Shakti University",
+    category: "Educational Institutions",
+    metrics: "180 TR"
+  },
+  {
+    id: "svkm-nmims",
+    title: "SVKM's NMIMS University",
+    category: "Educational Institutions",
+    metrics: "148 TR"
   },
   {
     id: "chimanbhai-patel-institute",
-    title: "Chimanbhai Patel Institute Campus",
-    client: "Chimanbhai Patel Academic Trust",
+    title: "Chimanbhai Patel Institute",
+    client: "Chimanbhai Patel Institute",
     location: "Ahmedabad, Gujarat",
-    scope: "Centralized ductable and packaged educational cooling.",
-    category: "Institutions",
-    year: 2022,
-    featured: false,
-    metrics: "140 TR classroom and archival library climate zoning.",
-    description: "Custom mechanical layout for multiple campus blocks and library halls. Engineered systems to optimize air changes per hour (ACH) in study zones while keeping operational noise to a minimum.",
-    image: "https://images.unsplash.com/photo-1582882752274-133cd96c6b8c?q=80&w=1200&auto=format&fit=crop"
+    category: "Educational Institutions",
+    metrics: "140 TR Capacity",
+    image: "/projects/Chimanbhai patel institute.jpg.jpeg",
+    description: "Custom mechanical ventilation networks and high-efficiency package HVAC systems layout designed for university campus classrooms and auditorium blocks."
+  },
+  {
+    id: "kenalily-school",
+    title: "Kenalily School",
+    client: "Kenalily Academic Trust",
+    location: "Ahmedabad, Gujarat",
+    category: "Educational Institutions",
+    metrics: "128 TR Capacity",
+    image: "/projects/Kenalily school.jpg.jpeg",
+    description: "Custom mechanical layout for school class blocks and administrative offices, balancing temperature control with minimum noise for study zones."
+  },
+  {
+    id: "eklavya-school",
+    title: "Eklavya School",
+    category: "Educational Institutions",
+    metrics: "120 TR"
+  },
+  {
+    id: "shree-mahavir-jain",
+    title: "Shree Mahavir Jain Vidyalay",
+    category: "Educational Institutions",
+    metrics: "98 TR"
+  },
+  {
+    id: "hl-commerce",
+    title: "H.L. Commerce College",
+    category: "Educational Institutions",
+    metrics: "42 TR"
+  },
+  {
+    id: "ekantar",
+    title: "Ekantar",
+    category: "Educational Institutions",
+    metrics: "22 TR"
+  },
+
+  // --- Showrooms & Retail ---
+  {
+    id: "mg-concept",
+    title: "MG Concept (Naroda / SG Highway / Gandhinagar)",
+    category: "Showrooms & Retail",
+    metrics: "114 TR"
+  },
+  {
+    id: "panam-projects",
+    title: "Panam Projects Furniture Showroom",
+    category: "Showrooms & Retail",
+    metrics: "79 TR"
+  },
+  {
+    id: "riyasat-showroom",
+    title: "Riyasat Showroom",
+    category: "Showrooms & Retail",
+    metrics: "78 TR"
+  },
+  {
+    id: "nishi-nails",
+    title: "Nishi Nails Spa & Boutique",
+    client: "Nishi Nails",
+    location: "Satellite, Ahmedabad",
+    category: "Showrooms & Retail",
+    metrics: "78 TR Capacity",
+    image: "/projects/Nishi nails.jpg.jpeg",
+    description: "Elegant custom cassette system integrated into boutique ceilings, prioritizing whisper-silent operations and clean air filtration."
+  },
+  {
+    id: "concept-hyundai",
+    title: "Concept Hyundai",
+    category: "Showrooms & Retail",
+    metrics: "60 TR"
   },
   {
     id: "tiera-kitchen",
-    title: "Tiera Kitchen / August Showroom",
-    client: "Tiera Kitchen Products",
-    location: "Satellite, Ahmedabad",
-    scope: "Concealed ducted split units and cassette arrays.",
-    category: "Showrooms",
-    year: 2024,
-    featured: false,
-    metrics: "52 TR concealed air flow layout preserving high-end visual designs.",
-    description: "Engineered discrete cassette layouts for a luxury kitchen and appliance showroom, ensuring no cooling components blocked visual product presentation routes.",
-    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1200&auto=format&fit=crop"
+    title: "Tiera Kitchen / August Home Appliances",
+    category: "Showrooms & Retail",
+    metrics: "52 TR"
+  },
+  {
+    id: "concept-jeep",
+    title: "Concept Jeep",
+    category: "Showrooms & Retail",
+    metrics: "50.5 TR"
+  },
+  {
+    id: "mahesh-rakhi",
+    title: "Mahesh Rakhi Showroom",
+    category: "Showrooms & Retail",
+    metrics: "48 TR"
+  },
+  {
+    id: "darshan-hardware",
+    title: "Darshan Hardware",
+    category: "Showrooms & Retail",
+    metrics: "40 TR"
+  },
+  {
+    id: "wood-element",
+    title: "The Wood Element",
+    category: "Showrooms & Retail",
+    metrics: "40 TR"
+  },
+  {
+    id: "agora-mall",
+    title: "Agora Mall",
+    client: "Agora Group",
+    location: "Ahmedabad, Gujarat",
+    category: "Showrooms & Retail",
+    metrics: "150 TR Capacity",
+    image: "/projects/agora mall.jpeg",
+    description: "Central chilled-water loop integration and high-capacity package ducting design for retail showroom pathways and central corridors."
+  },
+
+  // --- Residence / Luxury Villas ---
+  {
+    id: "avant-living",
+    title: "AVANT - evolved living",
+    client: "AVANT Projects",
+    location: "Ahmedabad, Gujarat",
+    category: "Residence / Luxury Villas",
+    metrics: "120 TR Capacity",
+    image: "/projects/AVANT  evolved living.jpeg",
+    description: "High-end multi-VRF climate grid for premium residential apartments, featuring concealed ducting lines and slim linear diffusers."
+  },
+  {
+    id: "swagat-agacia",
+    title: "Swagat Agacia",
+    client: "Swagat Group",
+    location: "Ahmedabad, Gujarat",
+    category: "Residence / Luxury Villas",
+    metrics: "95 TR Capacity",
+    image: "/projects/Swagat Agacia.jpg.jpeg",
+    description: "Concealed linear duct air architecture for high-end luxury residences, preserving design aesthetics with quiet climate comfort."
+  },
+  {
+    id: "sohambhai-mehta-residence",
+    title: "Sohambhai Mehta Residence",
+    client: "Mr. Sohambhai Mehta",
+    location: "Ahmedabad, Gujarat",
+    category: "Residence / Luxury Villas",
+    metrics: "131 TR Capacity",
+    image: "/projects/sohambhai_bungalow.jpg",
+    description: "Centralized premium VRF system design and ducting layout for a luxurious villa, featuring clean aesthetics and near-silent operation."
+  },
+  {
+    id: "kalpesh-desai-bungalow",
+    title: "Kalpeshbhai Desai Residence",
+    client: "Mr. Kalpesh Desai",
+    location: "Ahmedabad, Gujarat",
+    category: "Residence / Luxury Villas",
+    metrics: "108 TR Capacity",
+    image: "/projects/Kalpesh Desai bungalow.jpg.jpeg",
+    description: "Bespoke residential VRF zoning maintaining clean architecture and quiet comfort across private bedrooms and public lounges."
+  },
+  {
+    id: "mamtora-house-sindhubhavan",
+    title: "Mamtora House Sindhubhavan",
+    category: "Residence / Luxury Villas",
+    metrics: "96 TR"
+  },
+  {
+    id: "manoj-savla-residence",
+    title: "Manoj Savla Residence",
+    category: "Residence / Luxury Villas",
+    metrics: "90 TR"
+  },
+  {
+    id: "arvindbhai-patel-white-house",
+    title: "Arvindbhai Patel White House",
+    category: "Residence / Luxury Villas",
+    metrics: "78 TR"
+  },
+  {
+    id: "dilipbhai-patel",
+    title: "Dilipbhai Patel (D Raja)",
+    category: "Residence / Luxury Villas",
+    metrics: "76 TR"
+  },
+  {
+    id: "bagan-villa-sample",
+    title: "Bagan Villa Sample House",
+    client: "Bagan Villa Group",
+    location: "Ahmedabad, Gujarat",
+    category: "Residence / Luxury Villas",
+    metrics: "70 TR Capacity",
+    image: "/projects/Bagan villa.jpg.jpeg",
+    description: "Ultra-slim linear grilles and centralized VRF zoning designed for a luxury model residence, prioritizing design aesthetics and whisper-silent operation."
+  },
+  {
+    id: "kartikey-shah-aranya",
+    title: "Katikey Shah Aranya Farm",
+    category: "Residence / Luxury Villas",
+    metrics: "70 TR"
+  },
+  {
+    id: "umangbhai-patel",
+    title: "Umangbhai Patel",
+    category: "Residence / Luxury Villas",
+    metrics: "68 TR"
+  },
+  {
+    id: "mamtora-house-aneri",
+    title: "Mamtora House Aneri Farm",
+    category: "Residence / Luxury Villas",
+    metrics: "63 TR"
+  },
+
+  // --- Hospitals / Health Care ---
+  {
+    id: "anand-surgical",
+    title: "Anand Surgical Hospital, Naroda",
+    client: "Anand Surgical",
+    location: "Naroda, Ahmedabad",
+    category: "Hospitals / Health Care",
+    metrics: "310 TR Capacity",
+    image: "/projects/anand surgical.jpeg",
+    description: "Negative pressure isolation climate chambers and surgical suite air systems complying with medical safety guidelines."
+  },
+  {
+    id: "alka-hospital",
+    title: "Alka Hospital, Bopal",
+    category: "Hospitals / Health Care",
+    metrics: "280 TR"
+  },
+  {
+    id: "sadvichar-parivar",
+    title: "Sadvichar Parivar Trust",
+    category: "Hospitals / Health Care",
+    metrics: "144 TR"
+  },
+  {
+    id: "sanya-gic",
+    title: "Sanya GIC Imaging Center",
+    category: "Hospitals / Health Care",
+    metrics: "113 TR"
+  },
+  {
+    id: "ratan-hospital",
+    title: "Ratan Hospital",
+    category: "Hospitals / Health Care",
+    metrics: "75 TR"
+  },
+  {
+    id: "karnavati-hospital",
+    title: "Karnavati Hospital",
+    client: "Karnavati Healthcare",
+    location: "Ahmedabad, Gujarat",
+    category: "Hospitals / Health Care",
+    metrics: "75 TR Capacity",
+    image: "/projects/Karnavati hospital.jpg.jpeg",
+    description: "HEPA H14 micro-filtration air containment and cleanroom ventilation grids designed for sterile operations and patient wards."
+  },
+  {
+    id: "lt-vihaan",
+    title: "L&T Vihaan Medical Center",
+    category: "Hospitals / Health Care",
+    metrics: "56 TR"
+  },
+  {
+    id: "tej-eye",
+    title: "Tej Eye Hospital",
+    category: "Hospitals / Health Care",
+    metrics: "54 TR"
+  },
+  {
+    id: "flex-hospital",
+    title: "Flex Hospital",
+    category: "Hospitals / Health Care",
+    metrics: "22 TR"
+  },
+  {
+    id: "dr-karna",
+    title: "Dr. Karna Maheshwari Hospital",
+    category: "Hospitals / Health Care",
+    metrics: "16 TR"
   }
 ];
 
