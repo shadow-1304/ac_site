@@ -21,7 +21,7 @@ export const SERVICES: ServiceItem[] = [
     ],
     specs: [],
     idealApplications: "Hotels • Offices • Hospitals • Educational Institutions • Commercial Buildings • Luxury Villas",
-    image: "/projects/Swagat Agacia.jpg.jpeg"
+    image: "/services/vrf-systems.png"
   },
   {
     id: "hvac-design-consultancy",
@@ -41,7 +41,7 @@ export const SERVICES: ServiceItem[] = [
       { label: "HVAC Layout Drawings", value: "Detailed ducting and equipment placement plans." },
       { label: "Equipment Recommendations", value: "Selection of the most suitable HVAC systems based on project requirements." }
     ],
-    image: "/projects/transformers and rectifiers.jpeg"
+    image: "/services/hvac-design-consultancy.png"
   },
   {
     id: "ventilation-systems",
@@ -60,7 +60,7 @@ export const SERVICES: ServiceItem[] = [
       { label: "Commercial Kitchens", value: "Odor control, smoke extraction, and fresh air supply." },
       { label: "Industrial Facilities", value: "Dust extraction, process ventilation, and worker safety." }
     ],
-    image: "/projects/anand surgical.jpeg"
+    image: "/services/ventilation-systems.png"
   },
   {
     id: "maintenance-amc",
@@ -79,7 +79,7 @@ export const SERVICES: ServiceItem[] = [
       { label: "Extended Equipment Life", value: "Regular maintenance reduces wear and unexpected failures." },
       { label: "Optimized Performance", value: "Maintains cooling efficiency and energy savings." }
     ],
-    image: "/projects/hitech.jpeg"
+    image: "/services/maintenance-amc.png"
   },
   {
     id: "commercial-ac",
@@ -97,7 +97,7 @@ export const SERVICES: ServiceItem[] = [
       { label: "Commercial Buildings", value: "Offices, shopping centers, and mixed-use developments." },
       { label: "Industrial Facilities", value: "Factories, production floors, and warehousing spaces" }
     ],
-    image: "/projects/agora mall.jpeg"
+    image: "/services/commercial-ac.png"
   },
   {
     id: "residential-ac",
@@ -116,7 +116,7 @@ export const SERVICES: ServiceItem[] = [
       { label: "Premium Apartments", value: "Hidden cooling systems with modern aesthetics." },
       { label: "Penthouses & Bungalows", value: "Customized climate control and smart automation." }
     ],
-    image: "/projects/AVANT  evolved living.jpeg"
+    image: "/services/residential-ac.png"
   },
   {
     id: "installation-commissioning",
@@ -135,7 +135,7 @@ export const SERVICES: ServiceItem[] = [
       { label: "Performance Verified", value: "Cooling capacity and airflow balancing checks." },
       { label: "Commissioning Reports", value: "Complete documentation and handover support" }
     ],
-    image: "/projects/Maruti techlabs.jpg.jpeg"
+    image: "/services/installation-commissioning.png"
   },
   {
     id: "after-sales-support",
@@ -154,7 +154,7 @@ export const SERVICES: ServiceItem[] = [
       { label: "Spare Parts Availability", value: "Access to genuine replacement components." },
       { label: "Warranty Protection", value: "Comprehensive manufacturer-backed support." }
     ],
-    image: "/projects/after-sales.png"
+    image: "/services/after-sales-support.png"
   }
 ];
 

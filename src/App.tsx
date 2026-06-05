@@ -746,6 +746,41 @@ export default function App() {
                       </div>
                     </div>
 
+                    {/* Showroom Experience Center Video */}
+                    <div className={`border-t pt-16 ${isDark ? "border-neutral-900" : "border-gray-100"}`}>
+                      <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                        <div className="lg:col-span-7 flex flex-col gap-4">
+                          <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-[0.2em] block font-bold animate-pulse">
+                            ◇ PHYSICAL EXPERIENCE CENTER
+                          </span>
+                          <h4 className={`text-2xl sm:text-3xl font-bold uppercase tracking-tight ${isDark ? "text-white" : "text-[#0F0F0F]"}`}>
+                            Our State-of-the-Art Showroom
+                          </h4>
+                          <p className={`text-sm leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
+                            Explore our physical experience center in Ahmedabad, showcasing live running VRF systems, customized duct layouts, and premium air-handling setups.
+                          </p>
+                          <p className={`text-xs leading-relaxed ${isDark ? "text-neutral-500" : "text-gray-400"}`}>
+                            Visit us to consult with our core design team and touch-test the latest multinational HVAC technologies.
+                          </p>
+                        </div>
+                        
+                        <div className="lg:col-span-5 flex justify-center lg:justify-end">
+                          <div className={`relative border overflow-hidden rounded-none w-full max-w-[280px] sm:max-w-[320px] aspect-[9/16] ${
+                            isDark ? "border-neutral-900 bg-neutral-950/20" : "border-black/10 bg-neutral-100/50"
+                          }`}>
+                            <video
+                              src="/projects/WhatsApp Video 2026-06-05 at 10.37.23 AM.mp4"
+                              autoPlay
+                              muted
+                              loop
+                              playsInline
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
                     {/* Things We Deal In */}
                     <div className={`border-t pt-16 ${isDark ? "border-neutral-900" : "border-gray-100"}`}>
                       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-10">
@@ -1015,11 +1050,6 @@ export default function App() {
                                   ratio={0.15}
                                 />
                                 <div className="absolute inset-0 bg-neutral-950/20 mix-blend-multiply pointer-events-none" />
-
-                                {/* Blue Accent gradient box */}
-                                <div className="absolute bottom-4 left-4 bg-blue-600 text-white font-mono text-[9px] tracking-widest uppercase px-3 py-1.5 rounded-none border border-blue-400/30 font-bold z-10">
-                                  ACTIVE BLUEPRINT SELECTOR
-                                </div>
                               </div>
 
                               <div>
