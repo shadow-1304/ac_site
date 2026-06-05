@@ -183,12 +183,8 @@ export const PROJECTS: ProjectItem[] = [
   {
     id: "tastee-meal",
     title: "Tastee Meal",
-    client: "Tastee Meal",
-    location: "Ahmedabad, Gujarat",
     category: "Restaurants & Banquets",
-    metrics: "120 TR Capacity",
-    image: "/projects/Tasty meals.jpg.jpeg",
-    description: "High-volume packaged AC ducting and ventilation units installed for a fast-casual dining environment."
+    metrics: "120 TR"
   },
   {
     id: "bliss-restaurant",
@@ -221,8 +217,12 @@ export const PROJECTS: ProjectItem[] = [
   {
     id: "divine-retreat",
     title: "Divine Retreat LA Festiva",
+    client: "La Festiva",
+    location: "Ahmedabad, Gujarat",
     category: "Restaurants & Banquets",
-    metrics: "105 TR"
+    metrics: "105 TR Capacity",
+    image: "/projects/La fiesta.jpg.jpeg",
+    description: "Premium central cooling solution and fresh air ventilation networks implemented for a luxury banquet and dining hall."
   },
   {
     id: "highway-eats",
@@ -353,12 +353,8 @@ export const PROJECTS: ProjectItem[] = [
   {
     id: "zaveri-realty-31five",
     title: "Zaveri Realty 31Five",
-    client: "Zaveri Realty",
-    location: "Satellite, Ahmedabad",
     category: "Commercial & Industrial Facilities",
-    metrics: "130 TR Capacity",
-    image: "/projects/ZAVERI REALITY.jpg.jpeg",
-    description: "Sleek concealed duct split arrays and minimal linear diffuser grilles commissioned for luxury corporate floors."
+    metrics: "130 TR"
   },
   {
     id: "deep-industries",
@@ -411,8 +407,12 @@ export const PROJECTS: ProjectItem[] = [
   {
     id: "svkm-nmims",
     title: "SVKM's NMIMS University",
+    client: "SVKM's NMIMS University",
+    location: "Ahmedabad, Gujarat",
     category: "Educational Institutions",
-    metrics: "148 TR"
+    metrics: "148 TR Capacity",
+    image: "/projects/Svkm university.jpg.jpeg",
+    description: "Modern climate control design and package HVAC system installations for clean, optimized climate control in university classrooms and administrative blocks."
   },
   {
     id: "chimanbhai-patel-institute",
@@ -483,14 +483,14 @@ export const PROJECTS: ProjectItem[] = [
     metrics: "78 TR"
   },
   {
-    id: "nishi-nails",
-    title: "Nishi Nails Spa & Boutique",
-    client: "Nishi Nails",
-    location: "Satellite, Ahmedabad",
+    id: "neptune-lights-sbr",
+    title: "Neptune Lights SBR",
+    client: "Neptune Lights",
+    location: "Ahmedabad, Gujarat",
     category: "Showrooms & Retail",
-    metrics: "78 TR Capacity",
-    image: "/projects/Nishi nails.jpg.jpeg",
-    description: "Elegant custom cassette system integrated into boutique ceilings, prioritizing whisper-silent operations and clean air filtration."
+    metrics: "36 TR Capacity",
+    image: "/projects/Neptune lights.jpg.jpeg",
+    description: "Architectural ceiling-concealed cassette systems and customized air flow distribution designed for a premium lighting showroom."
   },
   {
     id: "concept-hyundai",
@@ -671,12 +671,8 @@ export const PROJECTS: ProjectItem[] = [
   {
     id: "karnavati-hospital",
     title: "Karnavati Hospital",
-    client: "Karnavati Healthcare",
-    location: "Ahmedabad, Gujarat",
     category: "Hospitals / Healthcare",
-    metrics: "75 TR Capacity",
-    image: "/projects/Karnavati hospital.jpg.jpeg",
-    description: "HEPA H14 micro-filtration air containment and cleanroom ventilation grids designed for sterile operations and patient wards."
+    metrics: "75 TR"
   },
   {
     id: "lt-vihaan",
@@ -687,8 +683,12 @@ export const PROJECTS: ProjectItem[] = [
   {
     id: "tej-eye",
     title: "Tej Eye Hospital",
+    client: "Tej Eye Hospital",
+    location: "Ahmedabad, Gujarat",
     category: "Hospitals / Healthcare",
-    metrics: "54 TR"
+    metrics: "54 TR Capacity",
+    image: "/projects/Tej Eye.jpg.jpeg",
+    description: "Advanced cleanroom air flow layouts and multi-zone VRF climate networks engineered for critical ophthalmology surgical rooms and patient care wards."
   },
   {
     id: "flex-hospital",
@@ -736,8 +736,8 @@ export const COMPLAINCE_TIMELINE: AchievementTimelineItem[] = [
   },
   {
     year: "2015",
-    title: "Large Corporate Integrations & Partnerships",
-    description: "Expanded our commercial portfolio to handle single-site installations exceeding 300+ TR. Received the Hitachi Long Association Award for sustained partnership excellence.",
+    title: "Major Commercial Expansion",
+    description: "Successfully executed large-scale HVAC installations while strengthening strategic partnerships with leading HVAC manufacturers.",
     images: ["/awards/2.jpeg"]
   },
   {
@@ -752,11 +752,6 @@ export const COMPLAINCE_TIMELINE: AchievementTimelineItem[] = [
     images: ["/awards/6.jpeg", "/awards/8.jpeg"]
   },
   {
-    year: "2020",
-    title: "Pharma & Cleanroom Expansion",
-    description: "Bespoke cleanroom ducting systems implemented for pharmaceutical units (like Troikaa Pharma), complying with ISO standards."
-  },
-  {
     year: "2021 - 2022",
     title: "TOSHIBA & Carrier Multi-Category National Awards",
     description: "Awarded by TOSHIBA and Carrier for the highest sales revenue across Cassette, Hi-Wall, and Light Commercial (LC) products (All India) at the National Channel Partners Meet.",
@@ -764,13 +759,13 @@ export const COMPLAINCE_TIMELINE: AchievementTimelineItem[] = [
   },
   {
     year: "2024",
-    title: "7,000+ Successful Sites",
-    description: "Milestone achievement of serving 7,000+ residential and commercial clients across Gujarat, backed by a permanent engineering team of 32."
+    title: "8,000+ Projects Delivered",
+    description: "Surpassed 7,000 completed HVAC projects across Gujarat, supported by a dedicated engineering and service workforce."
   },
   {
     year: "2024 - 2025",
-    title: "Mitsubishi Electric Gujarat Award",
-    description: "Awarded by Mitsubishi Electric for the highest sales dealer of VRF products in Gujarat, and received the Silver Award for City Multi VRF at the Annual Dealer Meet.",
+    title: "Mitsubishi Electric VRF Leadership Award",
+    description: "Recognized as Gujarat's leading Mitsubishi Electric VRF partner, earning distinction for market leadership and project execution excellence.",
     images: ["/awards/1.jpeg"]
   }
 ];
@@ -780,7 +775,8 @@ export const BRAND_PARTNERS: BrandPartner[] = [
   { name: "Toshiba Climate", tier: "Authorized Service Dealer", acronym: "TS", description: "Legendary Japanese rotary compressor VRF and split architectures." },
   { name: "Carrier Commercial Systems", tier: "Packaged & Chiller Integrator", acronym: "CR", description: "Heavy-duty packaged systems and chilled-water loops for enterprises." },
   { name: "Hitachi Aircon", tier: "Authorized Sales Partner", acronym: "HT", description: "Efficient central ductables and tropical-climate split units." },
-  { name: "Blue Star India", tier: "Authorized Enterprise Dealer", acronym: "BS", description: "Ductable splits, VRF networks, and custom AHUs." }
+  { name: "Blue Star India", tier: "Authorized Enterprise Dealer", acronym: "BS", description: "Ductable splits, VRF networks, and custom AHUs." },
+  { name: "Coldwave", tier: "Authorized Partner", acronym: "CW", description: "Advanced commercial cooling and refrigeration solutions." }
 ];
 
 export const CERTIFICATIONS: CertificationItem[] = [

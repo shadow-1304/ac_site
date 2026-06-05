@@ -46,7 +46,8 @@ const PARTNER_LOGOS = [
   { name: "Carrier", src: "/logos/carrier.png", className: "h-24" },
   { name: "Hitachi", src: "/logos/Hitachi_logo_PNG1.png", invertInDark: true },
   { name: "Midea", src: "/logos/.png" },
-  { name: "Toshiba", src: "/logos/482120c0fa2a71cb0408a4e0275fec3d.png", invertInDark: true, className: "h-24" }
+  { name: "Toshiba", src: "/logos/482120c0fa2a71cb0408a4e0275fec3d.png", invertInDark: true, className: "h-24" },
+  { name: "Coldwave", src: "/logos/coldwave.png" }
 ];
 
 export default function App() {
@@ -179,8 +180,8 @@ export default function App() {
 
                         <h1 className={`text-4xl sm:text-6xl md:text-[76px] xl:text-[84px] leading-[0.85] font-bold tracking-tight uppercase mb-8 ${isDark ? "text-white" : "text-[#0a0a0a]"
                           }`}>
-                          <ScrollRevealText text="We engineer" /> <span className="text-blue-600 font-normal italic"><ScrollRevealText text="natural air flow." /></span><br />
-                          <span className={isDark ? "text-neutral-700" : "text-gray-300"}><ScrollRevealText text="We design" /></span> <ScrollRevealText text="climate." />
+                          <ScrollRevealText text="We engineer" /> <span className="text-blue-600 font-normal italic"><ScrollRevealText text="comfort." /></span><br />
+                          <span className={isDark ? "text-neutral-700" : "text-gray-300"}><ScrollRevealText text="We shape" /></span> <ScrollRevealText text="better spaces." />
                         </h1>
 
                         <p className={`mt-10 max-w-xl text-base sm:text-lg leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"
@@ -489,7 +490,7 @@ export default function App() {
                 {/* ========================================================= */}
                 {activeSection === "about" && (
                   <div id="section-about" className="flex flex-col gap-8 md:gap-12">
-                    <SectionHeader                      number="02"
+                    <SectionHeader number="02"
                       tag="COMPANY PROFILE"
                       title="BUILDING BETTER INDOOR ENVIRONMENTS"
                       description="Trusted by businesses, institutions, developers, and homeowners, Intel Air Group combines technical expertise with proven execution capabilities to deliver high-performance HVAC systems."
@@ -527,21 +528,18 @@ export default function App() {
                           ].map((comp, idx) => (
                             <div
                               key={idx}
-                              className={`p-4 border flex items-center gap-4 transition-all duration-300 hover:scale-[1.02] ${
-                                isDark
-                                  ? "bg-neutral-900/40 border-neutral-850 hover:border-blue-500/40 hover:bg-neutral-900"
-                                  : "bg-white border-neutral-200 hover:border-blue-500/40 hover:shadow-md"
-                              }`}
+                              className={`p-4 border flex items-center gap-4 transition-all duration-300 hover:scale-[1.02] ${isDark
+                                ? "bg-neutral-900/40 border-neutral-850 hover:border-blue-500/40 hover:bg-neutral-900"
+                                : "bg-white border-neutral-200 hover:border-blue-500/40 hover:shadow-md"
+                                }`}
                             >
-                              <div className={`p-1.5 w-44 h-20 flex items-center justify-center shrink-0 border ${
-                                isDark ? "bg-neutral-950/50 border-neutral-800" : "bg-neutral-50 border-neutral-100"
-                              }`}>
+                              <div className={`p-1.5 w-44 h-20 flex items-center justify-center shrink-0 border ${isDark ? "bg-neutral-950/50 border-neutral-800" : "bg-neutral-50 border-neutral-100"
+                                }`}>
                                 <img
                                   src={comp.logo}
                                   alt={comp.name}
-                                  className={`max-w-full max-h-full object-contain ${
-                                    isDark ? "dark-logo-filter" : "light-logo-filter"
-                                  }`}
+                                  className={`max-w-full max-h-full object-contain ${isDark ? "dark-logo-filter" : "light-logo-filter"
+                                    }`}
                                 />
                               </div>
                               <div className="flex flex-col">
@@ -564,9 +562,8 @@ export default function App() {
                           whileInView={{ opacity: 1 }}
                           viewport={{ once: true }}
                           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-                          className={`h-full p-6 border rounded-none flex flex-col justify-between gap-6 relative overflow-hidden ${
-                            isDark ? "bg-[#111] border-neutral-900" : "bg-white/80 border-black/10 hover:shadow-md"
-                          }`}
+                          className={`h-full p-6 border rounded-none flex flex-col justify-between gap-6 relative overflow-hidden ${isDark ? "bg-[#111] border-neutral-900" : "bg-white/80 border-black/10 hover:shadow-md"
+                            }`}
                         >
 
                           <div className="flex flex-col gap-4">
@@ -604,11 +601,10 @@ export default function App() {
                                 ].map((profile, i) => (
                                   <span
                                     key={i}
-                                    className={`px-2 py-0.5 text-[9px] font-mono tracking-wider uppercase font-semibold ${
-                                      isDark
-                                        ? "bg-neutral-900 border border-neutral-805 text-neutral-450"
-                                        : "bg-neutral-100 border border-neutral-205 text-neutral-700"
-                                    }`}
+                                    className={`px-2 py-0.5 text-[9px] font-mono tracking-wider uppercase font-semibold ${isDark
+                                      ? "bg-neutral-900 border border-neutral-805 text-neutral-450"
+                                      : "bg-neutral-100 border border-neutral-205 text-neutral-700"
+                                      }`}
                                   >
                                     {profile}
                                   </span>
@@ -627,22 +623,20 @@ export default function App() {
                           <div className="border-t border-gray-150 dark:border-neutral-850 pt-4 flex flex-col gap-2 mt-4">
                             <a
                               href="tel:9879789594"
-                              className={`w-full py-2.5 px-3 flex items-center justify-center gap-2 text-xs font-mono tracking-wider font-bold transition-all border ${
-                                isDark
-                                  ? "bg-neutral-900 border-neutral-800 text-white hover:bg-neutral-800"
-                                  : "bg-neutral-50 border-neutral-200 text-neutral-855 hover:bg-neutral-100"
-                              }`}
+                              className={`w-full py-2.5 px-3 flex items-center justify-center gap-2 text-xs font-mono tracking-wider font-bold transition-all border ${isDark
+                                ? "bg-neutral-900 border-neutral-800 text-white hover:bg-neutral-800"
+                                : "bg-neutral-50 border-neutral-200 text-neutral-855 hover:bg-neutral-100"
+                                }`}
                             >
                               <Phone className="w-3.5 h-3.5 text-blue-600" />
                               <span>+91 9879789594</span>
                             </a>
                             <a
                               href="mailto:Sales@intelairgroup.com"
-                              className={`w-full py-2.5 px-3 flex items-center justify-center gap-2 text-xs font-mono tracking-wider font-bold transition-all border ${
-                                isDark
-                                  ? "bg-blue-600 border-blue-650 text-white hover:bg-blue-700"
-                                  : "bg-blue-600 border-blue-600 text-white hover:bg-blue-750"
-                              }`}
+                              className={`w-full py-2.5 px-3 flex items-center justify-center gap-2 text-xs font-mono tracking-wider font-bold transition-all border ${isDark
+                                ? "bg-blue-600 border-blue-650 text-white hover:bg-blue-700"
+                                : "bg-blue-600 border-blue-600 text-white hover:bg-blue-750"
+                                }`}
                             >
                               <Mail className="w-3.5 h-3.5 text-white" />
                               <span className="truncate">Sales@intelairgroup.com</span>
@@ -656,9 +650,8 @@ export default function App() {
                           whileInView={{ opacity: 1 }}
                           viewport={{ once: true }}
                           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-                          className={`h-full p-6 border rounded-none flex flex-col justify-between gap-6 relative overflow-hidden ${
-                            isDark ? "bg-[#111] border-neutral-900" : "bg-white/80 border-black/10 hover:shadow-md"
-                          }`}
+                          className={`h-full p-6 border rounded-none flex flex-col justify-between gap-6 relative overflow-hidden ${isDark ? "bg-[#111] border-neutral-900" : "bg-white/80 border-black/10 hover:shadow-md"
+                            }`}
                         >
 
                           <div className="flex flex-col gap-4">
@@ -695,11 +688,10 @@ export default function App() {
                                 ].map((profile, i) => (
                                   <span
                                     key={i}
-                                    className={`px-2 py-0.5 text-[9px] font-mono tracking-wider uppercase font-semibold ${
-                                      isDark
-                                        ? "bg-neutral-900 border border-neutral-805 text-neutral-450"
-                                        : "bg-neutral-100 border border-neutral-205 text-neutral-700"
-                                    }`}
+                                    className={`px-2 py-0.5 text-[9px] font-mono tracking-wider uppercase font-semibold ${isDark
+                                      ? "bg-neutral-900 border border-neutral-805 text-neutral-450"
+                                      : "bg-neutral-100 border border-neutral-205 text-neutral-700"
+                                      }`}
                                   >
                                     {profile}
                                   </span>
@@ -718,35 +710,32 @@ export default function App() {
                           <div className="border-t border-gray-150 dark:border-neutral-850 pt-4 flex flex-col gap-2 mt-4">
                             <a
                               href="tel:9825523028"
-                              className={`w-full py-2.5 px-3 flex items-center justify-center gap-2 text-xs font-mono tracking-wider font-bold transition-all border ${
-                                isDark
-                                  ? "bg-neutral-900 border-neutral-800 text-white hover:bg-neutral-800"
-                                  : "bg-neutral-50 border-neutral-200 text-neutral-855 hover:bg-neutral-100"
-                              }`}
+                              className={`w-full py-2.5 px-3 flex items-center justify-center gap-2 text-xs font-mono tracking-wider font-bold transition-all border ${isDark
+                                ? "bg-neutral-900 border-neutral-800 text-white hover:bg-neutral-800"
+                                : "bg-neutral-50 border-neutral-200 text-neutral-855 hover:bg-neutral-100"
+                                }`}
                             >
                               <Phone className="w-3.5 h-3.5 text-blue-600" />
                               <span>+91 9825523028</span>
                             </a>
-                            
+
                             <div className="flex flex-col gap-2">
                               <a
                                 href="mailto:Projects@intelairgroup.com"
-                                className={`w-full py-2.5 px-3 flex items-center justify-center gap-2 text-xs font-mono tracking-wider font-bold transition-all border ${
-                                  isDark
-                                    ? "bg-blue-600 border-blue-650 text-white hover:bg-blue-700"
-                                    : "bg-blue-600 border-blue-600 text-white hover:bg-blue-750"
-                                }`}
+                                className={`w-full py-2.5 px-3 flex items-center justify-center gap-2 text-xs font-mono tracking-wider font-bold transition-all border ${isDark
+                                  ? "bg-blue-600 border-blue-650 text-white hover:bg-blue-700"
+                                  : "bg-blue-600 border-blue-600 text-white hover:bg-blue-750"
+                                  }`}
                               >
                                 <Mail className="w-3.5 h-3.5 text-white" />
                                 <span className="truncate">Projects@intelairgroup.com</span>
                               </a>
                               <a
                                 href="mailto:intelairtech@gmail.com"
-                                className={`w-full py-2.5 px-3 flex items-center justify-center gap-2 text-xs font-mono tracking-wider font-bold transition-all border ${
-                                  isDark
-                                    ? "bg-blue-500/10 border-blue-500/30 text-blue-400 hover:bg-blue-500/20"
-                                    : "bg-blue-50 border-blue-200 text-blue-650 hover:bg-blue-100"
-                                }`}
+                                className={`w-full py-2.5 px-3 flex items-center justify-center gap-2 text-xs font-mono tracking-wider font-bold transition-all border ${isDark
+                                  ? "bg-blue-500/10 border-blue-500/30 text-blue-400 hover:bg-blue-500/20"
+                                  : "bg-blue-50 border-blue-200 text-blue-650 hover:bg-blue-100"
+                                  }`}
                               >
                                 <Mail className="w-3.5 h-3.5 text-blue-600" />
                                 <span className="truncate">intelairtech@gmail.com</span>
@@ -756,11 +745,11 @@ export default function App() {
                         </motion.div>
                       </div>
                     </div>
-                                     {/* Showroom Experience Center Video */}
+                    {/* Showroom Experience Center Video */}
                     <div className={`border-t pt-16 ${isDark ? "border-neutral-900" : "border-gray-100"}`}>
                       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                         {/* Text Container with Staggered Scroll-driven Reveal transitions */}
-                        <motion.div 
+                        <motion.div
                           initial="hidden"
                           whileInView="visible"
                           viewport={{ once: false, margin: "-10%" }}
@@ -776,7 +765,7 @@ export default function App() {
                           }}
                           className="lg:col-span-5 flex flex-col gap-6"
                         >
-                          <motion.span 
+                          <motion.span
                             variants={{
                               hidden: { opacity: 0, y: 20 },
                               visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
@@ -785,216 +774,39 @@ export default function App() {
                           >
                             ◇ PHYSICAL EXPERIENCE CENTER
                           </motion.span>
-                          
-                          <h4 
+
+                          <h4
                             className={`text-3xl sm:text-4xl lg:text-5xl font-bold uppercase tracking-tight leading-tight ${isDark ? "text-white" : "text-[#0F0F0F]"}`}
                           >
-                            <ScrollRevealText text="Our State-of-the-Art Showroom" />
+                            <ScrollRevealText text="Our Exclusive Mitsubishi Electric Showroom" />
                           </h4>
-                          
-                          <p 
+
+                          <p
                             className={`text-sm sm:text-base lg:text-lg leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"}`}
                           >
-                            <ScrollRevealText 
+                            <ScrollRevealText
                               text="Explore our physical experience center in Ahmedabad, showcasing live running VRF systems, customized duct layouts, and premium air-handling setups."
                               delay={0.25}
                             />
                           </p>
-                          
-                          <p 
+
+                          <p
                             className={`text-xs sm:text-sm lg:text-base leading-relaxed ${isDark ? "text-neutral-500" : "text-gray-500"}`}
                           >
-                            <ScrollRevealText 
+                            <ScrollRevealText
                               text="Visit us to consult with our core design team and touch-test the latest multinational HVAC technologies."
                               delay={0.4}
                             />
                           </p>
                         </motion.div>
-                        
+
                         <div className="lg:col-span-7 w-full py-12">
                           <div className="relative w-full max-w-[800px] ml-auto">
-                            {/* SVG Design Sketch Behind the Video Frame */}
-                            <svg 
-                              viewBox="0 0 640 500" 
-                              className={`w-[115%] h-[125%] absolute -top-[12.5%] -left-[7.5%] pointer-events-none opacity-90 dark:opacity-75 z-0 ${
-                                isDark 
-                                  ? "dark-blueprint stroke-white/40" 
-                                  : "stroke-neutral-500/80 dark:stroke-neutral-700/80"
-                              }`}
-                              fill="none"
-                            >
-                              {/* CAD Blueprint Grid Background */}
-                              <defs>
-                                <pattern id="blueprint-grid" width="30" height="30" patternUnits="userSpaceOnUse">
-                                  <path d="M 30 0 L 0 0 0 30" fill="none" stroke="currentColor" strokeWidth="0.4" className="stroke-neutral-350/40 dark:stroke-neutral-800/40" />
-                                </pattern>
-                              </defs>
-                              <rect width="100%" height="100%" fill="url(#blueprint-grid)" />
 
-                              {/* Technical Blueprint Frame and Margins */}
-                              <rect x="5" y="5" width="630" height="490" strokeWidth="0.6" className="stroke-neutral-400/40 dark:stroke-neutral-800/45" />
-                              <rect x="15" y="15" width="610" height="470" strokeWidth="1.2" className="stroke-neutral-500/60 dark:stroke-neutral-750/70" />
-
-                              {/* Grid Labels and Division Lines */}
-                              <g className="stroke-neutral-400/50 dark:stroke-neutral-800/55" strokeWidth="0.8">
-                                {/* Horizontal grid tick marks */}
-                                <line x1="150" y1="15" x2="150" y2="25" />
-                                <line x1="320" y1="15" x2="320" y2="25" />
-                                <line x1="490" y1="15" x2="490" y2="25" />
-                                <line x1="150" y1="475" x2="150" y2="485" />
-                                <line x1="320" y1="475" x2="320" y2="485" />
-                                <line x1="490" y1="475" x2="490" y2="485" />
-
-                                {/* Vertical grid tick marks */}
-                                <line x1="15" y1="130" x2="25" y2="130" />
-                                <line x1="15" y1="250" x2="25" y2="250" />
-                                <line x1="15" y1="370" x2="25" y2="370" />
-                                <line x1="615" y1="130" x2="625" y2="130" />
-                                <line x1="615" y1="250" x2="625" y2="250" />
-                                <line x1="615" y1="370" x2="625" y2="370" />
-                              </g>
-
-                              {/* Coordinate Label Text */}
-                              <g className="fill-neutral-500 dark:fill-neutral-500 font-mono text-[7px] font-bold" stroke="none">
-                                <text x="147" y="11">A</text>
-                                <text x="317" y="11">B</text>
-                                <text x="487" y="11">C</text>
-                                <text x="6" y="133">1</text>
-                                <text x="6" y="253">2</text>
-                                <text x="6" y="373">3</text>
-                              </g>
-
-                              {/* Main Vertical Riser Duct on the Left (Solid Double Line) */}
-                              <path d="M 50,-20 L 50,520 M 70,-20 L 70,520" strokeWidth="1.2" className="stroke-neutral-500 dark:stroke-neutral-700" />
-                              <line x1="50" y1="20" x2="70" y2="20" strokeWidth="0.8" />
-                              <line x1="50" y1="110" x2="70" y2="110" strokeWidth="0.8" />
-                              <line x1="50" y1="200" x2="70" y2="200" strokeWidth="0.8" />
-                              <line x1="50" y1="290" x2="70" y2="290" strokeWidth="0.8" />
-                              <line x1="50" y1="380" x2="70" y2="380" strokeWidth="0.8" />
-                              <line x1="50" y1="470" x2="70" y2="470" strokeWidth="0.8" />
-
-                              {/* Hatching pattern inside Main Vertical Riser Duct */}
-                              <path d="M 50,30 L 70,40 M 50,70 L 70,80 M 50,120 L 70,130 M 50,160 L 70,170 M 50,210 L 70,220 M 50,250 L 70,260 M 50,300 L 70,310 M 50,340 L 70,350 M 50,390 L 70,400 M 50,430 L 70,440" strokeWidth="0.5" className="stroke-neutral-400/50 dark:stroke-neutral-800/50" />
-
-                              {/* Main Horizontal Supply Duct at Top */}
-                              <path d="M 70,60 H 450 M 70,80 H 430" strokeWidth="1.2" className="stroke-neutral-500 dark:stroke-neutral-700" />
-                              <path d="M 90,60 L 100,80 M 130,60 L 140,80 M 170,60 L 180,80 M 210,60 L 220,80" strokeWidth="0.5" className="stroke-neutral-400/50 dark:stroke-neutral-800/50" />
-
-                              {/* VAV (Variable Air Volume) Terminal Box at Top Middle */}
-                              <rect x="240" y="50" width="55" height="40" strokeWidth="1.5" className="stroke-neutral-600 dark:stroke-neutral-600 fill-neutral-50 dark:fill-neutral-900" />
-                              <rect x="257" y="38" width="20" height="12" strokeWidth="1" className="stroke-neutral-500 dark:stroke-neutral-700" />
-                              <text x="261" y="46" className="fill-neutral-500 dark:fill-neutral-500 font-mono text-[5.5px]" stroke="none">ACT</text>
-                              <line x1="257" y1="70" x2="277" y2="70" strokeWidth="0.8" className="stroke-neutral-400 dark:stroke-neutral-800" />
-                              <text x="248" y="74" className="fill-neutral-600 dark:fill-neutral-400 font-mono text-[7px] font-bold" stroke="none">VAV-03</text>
-
-                              {/* Branch Duct going down from VAV Box */}
-                              <path d="M 260,90 V 230 M 276,90 V 230" strokeWidth="1" className="stroke-neutral-500 dark:stroke-neutral-750" />
-                              {/* Branch Flow Arrow */}
-                              <path d="M 268,120 L 264,130 M 268,120 L 272,130" strokeWidth="1" className="stroke-neutral-400 dark:stroke-neutral-650" />
-
-                              {/* Circular Diffuser 1 (Bottom End of Branch) */}
-                              <circle cx="268" cy="245" r="15" strokeWidth="1.2" className="stroke-neutral-600 dark:stroke-neutral-500" />
-                              <circle cx="268" cy="245" r="8" strokeWidth="0.8" />
-                              <circle cx="268" cy="245" r="3" strokeWidth="0.6" className="fill-neutral-400 dark:fill-neutral-600" />
-                              <line x1="253" y1="245" x2="283" y2="245" strokeWidth="0.8" />
-                              <line x1="268" y1="230" x2="268" y2="260" strokeWidth="0.8" />
-                              <text x="290" y="249" className="fill-neutral-500 dark:fill-neutral-400 font-mono text-[6.5px] tracking-wide" stroke="none">DIFF-S3: 220 CFM</text>
-
-                              {/* Branch Duct at Top-Left */}
-                              <path d="M 70,140 H 160 V 20" strokeWidth="1" strokeDasharray="3 3" className="stroke-neutral-400 dark:stroke-neutral-750" />
-                              <circle cx="160" cy="20" r="10" strokeWidth="1" />
-                              <circle cx="160" cy="20" r="5" strokeWidth="0.8" />
-                              <line x1="150" y1="20" x2="170" y2="20" strokeWidth="0.8" />
-                              <line x1="160" y1="10" x2="160" y2="30" strokeWidth="0.8" />
-
-                              {/* Exhaust Fan EF-01 on Left Lower Side */}
-                              <circle cx="130" cy="330" r="18" strokeWidth="1.5" className="stroke-neutral-600 dark:stroke-neutral-500 fill-neutral-50 dark:fill-neutral-950" />
-                              <circle cx="130" cy="330" r="4" className="fill-neutral-500" />
-                              {/* Spiral blades */}
-                              <path d="M 130,312 C 120,318 118,326 130,330 C 142,334 140,342 130,348 M 112,330 C 118,340 126,342 130,330 C 134,318 142,320 148,330" strokeWidth="0.8" />
-                              {/* Exhaust connection to Main Riser */}
-                              <path d="M 70,320 H 112 M 70,340 H 112" strokeWidth="1" className="stroke-neutral-500" />
-                              <text x="100" y="360" className="fill-neutral-500 dark:fill-neutral-450 font-mono text-[6.5px] tracking-wider uppercase font-bold" stroke="none">EF-02 (EXHAUST FAN)</text>
-
-                              {/* Chilled Water piping schematics (Red / Blue color lines) */}
-                              <g strokeWidth="1.2">
-                                {/* Blue Line: Chilled Water Supply */}
-                                <path d="M 450,430 H 210 V 170 H 180" className="stroke-blue-500 dark:stroke-blue-500/80" />
-                                <text x="350" y="425" className="fill-blue-500 dark:fill-blue-400 font-mono text-[6px] tracking-wider font-bold" stroke="none">CHILLED WATER SUPPLY [CHWS] Ø50</text>
-                                
-                                {/* Red Line: Chilled Water Return */}
-                                <path d="M 450,442 H 198 V 158 H 180" className="stroke-red-500 dark:stroke-red-500/80" />
-                                <text x="350" y="454" className="fill-red-500 dark:fill-red-400 font-mono text-[6px] tracking-wider font-bold" stroke="none">CHILLED WATER RETURN [CHWR] Ø50</text>
-                              </g>
-
-                              {/* VAV Bypass and thermostat callout */}
-                              <circle cx="350" cy="150" r="10" strokeWidth="1" className="stroke-neutral-500" />
-                              <text x="347" y="153" className="fill-neutral-650 dark:fill-neutral-400 font-mono text-[8px] font-bold" stroke="none">T</text>
-                              <path d="M 340,150 H 300 M 300,150 V 90" strokeWidth="0.8" strokeDasharray="2 2" className="stroke-neutral-400" />
-                              <text x="310" y="165" className="fill-neutral-500 dark:fill-neutral-500 font-mono text-[6px]" stroke="none">2-WAY CONTROL VALVE [TC-01]</text>
-
-                              {/* Main Horizontal Supply Duct on the Right (Solid Double Line) */}
-                              <path d="M 430,80 L 430,220 L 590,220" strokeWidth="1.2" className="stroke-neutral-500 dark:stroke-neutral-700" />
-                              <path d="M 450,60 L 450,200 L 590,200" strokeWidth="1.2" className="stroke-neutral-500 dark:stroke-neutral-700" />
-                              <line x1="430" y1="120" x2="450" y2="120" strokeWidth="0.8" />
-                              <line x1="510" y1="200" x2="510" y2="220" strokeWidth="0.8" />
-                              
-                              {/* Concentric Circular Diffuser 3 (Right) with leader callout */}
-                              <circle cx="540" cy="210" r="16" strokeWidth="1.2" className="stroke-neutral-600 dark:stroke-neutral-500" />
-                              <circle cx="540" cy="210" r="10" strokeWidth="0.8" />
-                              <circle cx="540" cy="210" r="4" strokeWidth="0.6" className="fill-neutral-400 dark:fill-neutral-600" />
-                              <line x1="524" y1="210" x2="556" y2="210" strokeWidth="0.8" />
-                              <line x1="540" y1="194" x2="540" y2="226" strokeWidth="0.8" />
-                              <text x="455" y="255" className="fill-neutral-500 dark:fill-neutral-450 font-mono text-[6.5px] tracking-wider font-bold" stroke="none">Ø 200 CEILING DIFFUSER [CD-14]</text>
-                              <path d="M 524,210 H 465 V 242" strokeWidth="0.8" className="stroke-neutral-400" />
-                              <circle cx="524" cy="210" r="1.5" className="fill-neutral-400 dark:fill-neutral-800" />
-
-                              {/* Laminar Air Flow Convection Vectors (Dashed curves) */}
-                              <g className="stroke-blue-500/50 dark:stroke-blue-500/40" strokeWidth="1.2">
-                                <path d="M 268,260 C 268,310 210,380 130,348" strokeDasharray="4 4" />
-                                <polygon points="130,348 135,344 135,352" className="fill-blue-500/50 dark:fill-blue-500/40" stroke="none" />
-
-                                <path d="M 540,226 C 540,300 480,350 420,380" strokeDasharray="4 4" />
-                                <polygon points="420,380 425,376 425,384" className="fill-blue-500/50 dark:fill-blue-500/40" stroke="none" />
-                              </g>
-                              <text x="145" y="380" className="fill-blue-500/60 dark:fill-blue-400/45 font-mono text-[6px] tracking-widest font-bold" stroke="none">LAMINAR RETURN PATH</text>
-                              <text x="430" y="375" className="fill-blue-500/60 dark:fill-blue-400/45 font-mono text-[6px] tracking-widest font-bold" stroke="none">SUPPLY VECTOR</text>
-
-                              {/* CAD Blueprint Title Block (Bottom-Right) */}
-                              <g transform="translate(0, 0)">
-                                <rect x="395" y="395" width="220" height="80" strokeWidth="1.2" className="stroke-neutral-600/80 dark:stroke-neutral-750/90 fill-neutral-50/95 dark:fill-neutral-950/95" />
-                                <line x1="395" y1="415" x2="615" y2="415" strokeWidth="0.8" className="stroke-neutral-500/50 dark:stroke-neutral-750/50" />
-                                <line x1="395" y1="435" x2="615" y2="435" strokeWidth="0.8" className="stroke-neutral-500/50 dark:stroke-neutral-750/50" />
-                                <line x1="395" y1="455" x2="615" y2="455" strokeWidth="0.8" className="stroke-neutral-500/50 dark:stroke-neutral-750/50" />
-                                <line x1="495" y1="415" x2="495" y2="475" strokeWidth="0.8" className="stroke-neutral-500/50 dark:stroke-neutral-750/50" />
-
-                                <text x="402" y="408" className="fill-neutral-800 dark:fill-neutral-300 font-mono text-[7px] font-bold" stroke="none">INTEL AIR GROUP • MECHANICAL DIVISION</text>
-                                <text x="402" y="427" className="fill-neutral-600 dark:fill-neutral-400 font-mono text-[6px]" stroke="none">PROJ: AHMEDABAD EXPERIENCE CENTER</text>
-                                <text x="402" y="447" className="fill-neutral-600 dark:fill-neutral-400 font-mono text-[6px]" stroke="none">DWG NO: M-04 [REV 3]</text>
-                                <text x="402" y="467" className="fill-neutral-600 dark:fill-neutral-400 font-mono text-[6px]" stroke="none">DATE: 2026-06-05</text>
-                                <text x="502" y="427" className="fill-neutral-600 dark:fill-neutral-400 font-mono text-[6px]" stroke="none">SCALE: 1:50 [A3]</text>
-                                <text x="502" y="447" className="fill-neutral-600 dark:fill-neutral-400 font-mono text-[6px]" stroke="none">DEPT: HVAC ENG</text>
-                                <text x="502" y="467" className="fill-neutral-600 dark:fill-neutral-400 font-mono text-[6px] font-bold fill-blue-600 dark:fill-blue-400" stroke="none">STATUS: APPROVED</text>
-                              </g>
-
-                              {/* CAD Legend Box (Bottom-Left) */}
-                              <g>
-                                <rect x="25" y="395" width="160" height="80" strokeWidth="1.2" className="stroke-neutral-600/80 dark:stroke-neutral-750/90 fill-neutral-50/95 dark:fill-neutral-950/95" />
-                                <text x="32" y="408" className="fill-neutral-800 dark:fill-neutral-300 font-mono text-[7px] font-bold" stroke="none">LEGEND / GENERAL NOTES</text>
-                                <line x1="25" y1="413" x2="185" y2="413" strokeWidth="0.8" className="stroke-neutral-500/50 dark:stroke-neutral-750/50" />
-                                <text x="32" y="423" className="fill-neutral-600 dark:fill-neutral-400 font-mono text-[5.5px]" stroke="none">SA: SUPPLY AIR DUCT (HATCHED)</text>
-                                <text x="32" y="433" className="fill-neutral-600 dark:fill-neutral-400 font-mono text-[5.5px]" stroke="none">RA: RETURN AIR PLENUM (CONCEALED)</text>
-                                <text x="32" y="443" className="fill-neutral-600 dark:fill-neutral-400 font-mono text-[5.5px]" stroke="none">CHWS/CHWR: CHILLED WATER S/R</text>
-                                <text x="32" y="453" className="fill-neutral-600 dark:fill-neutral-400 font-mono text-[5.5px]" stroke="none">VAV: VARIABLE AIR VOLUME TERMINAL</text>
-                                <text x="32" y="463" className="fill-neutral-600 dark:fill-neutral-400 font-mono text-[5.5px]" stroke="none">ALL DIMENSIONS IN MILLIMETERS (mm)</text>
-                              </g>
-                            </svg>
-                            
-                            <div className={`relative border-2 overflow-hidden rounded-none w-full aspect-video transition-all duration-500 group z-10 ${
-                              isDark 
-                                ? "border-neutral-800 hover:border-blue-500/50 bg-neutral-950/20 hover:shadow-[0_0_30px_rgba(59,130,246,0.15)]" 
-                                : "border-black/10 hover:border-blue-600/50 bg-neutral-100/50 hover:shadow-[0_0_30px_rgba(37,99,235,0.1)]"
-                            }`}>
+                            <div className={`relative border-2 overflow-hidden rounded-none w-full aspect-video transition-all duration-500 group z-10 ${isDark
+                              ? "border-neutral-800 hover:border-blue-500/50 bg-neutral-950/20 hover:shadow-[0_0_30px_rgba(59,130,246,0.15)]"
+                              : "border-black/10 hover:border-blue-600/50 bg-neutral-100/50 hover:shadow-[0_0_30px_rgba(37,99,235,0.1)]"
+                              }`}>
                               <video
                                 src="/projects/showroom.mp4"
                                 autoPlay
@@ -1011,7 +823,7 @@ export default function App() {
                               <div className="absolute bottom-4 left-0 right-0 flex justify-center p-3 pointer-events-none">
                                 <div className="backdrop-blur-md bg-black/60 border border-white/10 px-4 py-2.5 shadow-2xl text-center max-w-[80%] rounded-none transition-transform duration-500 group-hover:scale-[1.03]">
                                   <h5 className="text-white text-[10px] sm:text-xs font-bold tracking-wide uppercase leading-normal">
-                                    Exceptional climate engineering for those who build with vision.
+                                    Experience commercial HVAC systems in action.
                                   </h5>
                                   <div className="w-6 h-[1px] bg-white/20 mx-auto my-1" />
                                   <p className="text-white/65 text-[7px] sm:text-[8px] font-mono tracking-widest uppercase">
@@ -1060,11 +872,10 @@ export default function App() {
                               whileInView={{ opacity: 1, y: 0 }}
                               viewport={{ once: true, margin: "-50px" }}
                               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: index * 0.05 }}
-                              className={`p-6 border rounded-none flex flex-col gap-4 group transition-all duration-300 hover:scale-[1.01] ${
-                                isDark 
-                                  ? "bg-neutral-950/40 border-neutral-900 hover:border-blue-500/30 hover:bg-neutral-950" 
-                                  : "bg-transparent border-black/10 hover:border-blue-500/30 hover:shadow-md"
-                              }`}
+                              className={`p-6 border rounded-none flex flex-col gap-4 group transition-all duration-300 hover:scale-[1.01] ${isDark
+                                ? "bg-neutral-950/40 border-neutral-900 hover:border-blue-500/30 hover:bg-neutral-950"
+                                : "bg-transparent border-black/10 hover:border-blue-500/30 hover:shadow-md"
+                                }`}
                             >
                               <div className="w-10 h-10 bg-blue-600/10 border border-blue-500/20 flex items-center justify-center rounded-none group-hover:border-blue-500/40 transition-colors">
                                 <IconComponent className="w-4 h-4 text-blue-600" />
@@ -1460,132 +1271,132 @@ export default function App() {
                     {/* Grid & List Portfolio wrapper with smooth transition on filter change */}
                     <motion.div layout transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }} className="w-full">
                       <AnimatePresence mode="wait">
-                      <motion.div
-                        key={projectFilter}
-                        initial={{ opacity: 0, y: 15 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -15 }}
-                        transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-                        className="w-full flex flex-col"
-                      >
-                        {/* Grid Portfolio representation */}
-                        {projectsWithImages.length > 0 && (
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            {projectsWithImages.map((project) => (
-                              <motion.div
-                                key={project.id}
-                                onClick={() => setSelectedProject(project)}
-                                initial={{ opacity: 0, scale: 0.98 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                transition={{ duration: 0.4 }}
-                                className={`border rounded-none overflow-hidden flex flex-col justify-between group h-full cursor-pointer hover:border-blue-500/40 transition-all duration-305 ${isDark ? "bg-[#111] border-neutral-900" : "bg-transparent border-black/10"
-                                  }`}
-                              >
-                                <div className="h-64 sm:h-72 w-full overflow-hidden relative border-b border-gray-100 dark:border-neutral-900/80">
-                                  {project.image && (
-                                    <ParallaxImage
-                                      src={project.image}
-                                      alt={project.title}
-                                      className="w-full h-full"
-                                      ratio={0.12}
-                                    />
-                                  )}
-
-                                  {/* Tag sector */}
-                                  <div className="absolute top-4 left-4 bg-black border border-neutral-800 text-white font-mono text-[9px] tracking-widest uppercase px-3 py-1 rounded-none font-bold z-10">
-                                    {project.category} {project.year ? `// CAL ${project.year}` : ""}
-                                  </div>
-                                </div>
-
-                                {/* Content portfolio */}
-                                <div className="p-6 md:p-8 flex-grow flex flex-col justify-between">
-                                  <div className="flex flex-col gap-4">
-                                    <span className="text-[10px] font-mono text-neutral-500 uppercase block tracking-wider leading-none font-bold">
-                                      {project.location ? `LOC: ${project.location.split(",")[0].toUpperCase()}` : ""}
-                                      {project.location && project.client ? " • " : ""}
-                                      {project.client ? `CLIENT: ${project.client.toUpperCase()}` : ""}
-                                    </span>
-
-                                    <h3 className={`text-xl font-bold uppercase tracking-tight leading-snug ${isDark ? "text-white" : "text-[#0a0a0a]"
-                                      }`}>
-                                      {project.title}
-                                    </h3>
-
-                                    {project.description && (
-                                      <p className={`text-xs leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
-                                        {project.description}
-                                      </p>
-                                    )}
-                                  </div>
-
-                                  {/* Technical metrics label inside portfolio */}
-                                  <div className="mt-8 pt-6 border-t border-gray-150 dark:border-neutral-900/80 flex flex-col gap-2 font-mono text-[10px]/[1.5]">
-                                    <span className="text-neutral-400 uppercase leading-none font-bold">VERIFIED ENERGY METRICS:</span>
-                                    <span className={`font-bold ${isDark ? "text-blue-400" : "text-blue-600"}`}>
-                                      {project.metrics}
-                                    </span>
-                                  </div>
-                                </div>
-                              </motion.div>
-                            ))}
-                          </div>
-                        )}
-
-                        {/* List-only projects */}
-                        {projectsWithoutImages.length > 0 && (
-                          <div className={`mt-6 border-t pt-6 ${isDark ? "border-neutral-900" : "border-gray-200"}`}>
-                            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
-                              <div>
-                                <span className="text-blue-600 font-mono text-[10px] tracking-[0.2em] uppercase font-bold">
-                                  ◆ COMPREHENSIVE COMMISSIONED LOGS
-                                </span>
-                                <h3 className={`text-2xl font-bold uppercase tracking-tight mt-1.5 ${isDark ? "text-white" : "text-[#0a0a0a]"}`}>
-                                  Other Notable Project Deployments
-                                </h3>
-                              </div>
-                              <span className="text-xs font-mono text-neutral-500 tracking-wider">
-                                {projectsWithoutImages.length} SYSTEMS LISTED
-                              </span>
-                            </div>
-
-                            {/* List Grid Layout */}
-                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-4">
-                              {projectsWithoutImages.map((project, index) => (
-                                <div
+                        <motion.div
+                          key={projectFilter}
+                          initial={{ opacity: 0, y: 15 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -15 }}
+                          transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                          className="w-full flex flex-col"
+                        >
+                          {/* Grid Portfolio representation */}
+                          {projectsWithImages.length > 0 && (
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                              {projectsWithImages.map((project) => (
+                                <motion.div
                                   key={project.id}
-                                  className={`flex items-center justify-between py-4 border-b group transition-colors ${isDark ? "border-neutral-900 hover:bg-white/[0.02]" : "border-black/5 hover:bg-black/[0.01]"
-                                    } px-2`}
+                                  onClick={() => setSelectedProject(project)}
+                                  initial={{ opacity: 0, scale: 0.98 }}
+                                  animate={{ opacity: 1, scale: 1 }}
+                                  transition={{ duration: 0.4 }}
+                                  className={`border rounded-none overflow-hidden flex flex-col justify-between group h-full cursor-pointer hover:border-blue-500/40 transition-all duration-305 ${isDark ? "bg-[#111] border-neutral-900" : "bg-transparent border-black/10"
+                                    }`}
                                 >
-                                  <div className="flex items-center gap-4">
-                                    <span className="font-mono text-xs text-blue-500 font-bold">
-                                      {String(index + 1).padStart(2, "0")}
-                                    </span>
-                                    <div>
-                                      <h4 className={`text-sm font-semibold uppercase tracking-wide transition-colors ${isDark ? "text-neutral-200 group-hover:text-white" : "text-neutral-800 group-hover:text-black"
+                                  <div className="h-64 sm:h-72 w-full overflow-hidden relative border-b border-gray-100 dark:border-neutral-900/80">
+                                    {project.image && (
+                                      <ParallaxImage
+                                        src={project.image}
+                                        alt={project.title}
+                                        className="w-full h-full"
+                                        ratio={0.12}
+                                      />
+                                    )}
+
+                                    {/* Tag sector */}
+                                    <div className="absolute top-4 left-4 bg-black border border-neutral-800 text-white font-mono text-[9px] tracking-widest uppercase px-3 py-1 rounded-none font-bold z-10">
+                                      {project.category} {project.year ? `// CAL ${project.year}` : ""}
+                                    </div>
+                                  </div>
+
+                                  {/* Content portfolio */}
+                                  <div className="p-6 md:p-8 flex-grow flex flex-col justify-between">
+                                    <div className="flex flex-col gap-4">
+                                      <span className="text-[10px] font-mono text-neutral-500 uppercase block tracking-wider leading-none font-bold">
+                                        {project.location ? `LOC: ${project.location.split(",")[0].toUpperCase()}` : ""}
+                                        {project.location && project.client ? " • " : ""}
+                                        {project.client ? `CLIENT: ${project.client.toUpperCase()}` : ""}
+                                      </span>
+
+                                      <h3 className={`text-xl font-bold uppercase tracking-tight leading-snug ${isDark ? "text-white" : "text-[#0a0a0a]"
                                         }`}>
                                         {project.title}
-                                      </h4>
-                                      <span className="block text-[8px] font-mono text-neutral-500 uppercase tracking-widest mt-0.5">
-                                        {project.category}
+                                      </h3>
+
+                                      {project.description && (
+                                        <p className={`text-xs leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
+                                          {project.description}
+                                        </p>
+                                      )}
+                                    </div>
+
+                                    {/* Technical metrics label inside portfolio */}
+                                    <div className="mt-8 pt-6 border-t border-gray-150 dark:border-neutral-900/80 flex flex-col gap-2 font-mono text-[10px]/[1.5]">
+                                      <span className="text-neutral-400 uppercase leading-none font-bold">VERIFIED ENERGY METRICS:</span>
+                                      <span className={`font-bold ${isDark ? "text-blue-400" : "text-blue-600"}`}>
+                                        {project.metrics}
                                       </span>
                                     </div>
                                   </div>
-                                  <div className="flex items-center gap-2 font-mono">
-                                    <span className="text-[10px] text-neutral-400 font-bold uppercase hidden sm:inline">CAPACITY:</span>
-                                    <span className={`text-xs font-bold ${isDark ? "text-blue-400" : "text-blue-600"}`}>
-                                      {project.metrics}
-                                    </span>
-                                  </div>
-                                </div>
+                                </motion.div>
                               ))}
                             </div>
-                          </div>
-                        )}
-                      </motion.div>
-                    </AnimatePresence>
-                  </motion.div>
-                </div>
-              )}
+                          )}
+
+                          {/* List-only projects */}
+                          {projectsWithoutImages.length > 0 && (
+                            <div className={`mt-6 border-t pt-6 ${isDark ? "border-neutral-900" : "border-gray-200"}`}>
+                              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+                                <div>
+                                  <span className="text-blue-600 font-mono text-[10px] tracking-[0.2em] uppercase font-bold">
+                                    ◆ COMPREHENSIVE COMMISSIONED LOGS
+                                  </span>
+                                  <h3 className={`text-2xl font-bold uppercase tracking-tight mt-1.5 ${isDark ? "text-white" : "text-[#0a0a0a]"}`}>
+                                    Other Notable Project Deployments
+                                  </h3>
+                                </div>
+                                <span className="text-xs font-mono text-neutral-500 tracking-wider">
+                                  {projectsWithoutImages.length} SYSTEMS LISTED
+                                </span>
+                              </div>
+
+                              {/* List Grid Layout */}
+                              <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-4">
+                                {projectsWithoutImages.map((project, index) => (
+                                  <div
+                                    key={project.id}
+                                    className={`flex items-center justify-between py-4 border-b group transition-colors ${isDark ? "border-neutral-900 hover:bg-white/[0.02]" : "border-black/5 hover:bg-black/[0.01]"
+                                      } px-2`}
+                                  >
+                                    <div className="flex items-center gap-4">
+                                      <span className="font-mono text-xs text-blue-500 font-bold">
+                                        {String(index + 1).padStart(2, "0")}
+                                      </span>
+                                      <div>
+                                        <h4 className={`text-sm font-semibold uppercase tracking-wide transition-colors ${isDark ? "text-neutral-200 group-hover:text-white" : "text-neutral-800 group-hover:text-black"
+                                          }`}>
+                                          {project.title}
+                                        </h4>
+                                        <span className="block text-[8px] font-mono text-neutral-500 uppercase tracking-widest mt-0.5">
+                                          {project.category}
+                                        </span>
+                                      </div>
+                                    </div>
+                                    <div className="flex items-center gap-2 font-mono">
+                                      <span className="text-[10px] text-neutral-400 font-bold uppercase hidden sm:inline">CAPACITY:</span>
+                                      <span className={`text-xs font-bold ${isDark ? "text-blue-400" : "text-blue-600"}`}>
+                                        {project.metrics}
+                                      </span>
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                        </motion.div>
+                      </AnimatePresence>
+                    </motion.div>
+                  </div>
+                )}
                 {/* ========================================================= */}
                 {/* 5. CLIENTS SECTION                                        */}
                 {/* ========================================================= */}
@@ -1619,8 +1430,7 @@ export default function App() {
                                 src={logo.src}
                                 alt={logo.name}
                                 className={`w-auto max-w-[85%] object-contain transition-opacity duration-300 opacity-80 group-hover:opacity-100 ${logo.className || "h-16"
-                                  } ${isDark && logo.invertInDark ? "brightness-0 invert" : ""} ${
-                                    isDark && logo.mitsubishiFilterInDark ? "mitsubishi-dark-filter" : ""
+                                  } ${isDark && logo.invertInDark ? "brightness-0 invert" : ""} ${isDark && logo.mitsubishiFilterInDark ? "mitsubishi-dark-filter" : ""
                                   }`}
                               />
                             </div>
@@ -1691,15 +1501,15 @@ export default function App() {
                   <div id="section-achievements" className="flex flex-col gap-16 md:gap-24">
                     <SectionHeader
                       number="06"
-                      tag="ACHIEVEMENTS TIMELINE"
-                      title="Thirteen years of national climate expertise."
-                      description="Review the milestones and green energy certifications that position Intel Air Group as a respected engineering authority."
+                      tag="COMPANY MILESTONES"
+                      title="Building comfort since 2013."
+                      description="From concept and design to installation and ongoing support, we have helped clients create comfortable, efficient, and dependable indoor environments"
                       isDark={isDark}
                     />
 
                     {/* TWO-COLUMN GRID LAYOUT to fix the empty space on the right */}
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-                      
+
                       {/* Left Column: Chronological Compliance Timeline (lg:col-span-7) */}
                       <div className="lg:col-span-7 relative border-l border-blue-600 pl-6 ml-4 flex flex-col gap-12">
                         {COMPLAINCE_TIMELINE.map((time, i) => (
@@ -1736,11 +1546,10 @@ export default function App() {
                                     <div
                                       key={idx}
                                       onClick={() => setActiveLightboxImage(img)}
-                                      className={`relative overflow-hidden border transition-all duration-300 group/award cursor-pointer flex items-center justify-center p-1 h-36 sm:h-44 w-auto shrink-0 ${
-                                        isDark
-                                          ? "bg-neutral-900/40 border-neutral-855 hover:border-blue-500/40 hover:shadow-[0_0_15px_rgba(59,130,246,0.1)]"
-                                          : "bg-neutral-100/30 border-neutral-200 hover:border-blue-600/40 hover:shadow-[0_0_15px_rgba(37,99,235,0.08)]"
-                                      }`}
+                                      className={`relative overflow-hidden border transition-all duration-300 group/award cursor-pointer flex items-center justify-center p-1 h-36 sm:h-44 w-auto shrink-0 ${isDark
+                                        ? "bg-neutral-900/40 border-neutral-855 hover:border-blue-500/40 hover:shadow-[0_0_15px_rgba(59,130,246,0.1)]"
+                                        : "bg-neutral-100/30 border-neutral-200 hover:border-blue-600/40 hover:shadow-[0_0_15px_rgba(37,99,235,0.08)]"
+                                        }`}
                                     >
                                       <img
                                         src={img}
@@ -1765,17 +1574,15 @@ export default function App() {
                       {/* Right Column: Highlights / Side Panel + Certifications (lg:col-span-5) */}
                       <div className="lg:col-span-5 flex flex-col gap-10 lg:sticky lg:top-24">
                         {/* Premium Honor card */}
-                        <div className={`p-6 border rounded-none flex flex-col gap-4 relative overflow-hidden ${
-                          isDark ? "bg-[#111] border-neutral-900" : "bg-neutral-50 border-black/10"
-                        }`}>
+                        <div className={`p-6 border rounded-none flex flex-col gap-4 relative overflow-hidden ${isDark ? "bg-[#111] border-neutral-900" : "bg-neutral-50 border-black/10"
+                          }`}>
                           <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/5 rounded-full filter blur-xl" />
                           <span className="text-[9px] font-mono text-blue-600 uppercase tracking-widest font-bold block">
                             ◇ NATIONAL COMPLIANCE
                           </span>
-                          <h4 className={`text-base font-bold uppercase tracking-tight leading-snug ${
-                            isDark ? "text-white" : "text-[#0a0a0a]"
-                          }`}>
-                            A Legacy of Verified Standards
+                          <h4 className={`text-base font-bold uppercase tracking-tight leading-snug ${isDark ? "text-white" : "text-[#0a0a0a]"
+                            }`}>
+                            A Legacy of Engineering Excellence
                           </h4>
                           <p className={`text-xs leading-relaxed ${isDark ? "text-neutral-450" : "text-gray-500"}`}>
                             Our projects undergo strict third-party inspections and local authority vetting. Each award signifies our team's commitment to high efficiency designs and zero breakdown deployments.
@@ -1816,7 +1623,7 @@ export default function App() {
                               ◇ GREEN STANDARDS
                             </span>
                             <h3 className={`text-lg font-bold uppercase tracking-tight ${isDark ? "text-white" : "text-neutral-900"}`}>
-                              Operational Compliance
+                              Certifications & Industry Affiliations
                             </h3>
                           </div>
 
@@ -1828,9 +1635,8 @@ export default function App() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true, margin: "-50px" }}
                                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: index * 0.1 }}
-                                className={`p-4 rounded-none border flex gap-4 ${
-                                  isDark ? "bg-[#111] border-neutral-900 hover:border-neutral-805" : "bg-transparent border-black/10"
-                                }`}
+                                className={`p-4 rounded-none border flex gap-4 ${isDark ? "bg-[#111] border-neutral-900 hover:border-neutral-805" : "bg-transparent border-black/10"
+                                  }`}
                               >
                                 <div className="w-10 h-10 rounded-none bg-blue-600/10 border border-blue-500/30 flex items-center justify-center shrink-0">
                                   <CheckCircle2 className="w-4.5 h-4.5 text-blue-600" />
@@ -1897,7 +1703,7 @@ export default function App() {
 
                       <h2 className={`text-4xl sm:text-6xl md:text-[5.5rem] font-bold tracking-tight uppercase leading-[0.85] ${isDark ? "text-white" : "text-[#0a0a0a]"
                         }`}>
-                        Bringing architectural ideas to <span className="font-normal italic text-blue-600">micro-temperatures</span>.
+                        Transforming architectural ambitions into <span className="font-normal italic text-blue-600">perfect indoor climates</span>.
                       </h2>
                     </motion.div>
 
@@ -1918,7 +1724,7 @@ export default function App() {
                           +91 74053 99550
                         </a>
                         <span className="text-xs text-neutral-400 font-semibold block leading-none">
-                          Landlines: 079 40359594 / 40059594
+                          Landlines: 079 40359594 / 40059594 / 35338381
                         </span>
                       </motion.div>
 
@@ -1954,7 +1760,7 @@ export default function App() {
                           A-217 to 220, Popular Plaza, near Someshwara Jain Derasar, <br />
                           Shyamal Cross Road, Satellite, Ahmedabad 380 015, Gujarat, India
                         </address>
-                        <span className="font-semibold">Main mechanical drafting and estimates office layout.</span>
+                        <span className="font-semibold">Home to our HVAC design, engineering, estimation, and project coordination teams.</span>
                       </motion.div>
                     </div>
 
@@ -2062,7 +1868,7 @@ export default function App() {
                   <div className="flex flex-col">
                     <span className="text-[9px] text-neutral-500 uppercase leading-none mb-1 font-bold">Landlines</span>
                     <span className={`text-xs font-bold ${isDark ? "text-neutral-350" : "text-neutral-750"}`}>
-                      079 40359594 / 40059594
+                      079 40359594 / 40059594 / 35338381
                     </span>
                   </div>
                   <div className="flex flex-col">
@@ -2107,8 +1913,8 @@ export default function App() {
           <button
             onClick={() => setIsCalculatorOpen(true)}
             className={`fixed right-0 top-1/2 -translate-y-1/2 z-40 py-4 px-2.5 rounded-l-xl shadow-2xl flex flex-col items-center gap-2 transition-all duration-300 font-mono text-[9px] tracking-widest font-bold cursor-pointer group hover:pl-3.5 ${isDark
-                ? "bg-white hover:bg-neutral-100 text-black border border-r-0 border-white/20"
-                : "bg-black hover:bg-neutral-900 text-white border border-r-0 border-neutral-800/80"
+              ? "bg-white hover:bg-neutral-100 text-black border border-r-0 border-white/20"
+              : "bg-black hover:bg-neutral-900 text-white border border-r-0 border-neutral-800/80"
               }`}
             title="Open AC Energy Cost Calculator"
           >
@@ -2186,21 +1992,16 @@ export default function App() {
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.95, y: 20 }}
                   transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-                  className={`relative w-full border shadow-2xl overflow-hidden rounded-none z-10 flex flex-col md:flex-row ${
-                    aspectRatio === "portrait" ? "max-w-3xl" : "max-w-5xl"
-                  } ${
-                    isDark ? "bg-[#0d0d0d] text-white border-neutral-800" : "bg-white text-neutral-900 border-black/10"
-                  }`}
+                  className={`relative w-full border shadow-2xl overflow-hidden rounded-none z-10 flex flex-col md:flex-row ${aspectRatio === "portrait" ? "max-w-3xl" : "max-w-5xl"
+                    } ${isDark ? "bg-[#0d0d0d] text-white border-neutral-800" : "bg-white text-neutral-900 border-black/10"
+                    }`}
                   style={{ minHeight: "500px" }}
                 >
                   {/* Left Column: Image */}
-                  <div className={`${
-                    aspectRatio === "portrait" ? "md:w-1/2" : "md:w-3/5"
-                  } relative min-h-[300px] md:min-h-[500px] ${
-                    isDark ? "bg-[#0d0d0d]" : "bg-white"
-                  } border-r ${
-                    isDark ? "border-neutral-800" : "border-black/5"
-                  }`}>
+                  <div className={`${aspectRatio === "portrait" ? "md:w-1/2" : "md:w-3/5"
+                    } relative min-h-[300px] md:min-h-[500px] ${isDark ? "bg-[#0d0d0d]" : "bg-white"
+                    } border-r ${isDark ? "border-neutral-800" : "border-black/5"
+                    }`}>
                     <img
                       src={selectedProject.image}
                       alt={selectedProject.title}
@@ -2212,15 +2013,13 @@ export default function App() {
                   </div>
 
                   {/* Right Column: Details */}
-                  <div className={`${
-                    aspectRatio === "portrait" ? "md:w-1/2" : "md:w-2/5"
-                  } p-8 md:p-10 flex flex-col justify-between relative`}>
+                  <div className={`${aspectRatio === "portrait" ? "md:w-1/2" : "md:w-2/5"
+                    } p-8 md:p-10 flex flex-col justify-between relative`}>
                     {/* Close button at top right */}
                     <button
                       onClick={() => setSelectedProject(null)}
-                      className={`absolute top-4 right-4 p-2 rounded-none hover:bg-neutral-800/10 dark:hover:bg-white/10 transition-colors cursor-pointer ${
-                        isDark ? "text-neutral-400 hover:text-white" : "text-neutral-550 hover:text-black"
-                      }`}
+                      className={`absolute top-4 right-4 p-2 rounded-none hover:bg-neutral-800/10 dark:hover:bg-white/10 transition-colors cursor-pointer ${isDark ? "text-neutral-400 hover:text-white" : "text-neutral-550 hover:text-black"
+                        }`}
                     >
                       <X className="w-5 h-5" />
                     </button>
@@ -2230,9 +2029,8 @@ export default function App() {
                         <span className="text-blue-600 font-mono text-[10px] tracking-[0.25em] uppercase font-bold block mb-2">
                           ◆ PROJECT ANALYSIS REPORT
                         </span>
-                        <h2 className={`text-2xl sm:text-3xl font-bold uppercase tracking-tight leading-tight ${
-                          isDark ? "text-white" : "text-neutral-900"
-                        }`}>
+                        <h2 className={`text-2xl sm:text-3xl font-bold uppercase tracking-tight leading-tight ${isDark ? "text-white" : "text-neutral-900"
+                          }`}>
                           {selectedProject.title}
                         </h2>
                       </div>
