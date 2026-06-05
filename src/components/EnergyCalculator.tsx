@@ -8,36 +8,54 @@ interface EnergyCalculatorProps {
 const EER_MAP: Record<number, number> = { 1: 2.50, 2: 2.70, 3: 2.90, 4: 3.10, 5: 3.30 };
 const COOLING_KW = 3.517;
 
-const TYPE_OPTIONS: Record<string, number[]> = {
-  inverter: [0.75, 1.0, 1.5, 2.0],
-  fixed:    [0.75, 1.0, 1.5, 2.0],
-  cassette: [1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0],
-  ductable: [1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 5.0, 6.0, 7.0, 8.0]
-};
+interface TypeInfo {
+  factor: number;
+  label: string;
+  opts: number[];
+  title: string;
+  subtitle: string;
+}
 
-const TYPE_FACTOR: Record<string, number> = {
-  inverter: 0.65,
-  fixed:    1.00,
-  cassette: 1.05,
-  ductable: 1.10
-};
-
-const TYPE_EFF_LABEL: Record<string, string> = {
-  inverter: "ISEER (Inverter)",
-  fixed:    "EER (Fixed Speed)",
-  cassette: "EER (Cassette)",
-  ductable: "EER (Ductable)"
+const TYPE_CONFIG: Record<string, TypeInfo> = {
+  inv_split: {
+    factor: 0.65,
+    label: "ISEER (inverter split)",
+    opts: [0.75, 1.0, 1.5, 2.0],
+    title: "Inverter split",
+    subtitle: "Up to 2 TR · variable speed · most efficient"
+  },
+  fixed_split: {
+    factor: 1.00,
+    label: "EER (fixed speed split)",
+    opts: [0.75, 1.0, 1.5, 2.0],
+    title: "Fixed speed split",
+    subtitle: "Up to 2 TR · on/off compressor · higher consumption"
+  },
+  inv_cassette: {
+    factor: 0.72,
+    label: "ISEER (inverter 4-way cassette)",
+    opts: [1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0],
+    title: "Inverter 4-way cassette",
+    subtitle: "Up to 4 TR · ceiling mount · variable speed"
+  },
+  fixed_cassette: {
+    factor: 1.12,
+    label: "EER (fixed 4-way cassette)",
+    opts: [1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0],
+    title: "Fixed speed 4-way cassette",
+    subtitle: "Up to 4 TR · ceiling mount · higher consumption"
+  }
 };
 
 const TYPE_NAMES: Record<string, string> = {
-  inverter: "Inverter Split AC",
-  fixed:    "Fixed Speed Split AC",
-  cassette: "Cassette AC",
-  ductable: "Ductable AC"
+  inv_split: "inverter split",
+  fixed_split: "fixed speed split",
+  inv_cassette: "inverter 4-way cassette",
+  fixed_cassette: "fixed speed 4-way cassette"
 };
 
 export default function EnergyCalculator({ isDark }: EnergyCalculatorProps) {
-  const [acType, setAcType] = useState<string>("inverter");
+  const [acType, setAcType] = useState<string>("inv_split");
   const [capacity, setCapacity] = useState<number>(1.5);
   const [tariff, setTariff] = useState<number>(9);
   const [hours, setHours] = useState<number>(8);
@@ -45,34 +63,35 @@ export default function EnergyCalculator({ isDark }: EnergyCalculatorProps) {
 
   // If the active AC Type changes, ensure the selected capacity is valid for that type
   useEffect(() => {
-    const validOptions = TYPE_OPTIONS[acType];
+    const validOptions = TYPE_CONFIG[acType].opts;
     if (!validOptions.includes(capacity)) {
-      setCapacity(validOptions[0]);
+      setCapacity(validOptions[Math.floor(validOptions.length / 2)]);
     }
   }, [acType]);
 
   // Helper to calculate annual cost for any star rating (used for savings calculation)
   const getAnnualCostForRating = (tons: number, hrs: number, trf: number, stars: number, type: string) => {
-    const eff = EER_MAP[stars] / TYPE_FACTOR[type];
+    const eff = EER_MAP[stars] / TYPE_CONFIG[type].factor;
     return (tons * COOLING_KW / eff) * hrs * trf * 365;
   };
 
   // Calculations
-  const effectiveEer = EER_MAP[starRating] / TYPE_FACTOR[acType];
+  const effectiveEer = EER_MAP[starRating] / TYPE_CONFIG[acType].factor;
   const inputKw = (capacity * COOLING_KW) / effectiveEer;
   const dailyUnits = inputKw * hours;
   const dailyCost = dailyUnits * tariff;
   const monthlyCost = dailyCost * 30;
   const annualCost = dailyCost * 365;
 
-
+  const invSplitSaving = Math.round(annualCost - getAnnualCostForRating(capacity, hours, tariff, starRating, "inv_split"));
+  const invCassSaving = Math.round(annualCost - getAnnualCostForRating(capacity, hours, tariff, starRating, "inv_cassette"));
 
   // Dynamic tips based on configuration
   const tips: Record<string, string> = {
-    inverter: `Your ${capacity} TR inverter split AC draws ${inputKw.toFixed(2)} kW at full load. Inverter technology modulates compressor speed to match temperature load, consuming up to 35% less energy than fixed speed systems.`,
-    fixed: `Your ${capacity} TR fixed speed split AC draws ${inputKw.toFixed(2)} kW. Fixed speed compressors cycle strictly on/off to control temperature, incurring high starting load spikes. Upgrading to an Inverter Split AC could save you roughly ₹${Math.round(annualCost - getAnnualCostForRating(capacity, hours, tariff, starRating, "inverter")).toLocaleString("en-IN")}/year.`,
-    cassette: `Your ${capacity} TR Cassette AC draws ${inputKw.toFixed(2)} kW. Cassette systems deliver multi-directional ceiling airflow for corporate properties, with minor overhead from advanced fan vectors.`,
-    ductable: `Your ${capacity} TR Ductable system draws ${inputKw.toFixed(2)} kW. Static duct pressure and large commercial blower motors introduce roughly a 10% load overhead compared to localized wall units.`
+    inv_split: `Your ${capacity} TR inverter split AC draws ${inputKw.toFixed(2)} kW at full load. Variable speed compressor technology makes this the most energy-efficient option, adjusting output to match the room's cooling demand.`,
+    fixed_split: `Your ${capacity} TR fixed speed split AC draws ${inputKw.toFixed(2)} kW. The compressor runs at full power and cycles on/off to maintain temperature, consuming more electricity than an inverter model. Switching to inverter could save ₹${invSplitSaving.toLocaleString("en-IN")}/year.`,
+    inv_cassette: `Your ${capacity} TR inverter 4-way cassette AC draws ${inputKw.toFixed(2)} kW. The inverter compressor keeps efficiency high, while the 4-way airflow fan adds a small overhead compared to a wall-mounted split unit.`,
+    fixed_cassette: `Your ${capacity} TR fixed speed 4-way cassette AC draws ${inputKw.toFixed(2)} kW. Fixed speed compressor cycling combined with the 4-way fan motor overhead makes this the highest consuming type. Upgrading to an inverter cassette could save ₹${invCassSaving.toLocaleString("en-IN")}/year.`
   };
 
   const potentialSaving = starRating < 5 ? Math.round(annualCost - getAnnualCostForRating(capacity, hours, tariff, 5, acType)) : 0;
@@ -97,8 +116,9 @@ export default function EnergyCalculator({ isDark }: EnergyCalculatorProps) {
             AC TYPE
           </label>
           <div className="grid grid-cols-2 gap-2">
-            {Object.keys(TYPE_OPTIONS).map((type) => {
+            {Object.keys(TYPE_CONFIG).map((type) => {
               const isActive = acType === type;
+              const config = TYPE_CONFIG[type];
               return (
                 <button
                   key={type}
@@ -112,14 +132,11 @@ export default function EnergyCalculator({ isDark }: EnergyCalculatorProps) {
                         : "bg-transparent border-black/10 text-neutral-650 hover:border-gray-400"
                   }`}
                 >
-                  <div className="text-xs capitalize font-bold leading-tight">
-                    {type === "inverter" ? "Inverter Split" : type === "fixed" ? "Fixed Speed Split" : type}
+                  <div className="text-xs font-bold leading-tight">
+                    {config.title}
                   </div>
                   <div className="text-[9px] text-neutral-450 dark:text-neutral-500 leading-tight mt-0.5 font-mono">
-                    {type === "inverter" && "Variable speed"}
-                    {type === "fixed" && "On/off cycle"}
-                    {type === "cassette" && "Ceiling mount"}
-                    {type === "ductable" && "Ducted setup"}
+                    {config.subtitle}
                   </div>
                 </button>
               );
@@ -141,7 +158,7 @@ export default function EnergyCalculator({ isDark }: EnergyCalculatorProps) {
                 : "bg-transparent border-black/25 text-neutral-900"
             }`}
           >
-            {TYPE_OPTIONS[acType]?.map((val) => (
+            {TYPE_CONFIG[acType]?.opts.map((val) => (
               <option key={val} value={val} className={isDark ? "bg-[#111] text-white" : "bg-white text-black"}>
                 {val.toFixed(2)} TR
               </option>
@@ -285,7 +302,7 @@ export default function EnergyCalculator({ isDark }: EnergyCalculatorProps) {
               {effectiveEer.toFixed(2)}
             </span>
             <span className="text-[8px] font-mono text-neutral-450 leading-none mt-1 truncate">
-              {TYPE_EFF_LABEL[acType]}
+              {TYPE_CONFIG[acType].label}
             </span>
           </div>
         </div>
@@ -308,7 +325,7 @@ export default function EnergyCalculator({ isDark }: EnergyCalculatorProps) {
         }`}>
           <Leaf className="w-4.5 h-4.5 text-green-600 shrink-0 mt-0.5" />
           <p className={isDark ? "text-neutral-350" : "text-gray-600"}>
-            Upgrading to a 5-star {capacity} TR {TYPE_NAMES[acType]} could save you approximately{" "}
+            Upgrading to a 5-star {capacity} TR {TYPE_NAMES[acType]} AC could save you approximately{" "}
             <strong className={isDark ? "text-green-450 text-white" : "text-green-650"}>
               ₹{potentialSaving.toLocaleString("en-IN")}
             </strong>{" "}
@@ -316,6 +333,8 @@ export default function EnergyCalculator({ isDark }: EnergyCalculatorProps) {
           </p>
         </div>
       )}
+
+
       {/* Disclaimer Note */}
       <div className={`text-[8px] font-mono tracking-wider uppercase text-center mt-2 ${
         isDark ? "text-neutral-500" : "text-neutral-400"
