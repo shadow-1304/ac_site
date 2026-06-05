@@ -518,26 +518,36 @@ export default function App() {
                         <p className={`text-sm leading-relaxed ${isDark ? "text-neutral-400" : "text-neutral-600"}`}>
                           We operate as a consortium of three partnership companies:
                         </p>
-                        <div className="flex flex-col gap-3 my-2">
+                        <div className="flex flex-col gap-3.5 my-2">
                           {[
-                            "INTEL AIR TECHNOLOGIES",
-                            "INTEL ENTERPRISES",
-                            "INNOVATIVE AIRCONDITIONERS"
+                            { name: "INTEL AIR TECHNOLOGIES", logo: "/logos/intel_air_tech_v3.png" },
+                            { name: "INTEL ENTERPRISES", logo: "/logos/intel_enterprises_v3.png" },
+                            { name: "INNOVATIVE AIRCONDITIONERS", logo: "/logos/innovative_air_conditioners_v3.png" }
                           ].map((comp, idx) => (
                             <div
                               key={idx}
-                              className={`p-4 border flex items-center gap-3 transition-all duration-300 hover:scale-[1.02] ${
+                              className={`p-4 border flex items-center gap-4 transition-all duration-300 hover:scale-[1.02] ${
                                 isDark
                                   ? "bg-neutral-900/40 border-neutral-850 hover:border-blue-500/40 hover:bg-neutral-900"
                                   : "bg-white border-neutral-200 hover:border-blue-500/40 hover:shadow-md"
                               }`}
                             >
-                              <div className="p-2 bg-blue-600/10 border border-blue-500/30 flex items-center justify-center rounded-none shrink-0">
-                                <Building2 className="w-4 h-4 text-blue-600" />
+                              <div className={`p-1.5 w-44 h-20 flex items-center justify-center shrink-0 border ${
+                                isDark ? "bg-neutral-950/50 border-neutral-800" : "bg-neutral-50 border-neutral-100"
+                              }`}>
+                                <img
+                                  src={comp.logo}
+                                  alt={comp.name}
+                                  className={`max-w-full max-h-full object-contain ${
+                                    isDark ? "dark-logo-filter" : "light-logo-filter"
+                                  }`}
+                                />
                               </div>
-                              <span className={`text-xs font-mono tracking-wider font-bold ${isDark ? "text-neutral-250" : "text-neutral-800"}`}>
-                                {comp}
-                              </span>
+                              <div className="flex flex-col">
+                                <span className={`text-xs font-mono tracking-wider font-bold ${isDark ? "text-neutral-250" : "text-neutral-800"}`}>
+                                  {comp.name}
+                                </span>
+                              </div>
                             </div>
                           ))}
                         </div>
@@ -745,42 +755,270 @@ export default function App() {
                         </motion.div>
                       </div>
                     </div>
-
-                    {/* Showroom Experience Center Video */}
+                                     {/* Showroom Experience Center Video */}
                     <div className={`border-t pt-16 ${isDark ? "border-neutral-900" : "border-gray-100"}`}>
-                      <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                        <div className="lg:col-span-7 flex flex-col gap-4">
-                          <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-[0.2em] block font-bold animate-pulse">
+                      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                        {/* Text Container with Staggered Scroll-driven Reveal transitions */}
+                        <motion.div 
+                          initial="hidden"
+                          whileInView="visible"
+                          viewport={{ once: false, margin: "-10%" }}
+                          variants={{
+                            hidden: { opacity: 0 },
+                            visible: {
+                              opacity: 1,
+                              transition: {
+                                staggerChildren: 0.08,
+                                delayChildren: 0.05
+                              }
+                            }
+                          }}
+                          className="lg:col-span-5 flex flex-col gap-6"
+                        >
+                          <motion.span 
+                            variants={{
+                              hidden: { opacity: 0, y: 20 },
+                              visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
+                            }}
+                            className="text-[10px] font-mono text-neutral-500 uppercase tracking-[0.2em] block font-bold animate-pulse"
+                          >
                             ◇ PHYSICAL EXPERIENCE CENTER
-                          </span>
-                          <h4 className={`text-2xl sm:text-3xl font-bold uppercase tracking-tight ${isDark ? "text-white" : "text-[#0F0F0F]"}`}>
-                            Our State-of-the-Art Showroom
+                          </motion.span>
+                          
+                          <h4 
+                            className={`text-3xl sm:text-4xl lg:text-5xl font-bold uppercase tracking-tight leading-tight ${isDark ? "text-white" : "text-[#0F0F0F]"}`}
+                          >
+                            <ScrollRevealText text="Our State-of-the-Art Showroom" />
                           </h4>
-                          <p className={`text-sm leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
-                            Explore our physical experience center in Ahmedabad, showcasing live running VRF systems, customized duct layouts, and premium air-handling setups.
-                          </p>
-                          <p className={`text-xs leading-relaxed ${isDark ? "text-neutral-500" : "text-gray-400"}`}>
-                            Visit us to consult with our core design team and touch-test the latest multinational HVAC technologies.
-                          </p>
-                        </div>
-                        
-                        <div className="lg:col-span-5 flex justify-center lg:justify-end">
-                          <div className={`relative border overflow-hidden rounded-none w-full max-w-[280px] sm:max-w-[320px] aspect-[9/16] ${
-                            isDark ? "border-neutral-900 bg-neutral-950/20" : "border-black/10 bg-neutral-100/50"
-                          }`}>
-                            <video
-                              src="/projects/WhatsApp Video 2026-06-05 at 10.37.23 AM.mp4"
-                              autoPlay
-                              muted
-                              loop
-                              playsInline
-                              className="w-full h-full object-cover"
+                          
+                          <p 
+                            className={`text-sm sm:text-base lg:text-lg leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"}`}
+                          >
+                            <ScrollRevealText 
+                              text="Explore our physical experience center in Ahmedabad, showcasing live running VRF systems, customized duct layouts, and premium air-handling setups."
+                              delay={0.25}
                             />
+                          </p>
+                          
+                          <p 
+                            className={`text-xs sm:text-sm lg:text-base leading-relaxed ${isDark ? "text-neutral-500" : "text-gray-500"}`}
+                          >
+                            <ScrollRevealText 
+                              text="Visit us to consult with our core design team and touch-test the latest multinational HVAC technologies."
+                              delay={0.4}
+                            />
+                          </p>
+                        </motion.div>
+                        
+                        <div className="lg:col-span-7 w-full py-12">
+                          <div className="relative w-full max-w-[800px] ml-auto">
+                            {/* SVG Design Sketch Behind the Video Frame */}
+                            <svg 
+                              viewBox="0 0 640 500" 
+                              className={`w-[115%] h-[125%] absolute -top-[12.5%] -left-[7.5%] pointer-events-none opacity-90 dark:opacity-75 z-0 ${
+                                isDark 
+                                  ? "dark-blueprint stroke-white/40" 
+                                  : "stroke-neutral-500/80 dark:stroke-neutral-700/80"
+                              }`}
+                              fill="none"
+                            >
+                              {/* CAD Blueprint Grid Background */}
+                              <defs>
+                                <pattern id="blueprint-grid" width="30" height="30" patternUnits="userSpaceOnUse">
+                                  <path d="M 30 0 L 0 0 0 30" fill="none" stroke="currentColor" strokeWidth="0.4" className="stroke-neutral-350/40 dark:stroke-neutral-800/40" />
+                                </pattern>
+                              </defs>
+                              <rect width="100%" height="100%" fill="url(#blueprint-grid)" />
+
+                              {/* Technical Blueprint Frame and Margins */}
+                              <rect x="5" y="5" width="630" height="490" strokeWidth="0.6" className="stroke-neutral-400/40 dark:stroke-neutral-800/45" />
+                              <rect x="15" y="15" width="610" height="470" strokeWidth="1.2" className="stroke-neutral-500/60 dark:stroke-neutral-750/70" />
+
+                              {/* Grid Labels and Division Lines */}
+                              <g className="stroke-neutral-400/50 dark:stroke-neutral-800/55" strokeWidth="0.8">
+                                {/* Horizontal grid tick marks */}
+                                <line x1="150" y1="15" x2="150" y2="25" />
+                                <line x1="320" y1="15" x2="320" y2="25" />
+                                <line x1="490" y1="15" x2="490" y2="25" />
+                                <line x1="150" y1="475" x2="150" y2="485" />
+                                <line x1="320" y1="475" x2="320" y2="485" />
+                                <line x1="490" y1="475" x2="490" y2="485" />
+
+                                {/* Vertical grid tick marks */}
+                                <line x1="15" y1="130" x2="25" y2="130" />
+                                <line x1="15" y1="250" x2="25" y2="250" />
+                                <line x1="15" y1="370" x2="25" y2="370" />
+                                <line x1="615" y1="130" x2="625" y2="130" />
+                                <line x1="615" y1="250" x2="625" y2="250" />
+                                <line x1="615" y1="370" x2="625" y2="370" />
+                              </g>
+
+                              {/* Coordinate Label Text */}
+                              <g className="fill-neutral-500 dark:fill-neutral-500 font-mono text-[7px] font-bold" stroke="none">
+                                <text x="147" y="11">A</text>
+                                <text x="317" y="11">B</text>
+                                <text x="487" y="11">C</text>
+                                <text x="6" y="133">1</text>
+                                <text x="6" y="253">2</text>
+                                <text x="6" y="373">3</text>
+                              </g>
+
+                              {/* Main Vertical Riser Duct on the Left (Solid Double Line) */}
+                              <path d="M 50,-20 L 50,520 M 70,-20 L 70,520" strokeWidth="1.2" className="stroke-neutral-500 dark:stroke-neutral-700" />
+                              <line x1="50" y1="20" x2="70" y2="20" strokeWidth="0.8" />
+                              <line x1="50" y1="110" x2="70" y2="110" strokeWidth="0.8" />
+                              <line x1="50" y1="200" x2="70" y2="200" strokeWidth="0.8" />
+                              <line x1="50" y1="290" x2="70" y2="290" strokeWidth="0.8" />
+                              <line x1="50" y1="380" x2="70" y2="380" strokeWidth="0.8" />
+                              <line x1="50" y1="470" x2="70" y2="470" strokeWidth="0.8" />
+
+                              {/* Hatching pattern inside Main Vertical Riser Duct */}
+                              <path d="M 50,30 L 70,40 M 50,70 L 70,80 M 50,120 L 70,130 M 50,160 L 70,170 M 50,210 L 70,220 M 50,250 L 70,260 M 50,300 L 70,310 M 50,340 L 70,350 M 50,390 L 70,400 M 50,430 L 70,440" strokeWidth="0.5" className="stroke-neutral-400/50 dark:stroke-neutral-800/50" />
+
+                              {/* Main Horizontal Supply Duct at Top */}
+                              <path d="M 70,60 H 450 M 70,80 H 430" strokeWidth="1.2" className="stroke-neutral-500 dark:stroke-neutral-700" />
+                              <path d="M 90,60 L 100,80 M 130,60 L 140,80 M 170,60 L 180,80 M 210,60 L 220,80" strokeWidth="0.5" className="stroke-neutral-400/50 dark:stroke-neutral-800/50" />
+
+                              {/* VAV (Variable Air Volume) Terminal Box at Top Middle */}
+                              <rect x="240" y="50" width="55" height="40" strokeWidth="1.5" className="stroke-neutral-600 dark:stroke-neutral-600 fill-neutral-50 dark:fill-neutral-900" />
+                              <rect x="257" y="38" width="20" height="12" strokeWidth="1" className="stroke-neutral-500 dark:stroke-neutral-700" />
+                              <text x="261" y="46" className="fill-neutral-500 dark:fill-neutral-500 font-mono text-[5.5px]" stroke="none">ACT</text>
+                              <line x1="257" y1="70" x2="277" y2="70" strokeWidth="0.8" className="stroke-neutral-400 dark:stroke-neutral-800" />
+                              <text x="248" y="74" className="fill-neutral-600 dark:fill-neutral-400 font-mono text-[7px] font-bold" stroke="none">VAV-03</text>
+
+                              {/* Branch Duct going down from VAV Box */}
+                              <path d="M 260,90 V 230 M 276,90 V 230" strokeWidth="1" className="stroke-neutral-500 dark:stroke-neutral-750" />
+                              {/* Branch Flow Arrow */}
+                              <path d="M 268,120 L 264,130 M 268,120 L 272,130" strokeWidth="1" className="stroke-neutral-400 dark:stroke-neutral-650" />
+
+                              {/* Circular Diffuser 1 (Bottom End of Branch) */}
+                              <circle cx="268" cy="245" r="15" strokeWidth="1.2" className="stroke-neutral-600 dark:stroke-neutral-500" />
+                              <circle cx="268" cy="245" r="8" strokeWidth="0.8" />
+                              <circle cx="268" cy="245" r="3" strokeWidth="0.6" className="fill-neutral-400 dark:fill-neutral-600" />
+                              <line x1="253" y1="245" x2="283" y2="245" strokeWidth="0.8" />
+                              <line x1="268" y1="230" x2="268" y2="260" strokeWidth="0.8" />
+                              <text x="290" y="249" className="fill-neutral-500 dark:fill-neutral-400 font-mono text-[6.5px] tracking-wide" stroke="none">DIFF-S3: 220 CFM</text>
+
+                              {/* Branch Duct at Top-Left */}
+                              <path d="M 70,140 H 160 V 20" strokeWidth="1" strokeDasharray="3 3" className="stroke-neutral-400 dark:stroke-neutral-750" />
+                              <circle cx="160" cy="20" r="10" strokeWidth="1" />
+                              <circle cx="160" cy="20" r="5" strokeWidth="0.8" />
+                              <line x1="150" y1="20" x2="170" y2="20" strokeWidth="0.8" />
+                              <line x1="160" y1="10" x2="160" y2="30" strokeWidth="0.8" />
+
+                              {/* Exhaust Fan EF-01 on Left Lower Side */}
+                              <circle cx="130" cy="330" r="18" strokeWidth="1.5" className="stroke-neutral-600 dark:stroke-neutral-500 fill-neutral-50 dark:fill-neutral-950" />
+                              <circle cx="130" cy="330" r="4" className="fill-neutral-500" />
+                              {/* Spiral blades */}
+                              <path d="M 130,312 C 120,318 118,326 130,330 C 142,334 140,342 130,348 M 112,330 C 118,340 126,342 130,330 C 134,318 142,320 148,330" strokeWidth="0.8" />
+                              {/* Exhaust connection to Main Riser */}
+                              <path d="M 70,320 H 112 M 70,340 H 112" strokeWidth="1" className="stroke-neutral-500" />
+                              <text x="100" y="360" className="fill-neutral-500 dark:fill-neutral-450 font-mono text-[6.5px] tracking-wider uppercase font-bold" stroke="none">EF-02 (EXHAUST FAN)</text>
+
+                              {/* Chilled Water piping schematics (Red / Blue color lines) */}
+                              <g strokeWidth="1.2">
+                                {/* Blue Line: Chilled Water Supply */}
+                                <path d="M 450,430 H 210 V 170 H 180" className="stroke-blue-500 dark:stroke-blue-500/80" />
+                                <text x="350" y="425" className="fill-blue-500 dark:fill-blue-400 font-mono text-[6px] tracking-wider font-bold" stroke="none">CHILLED WATER SUPPLY [CHWS] Ø50</text>
+                                
+                                {/* Red Line: Chilled Water Return */}
+                                <path d="M 450,442 H 198 V 158 H 180" className="stroke-red-500 dark:stroke-red-500/80" />
+                                <text x="350" y="454" className="fill-red-500 dark:fill-red-400 font-mono text-[6px] tracking-wider font-bold" stroke="none">CHILLED WATER RETURN [CHWR] Ø50</text>
+                              </g>
+
+                              {/* VAV Bypass and thermostat callout */}
+                              <circle cx="350" cy="150" r="10" strokeWidth="1" className="stroke-neutral-500" />
+                              <text x="347" y="153" className="fill-neutral-650 dark:fill-neutral-400 font-mono text-[8px] font-bold" stroke="none">T</text>
+                              <path d="M 340,150 H 300 M 300,150 V 90" strokeWidth="0.8" strokeDasharray="2 2" className="stroke-neutral-400" />
+                              <text x="310" y="165" className="fill-neutral-500 dark:fill-neutral-500 font-mono text-[6px]" stroke="none">2-WAY CONTROL VALVE [TC-01]</text>
+
+                              {/* Main Horizontal Supply Duct on the Right (Solid Double Line) */}
+                              <path d="M 430,80 L 430,220 L 590,220" strokeWidth="1.2" className="stroke-neutral-500 dark:stroke-neutral-700" />
+                              <path d="M 450,60 L 450,200 L 590,200" strokeWidth="1.2" className="stroke-neutral-500 dark:stroke-neutral-700" />
+                              <line x1="430" y1="120" x2="450" y2="120" strokeWidth="0.8" />
+                              <line x1="510" y1="200" x2="510" y2="220" strokeWidth="0.8" />
+                              
+                              {/* Concentric Circular Diffuser 3 (Right) with leader callout */}
+                              <circle cx="540" cy="210" r="16" strokeWidth="1.2" className="stroke-neutral-600 dark:stroke-neutral-500" />
+                              <circle cx="540" cy="210" r="10" strokeWidth="0.8" />
+                              <circle cx="540" cy="210" r="4" strokeWidth="0.6" className="fill-neutral-400 dark:fill-neutral-600" />
+                              <line x1="524" y1="210" x2="556" y2="210" strokeWidth="0.8" />
+                              <line x1="540" y1="194" x2="540" y2="226" strokeWidth="0.8" />
+                              <text x="455" y="255" className="fill-neutral-500 dark:fill-neutral-450 font-mono text-[6.5px] tracking-wider font-bold" stroke="none">Ø 200 CEILING DIFFUSER [CD-14]</text>
+                              <path d="M 524,210 H 465 V 242" strokeWidth="0.8" className="stroke-neutral-400" />
+                              <circle cx="524" cy="210" r="1.5" className="fill-neutral-400 dark:fill-neutral-800" />
+
+                              {/* Laminar Air Flow Convection Vectors (Dashed curves) */}
+                              <g className="stroke-blue-500/50 dark:stroke-blue-500/40" strokeWidth="1.2">
+                                <path d="M 268,260 C 268,310 210,380 130,348" strokeDasharray="4 4" />
+                                <polygon points="130,348 135,344 135,352" className="fill-blue-500/50 dark:fill-blue-500/40" stroke="none" />
+
+                                <path d="M 540,226 C 540,300 480,350 420,380" strokeDasharray="4 4" />
+                                <polygon points="420,380 425,376 425,384" className="fill-blue-500/50 dark:fill-blue-500/40" stroke="none" />
+                              </g>
+                              <text x="145" y="380" className="fill-blue-500/60 dark:fill-blue-400/45 font-mono text-[6px] tracking-widest font-bold" stroke="none">LAMINAR RETURN PATH</text>
+                              <text x="430" y="375" className="fill-blue-500/60 dark:fill-blue-400/45 font-mono text-[6px] tracking-widest font-bold" stroke="none">SUPPLY VECTOR</text>
+
+                              {/* CAD Blueprint Title Block (Bottom-Right) */}
+                              <g transform="translate(0, 0)">
+                                <rect x="395" y="395" width="220" height="80" strokeWidth="1.2" className="stroke-neutral-600/80 dark:stroke-neutral-750/90 fill-neutral-50/95 dark:fill-neutral-950/95" />
+                                <line x1="395" y1="415" x2="615" y2="415" strokeWidth="0.8" className="stroke-neutral-500/50 dark:stroke-neutral-750/50" />
+                                <line x1="395" y1="435" x2="615" y2="435" strokeWidth="0.8" className="stroke-neutral-500/50 dark:stroke-neutral-750/50" />
+                                <line x1="395" y1="455" x2="615" y2="455" strokeWidth="0.8" className="stroke-neutral-500/50 dark:stroke-neutral-750/50" />
+                                <line x1="495" y1="415" x2="495" y2="475" strokeWidth="0.8" className="stroke-neutral-500/50 dark:stroke-neutral-750/50" />
+
+                                <text x="402" y="408" className="fill-neutral-800 dark:fill-neutral-300 font-mono text-[7px] font-bold" stroke="none">INTEL AIR GROUP • MECHANICAL DIVISION</text>
+                                <text x="402" y="427" className="fill-neutral-600 dark:fill-neutral-400 font-mono text-[6px]" stroke="none">PROJ: AHMEDABAD EXPERIENCE CENTER</text>
+                                <text x="402" y="447" className="fill-neutral-600 dark:fill-neutral-400 font-mono text-[6px]" stroke="none">DWG NO: M-04 [REV 3]</text>
+                                <text x="402" y="467" className="fill-neutral-600 dark:fill-neutral-400 font-mono text-[6px]" stroke="none">DATE: 2026-06-05</text>
+                                <text x="502" y="427" className="fill-neutral-600 dark:fill-neutral-400 font-mono text-[6px]" stroke="none">SCALE: 1:50 [A3]</text>
+                                <text x="502" y="447" className="fill-neutral-600 dark:fill-neutral-400 font-mono text-[6px]" stroke="none">DEPT: HVAC ENG</text>
+                                <text x="502" y="467" className="fill-neutral-600 dark:fill-neutral-400 font-mono text-[6px] font-bold fill-blue-600 dark:fill-blue-400" stroke="none">STATUS: APPROVED</text>
+                              </g>
+
+                              {/* CAD Legend Box (Bottom-Left) */}
+                              <g>
+                                <rect x="25" y="395" width="160" height="80" strokeWidth="1.2" className="stroke-neutral-600/80 dark:stroke-neutral-750/90 fill-neutral-50/95 dark:fill-neutral-950/95" />
+                                <text x="32" y="408" className="fill-neutral-800 dark:fill-neutral-300 font-mono text-[7px] font-bold" stroke="none">LEGEND / GENERAL NOTES</text>
+                                <line x1="25" y1="413" x2="185" y2="413" strokeWidth="0.8" className="stroke-neutral-500/50 dark:stroke-neutral-750/50" />
+                                <text x="32" y="423" className="fill-neutral-600 dark:fill-neutral-400 font-mono text-[5.5px]" stroke="none">SA: SUPPLY AIR DUCT (HATCHED)</text>
+                                <text x="32" y="433" className="fill-neutral-600 dark:fill-neutral-400 font-mono text-[5.5px]" stroke="none">RA: RETURN AIR PLENUM (CONCEALED)</text>
+                                <text x="32" y="443" className="fill-neutral-600 dark:fill-neutral-400 font-mono text-[5.5px]" stroke="none">CHWS/CHWR: CHILLED WATER S/R</text>
+                                <text x="32" y="453" className="fill-neutral-600 dark:fill-neutral-400 font-mono text-[5.5px]" stroke="none">VAV: VARIABLE AIR VOLUME TERMINAL</text>
+                                <text x="32" y="463" className="fill-neutral-600 dark:fill-neutral-400 font-mono text-[5.5px]" stroke="none">ALL DIMENSIONS IN MILLIMETERS (mm)</text>
+                              </g>
+                            </svg>
+                            
+                            <div className={`relative border-2 overflow-hidden rounded-none w-full aspect-video transition-all duration-500 group z-10 ${
+                              isDark 
+                                ? "border-neutral-800 hover:border-blue-500/50 bg-neutral-950/20 hover:shadow-[0_0_30px_rgba(59,130,246,0.15)]" 
+                                : "border-black/10 hover:border-blue-600/50 bg-neutral-100/50 hover:shadow-[0_0_30px_rgba(37,99,235,0.1)]"
+                            }`}>
+                              <video
+                                src="/projects/showroom.mp4"
+                                autoPlay
+                                muted
+                                loop
+                                playsInline
+                                className="w-full h-full object-cover grayscale transition-all duration-700 ease-out group-hover:grayscale-0"
+                              />
+                              {/* Centered Bottom Translucent Overlay Box (No full-screen background overlay) */}
+                              <div className="absolute bottom-4 left-0 right-0 flex justify-center p-3 pointer-events-none">
+                                <div className="backdrop-blur-md bg-black/60 border border-white/10 px-4 py-2.5 shadow-2xl text-center max-w-[80%] rounded-none transition-transform duration-500 group-hover:scale-[1.03]">
+                                  <h5 className="text-white text-[10px] sm:text-xs font-bold tracking-wide uppercase leading-normal">
+                                    Exceptional climate engineering for those who build with vision.
+                                  </h5>
+                                  <div className="w-6 h-[1px] bg-white/20 mx-auto my-1" />
+                                  <p className="text-white/65 text-[7px] sm:text-[8px] font-mono tracking-widest uppercase">
+                                    ◇ Experience Center Ahmedabad
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-
                     {/* Things We Deal In */}
                     <div className={`border-t pt-16 ${isDark ? "border-neutral-900" : "border-gray-100"}`}>
                       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-10">

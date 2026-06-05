@@ -99,14 +99,10 @@
 /* Premium Logo High Contrast Filters */
 .dark-logo-filter {
   filter: invert(1) hue-rotate(180deg) brightness(1.25) contrast(1.15);
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
 }
 
 .light-logo-filter {
   filter: brightness(0.96) contrast(1.15);
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
 }
 
 .mitsubishi-dark-filter {
@@ -150,4 +146,51 @@
   mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
   -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
 }
+
+/* Dark Mode Blueprint SVG lines override */
+.dark-blueprint * {
+  stroke: rgba(255, 255, 255, 0.38) !important;
+}
+.dark-blueprint text {
+  fill: rgba(255, 255, 255, 0.65) !important;
+  stroke: none !important;
+}
+.dark-blueprint rect {
+  fill: transparent !important;
+}
+.dark-blueprint rect.stroke-neutral-600\/80 {
+  fill: #0a0a0a !important;
+}
+/* Keep VAV Box and exhaust fan fill background dark in dark mode */
+.dark-blueprint .fill-neutral-50,
+.dark-blueprint .dark\:fill-neutral-900,
+.dark-blueprint .dark\:fill-neutral-950 {
+  fill: #0a0a0a !important;
+}
+/* Keep color-coded chilled water supply/return lines */
+.dark-blueprint .stroke-blue-500,
+.dark-blueprint .dark\:stroke-blue-500\/80 {
+  stroke: #3b82f6 !important;
+}
+.dark-blueprint .stroke-red-500,
+.dark-blueprint .dark\:stroke-red-500\/80 {
+  stroke: #ef4444 !important;
+}
+.dark-blueprint .fill-blue-500,
+.dark-blueprint .dark\:fill-blue-400 {
+  fill: #60a5fa !important;
+}
+.dark-blueprint .fill-red-500,
+.dark-blueprint .dark\:fill-red-400 {
+  fill: #f87171 !important;
+}
+.dark-blueprint .stroke-blue-500\/50,
+.dark-blueprint .dark\:stroke-blue-500\/40 {
+  stroke: rgba(59, 130, 246, 0.4) !important;
+}
+.dark-blueprint .fill-blue-500\/50,
+.dark-blueprint .dark\:fill-blue-400\/45 {
+  fill: rgba(96, 165, 250, 0.5) !important;
+}
+
 
