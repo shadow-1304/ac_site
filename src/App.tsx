@@ -72,6 +72,7 @@ export default function App() {
   const [isCalculatorOpen, setIsCalculatorOpen] = useState<boolean>(false);
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
   const [aspectRatio, setAspectRatio] = useState<"portrait" | "landscape">("landscape");
+  const [activeLightboxImage, setActiveLightboxImage] = useState<string | null>(null);
 
   useEffect(() => {
     if (selectedProject?.image) {
@@ -1692,82 +1693,162 @@ export default function App() {
                       isDark={isDark}
                     />
 
-                    {/* Chronological Compliance Timeline */}
-                    <div className="relative border-l border-blue-600 pl-6 ml-4 flex flex-col gap-12">
-                      {COMPLAINCE_TIMELINE.map((time, i) => (
-                        <motion.div
-                          key={i}
-                          initial={{ opacity: 0, x: -20 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          viewport={{ once: true, margin: "-50px" }}
-                          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: i * 0.1 }}
-                          className="relative group"
-                        >
-
-                          {/* Interactive dot */}
-                          <span className="absolute -left-[31px] top-1.5 flex h-4 w-4 items-center justify-center">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-none bg-blue-400 opacity-75"></span>
-                            <span className="relative inline-flex rounded-none h-2 w-2 bg-blue-600"></span>
-                          </span>
-
-                          <div className="flex flex-col gap-2">
-                            <span className="font-mono text-lg font-bold text-blue-600 leading-none">
-                              {time.year}
+                    {/* TWO-COLUMN GRID LAYOUT to fix the empty space on the right */}
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+                      
+                      {/* Left Column: Chronological Compliance Timeline (lg:col-span-7) */}
+                      <div className="lg:col-span-7 relative border-l border-blue-600 pl-6 ml-4 flex flex-col gap-12">
+                        {COMPLAINCE_TIMELINE.map((time, i) => (
+                          <motion.div
+                            key={i}
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true, margin: "-50px" }}
+                            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: i * 0.1 }}
+                            className="relative group"
+                          >
+                            {/* Interactive dot */}
+                            <span className="absolute -left-[31px] top-1.5 flex h-4 w-4 items-center justify-center">
+                              <span className="animate-ping absolute inline-flex h-full w-full rounded-none bg-blue-400 opacity-75"></span>
+                              <span className="relative inline-flex rounded-none h-2 w-2 bg-blue-600"></span>
                             </span>
 
-                            <h4 className={`text-lg font-bold uppercase tracking-tight ${isDark ? "text-white" : "text-[#0a0a0a]"}`}>
-                              {time.title}
-                            </h4>
-
-                            <p className={`text-xs sm:text-sm leading-relaxed max-w-2xl ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
-                              {time.description}
-                            </p>
-                          </div>
-                        </motion.div>
-                      ))}
-                    </div>
-
-                    {/* Grid for Certifications & Audits stamps */}
-                    <div className={`border-t pt-12 ${isDark ? "border-neutral-900" : "border-gray-100"}`}>
-                      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-10">
-                        <div className="lg:col-span-5">
-                          <span className="text-[10px] font-mono text-neutral-500 uppercase block tracking-wider mb-2 font-bold">
-                            ◇ GREEN STANDARDS
-                          </span>
-                          <h3 className={`text-2xl font-bold uppercase tracking-tight ${isDark ? "text-white" : "text-neutral-900"}`}>
-                            Operational Compliance & Certifications
-                          </h3>
-                        </div>
-                      </div>
-
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        {CERTIFICATIONS.map((cert, index) => (
-                          <motion.div
-                            key={index}
-                            initial={{ opacity: 0, scale: 0.96 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true, margin: "-50px" }}
-                            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: index * 0.1 }}
-                            className={`p-5 rounded-none border flex gap-4 ${isDark ? "bg-[#111] border-neutral-900 hover:border-neutral-800" : "bg-transparent border-black/10"
-                              }`}
-                          >
-                            <div className="w-12 h-12 rounded-none bg-blue-600/10 border border-blue-500/30 flex items-center justify-center shrink-0">
-                              <CheckCircle2 className="w-5 h-5 text-blue-600" />
-                            </div>
-                            <div>
-                              <span className="font-mono text-[10px] font-bold text-blue-600 block">
-                                {cert.code}
+                            <div className="flex flex-col gap-2">
+                              <span className="font-mono text-lg font-bold text-blue-600 leading-none">
+                                {time.year}
                               </span>
-                              <h4 className={`text-sm font-bold uppercase tracking-wide mt-1 ${isDark ? "text-neutral-200" : "text-[#0a0a0a]"}`}>
-                                {cert.title}
+
+                              <h4 className={`text-lg font-bold uppercase tracking-tight ${isDark ? "text-white" : "text-[#0a0a0a]"}`}>
+                                {time.title}
                               </h4>
-                              <span className="block text-[10px] font-mono text-neutral-500 uppercase mt-1 leading-none font-bold">
-                                Authority: {cert.authority}
-                              </span>
+
+                              <p className={`text-xs sm:text-sm leading-relaxed max-w-2xl ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
+                                {time.description}
+                              </p>
+
+                              {time.images && time.images.length > 0 && (
+                                <div className="flex flex-wrap gap-4 mt-3">
+                                  {time.images.map((img, idx) => (
+                                    <div
+                                      key={idx}
+                                      onClick={() => setActiveLightboxImage(img)}
+                                      className={`relative overflow-hidden border transition-all duration-300 group/award cursor-pointer flex items-center justify-center p-1 h-36 sm:h-44 w-auto shrink-0 ${
+                                        isDark
+                                          ? "bg-neutral-900/40 border-neutral-855 hover:border-blue-500/40 hover:shadow-[0_0_15px_rgba(59,130,246,0.1)]"
+                                          : "bg-neutral-100/30 border-neutral-200 hover:border-blue-600/40 hover:shadow-[0_0_15px_rgba(37,99,235,0.08)]"
+                                      }`}
+                                    >
+                                      <img
+                                        src={img}
+                                        alt={`${time.title} - Award Image ${idx + 1}`}
+                                        className="h-full w-auto object-contain filter grayscale transition-all duration-500 ease-out group-hover/award:grayscale-0 group-hover/award:scale-[1.04]"
+                                      />
+                                      {/* Minimal zoom overlay */}
+                                      <div className="absolute inset-0 bg-blue-600/5 opacity-0 group-hover/award:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                        <span className="text-[10px] font-mono text-blue-500 tracking-wider font-semibold uppercase bg-white/95 dark:bg-neutral-900/95 px-2 py-1 border border-blue-500/20 shadow-md transform translate-y-2 group-hover/award:translate-y-0 transition-transform duration-300">
+                                          Zoom
+                                        </span>
+                                      </div>
+                                    </div>
+                                  ))}
+                                </div>
+                              )}
                             </div>
                           </motion.div>
                         ))}
                       </div>
+
+                      {/* Right Column: Highlights / Side Panel + Certifications (lg:col-span-5) */}
+                      <div className="lg:col-span-5 flex flex-col gap-10 lg:sticky lg:top-24">
+                        {/* Premium Honor card */}
+                        <div className={`p-6 border rounded-none flex flex-col gap-4 relative overflow-hidden ${
+                          isDark ? "bg-[#111] border-neutral-900" : "bg-neutral-50 border-black/10"
+                        }`}>
+                          <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/5 rounded-full filter blur-xl" />
+                          <span className="text-[9px] font-mono text-blue-600 uppercase tracking-widest font-bold block">
+                            ◇ NATIONAL COMPLIANCE
+                          </span>
+                          <h4 className={`text-base font-bold uppercase tracking-tight leading-snug ${
+                            isDark ? "text-white" : "text-[#0a0a0a]"
+                          }`}>
+                            A Legacy of Verified Standards
+                          </h4>
+                          <p className={`text-xs leading-relaxed ${isDark ? "text-neutral-450" : "text-gray-500"}`}>
+                            Our projects undergo strict third-party inspections and local authority vetting. Each award signifies our team's commitment to high efficiency designs and zero breakdown deployments.
+                          </p>
+                          <div className="w-12 h-[1px] bg-blue-500/30" />
+                          <div className="flex flex-col gap-2.5">
+                            <div className="flex items-center gap-3">
+                              <div className="w-6 h-6 rounded-none bg-blue-600/10 border border-blue-500/25 flex items-center justify-center">
+                                <Award className="w-3.5 h-3.5 text-blue-600" />
+                              </div>
+                              <span className={`text-[11px] font-bold uppercase ${isDark ? "text-neutral-300" : "text-neutral-800"}`}>
+                                3x TOSHIBA National Sales Trophies
+                              </span>
+                            </div>
+                            <div className="flex items-center gap-3">
+                              <div className="w-6 h-6 rounded-none bg-blue-600/10 border border-blue-500/25 flex items-center justify-center">
+                                <Award className="w-3.5 h-3.5 text-blue-600" />
+                              </div>
+                              <span className={`text-[11px] font-bold uppercase ${isDark ? "text-neutral-300" : "text-neutral-800"}`}>
+                                Mitsubishi Electric Gujarat VRF Leader
+                              </span>
+                            </div>
+                            <div className="flex items-center gap-3">
+                              <div className="w-6 h-6 rounded-none bg-blue-600/10 border border-blue-500/25 flex items-center justify-center">
+                                <Award className="w-3.5 h-3.5 text-blue-600" />
+                              </div>
+                              <span className={`text-[11px] font-bold uppercase ${isDark ? "text-neutral-300" : "text-neutral-800"}`}>
+                                Carrier national performance milestones
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Certifications stacked list */}
+                        <div className="flex flex-col gap-6">
+                          <div>
+                            <span className="text-[9px] font-mono text-neutral-500 uppercase block tracking-wider mb-2 font-bold">
+                              ◇ GREEN STANDARDS
+                            </span>
+                            <h3 className={`text-lg font-bold uppercase tracking-tight ${isDark ? "text-white" : "text-neutral-900"}`}>
+                              Operational Compliance
+                            </h3>
+                          </div>
+
+                          <div className="flex flex-col gap-4">
+                            {CERTIFICATIONS.map((cert, index) => (
+                              <motion.div
+                                key={index}
+                                initial={{ opacity: 0, y: 15 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: "-50px" }}
+                                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: index * 0.1 }}
+                                className={`p-4 rounded-none border flex gap-4 ${
+                                  isDark ? "bg-[#111] border-neutral-900 hover:border-neutral-805" : "bg-transparent border-black/10"
+                                }`}
+                              >
+                                <div className="w-10 h-10 rounded-none bg-blue-600/10 border border-blue-500/30 flex items-center justify-center shrink-0">
+                                  <CheckCircle2 className="w-4.5 h-4.5 text-blue-600" />
+                                </div>
+                                <div>
+                                  <span className="font-mono text-[9px] font-bold text-blue-600 block">
+                                    {cert.code}
+                                  </span>
+                                  <h4 className={`text-xs font-bold uppercase tracking-wide mt-1 ${isDark ? "text-neutral-200" : "text-[#0a0a0a]"}`}>
+                                    {cert.title}
+                                  </h4>
+                                  <span className="block text-[9px] font-mono text-neutral-500 uppercase mt-1 leading-none font-semibold">
+                                    Authority: {cert.authority}
+                                  </span>
+                                </div>
+                              </motion.div>
+                            ))}
+                          </div>
+                        </div>
+
+                      </div>
+
                     </div>
 
                     {/* Manufacturer standard logos block */}
@@ -2199,6 +2280,37 @@ export default function App() {
                   </div>
                 </motion.div>
               </div>
+            )}
+          </AnimatePresence>
+
+          <AnimatePresence>
+            {activeLightboxImage && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="fixed inset-0 z-[200] bg-black/90 backdrop-blur-md flex items-center justify-center p-4 cursor-zoom-out"
+                onClick={() => setActiveLightboxImage(null)}
+              >
+                <button
+                  onClick={() => setActiveLightboxImage(null)}
+                  className="absolute top-6 right-6 p-3 rounded-none text-white hover:text-blue-500 hover:bg-white/10 transition-all duration-300 cursor-pointer"
+                  aria-label="Close lightbox"
+                >
+                  <X className="w-8 h-8" />
+                </button>
+                <motion.img
+                  initial={{ scale: 0.95 }}
+                  animate={{ scale: 1 }}
+                  exit={{ scale: 0.95 }}
+                  transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  src={activeLightboxImage}
+                  alt="Enlarged Award View"
+                  className="max-w-full max-h-[85vh] object-contain border border-neutral-850 shadow-2xl bg-black/40"
+                  onClick={(e) => e.stopPropagation()}
+                />
+              </motion.div>
             )}
           </AnimatePresence>
         </>

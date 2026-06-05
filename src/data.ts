@@ -736,8 +736,9 @@ export const COMPLAINCE_TIMELINE: AchievementTimelineItem[] = [
   },
   {
     year: "2015",
-    title: "Large Corporate Integrations",
-    description: "Expanded our commercial portfolio to handle single-site installations exceeding 300+ TR, partnering with tech hubs and banks."
+    title: "Large Corporate Integrations & Partnerships",
+    description: "Expanded our commercial portfolio to handle single-site installations exceeding 300+ TR. Received the Hitachi Long Association Award for sustained partnership excellence.",
+    images: ["/awards/2.jpeg"]
   },
   {
     year: "2018",
@@ -746,8 +747,9 @@ export const COMPLAINCE_TIMELINE: AchievementTimelineItem[] = [
   },
   {
     year: "2019",
-    title: "TOSHIBA National Cassette Award",
-    description: "Awarded by TOSHIBA for the highest sales dealer of Cassette products (All India)."
+    title: "TOSHIBA National Cassette & Hi-Wall Awards",
+    description: "Awarded by TOSHIBA for the best performance and highest sales dealer of Cassette and Hi-Wall products (All India) at the Zonal Dealers Meet.",
+    images: ["/awards/6.jpeg", "/awards/8.jpeg"]
   },
   {
     year: "2020",
@@ -756,8 +758,9 @@ export const COMPLAINCE_TIMELINE: AchievementTimelineItem[] = [
   },
   {
     year: "2021 - 2022",
-    title: "TOSHIBA Multi-Category National Award",
-    description: "Awarded by TOSHIBA for the highest sales dealer across Cassette, Hi-Wall, and all Light Commercial (LC) products (All India)."
+    title: "TOSHIBA & Carrier Multi-Category National Awards",
+    description: "Awarded by TOSHIBA and Carrier for the highest sales revenue across Cassette, Hi-Wall, and Light Commercial (LC) products (All India) at the National Channel Partners Meet.",
+    images: ["/awards/3.jpeg", "/awards/4.jpeg", "/awards/5.jpeg"]
   },
   {
     year: "2024",
@@ -767,7 +770,8 @@ export const COMPLAINCE_TIMELINE: AchievementTimelineItem[] = [
   {
     year: "2024 - 2025",
     title: "Mitsubishi Electric Gujarat Award",
-    description: "Awarded by Mitsubishi Electric for the highest sales dealer of VRF products in Gujarat."
+    description: "Awarded by Mitsubishi Electric for the highest sales dealer of VRF products in Gujarat, and received the Silver Award for City Multi VRF at the Annual Dealer Meet.",
+    images: ["/awards/1.jpeg"]
   }
 ];
 

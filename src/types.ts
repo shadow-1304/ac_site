@@ -46,6 +46,7 @@ export interface AchievementTimelineItem {
   year: string;
   title: string;
   description: string;
+  images?: string[];
 }
 
 export interface BrandPartner {
