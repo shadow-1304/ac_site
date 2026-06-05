@@ -1001,7 +1001,11 @@ export default function App() {
                                 muted
                                 loop
                                 playsInline
-                                className="w-full h-full object-cover grayscale transition-all duration-700 ease-out group-hover:grayscale-0"
+                                disablePictureInPicture
+                                controlsList="nodownload nofullscreen noremoteplayback"
+                                onContextMenu={(e) => e.preventDefault()}
+                                tabIndex={-1}
+                                className="w-full h-full object-cover grayscale transition-all duration-700 ease-out group-hover:grayscale-0 pointer-events-none"
                               />
                               {/* Centered Bottom Translucent Overlay Box (No full-screen background overlay) */}
                               <div className="absolute bottom-4 left-0 right-0 flex justify-center p-3 pointer-events-none">
