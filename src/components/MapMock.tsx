@@ -14,58 +14,58 @@ interface MapNode {
 }
 
 export default function MapMock({ isDark }: { isDark: boolean }) {
-  const [activeNode, setActiveNode] = useState<string | null>("node-2"); // Default to Mumbai Surgical Center
+  const [activeNode, setActiveNode] = useState<string | null>("node-2"); // Default to Anand Surgical Hospital
 
   const mapNodes: MapNode[] = [
     {
       id: "node-1",
-      name: "The Skyline Penthouses",
+      name: "Swagat Agacia",
       x: 35,
       y: 20,
-      type: "Residential Core",
-      capacity: "16x Mini-VRV Layouts",
-      system: "Concealed 19dB(A) Whisper Ducts",
-      coordinates: "28.6139° N, 77.2090° E"
+      type: "Luxury Residence",
+      capacity: "210 TR Multi-Splits",
+      system: "Concealed Whisper Ducts & Linear Slot Diffusers",
+      coordinates: "23.0440° N, 72.5020° E"
     },
     {
       id: "node-2",
-      name: "Apex Surgical Center",
+      name: "Anand Surgical Hospital",
       x: 25,
       y: 48,
       type: "Hospital Grade",
-      capacity: "ISO 5 Cleanroom Ventilation",
-      system: "Laminar Flow Filter & Pressure Lock",
-      coordinates: "19.0760° N, 72.8777° E"
+      capacity: "310 TR HEPA Systems",
+      system: "ISO 5 Cleanroom Laminar Flow & Pressure Lock",
+      coordinates: "23.0768° N, 72.6415° E"
     },
     {
       id: "node-3",
-      name: "Meridian Grand Resort",
+      name: "Grand Eulogia Hotel",
       x: 23,
       y: 65,
       type: "Hotel & Leisure",
-      capacity: "240 TR Oceanic-Coat VRF",
-      system: "Hot Gas Recovery Desuperheater",
-      coordinates: "15.2993° N, 74.1240° E"
+      capacity: "340 TR Central VRF",
+      system: "Multi-Compressor Heating & Cooling Integration",
+      coordinates: "23.0906° N, 72.5350° E"
     },
     {
       id: "node-4",
-      name: "Nebula Corporate Park",
+      name: "Bharti Airtel Ltd.",
       x: 48,
       y: 72,
-      type: "Commercial Enterprise",
-      capacity: "1,200 TR Centrifugal Chiller Plant",
-      system: "VFD Condenser & Modbus Smart BMS",
-      coordinates: "12.9716° N, 77.5946° E"
+      type: "Corporate Headquarters",
+      capacity: "427 TR Centralized VRF",
+      system: "Zoned Ducting & Variable Airflow Control",
+      coordinates: "23.0225° N, 72.5714° E"
     },
     {
       id: "node-5",
-      name: "Aura Premium Concept Showroom",
+      name: "Agora Mall",
       x: 31,
       y: 53,
-      type: "Auto Showroom",
-      capacity: "Round-Cassette Air Arrays",
-      system: "High-Volume Thermal Curtain Jets",
-      coordinates: "18.5204° N, 73.8567° E"
+      type: "Retail & Showroom",
+      capacity: "749 TR Chilled Water",
+      system: "High-Capacity Package Ductable System",
+      coordinates: "23.1110° N, 72.5830° E"
     }
   ];
 

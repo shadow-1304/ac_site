@@ -10,3 +10,6 @@ coverage/
 
 package-lock.json
 Intel - Company Profile - R4.doc
+*.pdf
+*.doc
+*.txt

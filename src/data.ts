@@ -2,9 +2,9 @@ import { ServiceItem, ProjectItem, TestimonialItem, AchievementTimelineItem, Bra
 
 export const STATISTICS = [
   { value: "13+", label: "Years of Trust" },
-  { value: "7,000+", label: "Clients Served" },
-  { value: "32+", label: "Permanent Engineers" },
-  { value: "80+", label: "Total Workforce" }
+  { value: "10,000+", label: "Clients Served" },
+  { value: "5,000+", label: "Units Delivered Annually" },
+  { value: "84+", label: "HVAC Professionals & Technicians" }
 ];
 
 export const SERVICES: ServiceItem[] = [
@@ -14,143 +14,147 @@ export const SERVICES: ServiceItem[] = [
     shortDesc: "Zoned variable refrigerant flow designs for complex multi-story architectures.",
     longDesc: "As authorized dealers for Mitsubishi Electric, Toshiba, and Carrier, we provide top-tier Variable Refrigerant Flow (VRF) technology. VRF systems deliver simultaneous heating and cooling to different zones by modular capacity allocation. Our custom VRF networks adjust dynamically to ambient solar heat loading, resulting in unmatched energy ratings.",
     features: [
-      "Simultaneous heating & cooling recovery",
-      "Dynamic localized zoning & electronic expansion valves",
-      "Exclusive Mitsubishi Electric VRF integrations",
-      "Integrated smart building BMS modbus interfaces"
+      "Energy-efficient operation",
+      "Individual zone temperature control",
+      "Flexible design for large buildings",
+      "Lower operating and maintenance costs"
     ],
-    specs: [
-      { label: "Energy Savings", value: "Up to 45% vs traditional split units" },
-      { label: "Inverter Tech", value: "Advanced scroll compressor fine-tuning" },
-      { label: "Design Support", value: "Carrier HAP & AutoCAD Load sheets" }
-    ],
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop"
+    specs: [],
+    idealApplications: "Hotels • Offices • Hospitals • Educational Institutions • Commercial Buildings • Luxury Villas",
+    image: "/projects/Swagat Agacia.jpg.jpeg"
   },
   {
     id: "hvac-design-consultancy",
     title: "HVAC Design & CAD Consultancy",
     shortDesc: "Computational design and mechanical load modeling for premium estates.",
-    longDesc: "We provide high-level CAD drafting, duct layouts, and thermodynamic heat load calculation reports based on local meteorological profiles. Our computational models eliminate static hot-spots and draft issues before construction begins.",
+    longDesc: "Our engineering team provides HVAC design consultancy, heat load calculations, ducting layouts, equipment selection, and CAD drawings to ensure efficient, cost-effective, and high-performance system design before project execution.",
     features: [
-      "ASHRAE-compliant thermodynamic load calculations",
-      "AutoCAD layout design and structural duct sizing",
-      "Acoustic and vibrational isolation framing blueprints",
-      "Regulatory green compliance checking"
+      "Heat Load Calculations",
+      "HVAC Layout & Duct Design",
+      "Equipment Selection & Sizing",
+      "Technical Project Consultancy"
     ],
+    featuresTitle: "CONSULTANCY SERVICES INCLUDE",
+    specsTitle: "KEY DELIVERABLES",
     specs: [
-      { label: "Standards", value: "ASHRAE 15 & 55 Compliant" },
-      { label: "Layouts", value: "3D CAD modeling & duct routing sheets" },
-      { label: "Software", value: "Carrier HAP, AutoCAD MEP" }
+      { label: "Heat Load Reports", value: "Accurate cooling load assessments for proper system sizing." },
+      { label: "HVAC Layout Drawings", value: "Detailed ducting and equipment placement plans." },
+      { label: "Equipment Recommendations", value: "Selection of the most suitable HVAC systems based on project requirements." }
     ],
-    image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1200&auto=format&fit=crop"
+    image: "/projects/transformers and rectifiers.jpeg"
   },
   {
     id: "ventilation-systems",
     title: "Ventilation & Filtration",
-    shortDesc: "Cleanroom architectures, negative pressure zones, and heat recovery.",
-    longDesc: "Providing clean air is our expertise. We engineer commercial air handling ducts, high-efficiency mechanical ventilation setups, custom exhaust grids, and HEPA filter frameworks that sustain positive/negative pressure barriers in critical industrial environments.",
+    shortDesc: "Fresh air systems, exhaust solutions, ventilation networks, and indoor air quality management.",
+    longDesc: "We design and install fresh air, exhaust, pressurization, and filtration systems that improve indoor air quality, remove contaminants, control odours, and maintain healthy environments across commercial, industrial, healthcare, and hospitality facilities.",
     features: [
-      "Negative-pressure sterile air-containment",
-      "Carbon filtration gas scrubbing & volatile trap grids",
-      "Energy Recovery Ventilators (ERV) with 85% heat recycling",
-      "Sound-attenuated heavy duty extraction systems"
+      "Fresh Air Ventilation Systems",
+      "Kitchen & Industrial Exhaust Systems",
+      "HEPA & High-Efficiency Filtration",
+      "Positive & Negative Pressure Rooms"
     ],
+    specsTitle: "KEY APPLICATIONS",
     specs: [
-      { label: "Particulate Trap", value: "HEPA filter setups" },
-      { label: "Applications", value: "Pharma cleanrooms, commercial kitchens" },
-      { label: "Heat Recovery", value: "Sensible and latent heat balance" }
+      { label: "Healthcare Facilities", value: "Isolation rooms, operation theatres, and clean spaces." },
+      { label: "Commercial Kitchens", value: "Odor control, smoke extraction, and fresh air supply." },
+      { label: "Industrial Facilities", value: "Dust extraction, process ventilation, and worker safety." }
     ],
-    image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1200&auto=format&fit=crop"
-  },
-  {
-    id: "commercial-ac",
-    title: "Commercial Climatization",
-    shortDesc: "Heavy central chiller plants, packaged ductable systems, and long layouts.",
-    longDesc: "Tailored for heavy enterprise operations, we offer multi-ton packaged AC units and central chilled-water systems, serving large corporate offices, bank branches, public transit platforms, and educational institutions in Gujarat.",
-    features: [
-      "Heavy duty double-skin air handling units (AHUs)",
-      "Variable frequency drives (VFD) on water chiller loops",
-      "Spiral and soundproof pre-insulated duct patterns",
-      "Packaged and ductable units up to 100+ TR"
-    ],
-    specs: [
-      { label: "Capacities", value: "10 TR to 500+ TR layouts" },
-      { label: "Airflow Design", value: "Constant air volume (CAV) grids" },
-      { label: "Durability", value: "20+ Year structural mechanical lifecycle" }
-    ],
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200&auto=format&fit=crop"
-  },
-  {
-    id: "residential-ac",
-    title: "Residential Air Architectures",
-    shortDesc: "Centralized concealed ducted lines, floor consoles, and premium multi-splits.",
-    longDesc: "Bringing modern aesthetics to fine architectural residences, we specialize in flush-wall linear diffuse systems that integrate into ceiling panels, preserving minimalist interiors while maintaining whisper-quiet airflow.",
-    features: [
-      "Slim centralized multi-splits and mini-VRV designs",
-      "Seamless flush-mounted linear diffuse grill outlets",
-      "UVC germicidal sanitizers nested in high-velocity inducts",
-      "Smart-home compatible climate wall controls"
-    ],
-    specs: [
-      { label: "Acoustics", value: "Low setting whisper-decibel of 19dB(A)" },
-      { label: "Grille Style", value: "15mm ultra-slim linear borders" },
-      { label: "Brands", value: "Mitsubishi Electric Brand Shop Elite models" }
-    ],
-    image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1200&auto=format&fit=crop"
-  },
-  {
-    id: "installation-commissioning",
-    title: "AC Installation & Setup",
-    shortDesc: "Rigorous physical setups, nitrogen pressure testing, and validation.",
-    longDesc: "Our dedicated field engineering teams ensure precise installation layouts. We verify pressure limits via pressurized nitrogen leak sweeps, perform vacuum hold tests, and document thermodynamic commissioning charts.",
-    features: [
-      "Nitrogen dry sweeps & high-pressure structural leak testing",
-      "Micro-gauge vacuum decay tracking",
-      "Vibration alignment metrics for outdoor condensers",
-      "Full digital sensor calibration & balancing reports"
-    ],
-    specs: [
-      { label: "Testing Pressures", value: "40 bar high-pressure nitrogen lock" },
-      { label: "Vacuum Holds", value: "Verified below 500 microns" },
-      { label: "Reports", value: "Factory standard commissioning ledger" }
-    ],
-    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1200&auto=format&fit=crop"
+    image: "/projects/anand surgical.jpeg"
   },
   {
     id: "maintenance-amc",
-    title: "Maintenance & AMC Services",
-    shortDesc: "Scheduled wellness assessments, coil deep cleansing, and energy reviews.",
-    longDesc: "Annual Maintenance Contracts (AMC) designed to preserve performance levels, prevent compressor locks, and lower overall facility power bills. We leverage expert diagnostics to find micro-leaks and friction points before failure occurs.",
+    title: "Annual Maintenance Contracts",
+    shortDesc: "Customized Annual Maintenance Contracts for commercial, institutional, hospitality, and residential HVAC systems",
+    longDesc: "Our preventive maintenance programs keep HVAC systems operating efficiently throughout the year. Scheduled inspections, system optimization, and rapid-response support help reduce breakdowns, extend equipment life, and maintain peak performance.",
     features: [
-      "Bi-annual deep chemical coil cleaning and anti-mold sweeps",
-      "Electrical draw balance and pressure reviews",
-      "Refrigerant fill validation and leak testing",
-      "Priority 24/7 technical hotline dispatching"
+      "Scheduled Preventive Maintenance Visits",
+      "System Health Checks & Leak Detection",
+      "Electrical & Mechanical Performance Inspections",
+      "Priority Breakdown Support & Response"
     ],
+    specsTitle: "SERVICE BENEFITS",
     specs: [
-      { label: "Response", value: "Under 4 hours guaranteed dispatch" },
-      { label: "AMC Coverage", value: "Covers key parts, compressors, and labor" },
-      { label: "Efficiency Gain", value: "Maintains optimal cooling performance" }
+      { label: "Fast Response", value: "Dedicated support for urgent service requirements." },
+      { label: "Extended Equipment Life", value: "Regular maintenance reduces wear and unexpected failures." },
+      { label: "Optimized Performance", value: "Maintains cooling efficiency and energy savings." }
     ],
-    image: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=1200&auto=format&fit=crop"
+    image: "/projects/hitech.jpeg"
+  },
+  {
+    id: "commercial-ac",
+    title: "Commercial Air Conditioning Systems",
+    shortDesc: "Heavy central chiller plants, packaged ductable systems, and long layouts.",
+    longDesc: "We design and install centralized HVAC systems for hotels, hospitals, office buildings, educational campuses, banquet facilities, factories, and commercial complexes. Our solutions ensure reliable cooling, energy efficiency, and long-term operational performance.",
+    features: [
+      "Air Handling Units (AHU) & FCU Networks",
+      "Energy-Efficient VFD Controls",
+      "Packaged, Ductable & High-Capacity Cooling Systems"
+    ],
+    specsTitle: "KEY APPLICATIONS",
+    specs: [
+      { label: "Hotels & Resorts", value: "Guest rooms, banquet halls, restaurants, and lobbies." },
+      { label: "Commercial Buildings", value: "Offices, shopping centers, and mixed-use developments." },
+      { label: "Industrial Facilities", value: "Factories, production floors, and warehousing spaces" }
+    ],
+    image: "/projects/agora mall.jpeg"
+  },
+  {
+    id: "residential-ac",
+    title: "Luxury Residential HVAC Systems",
+    shortDesc: "Centralized concealed ducted lines, floor consoles, and premium multi-splits.",
+    longDesc: "Bringing modern aesthetics to fine architectural residences, we specialize in flush-wall linear diffuse systems that integrate into ceiling panels, preserving minimalist interiors while maintaining whisper-quiet airflow.",
+    features: [
+      "Hidden Ducted & VRF Cooling Systems",
+      "Ultra-Quiet Room Operation",
+      "Architectural Linear Slot Diffusers",
+      "Smart Home & Mobile App Control"
+    ],
+    specsTitle: "IDEAL FOR",
+    specs: [
+      { label: "Luxury Villas", value: "Large residences with multiple comfort zones." },
+      { label: "Premium Apartments", value: "Hidden cooling systems with modern aesthetics." },
+      { label: "Penthouses & Bungalows", value: "Customized climate control and smart automation." }
+    ],
+    image: "/projects/AVANT  evolved living.jpeg"
+  },
+  {
+    id: "installation-commissioning",
+    title: "Professional HVAC Installation & Commissioning",
+    shortDesc: "Rigorous physical setups, nitrogen pressure testing, and validation.",
+    longDesc: "Our certified installation teams ensure every HVAC system is installed, tested, and commissioned to manufacturer standards. From copper piping and ductwork to system balancing and performance verification, we deliver reliable operation from day one.",
+    features: [
+      "Leak Testing & Pressure Verification",
+      "Vacuuming & Refrigerant Charging",
+      "Equipment Alignment & System Balancing",
+      "Performance Testing & Final Commissioning"
+    ],
+    specsTitle: "QUALITY ASSURANCE",
+    specs: [
+      { label: "Pressure Tested", value: "Leak-free refrigerant piping verification." },
+      { label: "Performance Verified", value: "Cooling capacity and airflow balancing checks." },
+      { label: "Commissioning Reports", value: "Complete documentation and handover support" }
+    ],
+    image: "/projects/Maruti techlabs.jpg.jpeg"
   },
   {
     id: "after-sales-support",
     title: "After-Sales & Service Portal",
     shortDesc: "Direct diagnostic lines, genuine component stocks, and service CRM.",
-    longDesc: "We back our mechanical systems with long-term after-sales support, stocking a comprehensive catalog of genuine spare components and providing clients with an online Service CRM portal for real-time ticket logs.",
+    longDesc: "Our commitment continues long after project completion. Dedicated support teams, genuine spare parts availability, warranty assistance, and responsive service ensure uninterrupted system performance throughout the equipment lifecycle",
     features: [
-      "100% official manufacturer-certified replacement items",
-      "Online CRM ticketing portal support integration",
-      "Compressor extended protection programs",
-      "System retrofitting and modern low-GWP gas upgrades"
+      "Genuine Spare Parts Support",
+      "Extended Warranty Assistance",
+      "Dedicated Service Request Management",
+      "System Upgrade & Modernization Guidance"
     ],
+    specsTitle: "CUSTOMER ASSURANCES",
     specs: [
-      { label: "CRM Access", value: "https://service1.intelairgroup.com/" },
-      { label: "Spare Inventory", value: "95% key spares kept in stock" },
-      { label: "Warranty", value: "Up to 5 years extended hardware warranty" }
+      { label: "Support Access", value: "Dedicated assistance whenever service is required." },
+      { label: "Spare Parts Availability", value: "Access to genuine replacement components." },
+      { label: "Warranty Protection", value: "Comprehensive manufacturer-backed support." }
     ],
-    image: "https://images.unsplash.com/photo-1521791136368-1a46827d0515?q=80&w=1200&auto=format&fit=crop"
+    image: "/projects/after-sales.png"
   }
 ];
 
@@ -321,7 +325,7 @@ export const PROJECTS: ProjectItem[] = [
     title: "Bharti Airtel Ltd.",
     client: "Bharti Airtel Ltd.",
     location: "Ahmedabad, Gujarat",
-    category: "Corporate Offices / Industries",
+    category: "Commercial & Industrial Facilities",
     metrics: "427 TR Capacity",
     image: "/projects/Airtel.jpg.jpeg",
     description: "Large-scale centralized air conditioning design and ducting layout for regional corporate headquarters, optimizing air flow and heat dissipation."
@@ -331,7 +335,7 @@ export const PROJECTS: ProjectItem[] = [
     title: "Transformers & Rectifiers India Ltd.",
     client: "Transformers & Rectifiers India Ltd.",
     location: "Chhatral, Gujarat",
-    category: "Corporate Offices / Industries",
+    category: "Commercial & Industrial Facilities",
     metrics: "288 TR Capacity",
     image: "/projects/transformers and rectifiers.jpeg",
     description: "Heavy industrial ventilation and package AC system commissioned for production zones and high-load control offices."
@@ -341,7 +345,7 @@ export const PROJECTS: ProjectItem[] = [
     title: "Maruti Techlabs",
     client: "Maruti Technolabs Pvt. Ltd.",
     location: "Ahmedabad, Gujarat",
-    category: "Corporate Offices / Industries",
+    category: "Commercial & Industrial Facilities",
     metrics: "212 TR Capacity",
     image: "/projects/Maruti techlabs.jpg.jpeg",
     description: "Multi-floor zoning VRF climate system design featuring localized smart thermostats and indoor air quality sensors."
@@ -351,7 +355,7 @@ export const PROJECTS: ProjectItem[] = [
     title: "Zaveri Realty 31Five",
     client: "Zaveri Realty",
     location: "Satellite, Ahmedabad",
-    category: "Corporate Offices / Industries",
+    category: "Commercial & Industrial Facilities",
     metrics: "130 TR Capacity",
     image: "/projects/ZAVERI REALITY.jpg.jpeg",
     description: "Sleek concealed duct split arrays and minimal linear diffuser grilles commissioned for luxury corporate floors."
@@ -359,7 +363,7 @@ export const PROJECTS: ProjectItem[] = [
   {
     id: "deep-industries",
     title: "Deep Industries Ltd.",
-    category: "Corporate Offices / Industries",
+    category: "Commercial & Industrial Facilities",
     metrics: "112 TR"
   },
   {
@@ -367,7 +371,7 @@ export const PROJECTS: ProjectItem[] = [
     title: "Hi Tech Projects",
     client: "Hi Tech Projects Ltd.",
     location: "Ahmedabad, Gujarat",
-    category: "Corporate Offices / Industries",
+    category: "Commercial & Industrial Facilities",
     metrics: "101 TR Capacity",
     image: "/projects/hitech.jpeg",
     description: "Centralized mechanical airflow integration for modern multi-story corporate headquarters with energy-saving recovery ventilators."
@@ -375,25 +379,25 @@ export const PROJECTS: ProjectItem[] = [
   {
     id: "gk-chokshi",
     title: "G.K. Chokshi Office",
-    category: "Corporate Offices / Industries",
+    category: "Commercial & Industrial Facilities",
     metrics: "96 TR"
   },
   {
     id: "incuspaze",
     title: "Incuspaze",
-    category: "Corporate Offices / Industries",
+    category: "Commercial & Industrial Facilities",
     metrics: "90 TR"
   },
   {
     id: "ng-patel",
     title: "N.G. Patel Group",
-    category: "Corporate Offices / Industries",
+    category: "Commercial & Industrial Facilities",
     metrics: "78 TR"
   },
   {
     id: "harsh-exim",
     title: "Harsh Exim",
-    category: "Corporate Offices / Industries",
+    category: "Commercial & Industrial Facilities",
     metrics: "70 TR"
   },
 
@@ -635,7 +639,7 @@ export const PROJECTS: ProjectItem[] = [
     title: "Anand Surgical Hospital, Naroda",
     client: "Anand Surgical",
     location: "Naroda, Ahmedabad",
-    category: "Hospitals / Health Care",
+    category: "Hospitals / Healthcare",
     metrics: "310 TR Capacity",
     image: "/projects/anand surgical.jpeg",
     description: "Negative pressure isolation climate chambers and surgical suite air systems complying with medical safety guidelines."
@@ -643,25 +647,25 @@ export const PROJECTS: ProjectItem[] = [
   {
     id: "alka-hospital",
     title: "Alka Hospital, Bopal",
-    category: "Hospitals / Health Care",
+    category: "Hospitals / Healthcare",
     metrics: "280 TR"
   },
   {
     id: "sadvichar-parivar",
     title: "Sadvichar Parivar Trust",
-    category: "Hospitals / Health Care",
+    category: "Hospitals / Healthcare",
     metrics: "144 TR"
   },
   {
     id: "sanya-gic",
     title: "Sanya GIC Imaging Center",
-    category: "Hospitals / Health Care",
+    category: "Hospitals / Healthcare",
     metrics: "113 TR"
   },
   {
     id: "ratan-hospital",
     title: "Ratan Hospital",
-    category: "Hospitals / Health Care",
+    category: "Hospitals / Healthcare",
     metrics: "75 TR"
   },
   {
@@ -669,7 +673,7 @@ export const PROJECTS: ProjectItem[] = [
     title: "Karnavati Hospital",
     client: "Karnavati Healthcare",
     location: "Ahmedabad, Gujarat",
-    category: "Hospitals / Health Care",
+    category: "Hospitals / Healthcare",
     metrics: "75 TR Capacity",
     image: "/projects/Karnavati hospital.jpg.jpeg",
     description: "HEPA H14 micro-filtration air containment and cleanroom ventilation grids designed for sterile operations and patient wards."
@@ -677,25 +681,25 @@ export const PROJECTS: ProjectItem[] = [
   {
     id: "lt-vihaan",
     title: "L&T Vihaan Medical Center",
-    category: "Hospitals / Health Care",
+    category: "Hospitals / Healthcare",
     metrics: "56 TR"
   },
   {
     id: "tej-eye",
     title: "Tej Eye Hospital",
-    category: "Hospitals / Health Care",
+    category: "Hospitals / Healthcare",
     metrics: "54 TR"
   },
   {
     id: "flex-hospital",
     title: "Flex Hospital",
-    category: "Hospitals / Health Care",
+    category: "Hospitals / Healthcare",
     metrics: "22 TR"
   },
   {
     id: "dr-karna",
     title: "Dr. Karna Maheshwari Hospital",
-    category: "Hospitals / Health Care",
+    category: "Hospitals / Healthcare",
     metrics: "16 TR"
   }
 ];

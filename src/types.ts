@@ -6,7 +6,10 @@ export interface ServiceItem {
   shortDesc: string;
   longDesc: string;
   features: string[];
+  featuresTitle?: string;
   specs: { label: string; value: string }[];
+  specsTitle?: string;
+  idealApplications?: string;
   image: string;
 }
 
@@ -19,11 +22,11 @@ export interface ProjectItem {
   category:
     | 'Restaurants & Banquets'
     | 'Hotels, Resorts & Hospitality'
-    | 'Corporate Offices / Industries'
+    | 'Commercial & Industrial Facilities'
     | 'Educational Institutions'
     | 'Showrooms & Retail'
     | 'Residence / Luxury Villas'
-    | 'Hospitals / Health Care';
+    | 'Hospitals / Healthcare';
   year?: number;
   featured?: boolean;
   metrics: string;

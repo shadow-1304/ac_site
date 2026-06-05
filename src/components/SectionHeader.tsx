@@ -7,9 +7,10 @@ interface SectionHeaderProps {
   description?: string;
   isDark: boolean;
   className?: string;
+  subTag?: string;
 }
 
-export default function SectionHeader({ number, tag, title, description, isDark, className = "" }: SectionHeaderProps) {
+export default function SectionHeader({ number, tag, title, description, isDark, className = "", subTag }: SectionHeaderProps) {
   return (
     <div className={`relative w-full pt-8 pb-8 md:pt-10 md:pb-12 border-t ${
       isDark ? "border-neutral-900" : "border-gray-100"
@@ -27,7 +28,7 @@ export default function SectionHeader({ number, tag, title, description, isDark,
           <span className={`text-[10px] font-mono tracking-widest ${
             isDark ? "text-neutral-600" : "text-gray-400 font-medium"
           }`}>
-            INTEL AIR GROUP • TECH SPECS
+            {subTag || "INTEL AIR GROUP • TECH SPECS"}
           </span>
         </div>
 

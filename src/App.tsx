@@ -184,7 +184,7 @@ export default function App() {
 
                         <p className={`mt-10 max-w-xl text-base sm:text-lg leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"
                           }`}>
-                          <ScrollRevealText text="Transforming modern layouts into comfortable spaces through thermal engineering, computational ventilation models, and low-GWP energy architectures. Designed for structural designers, hotels, and hospitals." delay={0.2} />
+                          <ScrollRevealText text="End-to-end HVAC design, supply, installation, and maintenance solutions for commercial, institutional, hospitality, and residential projects." delay={0.2} />
                         </p>
                       </div>
 
@@ -325,8 +325,8 @@ export default function App() {
                     <SectionHeader
                       number="01"
                       tag="WHO WE ARE"
-                      title="Over 13 years of high-end mechanical climate engineering."
-                      description="We don't simply supply air conditioning. We partner with leading real-estate teams and sanitational designers to architect custom centralized systems that breathe in total harmony with modern glass layout aesthetics, maximizing heat load dissipation."
+                      title="PROVEN EXPERTISE. RELIABLE EXECUTION."
+                      description="Intel Air Group combines engineering expertise, project execution capability, and responsive after-sales support to deliver HVAC solutions that perform reliably for years."
                       isDark={isDark}
                     />
 
@@ -359,8 +359,8 @@ export default function App() {
                     <SectionHeader
                       number="02"
                       tag="SERVICES OVERVIEW"
-                      title="Tailored HVAC architectures. Precision commissioning."
-                      description="From simultaneous oceanic recovery VRFs to clinical isolation air chambers compliant with medical standards, discover our engineering range."
+                      title="COMPLETE HVAC SOLUTIONS. EXPERTLY EXECUTED."
+                      description="From commercial offices and hospitals to hotels, institutions, industrial facilities, and luxury residences, Intel Air Group delivers end-to-end HVAC solutions tailored to each project's requirements and long-term maintenance."
                       isDark={isDark}
                     />
 
@@ -382,7 +382,7 @@ export default function App() {
                             }`}
                         >
                           <span className="text-[10px] font-mono text-neutral-500 leading-none mb-4 block font-semibold">
-                            COGNIZANT FLUIDS // {service.id.toUpperCase().replace("-", " ")}
+                            HVAC SOLUTIONS // {service.id.toUpperCase().replace("-", " ")}
                           </span>
                           <h3 className={`text-xl font-bold tracking-tight uppercase leading-tight mb-4 ${isDark ? "text-white" : "text-[#0a0a0a]"
                             }`}>
@@ -394,8 +394,7 @@ export default function App() {
                           </p>
 
                           <div className="flex items-center gap-2 text-xs font-mono text-blue-600 group-hover:translate-x-1.5 transition-transform font-bold">
-                            <span>EXPLORE SPECS</span>
-                            <ArrowRight className="w-3.5 h-3.5" />
+                            <span>View Solutions →</span>
                           </div>
                         </motion.div>
                       ))}
@@ -426,18 +425,8 @@ export default function App() {
                             "{TESTIMONIALS[currentTestimonialIndex].quote}"
                           </blockquote>
 
-                          <div className="mt-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                            <div>
-                              <strong className={`block text-sm font-semibold tracking-wide ${isDark ? "text-neutral-100" : "text-neutral-900"
-                                }`}>
-                                {TESTIMONIALS[currentTestimonialIndex].author}
-                              </strong>
-                              <span className="block text-xs font-mono text-neutral-500 uppercase tracking-wider mt-1">
-                                {TESTIMONIALS[currentTestimonialIndex].role} &bull; {TESTIMONIALS[currentTestimonialIndex].company}
-                              </span>
-                            </div>
-
-                            {/* Testimonial slider indicators */}
+                          {/* Testimonial slider indicators */}
+                          <div className="mt-8 flex justify-start">
                             <div className="flex gap-2">
                               {TESTIMONIALS.map((_, i) => (
                                 <button
@@ -450,6 +439,8 @@ export default function App() {
                               ))}
                             </div>
                           </div>
+
+
                         </motion.div>
                       </AnimatePresence>
                     </div>
@@ -465,16 +456,16 @@ export default function App() {
                       </div>
 
                       <span className="text-[10px] font-mono tracking-widest text-blue-600 uppercase font-bold leading-none">
-                        ◆ INTERDISCIPLINARY COOPERATION
+                        ◆ PROJECT CONSULTATION
                       </span>
 
                       <h3 className={`text-2xl sm:text-4xl font-bold tracking-tight uppercase max-w-xl leading-tight ${isDark ? "text-white" : "text-[#0a0a0a]"
                         }`}>
-                        Have an ambitious architectural design pending HVAC layout?
+                        Planning a new project?<br />Let's design the right HVAC solution
                       </h3>
 
                       <p className={`text-xs sm:text-sm max-w-md ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
-                        Our computational fluid group collaborates directly with lead contractors. Obtain safe heat loss estimations, sound budgets, and clean ducting routes.
+                        Collaborate with our HVAC specialists during the planning stage to optimize comfort, efficiency, and long-term system performance.
                       </p>
 
                       <button
@@ -485,8 +476,7 @@ export default function App() {
                           : "bg-blue-50 border-blue-200 text-blue-600"
                           }`}
                       >
-                        <span>CO-DESIGN WITH INTEL AIR</span>
-                        <ArrowUpRight className="w-4 h-4" />
+                        <span>REQUEST A CONSULTATION →</span>
                       </button>
                     </div>
 
@@ -498,11 +488,10 @@ export default function App() {
                 {/* ========================================================= */}
                 {activeSection === "about" && (
                   <div id="section-about" className="flex flex-col gap-8 md:gap-12">
-                    <SectionHeader
-                      number="02"
+                    <SectionHeader                      number="02"
                       tag="COMPANY PROFILE"
-                      title="We balance temperature, acoustics, and air filtration parameters."
-                      description="Intel Air Group is an elite mechanical contractor specialized in full-cycle HVAC consultation, multi-room VRV zoning, and heavy chiller distribution systems."
+                      title="BUILDING BETTER INDOOR ENVIRONMENTS"
+                      description="Trusted by businesses, institutions, developers, and homeowners, Intel Air Group combines technical expertise with proven execution capabilities to deliver high-performance HVAC systems."
                       isDark={isDark}
                     />
 
@@ -600,7 +589,7 @@ export default function App() {
                                   "Distribution Sales",
                                   "Customer Relations",
                                   "Accounts",
-                                  "Stores"
+                                  "Project Sales"
                                 ].map((profile, i) => (
                                   <span
                                     key={i}
@@ -691,7 +680,7 @@ export default function App() {
                                   "Sales",
                                   "Customer Relations",
                                   "Project Sales",
-                                  "Management"
+                                  "Project Management"
                                 ].map((profile, i) => (
                                   <span
                                     key={i}
@@ -838,13 +827,13 @@ export default function App() {
                           className={`p-6 border rounded-none ${isDark ? "bg-neutral-950/40 border-neutral-900" : "bg-transparent border-black/10"}`}
                         >
                           <span className="text-[10px] font-mono text-blue-600 uppercase tracking-widest block mb-4 font-bold">
-                            STRENGTH 01 // WHISPER ACOUSTICS
+                            STRENGTH 01 // PROJECT EXECUTION
                           </span>
                           <h5 className={`text-base font-bold uppercase mb-3 ${isDark ? "text-white" : "text-[#0f0f0f]"}`}>
-                            Sustained Whispering Decibels
+                            END-TO-END PROJECT DELIVERY
                           </h5>
                           <p className={`text-xs leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
-                            By placing custom acoustic dynamic isolators and selecting multi-stage inverter motors, we guarantee night cooling levels remain under 21 dB(A)—practically inaudible for bedroom penthouses or private offices.
+                            From design and equipment selection to installation, commissioning, and maintenance, we manage every stage of the HVAC project lifecycle.
                           </p>
                         </motion.div>
 
@@ -856,13 +845,13 @@ export default function App() {
                           className={`p-6 border rounded-none ${isDark ? "bg-neutral-950/40 border-neutral-900" : "bg-transparent border-black/10"}`}
                         >
                           <span className="text-[10px] font-mono text-blue-600 uppercase tracking-widest block mb-4 font-bold">
-                            STRENGTH 02 // ZERO ENERGY SPOILAGE
+                            STRENGTH 02 // ENGINEERING EXPERTISE
                           </span>
                           <h5 className={`text-base font-bold uppercase mb-3 ${isDark ? "text-white" : "text-[#0f0f0f]"}`}>
-                            Optimal Energy Balance
+                            TECHNICAL DESIGN & CONSULTANCY
                           </h5>
                           <p className={`text-xs leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
-                            Using Energy Recovery Ventilators (ERV) allows our systems to capture up to 85% of cold thermal energy from outgoing exhaust lines, pre-cooling incoming fresh air loops and lowering energy draw.
+                            Comprehensive HVAC planning, heat load calculations, CAD layouts, and system design tailored to project requirements.
                           </p>
                         </motion.div>
 
@@ -874,13 +863,13 @@ export default function App() {
                           className={`p-6 border rounded-none ${isDark ? "bg-neutral-950/40 border-neutral-900" : "bg-transparent border-black/10"}`}
                         >
                           <span className="text-[10px] font-mono text-blue-600 uppercase tracking-widest block mb-4 font-bold">
-                            STRENGTH 03 // PARTICLE SANITIZATION
+                            STRENGTH 03 // AFTER-SALES SUPPORT
                           </span>
                           <h5 className={`text-base font-bold uppercase mb-3 ${isDark ? "text-white" : "text-[#0f0f0f]"}`}>
-                            Hospital-Grade Clean Air
+                            DEDICATED SERVICE & AMC SUPPORT
                           </h5>
                           <p className={`text-xs leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
-                            Integrated HEPA H14 micro-filtration meshes and carbon-reacting cartridges extract volatile compounds and micro-particulates down to 0.1 microns, creating safe environments for surgical complexes.
+                            Preventive maintenance programs and responsive service support designed to maximize system reliability and long-term performance.
                           </p>
                         </motion.div>
                       </div>
@@ -900,7 +889,7 @@ export default function App() {
                             ◇ CONVERSION METRICS
                           </span>
                           <h3 className={`text-2xl font-bold uppercase tracking-tight mb-6 ${isDark ? "text-white" : "text-[#0a0a0a]"}`}>
-                            Why Lead Builders Standardize on Intel Air Group
+                            WHY CLIENTS TRUST INTEL AIR GROUP
                           </h3>
                           <p className={`text-sm leading-relaxed mb-8 ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
                             We sustain continuous service SLAs that prevent unexpected shutdowns, provide extended machinery coverage for up to a decade, and document structural heat load audits on paper.
@@ -920,10 +909,10 @@ export default function App() {
 
                         <div className="lg:col-span-7 flex flex-col gap-4">
                           {[
-                            { title: "24-Month Project Defect Guarantee", desc: "Every physical copper layout joint, extraction valve and chiller alignment carries an extensive 2-year worry-free warranty audit lock." },
-                            { title: "Direct Single-Point Support Desk", desc: "No complex robot bots or waiting lines. You coordinate directly with our senior field technician or estimating mechanical engineer within 4 hours." },
-                            { title: "Eco-Friendly Refrigerant Policy", desc: "All system parameters are pre-engineered to run on the latest eco-friendly cooling gases (R-32, R-410A) with very low Global Warming Potential." },
-                            { title: "Transparent Cost Structures", desc: "No hidden charges. We outline clean linear budgets with itemized bills, structural copper sizing matrices, and AMC metrics transparently." }
+                            { title: "Dedicated Project Management", desc: "A single point of contact throughout project execution." },
+                            { title: "Quality Installation Standards", desc: "Focused on safety, precision, and long-term system reliability." },
+                            { title: "Responsive After-Sales Support", desc: "Dedicated service teams and AMC programs for ongoing support." },
+                            { title: "Transparent Communication", desc: "Clear proposals, project updates, and cost visibility from start to finish." }
                           ].map((item, index) => (
                             <motion.div
                               key={index}
@@ -962,8 +951,8 @@ export default function App() {
                     <SectionHeader
                       number="03"
                       tag="OUR HVAC SERVICES"
-                      title="Advanced thermal zoning. Precise mechanical installations."
-                      description="We analyze building layouts, thermodynamic targets, and physical structural parameters to select the ideal VRF setup or heavy chiller configuration for the project scope."
+                      title="DESIGN. INSTALLATION. MAINTENANCE."
+                      description="Our team delivers end-to-end HVAC solutions for commercial, healthcare, hospitality, industrial, institutional, and residential projects."
                       isDark={isDark}
                     />
 
@@ -973,7 +962,7 @@ export default function App() {
                       {/* LEFT: Clickable Service Tabs */}
                       <div className="lg:col-span-5 flex flex-col gap-3">
                         <span className="text-[10px] font-mono text-neutral-500 tracking-widest p-2 block font-bold">
-                          ◇ CLIMATE CAPABILITIES MENU
+                          ◇ OUR SERVICES
                         </span>
 
                         {SERVICES.map((s) => {
@@ -1035,7 +1024,9 @@ export default function App() {
 
                               <div>
                                 <span className="text-[10px] font-mono text-neutral-500 uppercase block tracking-widest mb-1.5">
-                                  03 // FLUID COMPORTMENT DETAILS
+                                  {activeServiceTab === "installation-commissioning"
+                                    ? "06 // INSTALLATION & COMMISSIONING"
+                                    : "03 // SERVICE OVERVIEW"}
                                 </span>
 
                                 <h3 className={`text-2xl font-light uppercase tracking-wide ${isDark ? "text-white" : "text-neutral-900"}`}>
@@ -1050,7 +1041,7 @@ export default function App() {
                               {/* Features list */}
                               <div className="flex flex-col gap-3">
                                 <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest">
-                                  SYSTEM INCLUSIONS & ATTRIBUTES:
+                                  {SERVICES.find(s => s.id === activeServiceTab)?.featuresTitle || "SYSTEM INCLUSIONS & ATTRIBUTES"}:
                                 </span>
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                                   {SERVICES.find(s => s.id === activeServiceTab)?.features.map((feat, index) => (
@@ -1066,20 +1057,31 @@ export default function App() {
                                 </div>
                               </div>
 
-                              {/* Technical ratings spec matrix */}
-                              <div className={`mt-4 border-t pt-6 flex flex-col gap-3 ${isDark ? "border-neutral-900" : "border-gray-150"}`}>
-                                <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest font-bold">
-                                  ENGINEERING SPECS SHEET:
-                                </span>
-                                <div className="grid grid-cols-3 gap-4">
-                                  {SERVICES.find(s => s.id === activeServiceTab)?.specs.map((spec, index) => (
-                                    <div key={index} className="flex flex-col gap-1">
-                                      <span className="text-[9px] font-mono text-neutral-450 uppercase leading-none font-bold">{spec.label}</span>
-                                      <span className={`text-xs font-bold ${isDark ? "text-blue-400" : "text-blue-600"}`}>{spec.value}</span>
-                                    </div>
-                                  ))}
+                              {/* Technical ratings spec matrix or ideal applications */}
+                              {SERVICES.find(s => s.id === activeServiceTab)?.idealApplications ? (
+                                <div className={`mt-4 border-t pt-6 flex flex-col gap-3 ${isDark ? "border-neutral-900" : "border-gray-150"}`}>
+                                  <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest font-bold">
+                                    IDEAL APPLICATIONS:
+                                  </span>
+                                  <p className={`text-xs font-bold ${isDark ? "text-blue-400" : "text-blue-600"}`}>
+                                    {SERVICES.find(s => s.id === activeServiceTab)?.idealApplications}
+                                  </p>
                                 </div>
-                              </div>
+                              ) : (
+                                <div className={`mt-4 border-t pt-6 flex flex-col gap-3 ${isDark ? "border-neutral-900" : "border-gray-150"}`}>
+                                  <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest font-bold">
+                                    {SERVICES.find(s => s.id === activeServiceTab)?.specsTitle || "ENGINEERING SPECS SHEET"}:
+                                  </span>
+                                  <div className="grid grid-cols-3 gap-4">
+                                    {SERVICES.find(s => s.id === activeServiceTab)?.specs.map((spec, index) => (
+                                      <div key={index} className="flex flex-col gap-1">
+                                        <span className="text-[9px] font-mono text-neutral-450 uppercase leading-none font-bold">{spec.label}</span>
+                                        <span className={`text-xs font-bold ${isDark ? "text-blue-400" : "text-blue-600"}`}>{spec.value}</span>
+                                      </div>
+                                    ))}
+                                  </div>
+                                </div>
+                              )}
 
                             </motion.div>
                           ) : null}
@@ -1091,19 +1093,19 @@ export default function App() {
                     {/* Engineering Process Timeline (Editorial layout) */}
                     <div className={`border-t pt-12 ${isDark ? "border-neutral-900" : "border-gray-100"}`}>
                       <span className="text-[10px] font-mono text-neutral-500 uppercase block tracking-[0.2em] mb-4 font-bold">
-                        ◇ THE BLUEPRINT FLOW
+                        ◇ PROJECT EXECUTION FRAMEWORK
                       </span>
                       <h3 className={`text-3xl font-bold uppercase tracking-tight mb-12 ${isDark ? "text-white" : "text-[#0a0a0a]"}`}>
-                        Our Complete HVAC Design-to-AMC Process
+                        Our End-to-End HVAC Delivery Process
                       </h3>
 
                       <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
                         {[
-                          { step: "01", name: "Audit & Load", desc: "Calculate building solar profiles, physical walls, glass layers, and estimated human occupants." },
-                          { step: "02", name: "CFD Vectoring", desc: "Simulate duct boundaries and model air velocities to verify total absence of static pockets." },
-                          { step: "03", name: "Piping & Install", desc: "Rigorous copper joint sealing, vibration isolator layouts, and manifold routing setups." },
-                          { step: "04", name: "Commissioning", desc: "Formal dry nitrogen holding runs, vacuum holds down to 500 microns, and structural balance." },
-                          { step: "05", name: "AMC Handover", desc: "Define quarterly thermal audits, diagnostic routines, coil deep-wash plans, and proactive care." }
+                          { step: "01", name: "Site Survey & Load Analysis", desc: "Evaluate building dimensions, occupancy patterns, heat loads, and ventilation requirements to establish the foundation for system design." },
+                          { step: "02", name: "System Design & Engineering", desc: "Develop optimized HVAC layouts, airflow strategies, and equipment selections to maximize comfort, efficiency, and long-term system performance." },
+                          { step: "03", name: "Installation & Execution", desc: "Execute piping, ducting, equipment placement, and electrical integration according to approved engineering specifications." },
+                          { step: "04", name: "Commissioning", desc: "Perform testing, balancing, leak verification, and performance validation to ensure the system operates as designed." },
+                          { step: "05", name: "Ongoing Support & AMC", desc: "Provide preventive maintenance, periodic inspections, and dedicated service support to maintain peak system performance." }
                         ].map((proc, index) => (
                           <motion.div
                             key={index}
@@ -1158,11 +1160,11 @@ export default function App() {
                         "All",
                         "Restaurants & Banquets",
                         "Hotels, Resorts & Hospitality",
-                        "Corporate Offices / Industries",
+                        "Commercial & Industrial Facilities",
                         "Educational Institutions",
                         "Showrooms & Retail",
                         "Residence / Luxury Villas",
-                        "Hospitals / Health Care"
+                        "Hospitals / Healthcare"
                       ].map((cat) => {
                         const isSelected = projectFilter === cat;
                         return (
@@ -1309,10 +1311,8 @@ export default function App() {
                       </motion.div>
                     </AnimatePresence>
                   </motion.div>
-
                 </div>
               )}
-
                 {/* ========================================================= */}
                 {/* 5. CLIENTS SECTION                                        */}
                 {/* ========================================================= */}
@@ -1320,10 +1320,11 @@ export default function App() {
                   <div id="section-clients" className="flex flex-col gap-16 md:gap-24">
                     <SectionHeader
                       number="05"
-                      tag="OUR CLIENT BASE"
-                      title="Over 7,000 satisfied facilities. Engineered trust."
-                      description="We service high-demand medical systems, heavy real-estate complexes, premium beachfront resorts, and education institutes across coastal and urban areas."
+                      tag="TRUSTED PARTNERSHIPS"
+                      title="DELIVERING EXCELLENCE THROUGH TRUSTED PARTNERSHIPS."
+                      description="Partnering with globally recognized HVAC manufacturers to deliver reliable, efficient, and high-performance climate control solutions across diverse project environments."
                       isDark={isDark}
+                      subTag="INTEL AIR GROUP • BRAND NETWORK"
                     />
 
                     {/* Aesthetic Client Logo Wall / Custom Grid using brand partnerships text tags */}
@@ -1370,13 +1371,13 @@ export default function App() {
 
                       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                         {[
-                          { sector: "Restaurants & Banquets", demand: "High-volume air changes, advanced odor extraction, quiet cooling during peak capacity events", share_of_installations: "Luxury banquet lawns, fine-dining restaurants, celebration halls" },
-                          { sector: "Hotels, Resorts & Hospitality", demand: "Simultaneous Cooling VRF, Anti-Corrosion Salt Coating, Low Acoustical Decibels", share_of_installations: "Ocean shore grand resorts, 500+ guestroom suites, lobbies" },
-                          { sector: "Corporate Offices / Industries", demand: "High-ton water chiller towers, computerized VAV ducts, Smart BMS console links", share_of_installations: "Multi-floor tech corridors, open floor layouts, manufacturing plants" },
-                          { sector: "Educational Institutions", demand: "Precision decibel environments, optimal fresh air changes (ACH), classroom zoning controls", share_of_installations: "University campus blocks, archival libraries, primary school rooms" },
-                          { sector: "Showrooms & Retail", demand: "Continuous high airflow cassettes, thermal jet air curtains, floor barriers", share_of_installations: "Automotive showrooms, premium boutiques, shopping mall layouts" },
-                          { sector: "Residence / Luxury Villas", demand: "Whisper-silent cassette integration, slim line grilles layout, Home automation", share_of_installations: "Duplex townhomes, high-tier penthouse villas, private estates" },
-                          { sector: "Hospitals / Health Care", demand: "ISO 5 Positive or Negative Pressure Airflow, HEPA Cleanliness", share_of_installations: "Hospital surgery zones, diagnostic path wings, isolation chambers" }
+                          { sector: "Restaurants & Banquets", servicesInclude: "Custom HVAC solutions for banquet halls, restaurants, cafés, and event venues requiring comfort, ventilation, and reliable cooling during peak occupancy.", typicalProjects: "Luxury banquet lawns, fine-dining restaurants, celebration halls" },
+                          { sector: "Hotels, Resorts & Hospitality", servicesInclude: "Energy-efficient HVAC systems designed for hotels, resorts, guest rooms, lobbies, banquet facilities, and hospitality environments.", typicalProjects: "Ocean shore grand resorts, 500+ guestroom suites, lobbies" },
+                          { sector: "Commercial & Industrial Facilities", servicesInclude: "Reliable cooling, ventilation, and air distribution systems for offices, factories, warehouses, production facilities, and commercial developments.", typicalProjects: "Multi-floor tech corridors, open floor layouts, manufacturing plants" },
+                          { sector: "Educational Institutions", servicesInclude: "Comfort-focused HVAC solutions for schools, colleges, universities, libraries, laboratories, and educational campuses.", typicalProjects: "University campus blocks, archival libraries, primary school rooms" },
+                          { sector: "Showrooms & Retail", servicesInclude: "Climate-controlled environments for retail stores, automobile showrooms, shopping centers, and customer-facing commercial spaces.", typicalProjects: "Automotive showrooms, premium boutiques, shopping mall layouts" },
+                          { sector: "Residence / Luxury Villas", servicesInclude: "Premium residential HVAC solutions for luxury villas, bungalows, penthouses, and high-end private residences.", typicalProjects: "Duplex townhomes, high-tier penthouse villas, private estates" },
+                          { sector: "Hospitals / Healthcare", servicesInclude: "Specialized HVAC and ventilation systems designed for hospitals, diagnostic centers, operation theatres, laboratories, and healthcare facilities.", typicalProjects: "Hospital surgery zones, diagnostic path wings, isolation chambers" }
                         ].map((item, index) => (
                           <motion.div
                             key={index}
@@ -1391,15 +1392,15 @@ export default function App() {
                               {item.sector}
                             </h4>
                             <div>
-                              <span className="block text-[8px] font-mono text-neutral-400 uppercase leading-none mb-1 font-bold">DESIGN PARAMETERS:</span>
-                              <span className={`text-xs block ${isDark ? "text-neutral-200" : "text-gray-500"}`}>
-                                {item.demand}
+                              <span className="block text-[8px] font-mono text-neutral-450 uppercase leading-none mb-1 font-bold">SERVICES INCLUDE:</span>
+                              <span className={`text-xs block ${isDark ? "text-neutral-250" : "text-gray-500"}`}>
+                                {item.servicesInclude}
                               </span>
                             </div>
                             <div className="border-t border-gray-150 dark:border-neutral-900/80 pt-2 mt-1">
-                              <span className="block text-[8px] font-mono text-neutral-500 uppercase leading-none mb-1 font-bold">KEY APPLICATION:</span>
+                              <span className="block text-[8px] font-mono text-neutral-500 uppercase leading-none mb-1 font-bold">TYPICAL PROJECTS:</span>
                               <span className={`text-[11px] leading-relaxed block ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
-                                {item.share_of_installations}
+                                {item.typicalProjects}
                               </span>
                             </div>
                           </motion.div>
