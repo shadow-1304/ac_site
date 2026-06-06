@@ -74,6 +74,7 @@ export default function App() {
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
   const [aspectRatio, setAspectRatio] = useState<"portrait" | "landscape">("landscape");
   const [activeLightboxImage, setActiveLightboxImage] = useState<string | null>(null);
+  const [selectedSystem, setSelectedSystem] = useState<any>(null);
 
   useEffect(() => {
     if (selectedProject?.image) {
@@ -854,33 +855,104 @@ export default function App() {
 
                       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         {[
-                          { title: "VRF Air Conditioning System", desc: "Variable Refrigerant Flow cooling circuits optimizing single and multi-outdoor zone load sharing.", icon: Wind },
-                          { title: "Packaged Air Conditioning System", desc: "Self-contained high-capacity roof or side mount modular packages for commercial operations.", icon: ShieldCheck },
-                          { title: "Ductable Air Conditioning System", desc: "Sleek concealed ceiling-mounted split systems directing uniform thermal lines across larger zones.", icon: Activity },
-                          { title: "Cassette Air Conditioners", desc: "4-way direct air distribution panels fitting seamlessly into standard aesthetic ceiling grids.", icon: Sparkles },
-                          { title: "Floor Mounted / Tower Air Conditioners", desc: "Stately tower packages offering rapid static cooling for large retail and community halls.", icon: FileText },
-                          { title: "Split Air Conditioners", desc: "Premium wall-mounted whisper silent inverter modules with hyper-filtration capabilities.", icon: Snowflake },
-                          { title: "Window Air Conditioners", desc: "Rugged and efficient single-unit cooling architectures suited for immediate installation setups.", icon: Flame },
-                          { title: "Customized Air Conditioning System", desc: "Tailored thermodynamics cooling design parameters customized to specific industrial processes.", icon: Calculator },
-                          { title: "Different Type Ventilation System", desc: "Axial and centrifugal mechanical fresh air loops, smoke exhaust, and duct exhaust matrices.", icon: Wind }
+                          {
+                            title: "VRF Air Conditioning System",
+                            desc: "Variable Refrigerant Flow cooling circuits optimizing single and multi-outdoor zone load sharing.",
+                            icon: Wind,
+                            image: "/services/vrf-systems.png",
+                            features: ["Multi-zone temperature control", "Energy-efficient capacity allocation", "Sleek compact footprints", "Whisper-quiet decibel levels"]
+                          },
+                          {
+                            title: "Packaged Air Conditioning System",
+                            desc: "Self-contained high-capacity roof or side mount modular packages for commercial operations.",
+                            icon: ShieldCheck,
+                            image: "/services/commercial-ac.png",
+                            features: ["Double-skin air handling units", "Variable frequency drives (VFD) controls", "Heavy-duty outdoor packaging", "Easy service access panels"]
+                          },
+                          {
+                            title: "Ductable Air Conditioning System",
+                            desc: "Sleek concealed ceiling-mounted split systems directing uniform thermal lines across larger zones.",
+                            icon: Activity,
+                            image: "/services/ductable_ac.png",
+                            features: ["Flush-ceiling linear diffuse grilles", "Concealed layout for clean interior design", "Quiet remote condenser setups", "Uniform cooling airflow spread"]
+                          },
+                          {
+                            title: "Cassette Air Conditioners",
+                            desc: "4-way direct air distribution panels fitting seamlessly into standard aesthetic ceiling grids.",
+                            icon: Sparkles,
+                            image: "/services/cassette_ac.png",
+                            features: ["4-way motorized airflow louvers", "Grid ceiling flush aesthetic integration", "Built-in condensate high-lift drain pumps", "Minimal vertical headroom requirements"]
+                          },
+                          {
+                            title: "Floor Mounted / Tower Air Conditioners",
+                            desc: "Stately tower packages offering rapid static cooling for large retail and community halls.",
+                            icon: FileText,
+                            image: "/services/tower_ac.png",
+                            features: ["Stately standing tower packages", "Rapid high-throw static cooling cycles", "No ceiling void space required", "Perfect for high-occupancy open zones"]
+                          },
+                          {
+                            title: "Split Air Conditioners",
+                            desc: "Premium wall-mounted whisper silent inverter modules with hyper-filtration capabilities.",
+                            icon: Snowflake,
+                            image: "/services/split_ac.png",
+                            features: ["Whisper-silent indoor blower units", "High energy savings inverter compressors", "Multi-stage air purification filtration", "Compact wall installation footprint"]
+                          },
+                          {
+                            title: "Window Air Conditioners",
+                            desc: "Rugged and efficient single-unit cooling architectures suited for immediate installation setups.",
+                            icon: Flame,
+                            image: "/services/window_ac.png",
+                            features: ["Rugged high-durability design", "Direct wall or window installation setups", "No internal refrigerant copper piping", "Quick maintenance and service access"]
+                          },
+                          {
+                            title: "Customized Air Conditioning System",
+                            desc: "Tailored thermodynamics cooling design parameters customized to specific industrial processes.",
+                            icon: Calculator,
+                            image: "/services/custom_ac.png",
+                            features: ["Process-specific temperature tolerance bounds", "Tuned air recycling and filtration levels", "Heavy-duty cooling machinery integration", "Automated digital parameter controllers"]
+                          },
+                          {
+                            title: "Different Type Ventilation System",
+                            desc: "Axial and centrifugal mechanical fresh air loops, smoke exhaust, and duct exhaust matrices.",
+                            icon: Wind,
+                            image: "/services/ventilation-systems.png",
+                            features: ["Axial and centrifugal blower units", "Fresh air delivery & oxygen balancing", "Smoke and high-temp hazard evacuation", "Negative/Positive pressure rooms setup"]
+                          }
                         ].map((system, index) => {
-                          const IconComponent = system.icon;
                           return (
                             <motion.div
                               key={index}
+                              onClick={() => setSelectedSystem(system)}
                               initial={{ opacity: 0, y: 25 }}
                               whileInView={{ opacity: 1, y: 0 }}
                               viewport={{ once: true, margin: "-50px" }}
                               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: index * 0.05 }}
-                              className={`p-6 border rounded-none flex flex-col gap-4 group transition-all duration-300 hover:scale-[1.01] ${isDark
+                              className={`p-6 border rounded-none flex flex-col gap-4 group transition-all duration-300 hover:scale-[1.01] cursor-pointer relative overflow-hidden ${isDark
                                 ? "bg-neutral-950/40 border-neutral-900 hover:border-blue-500/30 hover:bg-neutral-950"
                                 : "bg-transparent border-black/10 hover:border-blue-500/30 hover:shadow-md"
                                 }`}
                             >
-                              <div className="w-10 h-10 bg-blue-600/10 border border-blue-500/20 flex items-center justify-center rounded-none group-hover:border-blue-500/40 transition-colors">
-                                <IconComponent className="w-4 h-4 text-blue-600" />
+                              {/* Translucent background image texture */}
+                              <div className="absolute inset-0 pointer-events-none opacity-[0.03] group-hover:opacity-[0.07] transition-opacity duration-500">
+                                <img
+                                  src={system.image}
+                                  alt=""
+                                  className="w-full h-full object-cover transition-all duration-500 grayscale"
+                                />
                               </div>
-                              <div>
+
+                              {/* Translucent thumbnail instead of icon block */}
+                              <div className={`w-16 h-12 overflow-hidden border-2 p-0.5 rounded-none relative z-10 shrink-0 transition-all duration-300 ${
+                                isDark ? "border-neutral-850 bg-neutral-900/40 group-hover:border-neutral-700" : "border-neutral-300 bg-neutral-50 group-hover:border-neutral-400"
+                              }`}>
+                                <img
+                                  src={system.image}
+                                  alt={system.title}
+                                  className="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 grayscale"
+                                />
+                              </div>
+
+                              <div className="relative z-10">
                                 <h5 className={`text-sm font-bold uppercase mb-1 tracking-wide ${isDark ? "text-white" : "text-[#0f0f0f]"}`}>
                                   {system.title}
                                 </h5>
@@ -913,26 +985,17 @@ export default function App() {
                           whileInView={{ opacity: 1, y: 0 }}
                           viewport={{ once: true, margin: "-100px" }}
                           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                          className={`p-6 border rounded-none flex flex-col justify-between ${isDark ? "bg-neutral-950/40 border-neutral-900" : "bg-transparent border-black/10"}`}
+                          className={`p-6 border rounded-none ${isDark ? "bg-neutral-950/40 border-neutral-900" : "bg-transparent border-black/10"}`}
                         >
-                          <div>
-                            <div className="h-44 w-full mb-6 overflow-hidden relative border border-neutral-500/10">
-                              <img
-                                src="/services/installation-commissioning.png"
-                                alt="Project Execution"
-                                className="w-full h-full object-cover grayscale contrast-[1.05] hover:grayscale-0 hover:scale-105 transition-all duration-500"
-                              />
-                            </div>
-                            <span className="text-[10px] font-mono text-blue-600 uppercase tracking-widest block mb-4 font-bold">
-                              STRENGTH 01 // PROJECT EXECUTION
-                            </span>
-                            <h5 className={`text-base font-bold uppercase mb-3 ${isDark ? "text-white" : "text-[#0f0f0f]"}`}>
-                              END-TO-END PROJECT DELIVERY
-                            </h5>
-                            <p className={`text-xs leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
-                              From design and equipment selection to installation, commissioning, and maintenance, we manage every stage of the HVAC project lifecycle.
-                            </p>
-                          </div>
+                          <span className="text-[10px] font-mono text-blue-600 uppercase tracking-widest block mb-4 font-bold">
+                            STRENGTH 01 // PROJECT EXECUTION
+                          </span>
+                          <h5 className={`text-base font-bold uppercase mb-3 ${isDark ? "text-white" : "text-[#0f0f0f]"}`}>
+                            END-TO-END PROJECT DELIVERY
+                          </h5>
+                          <p className={`text-xs leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
+                            From design and equipment selection to installation, commissioning, and maintenance, we manage every stage of the HVAC project lifecycle.
+                          </p>
                         </motion.div>
 
                         <motion.div
@@ -940,26 +1003,17 @@ export default function App() {
                           whileInView={{ opacity: 1, y: 0 }}
                           viewport={{ once: true, margin: "-100px" }}
                           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
-                          className={`p-6 border rounded-none flex flex-col justify-between ${isDark ? "bg-neutral-950/40 border-neutral-900" : "bg-transparent border-black/10"}`}
+                          className={`p-6 border rounded-none ${isDark ? "bg-neutral-950/40 border-neutral-900" : "bg-transparent border-black/10"}`}
                         >
-                          <div>
-                            <div className="h-44 w-full mb-6 overflow-hidden relative border border-neutral-500/10">
-                              <img
-                                src="/services/hvac-design-consultancy.png"
-                                alt="Engineering Expertise"
-                                className="w-full h-full object-cover grayscale contrast-[1.05] hover:grayscale-0 hover:scale-105 transition-all duration-500"
-                              />
-                            </div>
-                            <span className="text-[10px] font-mono text-blue-600 uppercase tracking-widest block mb-4 font-bold">
-                              STRENGTH 02 // ENGINEERING EXPERTISE
-                            </span>
-                            <h5 className={`text-base font-bold uppercase mb-3 ${isDark ? "text-white" : "text-[#0f0f0f]"}`}>
-                              TECHNICAL DESIGN & CONSULTANCY
-                            </h5>
-                            <p className={`text-xs leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
-                              Comprehensive HVAC planning, heat load calculations, CAD layouts, and system design tailored to project requirements.
-                            </p>
-                          </div>
+                          <span className="text-[10px] font-mono text-blue-600 uppercase tracking-widest block mb-4 font-bold">
+                            STRENGTH 02 // ENGINEERING EXPERTISE
+                          </span>
+                          <h5 className={`text-base font-bold uppercase mb-3 ${isDark ? "text-white" : "text-[#0f0f0f]"}`}>
+                            TECHNICAL DESIGN & CONSULTANCY
+                          </h5>
+                          <p className={`text-xs leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
+                            Comprehensive HVAC planning, heat load calculations, CAD layouts, and system design tailored to project requirements.
+                          </p>
                         </motion.div>
 
                         <motion.div
@@ -967,26 +1021,17 @@ export default function App() {
                           whileInView={{ opacity: 1, y: 0 }}
                           viewport={{ once: true, margin: "-100px" }}
                           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
-                          className={`p-6 border rounded-none flex flex-col justify-between ${isDark ? "bg-neutral-950/40 border-neutral-900" : "bg-transparent border-black/10"}`}
+                          className={`p-6 border rounded-none ${isDark ? "bg-neutral-950/40 border-neutral-900" : "bg-transparent border-black/10"}`}
                         >
-                          <div>
-                            <div className="h-44 w-full mb-6 overflow-hidden relative border border-neutral-500/10">
-                              <img
-                                src="/services/after-sales-support.png"
-                                alt="After-Sales Support"
-                                className="w-full h-full object-cover grayscale contrast-[1.05] hover:grayscale-0 hover:scale-105 transition-all duration-500"
-                              />
-                            </div>
-                            <span className="text-[10px] font-mono text-blue-600 uppercase tracking-widest block mb-4 font-bold">
-                              STRENGTH 03 // AFTER-SALES SUPPORT
-                            </span>
-                            <h5 className={`text-base font-bold uppercase mb-3 ${isDark ? "text-white" : "text-[#0f0f0f]"}`}>
-                              DEDICATED SERVICE & AMC SUPPORT
-                            </h5>
-                            <p className={`text-xs leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
-                              Preventive maintenance programs and responsive service support designed to maximize system reliability and long-term performance.
-                            </p>
-                          </div>
+                          <span className="text-[10px] font-mono text-blue-600 uppercase tracking-widest block mb-4 font-bold">
+                            STRENGTH 03 // AFTER-SALES SUPPORT
+                          </span>
+                          <h5 className={`text-base font-bold uppercase mb-3 ${isDark ? "text-white" : "text-[#0f0f0f]"}`}>
+                            DEDICATED SERVICE & AMC SUPPORT
+                          </h5>
+                          <p className={`text-xs leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
+                            Preventive maintenance programs and responsive service support designed to maximize system reliability and long-term performance.
+                          </p>
                         </motion.div>
                       </div>
                     </div>
@@ -2043,7 +2088,7 @@ export default function App() {
                     {/* Close button at top right */}
                     <button
                       onClick={() => setSelectedProject(null)}
-                      className={`absolute top-4 right-4 p-2 rounded-none hover:bg-neutral-800/10 dark:hover:bg-white/10 transition-colors cursor-pointer ${isDark ? "text-neutral-400 hover:text-white" : "text-neutral-550 hover:text-black"
+                      className={`absolute top-4 right-4 p-2 rounded-none hover:bg-neutral-800/10 dark:hover:bg-white/10 transition-colors cursor-pointer ${isDark ? "text-neutral-400 hover:text-white" : "text-neutral-555 hover:text-black"
                         }`}
                     >
                       <X className="w-5 h-5" />
@@ -2103,6 +2148,119 @@ export default function App() {
                     <div className="mt-8 pt-6 border-t border-neutral-500/10 flex items-center justify-between text-[10px] font-mono text-neutral-500">
                       <span>STATUS: COMMISSIONED</span>
                       <span>IAG GLOBAL DESIGNS</span>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            )}
+          </AnimatePresence>
+
+          {/* System Details Modal */}
+          <AnimatePresence>
+            {selectedSystem && (
+              <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10 overflow-y-auto">
+                {/* Backdrop Overlay */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.55, ease: "easeInOut" }}
+                  onClick={() => setSelectedSystem(null)}
+                  className="fixed inset-0 bg-black/80 backdrop-blur-md cursor-pointer"
+                />
+
+                {/* Modal Container */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                  transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+                  className={`relative w-full border shadow-2xl overflow-hidden rounded-none z-10 flex flex-col md:flex-row max-w-4xl ${
+                    isDark ? "bg-[#0d0d0d] text-white border-neutral-800" : "bg-white text-neutral-900 border-black/10"
+                  }`}
+                  style={{ minHeight: "450px" }}
+                >
+                  {/* Left Column: Image */}
+                  <div className="md:w-1/2 relative min-h-[250px] md:min-h-[450px] bg-neutral-950 border-r border-neutral-800">
+                    <img
+                      src={selectedSystem.image}
+                      alt={selectedSystem.title}
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                    <div className="absolute top-4 left-4 bg-black/70 border border-neutral-800 text-white font-mono text-[9px] tracking-widest uppercase px-3 py-1 rounded-none font-bold">
+                      SYSTEM METRICS
+                    </div>
+                  </div>
+
+                  {/* Right Column: Details */}
+                  <div className="md:w-1/2 p-8 md:p-10 flex flex-col justify-between relative">
+                    {/* Close button at top right */}
+                    <button
+                      onClick={() => setSelectedSystem(null)}
+                      className={`absolute top-4 right-4 p-2 rounded-none hover:bg-neutral-800/10 dark:hover:bg-white/10 transition-colors cursor-pointer ${
+                        isDark ? "text-neutral-400 hover:text-white" : "text-neutral-555 hover:text-black"
+                      }`}
+                    >
+                      <X className="w-5 h-5" />
+                    </button>
+
+                    <div className="flex flex-col gap-6">
+                      <div>
+                        <span className="text-blue-600 font-mono text-[10px] tracking-[0.25em] uppercase font-bold block mb-2">
+                          ◇ SPECIALIZED TECHNICAL OFFERINGS
+                        </span>
+                        <h2 className={`text-2xl sm:text-3xl font-bold uppercase tracking-tight leading-tight ${
+                          isDark ? "text-white" : "text-neutral-900"
+                        }`}>
+                          {selectedSystem.title}
+                        </h2>
+                      </div>
+
+                      <div>
+                        <span className="text-[9px] font-mono text-neutral-500 uppercase tracking-widest block mb-2 font-bold">
+                          DESCRIPTION & FUNCTIONALITY:
+                        </span>
+                        <p className={`text-xs leading-relaxed ${isDark ? "text-neutral-400" : "text-neutral-600"}`}>
+                          {selectedSystem.desc}
+                        </p>
+                      </div>
+
+                      {selectedSystem.features && (
+                        <div>
+                          <span className="text-[9px] font-mono text-neutral-500 uppercase tracking-widest block mb-3 font-bold">
+                            KEY SYSTEM CAPABILITIES:
+                          </span>
+                          <div className="flex flex-col gap-2.5">
+                            {selectedSystem.features.map((feat: string, i: number) => (
+                              <div key={i} className="flex items-start gap-2.5">
+                                <div className="p-0.5 rounded-none bg-blue-600/10 border border-blue-500/20 text-blue-600 shrink-0 mt-0.5">
+                                  <Check className="w-3.5 h-3.5" />
+                                </div>
+                                <span className={`text-xs ${isDark ? "text-neutral-300" : "text-neutral-600"}`}>
+                                  {feat}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="mt-8 pt-6 border-t border-neutral-500/10 flex items-center justify-between">
+                      <button
+                        onClick={() => {
+                          setSelectedSystem(null);
+                          setActiveSection("contact");
+                        }}
+                        className={`px-5 py-2.5 rounded-none text-[10px] font-mono tracking-[0.2em] uppercase font-bold transition-all border cursor-pointer ${
+                          isDark
+                            ? "bg-white border-white text-black hover:bg-transparent hover:text-white"
+                            : "bg-black border-black text-white hover:bg-transparent hover:text-black"
+                        }`}
+                      >
+                        Request Quote
+                      </button>
+                      <span className="text-[9px] font-mono text-neutral-500">IAG COMMISSIONED SYSTEMS</span>
                     </div>
                   </div>
                 </motion.div>
