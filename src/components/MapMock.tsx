@@ -23,9 +23,9 @@ export default function MapMock({ isDark }: { isDark: boolean }) {
       x: 35,
       y: 20,
       type: "Luxury Residence",
-      capacity: "210 TR Multi-Splits",
-      system: "Concealed Whisper Ducts & Linear Slot Diffusers",
-      coordinates: "23.0440° N, 72.5020° E"
+      capacity: "1100 Units",
+      system: "High-Volume Split Air Conditioning Installation",
+      coordinates: "23.2156° N, 72.6369° E"
     },
     {
       id: "node-2",
@@ -33,8 +33,8 @@ export default function MapMock({ isDark }: { isDark: boolean }) {
       x: 25,
       y: 48,
       type: "Hospital Grade",
-      capacity: "310 TR HEPA Systems",
-      system: "ISO 5 Cleanroom Laminar Flow & Pressure Lock",
+      capacity: "310 TR Capacity",
+      system: "Negative Pressure Isolation Chambers & Surgical Suite Air Systems",
       coordinates: "23.0768° N, 72.6415° E"
     },
     {
@@ -43,8 +43,8 @@ export default function MapMock({ isDark }: { isDark: boolean }) {
       x: 23,
       y: 65,
       type: "Hotel & Leisure",
-      capacity: "340 TR Central VRF",
-      system: "Multi-Compressor Heating & Cooling Integration",
+      capacity: "1198 TR Capacity",
+      system: "VRF Air Conditioning, Treated Fresh Air Delivery & Smoke Extraction",
       coordinates: "23.0906° N, 72.5350° E"
     },
     {
@@ -53,8 +53,8 @@ export default function MapMock({ isDark }: { isDark: boolean }) {
       x: 48,
       y: 72,
       type: "Corporate Headquarters",
-      capacity: "427 TR Centralized VRF",
-      system: "Zoned Ducting & Variable Airflow Control",
+      capacity: "427 TR Capacity",
+      system: "Zoned Centralized VRF & Air Flow Layout",
       coordinates: "23.0225° N, 72.5714° E"
     },
     {
@@ -63,9 +63,59 @@ export default function MapMock({ isDark }: { isDark: boolean }) {
       x: 31,
       y: 53,
       type: "Retail & Showroom",
-      capacity: "749 TR Chilled Water",
-      system: "High-Capacity Package Ductable System",
+      capacity: "749 TR Capacity",
+      system: "VRF-connected AHUs & Centralized Ventilation Systems",
       coordinates: "23.1110° N, 72.5830° E"
+    },
+    {
+      id: "node-6",
+      name: "Hotel Eulogia Inn",
+      x: 18,
+      y: 58,
+      type: "Hotel & Leisure",
+      capacity: "428 TR Capacity",
+      system: "VRF Air Conditioning, Treated Fresh Air Units & Smoke Evacuation",
+      coordinates: "23.0784° N, 72.5290° E"
+    },
+    {
+      id: "node-7",
+      name: "Hotel Grand Shivalik",
+      x: 15,
+      y: 15,
+      type: "Hotel & Leisure",
+      capacity: "130 TR Capacity",
+      system: "Reliable Centralized Climatization & Low-Decibel Airflow",
+      coordinates: "23.4022° N, 72.3625° E"
+    },
+    {
+      id: "node-8",
+      name: "Transformers & Rectifiers",
+      x: 55,
+      y: 80,
+      type: "Commercial & Industrial",
+      capacity: "288 TR Capacity",
+      system: "Heavy Industrial Ventilation & Packaged AC System",
+      coordinates: "22.9234° N, 72.4395° E"
+    },
+    {
+      id: "node-9",
+      name: "AVANT",
+      x: 42,
+      y: 62,
+      type: "Luxury Residence",
+      capacity: "745 TR Capacity",
+      system: "Advanced VRF Air Conditioning & Independent Zone Control",
+      coordinates: "23.0225° N, 72.5714° E"
+    },
+    {
+      id: "node-10",
+      name: "Tej Eye Hospital",
+      x: 45,
+      y: 28,
+      type: "Hospital Grade",
+      capacity: "54 TR Capacity",
+      system: "Advanced Cleanroom Air Flow & Multi-Zone VRF Climate Networks",
+      coordinates: "23.2156° N, 72.6369° E"
     }
   ];
 
@@ -96,7 +146,7 @@ export default function MapMock({ isDark }: { isDark: boolean }) {
             </div>
             
             <span className="hidden sm:inline text-[9px] font-mono tracking-widest text-neutral-400">
-              MAPPING 7000+ COMPLETED NODES
+              MAPPING 8000+ COMPLETED NODES
             </span>
           </div>
 

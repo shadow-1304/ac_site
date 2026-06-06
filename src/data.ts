@@ -241,22 +241,22 @@ export const PROJECTS: ProjectItem[] = [
   {
     id: "grand-eulogia",
     title: "Grand Eulogia",
-    client: "Eulogia Hospitality Group",
+    client: "Praveg Ltd.",
     location: "Ahmedabad, Gujarat",
     category: "Hotels, Resorts & Hospitality",
     metrics: "1198 TR Capacity",
     image: "/projects/Grand Eulogia 1.jpg.jpeg",
-    description: "A colossal centralized water chiller and ductable packaged air conditioning network spanning a luxury hotel complex, providing multi-zone temperature comfort."
+    description: "Integrated HVAC ecosystem comprising VRF air conditioning, treated fresh air delivery, ventilation management, and smoke extraction systems, ensuring superior comfort, indoor air quality, and operational safety"
   },
   {
     id: "hotel-eulogia-inn",
     title: "Hotel Eulogia Inn, Gota",
-    client: "Eulogia Hospitality Group",
+    client: "Praveg Ltd.",
     location: "Gota, Ahmedabad",
     category: "Hotels, Resorts & Hospitality",
     metrics: "428 TR Capacity",
     image: "/projects/eulogia_gota.jpeg",
-    description: "Centrally zoned cooling architecture and package HVAC system layout installed for spacious banquet halls and visitor rooms."
+    description: "End-to-end HVAC installation incorporating VRF air conditioning, treated fresh air units, mechanical ventilation systems, and smoke evacuation solutions for guest rooms, banquet spaces, and common areas."
   },
   {
     id: "hotel-vintana-himmatnagar",
@@ -294,7 +294,7 @@ export const PROJECTS: ProjectItem[] = [
     id: "hotel-grand-shivalik",
     title: "Hotel Grand Shivalik",
     client: "Shivalik Group",
-    location: "Chhatral, Gujarat",
+    location: "Mehsana, Gujarat",
     category: "Hotels, Resorts & Hospitality",
     metrics: "130 TR Capacity",
     image: "/projects/hotel_shivalik.jpg.jpeg",
@@ -334,7 +334,7 @@ export const PROJECTS: ProjectItem[] = [
     id: "transformers-rectifiers",
     title: "Transformers & Rectifiers India Ltd.",
     client: "Transformers & Rectifiers India Ltd.",
-    location: "Chhatral, Gujarat",
+    location: "Moraiya, Gujarat",
     category: "Commercial & Industrial Facilities",
     metrics: "288 TR Capacity",
     image: "/projects/transformers and rectifiers.jpeg",
@@ -531,34 +531,34 @@ export const PROJECTS: ProjectItem[] = [
   {
     id: "agora-mall",
     title: "Agora Mall",
-    client: "Agora Group",
+    client: "Manav Infrastructure",
     location: "Ahmedabad, Gujarat",
     category: "Showrooms & Retail",
     metrics: "749 TR Capacity",
     image: "/projects/agora mall.jpeg",
-    description: "Central chilled-water loop integration and high-capacity package ducting design for retail showroom pathways and central corridors."
+    description: "Large-scale retail HVAC infrastructure featuring VRF-connected AHUs and centralized ventilation systems, ensuring balanced airflow, energy efficiency, and superior indoor environmental quality."
   },
 
   // --- Residence / Luxury Villas ---
   {
     id: "avant-living",
     title: "AVANT - evolved living",
-    client: "AVANT Projects",
+    client: "Dwarkesh Anaya Homes LLP",
     location: "Ahmedabad, Gujarat",
     category: "Residence / Luxury Villas",
-    metrics: "738 TR Capacity",
+    metrics: "745 TR Capacity",
     image: "/projects/AVANT  evolved living.jpeg",
-    description: "High-end multi-VRF climate grid for premium residential apartments, featuring concealed ducting lines and slim linear diffusers."
+    description: "Premium residential climate infrastructure featuring advanced VRF air conditioning systems, delivering energy-efficient cooling, independent zone control, and seamless comfort throughout the development"
   },
   {
     id: "swagat-agacia",
     title: "Swagat Agacia",
-    client: "Swagat Group",
-    location: "Ahmedabad, Gujarat",
+    client: "Swagat Developers",
+    location: "Gandhinagar, Gujarat",
     category: "Residence / Luxury Villas",
-    metrics: "95 TR Capacity",
+    metrics: "1100 Units",
     image: "/projects/Swagat Agacia.jpg.jpeg",
-    description: "Concealed linear duct air architecture for high-end luxury residences, preserving design aesthetics with quiet climate comfort."
+    description: "High-volume HVAC execution involving the installation of more than 1,100 split air conditioning units, engineered to provide efficient and uniform cooling throughout the development"
   },
   {
     id: "sohambhai-mehta-residence",
@@ -684,7 +684,7 @@ export const PROJECTS: ProjectItem[] = [
     id: "tej-eye",
     title: "Tej Eye Hospital",
     client: "Tej Eye Hospital",
-    location: "Ahmedabad, Gujarat",
+    location: "Gandhinagar, Gujarat",
     category: "Hospitals / Healthcare",
     metrics: "54 TR Capacity",
     image: "/projects/Tej Eye.jpg.jpeg",
@@ -760,7 +760,7 @@ export const COMPLAINCE_TIMELINE: AchievementTimelineItem[] = [
   {
     year: "2024",
     title: "8,000+ Projects Delivered",
-    description: "Surpassed 7,000 completed HVAC projects across Gujarat, supported by a dedicated engineering and service workforce."
+    description: "Surpassed 8,000 completed HVAC projects across Gujarat, supported by a dedicated engineering and service workforce."
   },
   {
     year: "2024 - 2025",

@@ -913,17 +913,26 @@ export default function App() {
                           whileInView={{ opacity: 1, y: 0 }}
                           viewport={{ once: true, margin: "-100px" }}
                           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                          className={`p-6 border rounded-none ${isDark ? "bg-neutral-950/40 border-neutral-900" : "bg-transparent border-black/10"}`}
+                          className={`p-6 border rounded-none flex flex-col justify-between ${isDark ? "bg-neutral-950/40 border-neutral-900" : "bg-transparent border-black/10"}`}
                         >
-                          <span className="text-[10px] font-mono text-blue-600 uppercase tracking-widest block mb-4 font-bold">
-                            STRENGTH 01 // PROJECT EXECUTION
-                          </span>
-                          <h5 className={`text-base font-bold uppercase mb-3 ${isDark ? "text-white" : "text-[#0f0f0f]"}`}>
-                            END-TO-END PROJECT DELIVERY
-                          </h5>
-                          <p className={`text-xs leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
-                            From design and equipment selection to installation, commissioning, and maintenance, we manage every stage of the HVAC project lifecycle.
-                          </p>
+                          <div>
+                            <div className="h-44 w-full mb-6 overflow-hidden relative border border-neutral-500/10">
+                              <img
+                                src="/services/installation-commissioning.png"
+                                alt="Project Execution"
+                                className="w-full h-full object-cover grayscale contrast-[1.05] hover:grayscale-0 hover:scale-105 transition-all duration-500"
+                              />
+                            </div>
+                            <span className="text-[10px] font-mono text-blue-600 uppercase tracking-widest block mb-4 font-bold">
+                              STRENGTH 01 // PROJECT EXECUTION
+                            </span>
+                            <h5 className={`text-base font-bold uppercase mb-3 ${isDark ? "text-white" : "text-[#0f0f0f]"}`}>
+                              END-TO-END PROJECT DELIVERY
+                            </h5>
+                            <p className={`text-xs leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
+                              From design and equipment selection to installation, commissioning, and maintenance, we manage every stage of the HVAC project lifecycle.
+                            </p>
+                          </div>
                         </motion.div>
 
                         <motion.div
@@ -931,17 +940,26 @@ export default function App() {
                           whileInView={{ opacity: 1, y: 0 }}
                           viewport={{ once: true, margin: "-100px" }}
                           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
-                          className={`p-6 border rounded-none ${isDark ? "bg-neutral-950/40 border-neutral-900" : "bg-transparent border-black/10"}`}
+                          className={`p-6 border rounded-none flex flex-col justify-between ${isDark ? "bg-neutral-950/40 border-neutral-900" : "bg-transparent border-black/10"}`}
                         >
-                          <span className="text-[10px] font-mono text-blue-600 uppercase tracking-widest block mb-4 font-bold">
-                            STRENGTH 02 // ENGINEERING EXPERTISE
-                          </span>
-                          <h5 className={`text-base font-bold uppercase mb-3 ${isDark ? "text-white" : "text-[#0f0f0f]"}`}>
-                            TECHNICAL DESIGN & CONSULTANCY
-                          </h5>
-                          <p className={`text-xs leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
-                            Comprehensive HVAC planning, heat load calculations, CAD layouts, and system design tailored to project requirements.
-                          </p>
+                          <div>
+                            <div className="h-44 w-full mb-6 overflow-hidden relative border border-neutral-500/10">
+                              <img
+                                src="/services/hvac-design-consultancy.png"
+                                alt="Engineering Expertise"
+                                className="w-full h-full object-cover grayscale contrast-[1.05] hover:grayscale-0 hover:scale-105 transition-all duration-500"
+                              />
+                            </div>
+                            <span className="text-[10px] font-mono text-blue-600 uppercase tracking-widest block mb-4 font-bold">
+                              STRENGTH 02 // ENGINEERING EXPERTISE
+                            </span>
+                            <h5 className={`text-base font-bold uppercase mb-3 ${isDark ? "text-white" : "text-[#0f0f0f]"}`}>
+                              TECHNICAL DESIGN & CONSULTANCY
+                            </h5>
+                            <p className={`text-xs leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
+                              Comprehensive HVAC planning, heat load calculations, CAD layouts, and system design tailored to project requirements.
+                            </p>
+                          </div>
                         </motion.div>
 
                         <motion.div
@@ -949,17 +967,26 @@ export default function App() {
                           whileInView={{ opacity: 1, y: 0 }}
                           viewport={{ once: true, margin: "-100px" }}
                           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
-                          className={`p-6 border rounded-none ${isDark ? "bg-neutral-950/40 border-neutral-900" : "bg-transparent border-black/10"}`}
+                          className={`p-6 border rounded-none flex flex-col justify-between ${isDark ? "bg-neutral-950/40 border-neutral-900" : "bg-transparent border-black/10"}`}
                         >
-                          <span className="text-[10px] font-mono text-blue-600 uppercase tracking-widest block mb-4 font-bold">
-                            STRENGTH 03 // AFTER-SALES SUPPORT
-                          </span>
-                          <h5 className={`text-base font-bold uppercase mb-3 ${isDark ? "text-white" : "text-[#0f0f0f]"}`}>
-                            DEDICATED SERVICE & AMC SUPPORT
-                          </h5>
-                          <p className={`text-xs leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
-                            Preventive maintenance programs and responsive service support designed to maximize system reliability and long-term performance.
-                          </p>
+                          <div>
+                            <div className="h-44 w-full mb-6 overflow-hidden relative border border-neutral-500/10">
+                              <img
+                                src="/services/after-sales-support.png"
+                                alt="After-Sales Support"
+                                className="w-full h-full object-cover grayscale contrast-[1.05] hover:grayscale-0 hover:scale-105 transition-all duration-500"
+                              />
+                            </div>
+                            <span className="text-[10px] font-mono text-blue-600 uppercase tracking-widest block mb-4 font-bold">
+                              STRENGTH 03 // AFTER-SALES SUPPORT
+                            </span>
+                            <h5 className={`text-base font-bold uppercase mb-3 ${isDark ? "text-white" : "text-[#0f0f0f]"}`}>
+                              DEDICATED SERVICE & AMC SUPPORT
+                            </h5>
+                            <p className={`text-xs leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
+                              Preventive maintenance programs and responsive service support designed to maximize system reliability and long-term performance.
+                            </p>
+                          </div>
                         </motion.div>
                       </div>
                     </div>
@@ -1227,8 +1254,9 @@ export default function App() {
                     <SectionHeader
                       number="04"
                       tag="PORTFOLIO HIGHLIGHTS"
-                      title="Thermodynamically balanced spaces for critical sectors."
-                      description="Explore our filterable commercial catalog spanning hospital intensive wings, oceanwide resorts, and minimalist corporate offices."
+                      title="Projects that define our engineering legacy"
+                      description="Explore our portfolio of HVAC projects across hospitality, healthcare, education, commercial facilities, luxury residences, retail environments, and industrial sectors"
+                      subTag="INTEL AIR GROUP • PROJECT PORTFOLIO"
                       isDark={isDark}
                       className="!pb-2 md:!pb-4"
                     />
@@ -1719,12 +1747,12 @@ export default function App() {
                         className="lg:col-span-4 flex flex-col gap-3"
                       >
                         <span className="text-neutral-500 uppercase tracking-widest block text-[9px] font-bold">◇ TALK TO US</span>
-                        <a href="tel:+917405399550" className={`text-base font-bold block hover:text-blue-600 transition-colors uppercase ${isDark ? "text-neutral-100" : "text-[#0a0a0a]"
+                        <a href="tel:07940359594" className={`text-base font-bold block hover:text-blue-600 transition-colors uppercase ${isDark ? "text-neutral-100" : "text-[#0a0a0a]"
                           }`}>
-                          +91 74053 99550
+                          079 40359594
                         </a>
                         <span className="text-xs text-neutral-400 font-semibold block leading-none">
-                          Landlines: 079 40359594 / 40059594 / 35338381
+                          Other Landlines: 079 40059594 / 35338381
                         </span>
                       </motion.div>
 
@@ -1860,15 +1888,12 @@ export default function App() {
                 </span>
                 <div className="flex flex-col gap-3.5">
                   <div className="flex flex-col">
-                    <span className="text-[9px] text-neutral-500 uppercase leading-none mb-1 font-bold">Phone</span>
-                    <a href="tel:+917405399550" className={`text-xs font-bold hover:text-blue-600 transition-colors uppercase ${isDark ? "text-neutral-200" : "text-neutral-800"}`}>
-                      +91 74053 99550
-                    </a>
-                  </div>
-                  <div className="flex flex-col">
                     <span className="text-[9px] text-neutral-500 uppercase leading-none mb-1 font-bold">Landlines</span>
-                    <span className={`text-xs font-bold ${isDark ? "text-neutral-350" : "text-neutral-750"}`}>
-                      079 40359594 / 40059594 / 35338381
+                    <a href="tel:07940359594" className={`text-xs font-bold hover:text-blue-600 transition-colors uppercase ${isDark ? "text-neutral-200" : "text-neutral-800"}`}>
+                      079 40359594
+                    </a>
+                    <span className={`text-xs font-bold mt-1 ${isDark ? "text-neutral-350" : "text-neutral-750"}`}>
+                      079 40059594 / 35338381
                     </span>
                   </div>
                   <div className="flex flex-col">

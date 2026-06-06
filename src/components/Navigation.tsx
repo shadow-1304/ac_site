@@ -201,7 +201,7 @@ export default function Navigation({ activeSection, onChangeSection, isDark, onT
 
                     {/* Right Column */}
                     <div className="flex flex-col gap-1.5 font-sans text-[13px] text-neutral-400 leading-normal text-right sm:text-left">
-                      <a href="tel:+917405399550" className="hover:text-current transition-colors block w-fit ml-auto sm:ml-0">+91 74053 99550</a>
+                      <a href="tel:07940359594" className="hover:text-current transition-colors block w-fit ml-auto sm:ml-0">079 40359594</a>
                       <a href="mailto:sales@intelairgroup.com" className="hover:text-current transition-colors block w-fit ml-auto sm:ml-0 font-medium">sales@intelairgroup.com</a>
                     </div>
                   </motion.div>
