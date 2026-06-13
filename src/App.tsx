@@ -28,7 +28,7 @@ import {
 } from "lucide-react";
 
 import { SectionType, ServiceItem, ProjectItem } from "./types";
-import { STATISTICS, SERVICES, PROJECTS, TESTIMONIALS, COMPLAINCE_TIMELINE, BRAND_PARTNERS, CERTIFICATIONS } from "./data";
+import { STATISTICS, SERVICES, PROJECTS, TESTIMONIALS, COMPLAINCE_TIMELINE, BRAND_PARTNERS } from "./data";
 
 // Components
 import Preloader from "./components/Preloader";
@@ -101,9 +101,9 @@ export default function App() {
   useEffect(() => {
     const textInterval = setInterval(() => {
       setCurrentTestimonialIndex((prev) => (prev + 1) % TESTIMONIALS.length);
-    }, 8000);
+    }, 5000);
     return () => clearInterval(textInterval);
-  }, []);
+  }, [TESTIMONIALS.length]);
 
 
   const handleToggleTheme = () => {
@@ -129,9 +129,12 @@ export default function App() {
     <div
       className={`min-h-screen flex flex-col font-sans transition-all duration-500 overflow-x-hidden ${isDark
         ? "bg-[#0a0a0a] text-white"
-        : "bg-[#f3f0ec] text-[#0a0a0a]"
+        : "bg-paper-texture text-[#0a0a0a]"
         }`}
     >
+      {/* Fixed GPU-accelerated paper texture overlay (zero scroll cost) */}
+      {!isDark && <div className="paper-texture-overlay" />}
+
       {/* 1. PREMIUM ARCHITECTURAL PRELOADER SEQUENCE */}
       <Preloader onComplete={() => setIsLoaded(true)} />
 
@@ -368,39 +371,48 @@ export default function App() {
                     />
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                      {SERVICES.slice(0, 4).map((service, i) => (
-                        <motion.div
-                          key={service.id}
-                          onClick={() => {
-                            setActiveServiceTab(service.id);
-                            setActiveSection("services");
-                          }}
-                          initial={{ opacity: 0, y: 30 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{ once: true, margin: "-150px" }}
-                          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: i * 0.1 }}
-                          className={`p-6 border rounded-none cursor-pointer group transition-all duration-300 ${isDark
-                            ? "bg-[#111] border-neutral-900 hover:border-neutral-700"
-                            : "bg-transparent border-black/10 hover:border-black/30"
-                            }`}
-                        >
-                          <span className="text-[10px] font-mono text-neutral-500 leading-none mb-4 block font-semibold">
-                            HVAC SOLUTIONS // {service.id.toUpperCase().replace("-", " ")}
-                          </span>
-                          <h3 className={`text-xl font-bold tracking-tight uppercase leading-tight mb-4 ${isDark ? "text-white" : "text-[#0a0a0a]"
-                            }`}>
-                            {service.title.split(" Systems")[0].split(" Systems")[0]}
-                          </h3>
-                          <p className={`text-xs leading-relaxed mb-6 ${isDark ? "text-neutral-400" : "text-gray-500"
-                            }`}>
-                            {service.shortDesc}
-                          </p>
+                      {[
+                        "installation-commissioning",
+                        "hvac-design-planning",
+                        "ventilation-systems",
+                        "maintenance-amc"
+                      ].map((id, i) => {
+                        const service = SERVICES.find(s => s.id === id);
+                        if (!service) return null;
+                        return (
+                          <motion.div
+                            key={service.id}
+                            onClick={() => {
+                              setActiveServiceTab(service.id);
+                              setActiveSection("services");
+                            }}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: "-150px" }}
+                            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: i * 0.1 }}
+                            className={`p-6 border rounded-none cursor-pointer group transition-all duration-300 ${isDark
+                              ? "bg-[#111] border-neutral-900 hover:border-neutral-700"
+                              : "bg-transparent border-black/10 hover:border-black/30"
+                              }`}
+                          >
+                            <span className="text-[10px] font-mono text-neutral-500 leading-none mb-4 block font-semibold">
+                              HVAC SOLUTIONS // {service.id.toUpperCase().replace("-", " ")}
+                            </span>
+                            <h3 className={`text-xl font-bold tracking-tight uppercase leading-tight mb-4 ${isDark ? "text-white" : "text-[#0a0a0a]"
+                              }`}>
+                              {service.id === "hvac-design-planning" ? "hvac design and planning" : service.title.split(" Systems")[0].split(" Systems")[0]}
+                            </h3>
+                            <p className={`text-xs leading-relaxed mb-6 ${isDark ? "text-neutral-400" : "text-gray-500"
+                              }`}>
+                              {service.shortDesc}
+                            </p>
 
-                          <div className="flex items-center gap-2 text-xs font-mono text-blue-600 group-hover:translate-x-1.5 transition-transform font-bold">
-                            <span>View Solutions →</span>
-                          </div>
-                        </motion.div>
-                      ))}
+                            <div className="flex items-center gap-2 text-xs font-mono text-blue-600 group-hover:translate-x-1.5 transition-transform font-bold">
+                              <span>View Solutions →</span>
+                            </div>
+                          </motion.div>
+                        );
+                      })}
                     </div>
 
                     {/* E. Large Testimonial Highlight */}
@@ -411,7 +423,7 @@ export default function App() {
                       </span>
 
                       <div className="flex items-center gap-2 mb-6 font-mono text-xs text-blue-500 uppercase tracking-widest">
-                        <span>◆</span> CLIENT VERDICT & TRUSTED PARTNERS
+                        <span>◆</span> CLIENT VERDICT
                       </div>
 
                       <AnimatePresence mode="wait">
@@ -428,22 +440,39 @@ export default function App() {
                             "{TESTIMONIALS[currentTestimonialIndex].quote}"
                           </blockquote>
 
-                          {/* Testimonial slider indicators */}
-                          <div className="mt-8 flex justify-start">
-                            <div className="flex gap-2">
-                              {TESTIMONIALS.map((_, i) => (
-                                <button
-                                  key={i}
-                                  onClick={() => setCurrentTestimonialIndex(i)}
-                                  className={`h-1 transition-all cursor-pointer ${currentTestimonialIndex === i ? "bg-blue-600 w-8" : "bg-neutral-500/30 w-4"
-                                    }`}
-                                  aria-label={`Go to testimonial ${i + 1}`}
-                                />
-                              ))}
+                          {(TESTIMONIALS[currentTestimonialIndex].author || TESTIMONIALS[currentTestimonialIndex].role || TESTIMONIALS[currentTestimonialIndex].company) && (
+                            <div className="mt-6">
+                              {TESTIMONIALS[currentTestimonialIndex].author && (
+                                <strong className={`block text-xs font-mono tracking-widest uppercase font-bold ${isDark ? "text-blue-400" : "text-blue-600"}`}>
+                                  — {TESTIMONIALS[currentTestimonialIndex].author}
+                                </strong>
+                              )}
+                              {(TESTIMONIALS[currentTestimonialIndex].role || TESTIMONIALS[currentTestimonialIndex].company) && (
+                                <span className={`block text-[10px] font-mono tracking-wider uppercase mt-1 ${isDark ? "text-neutral-500" : "text-neutral-400"}`}>
+                                  {TESTIMONIALS[currentTestimonialIndex].role}
+                                  {TESTIMONIALS[currentTestimonialIndex].role && TESTIMONIALS[currentTestimonialIndex].company && " // "}
+                                  {TESTIMONIALS[currentTestimonialIndex].company}
+                                </span>
+                              )}
                             </div>
-                          </div>
+                          )}
 
-
+                          {/* Testimonial slider indicators */}
+                          {TESTIMONIALS.length > 1 && (
+                            <div className="mt-8 flex justify-start">
+                              <div className="flex gap-2">
+                                {TESTIMONIALS.map((_, i) => (
+                                  <button
+                                    key={i}
+                                    onClick={() => setCurrentTestimonialIndex(i)}
+                                    className={`h-1 transition-all cursor-pointer ${currentTestimonialIndex === i ? "bg-blue-600 w-8" : "bg-neutral-500/30 w-4"
+                                      }`}
+                                    aria-label={`Go to testimonial ${i + 1}`}
+                                  />
+                                ))}
+                              </div>
+                            </div>
+                          )}
                         </motion.div>
                       </AnimatePresence>
                     </div>
@@ -459,7 +488,7 @@ export default function App() {
                       </div>
 
                       <span className="text-[10px] font-mono tracking-widest text-blue-600 uppercase font-bold leading-none">
-                        ◆ PROJECT CONSULTATION
+                        ◆ PROJECT INQUIRY
                       </span>
 
                       <h3 className={`text-2xl sm:text-4xl font-bold tracking-tight uppercase max-w-xl leading-tight ${isDark ? "text-white" : "text-[#0a0a0a]"
@@ -479,7 +508,7 @@ export default function App() {
                           : "bg-blue-50 border-blue-200 text-blue-600"
                           }`}
                       >
-                        <span>REQUEST A CONSULTATION →</span>
+                        <span>PROJECT INQUIRY →</span>
                       </button>
                     </div>
 
@@ -722,23 +751,13 @@ export default function App() {
 
                             <div className="flex flex-col gap-2">
                               <a
-                                href="mailto:Projects@intelairgroup.com"
+                                href="mailto:intelairtech@gmail.com"
                                 className={`w-full py-2.5 px-3 flex items-center justify-center gap-2 text-xs font-mono tracking-wider font-bold transition-all border ${isDark
                                   ? "bg-blue-600 border-blue-650 text-white hover:bg-blue-700"
                                   : "bg-blue-600 border-blue-600 text-white hover:bg-blue-750"
                                   }`}
                               >
                                 <Mail className="w-3.5 h-3.5 text-white" />
-                                <span className="truncate">Projects@intelairgroup.com</span>
-                              </a>
-                              <a
-                                href="mailto:intelairtech@gmail.com"
-                                className={`w-full py-2.5 px-3 flex items-center justify-center gap-2 text-xs font-mono tracking-wider font-bold transition-all border ${isDark
-                                  ? "bg-blue-500/10 border-blue-500/30 text-blue-400 hover:bg-blue-500/20"
-                                  : "bg-blue-50 border-blue-200 text-blue-650 hover:bg-blue-100"
-                                  }`}
-                              >
-                                <Mail className="w-3.5 h-3.5 text-blue-600" />
                                 <span className="truncate">intelairtech@gmail.com</span>
                               </a>
                             </div>
@@ -786,7 +805,7 @@ export default function App() {
                             className={`text-sm sm:text-base lg:text-lg leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"}`}
                           >
                             <ScrollRevealText
-                              text="Explore our physical experience center in Ahmedabad, showcasing live running VRF systems, customized duct layouts, and premium air-handling setups."
+                              text="Explore our physical experience center in Ahmedabad, showcasing different air conditioning systems."
                               delay={0.25}
                             />
                           </p>
@@ -795,7 +814,7 @@ export default function App() {
                             className={`text-xs sm:text-sm lg:text-base leading-relaxed ${isDark ? "text-neutral-500" : "text-gray-500"}`}
                           >
                             <ScrollRevealText
-                              text="Visit us to consult with our core design team and touch-test the latest multinational HVAC technologies."
+                              text="Visit us to collaborate with our core design team and touch-test the latest multinational HVAC technologies."
                               delay={0.4}
                             />
                           </p>
@@ -820,18 +839,6 @@ export default function App() {
                                 tabIndex={-1}
                                 className="w-full h-full object-cover grayscale transition-all duration-700 ease-out group-hover:grayscale-0 pointer-events-none"
                               />
-                              {/* Centered Bottom Translucent Overlay Box (No full-screen background overlay) */}
-                              <div className="absolute bottom-4 left-0 right-0 flex justify-center p-3 pointer-events-none">
-                                <div className="backdrop-blur-md bg-black/60 border border-white/10 px-4 py-2.5 shadow-2xl text-center max-w-[80%] rounded-none transition-transform duration-500 group-hover:scale-[1.03]">
-                                  <h5 className="text-white text-[10px] sm:text-xs font-bold tracking-wide uppercase leading-normal">
-                                    Experience commercial HVAC systems in action.
-                                  </h5>
-                                  <div className="w-6 h-[1px] bg-white/20 mx-auto my-1" />
-                                  <p className="text-white/65 text-[7px] sm:text-[8px] font-mono tracking-widest uppercase">
-                                    ◇ Experience Center Ahmedabad
-                                  </p>
-                                </div>
-                              </div>
                             </div>
                           </div>
                         </div>
@@ -942,9 +949,8 @@ export default function App() {
                               </div>
 
                               {/* Translucent thumbnail instead of icon block */}
-                              <div className={`w-16 h-12 overflow-hidden border-2 p-0.5 rounded-none relative z-10 shrink-0 transition-all duration-300 ${
-                                isDark ? "border-neutral-850 bg-neutral-900/40 group-hover:border-neutral-700" : "border-neutral-300 bg-neutral-50 group-hover:border-neutral-400"
-                              }`}>
+                              <div className={`w-16 h-12 overflow-hidden border-2 p-0.5 rounded-none relative z-10 shrink-0 transition-all duration-300 ${isDark ? "border-neutral-850 bg-neutral-900/40 group-hover:border-neutral-700" : "border-neutral-300 bg-neutral-50 group-hover:border-neutral-400"
+                                }`}>
                                 <img
                                   src={system.image}
                                   alt={system.title}
@@ -1009,7 +1015,7 @@ export default function App() {
                             STRENGTH 02 // ENGINEERING EXPERTISE
                           </span>
                           <h5 className={`text-base font-bold uppercase mb-3 ${isDark ? "text-white" : "text-[#0f0f0f]"}`}>
-                            TECHNICAL DESIGN & CONSULTANCY
+                            TECHNICAL DESIGN & PLANNING
                           </h5>
                           <p className={`text-xs leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
                             Comprehensive HVAC planning, heat load calculations, CAD layouts, and system design tailored to project requirements.
@@ -1689,46 +1695,7 @@ export default function App() {
                           </div>
                         </div>
 
-                        {/* Certifications stacked list */}
-                        <div className="flex flex-col gap-6">
-                          <div>
-                            <span className="text-[9px] font-mono text-neutral-500 uppercase block tracking-wider mb-2 font-bold">
-                              ◇ GREEN STANDARDS
-                            </span>
-                            <h3 className={`text-lg font-bold uppercase tracking-tight ${isDark ? "text-white" : "text-neutral-900"}`}>
-                              Certifications & Industry Affiliations
-                            </h3>
-                          </div>
 
-                          <div className="flex flex-col gap-4">
-                            {CERTIFICATIONS.map((cert, index) => (
-                              <motion.div
-                                key={index}
-                                initial={{ opacity: 0, y: 15 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, margin: "-50px" }}
-                                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: index * 0.1 }}
-                                className={`p-4 rounded-none border flex gap-4 ${isDark ? "bg-[#111] border-neutral-900 hover:border-neutral-805" : "bg-transparent border-black/10"
-                                  }`}
-                              >
-                                <div className="w-10 h-10 rounded-none bg-blue-600/10 border border-blue-500/30 flex items-center justify-center shrink-0">
-                                  <CheckCircle2 className="w-4.5 h-4.5 text-blue-600" />
-                                </div>
-                                <div>
-                                  <span className="font-mono text-[9px] font-bold text-blue-600 block">
-                                    {cert.code}
-                                  </span>
-                                  <h4 className={`text-xs font-bold uppercase tracking-wide mt-1 ${isDark ? "text-neutral-200" : "text-[#0a0a0a]"}`}>
-                                    {cert.title}
-                                  </h4>
-                                  <span className="block text-[9px] font-mono text-neutral-500 uppercase mt-1 leading-none font-semibold">
-                                    Authority: {cert.authority}
-                                  </span>
-                                </div>
-                              </motion.div>
-                            ))}
-                          </div>
-                        </div>
 
                       </div>
 
@@ -1814,8 +1781,8 @@ export default function App() {
                           }`}>
                           sales@intelairgroup.com
                         </a>
-                        <span className="text-xs text-neutral-400 font-semibold block leading-none">
-                          projects@intelairgroup.com
+                        <span className="text-xs text-neutral-450 font-semibold block leading-none">
+                          intelairtech@gmail.com
                         </span>
                       </motion.div>
 
@@ -1946,8 +1913,8 @@ export default function App() {
                     <a href="mailto:sales@intelairgroup.com" className={`text-xs font-bold hover:text-blue-600 transition-colors underline uppercase ${isDark ? "text-neutral-200" : "text-neutral-800"}`}>
                       sales@intelairgroup.com
                     </a>
-                    <a href="mailto:projects@intelairgroup.com" className={`text-xs font-bold hover:text-blue-600 transition-colors underline uppercase mt-1 ${isDark ? "text-neutral-200" : "text-neutral-800"}`}>
-                      projects@intelairgroup.com
+                    <a href="mailto:intelairtech@gmail.com" className={`text-xs font-bold hover:text-blue-600 transition-colors underline uppercase mt-1 ${isDark ? "text-neutral-200" : "text-neutral-800"}`}>
+                      intelairtech@gmail.com
                     </a>
                   </div>
                 </div>
@@ -1966,12 +1933,6 @@ export default function App() {
                       Shyamal Cross Road, Satellite, Ahmedabad 380 015,<br />
                       Gujarat, India
                     </address>
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-[9px] text-neutral-500 uppercase leading-none mb-1 font-bold">Layout</span>
-                    <span className={`text-[10px] font-bold ${isDark ? "text-neutral-400" : "text-neutral-600"}`}>
-                      Estimates & Drafting Office Layout
-                    </span>
                   </div>
                 </div>
               </div>
@@ -2175,9 +2136,8 @@ export default function App() {
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.95, y: 20 }}
                   transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-                  className={`relative w-full border shadow-2xl overflow-hidden rounded-none z-10 flex flex-col md:flex-row max-w-4xl ${
-                    isDark ? "bg-[#0d0d0d] text-white border-neutral-800" : "bg-white text-neutral-900 border-black/10"
-                  }`}
+                  className={`relative w-full border shadow-2xl overflow-hidden rounded-none z-10 flex flex-col md:flex-row max-w-4xl ${isDark ? "bg-[#0d0d0d] text-white border-neutral-800" : "bg-white text-neutral-900 border-black/10"
+                    }`}
                   style={{ minHeight: "450px" }}
                 >
                   {/* Left Column: Image */}
@@ -2197,9 +2157,8 @@ export default function App() {
                     {/* Close button at top right */}
                     <button
                       onClick={() => setSelectedSystem(null)}
-                      className={`absolute top-4 right-4 p-2 rounded-none hover:bg-neutral-800/10 dark:hover:bg-white/10 transition-colors cursor-pointer ${
-                        isDark ? "text-neutral-400 hover:text-white" : "text-neutral-555 hover:text-black"
-                      }`}
+                      className={`absolute top-4 right-4 p-2 rounded-none hover:bg-neutral-800/10 dark:hover:bg-white/10 transition-colors cursor-pointer ${isDark ? "text-neutral-400 hover:text-white" : "text-neutral-555 hover:text-black"
+                        }`}
                     >
                       <X className="w-5 h-5" />
                     </button>
@@ -2209,9 +2168,8 @@ export default function App() {
                         <span className="text-blue-600 font-mono text-[10px] tracking-[0.25em] uppercase font-bold block mb-2">
                           ◇ SPECIALIZED TECHNICAL OFFERINGS
                         </span>
-                        <h2 className={`text-2xl sm:text-3xl font-bold uppercase tracking-tight leading-tight ${
-                          isDark ? "text-white" : "text-neutral-900"
-                        }`}>
+                        <h2 className={`text-2xl sm:text-3xl font-bold uppercase tracking-tight leading-tight ${isDark ? "text-white" : "text-neutral-900"
+                          }`}>
                           {selectedSystem.title}
                         </h2>
                       </div>
@@ -2252,11 +2210,10 @@ export default function App() {
                           setSelectedSystem(null);
                           setActiveSection("contact");
                         }}
-                        className={`px-5 py-2.5 rounded-none text-[10px] font-mono tracking-[0.2em] uppercase font-bold transition-all border cursor-pointer ${
-                          isDark
-                            ? "bg-white border-white text-black hover:bg-transparent hover:text-white"
-                            : "bg-black border-black text-white hover:bg-transparent hover:text-black"
-                        }`}
+                        className={`px-5 py-2.5 rounded-none text-[10px] font-mono tracking-[0.2em] uppercase font-bold transition-all border cursor-pointer ${isDark
+                          ? "bg-white border-white text-black hover:bg-transparent hover:text-white"
+                          : "bg-black border-black text-white hover:bg-transparent hover:text-black"
+                          }`}
                       >
                         Request Quote
                       </button>

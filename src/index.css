@@ -1,17 +1,23 @@
 @import "tailwindcss";
 
 @layer base {
-  html, body {
+
+  html,
+  body {
     scroll-behavior: auto;
     scroll-padding-top: 100px;
     -webkit-overflow-scrolling: touch;
     font-size: 16px;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
   }
 
-  html::-webkit-scrollbar, body::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari, Opera */
   }
 
   @media (min-width: 768px) {
@@ -22,11 +28,15 @@
 }
 
 .calculator-modal-scroll-container {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
 }
+
 .calculator-modal-scroll-container::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+  display: none;
+  /* Chrome, Safari, Opera */
 }
 
 /* Slide-Up Text Mask Hover Utilities */
@@ -73,20 +83,19 @@
 }
 
 .reflection-line {
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.03) 25%,
-    rgba(255, 255, 255, 0.25) 50%,
-    rgba(255, 255, 255, 0.03) 75%,
-    rgba(255, 255, 255, 0) 100%
-  );
+  background: linear-gradient(90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.03) 25%,
+      rgba(255, 255, 255, 0.25) 50%,
+      rgba(255, 255, 255, 0.03) 75%,
+      rgba(255, 255, 255, 0) 100%);
 }
 
 @keyframes spin-slow {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -113,9 +122,12 @@
 
 /* Breathing pulse animation for preloader logo */
 @keyframes logo-pulse {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.06);
   }
@@ -129,6 +141,7 @@
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -151,46 +164,95 @@
 .dark-blueprint * {
   stroke: rgba(255, 255, 255, 0.38) !important;
 }
+
 .dark-blueprint text {
   fill: rgba(255, 255, 255, 0.65) !important;
   stroke: none !important;
 }
+
 .dark-blueprint rect {
   fill: transparent !important;
 }
+
 .dark-blueprint rect.stroke-neutral-600\/80 {
   fill: #0a0a0a !important;
 }
+
 /* Keep VAV Box and exhaust fan fill background dark in dark mode */
 .dark-blueprint .fill-neutral-50,
 .dark-blueprint .dark\:fill-neutral-900,
 .dark-blueprint .dark\:fill-neutral-950 {
   fill: #0a0a0a !important;
 }
+
 /* Keep color-coded chilled water supply/return lines */
 .dark-blueprint .stroke-blue-500,
 .dark-blueprint .dark\:stroke-blue-500\/80 {
   stroke: #3b82f6 !important;
 }
+
 .dark-blueprint .stroke-red-500,
 .dark-blueprint .dark\:stroke-red-500\/80 {
   stroke: #ef4444 !important;
 }
+
 .dark-blueprint .fill-blue-500,
 .dark-blueprint .dark\:fill-blue-400 {
   fill: #60a5fa !important;
 }
+
 .dark-blueprint .fill-red-500,
 .dark-blueprint .dark\:fill-red-400 {
   fill: #f87171 !important;
 }
+
 .dark-blueprint .stroke-blue-500\/50,
 .dark-blueprint .dark\:stroke-blue-500\/40 {
   stroke: rgba(59, 130, 246, 0.4) !important;
 }
+
 .dark-blueprint .fill-blue-500\/50,
 .dark-blueprint .dark\:fill-blue-400\/45 {
   fill: rgba(96, 165, 250, 0.5) !important;
 }
 
+/* Editorial design classes */
+.font-editorial-serif {
+  font-family: 'Bodoni Moda', 'Playfair Display', Georgia, serif;
+}
 
+.font-editorial-italic {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+}
+
+.font-editorial-sans {
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.15em;
+}
+
+.font-editorial-body {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.bg-paper-texture {
+  background-color: #f5f2eb; /* Warm premium magazine paper */
+  box-shadow: inset 0 0 100px rgba(90, 75, 55, 0.06); /* Soft paper vignetting shadow */
+}
+
+/* Paper grain overlay - fixed position to bypass scroll repaint costs */
+.paper-texture-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.055;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+
+.border-editorial {
+  border-color: rgba(10, 10, 10, 0.15);
+}

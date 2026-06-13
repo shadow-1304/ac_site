@@ -12,7 +12,7 @@ export const SERVICES: ServiceItem[] = [
     id: "vrf-systems",
     title: "VRF Air Conditioning Systems",
     shortDesc: "Zoned variable refrigerant flow designs for complex multi-story architectures.",
-    longDesc: "As authorized dealers for Mitsubishi Electric, Toshiba, and Carrier, we provide top-tier Variable Refrigerant Flow (VRF) technology. VRF systems deliver simultaneous heating and cooling to different zones by modular capacity allocation. Our custom VRF networks adjust dynamically to ambient solar heat loading, resulting in unmatched energy ratings.",
+    longDesc: "As being sales and service dealer for Mitsubishi Electric, Toshiba, and Carrier, we provide top-tier Variable Refrigerant Flow (VRF) technology. VRF systems deliver optimum cooling to different zones by modular capacity allocation.",
     features: [
       "Energy-efficient operation",
       "Individual zone temperature control",
@@ -24,21 +24,21 @@ export const SERVICES: ServiceItem[] = [
     image: "/services/vrf-systems.png"
   },
   {
-    id: "hvac-design-consultancy",
-    title: "HVAC Design & CAD Consultancy",
+    id: "hvac-design-planning",
+    title: "HVAC Design & Planning",
     shortDesc: "Computational design and mechanical load modeling for premium estates.",
-    longDesc: "Our engineering team provides HVAC design consultancy, heat load calculations, ducting layouts, equipment selection, and CAD drawings to ensure efficient, cost-effective, and high-performance system design before project execution.",
+    longDesc: "Our engineering team provides HVAC design and planning, heat load calculations, ducting and piping layouts, equipment selection, and CAD drawings to ensure efficient, cost-effective, and high-performance system design before project execution.",
     features: [
       "Heat Load Calculations",
-      "HVAC Layout & Duct Design",
+      "HVAC Layout",
       "Equipment Selection & Sizing",
-      "Technical Project Consultancy"
+      "Detail Project Planning"
     ],
-    featuresTitle: "CONSULTANCY SERVICES INCLUDE",
+    featuresTitle: "SERVICE INCLUDED",
     specsTitle: "KEY DELIVERABLES",
     specs: [
       { label: "Heat Load Reports", value: "Accurate cooling load assessments for proper system sizing." },
-      { label: "HVAC Layout Drawings", value: "Detailed ducting and equipment placement plans." },
+      { label: "HVAC Layout & Piping Drawings", value: "Detailed ducting, piping, and equipment placement plans." },
       { label: "Equipment Recommendations", value: "Selection of the most suitable HVAC systems based on project requirements." }
     ],
     image: "/services/hvac-design-consultancy.png"
@@ -706,25 +706,25 @@ export const PROJECTS: ProjectItem[] = [
 
 export const TESTIMONIALS: TestimonialItem[] = [
   {
+    id: "test-4",
+    quote: "to express our sincere gratification for your exemplary services and contribution towards the construction and related development of our bungalow at B6 Divine Highland, Science City Road.\n\nWe value your dedication and commitment and wish all the best for your future endeavors.",
+    author: "Paras Patel",
+    role: "Bungalow Owner",
+    company: "B6 Divine Highland"
+  },
+  {
     id: "test-1",
     quote: "Intel Air Group executed our software campus cooling layout with absolute precision. Their VRF design delivers quiet, reliable cooling to 300+ developers while optimizing our energy consumption.",
-    author: "Manoj Patel",
-    role: "VP Operations",
-    company: "Maruti Technolabs Pvt. Ltd."
+    author: "",
+    role: "",
+    company: ""
   },
   {
     id: "test-2",
     quote: "Concealed ducting for our high-end commercial offices demands seamless aesthetic integrations. Dhaval Dave and Mihir Shah delivered layouts that fit perfectly with our building's styling.",
-    author: "Zaveri Realty Design Team",
-    role: "Lead Architects",
-    company: "31Five Complex"
-  },
-  {
-    id: "test-3",
-    quote: "A centralized packaged AC of 427 TR is a massive undertaking. Intel Air Group handled everything from load calculations to final validation smoothly and within timeline parameters.",
-    author: "Airtel Projects Desk",
-    role: "Infrastructure Lead",
-    company: "Bharti Airtel Ltd."
+    author: "",
+    role: "",
+    company: ""
   }
 ];
 
@@ -756,11 +756,6 @@ export const COMPLAINCE_TIMELINE: AchievementTimelineItem[] = [
     title: "TOSHIBA & Carrier Multi-Category National Awards",
     description: "Awarded by TOSHIBA and Carrier for the highest sales revenue across Cassette, Hi-Wall, and Light Commercial (LC) products (All India) at the National Channel Partners Meet.",
     images: ["/awards/3.jpeg", "/awards/4.jpeg", "/awards/5.jpeg"]
-  },
-  {
-    year: "2024",
-    title: "8,000+ Projects Delivered",
-    description: "Surpassed 8,000 completed HVAC projects across Gujarat, supported by a dedicated engineering and service workforce."
   },
   {
     year: "2024 - 2025",
