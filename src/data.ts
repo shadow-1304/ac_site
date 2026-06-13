@@ -21,7 +21,7 @@ export const SERVICES: ServiceItem[] = [
     ],
     specs: [],
     idealApplications: "Hotels • Offices • Hospitals • Educational Institutions • Commercial Buildings • Luxury Villas",
-    image: "/services/vrf-systems.png"
+    image: "/services/vrf_ac_new2.png"
   },
   {
     id: "hvac-design-planning",
@@ -79,7 +79,7 @@ export const SERVICES: ServiceItem[] = [
       { label: "Extended Equipment Life", value: "Regular maintenance reduces wear and unexpected failures." },
       { label: "Optimized Performance", value: "Maintains cooling efficiency and energy savings." }
     ],
-    image: "/services/maintenance-amc.png"
+    image: "/services/maintenance-amc_new.png"
   },
   {
     id: "commercial-ac",
@@ -97,7 +97,7 @@ export const SERVICES: ServiceItem[] = [
       { label: "Commercial Buildings", value: "Offices, shopping centers, and mixed-use developments." },
       { label: "Industrial Facilities", value: "Factories, production floors, and warehousing spaces" }
     ],
-    image: "/services/commercial-ac.png"
+    image: "/services/commercial_ac_new.jpg"
   },
   {
     id: "residential-ac",

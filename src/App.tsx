@@ -866,35 +866,44 @@ export default function App() {
                             title: "VRF Air Conditioning System",
                             desc: "Variable Refrigerant Flow cooling circuits optimizing single and multi-outdoor zone load sharing.",
                             icon: Wind,
-                            image: "/services/vrf-systems.png",
+                            image: "/services/vrf_ac_new.jpg",
                             features: ["Multi-zone temperature control", "Energy-efficient capacity allocation", "Sleek compact footprints", "Whisper-quiet decibel levels"]
                           },
                           {
                             title: "Packaged Air Conditioning System",
                             desc: "Self-contained high-capacity roof or side mount modular packages for commercial operations.",
                             icon: ShieldCheck,
-                            image: "/services/commercial-ac.png",
+                            image: "/services/packaged_ac_new.png",
                             features: ["Double-skin air handling units", "Variable frequency drives (VFD) controls", "Heavy-duty outdoor packaging", "Easy service access panels"]
                           },
                           {
                             title: "Ductable Air Conditioning System",
                             desc: "Sleek concealed ceiling-mounted split systems directing uniform thermal lines across larger zones.",
                             icon: Activity,
-                            image: "/services/ductable_ac.png",
+                            image: "/services/ductable_ac_new.png",
                             features: ["Flush-ceiling linear diffuse grilles", "Concealed layout for clean interior design", "Quiet remote condenser setups", "Uniform cooling airflow spread"]
                           },
                           {
                             title: "Cassette Air Conditioners",
                             desc: "4-way direct air distribution panels fitting seamlessly into standard aesthetic ceiling grids.",
                             icon: Sparkles,
-                            image: "/services/cassette_ac.png",
+                            image: "/services/cassette_ac_1.png",
+                            images: ["/services/cassette_ac_1.png", "/services/cassette_ac_2.jpg"],
                             features: ["4-way motorized airflow louvers", "Grid ceiling flush aesthetic integration", "Built-in condensate high-lift drain pumps", "Minimal vertical headroom requirements"]
                           },
                           {
                             title: "Floor Mounted / Tower Air Conditioners",
                             desc: "Stately tower packages offering rapid static cooling for large retail and community halls.",
                             icon: FileText,
-                            image: "/services/tower_ac.png",
+                            image: "/projects/tower_ac_new.png",
+                            imageStyle: {
+                              width: "100%",
+                              height: "130%",
+                              objectFit: "contain",
+                              objectPosition: "top center",
+                              top: 0,
+                              left: 0
+                            },
                             features: ["Stately standing tower packages", "Rapid high-throw static cooling cycles", "No ceiling void space required", "Perfect for high-occupancy open zones"]
                           },
                           {
@@ -908,21 +917,28 @@ export default function App() {
                             title: "Window Air Conditioners",
                             desc: "Rugged and efficient single-unit cooling architectures suited for immediate installation setups.",
                             icon: Flame,
-                            image: "/services/window_ac.png",
+                            image: "/services/window_ac_new.jpg",
                             features: ["Rugged high-durability design", "Direct wall or window installation setups", "No internal refrigerant copper piping", "Quick maintenance and service access"]
                           },
                           {
                             title: "Customized Air Conditioning System",
                             desc: "Tailored thermodynamics cooling design parameters customized to specific industrial processes.",
                             icon: Calculator,
-                            image: "/services/custom_ac.png",
+                            image: "/services/custom_ac_1.jpg",
+                            images: ["/services/custom_ac_1.jpg", "/services/custom_ac_2.jpg"],
                             features: ["Process-specific temperature tolerance bounds", "Tuned air recycling and filtration levels", "Heavy-duty cooling machinery integration", "Automated digital parameter controllers"]
                           },
                           {
                             title: "Different Type Ventilation System",
                             desc: "Axial and centrifugal mechanical fresh air loops, smoke exhaust, and duct exhaust matrices.",
                             icon: Wind,
-                            image: "/services/ventilation-systems.png",
+                            image: "/services/ventilation_ac_1.png",
+                            images: [
+                              "/services/ventilation_ac_1.png",
+                              "/services/ventilation_ac_2.png",
+                              "/services/ventilation_ac_3.png",
+                              "/services/ventilation_ac_4.jpg"
+                            ],
                             features: ["Axial and centrifugal blower units", "Fresh air delivery & oxygen balancing", "Smoke and high-temp hazard evacuation", "Negative/Positive pressure rooms setup"]
                           }
                         ].map((system, index) => {
@@ -941,21 +957,65 @@ export default function App() {
                             >
                               {/* Translucent background image texture */}
                               <div className="absolute inset-0 pointer-events-none opacity-[0.03] group-hover:opacity-[0.07] transition-opacity duration-500">
-                                <img
-                                  src={system.image}
-                                  alt=""
-                                  className="w-full h-full object-cover transition-all duration-500 grayscale"
-                                />
+                                {system.images && system.images.length > 1 ? (
+                                  <div className={`grid h-full w-full ${system.images.length === 2 ? "grid-cols-2" : "grid-cols-2 grid-rows-2"}`}>
+                                    {system.images.map((imgUrl: string, imgIdx: number) => (
+                                      <img
+                                        key={imgIdx}
+                                        src={imgUrl}
+                                        alt=""
+                                        className="w-full h-full object-cover transition-all duration-500 grayscale"
+                                      />
+                                    ))}
+                                  </div>
+                                ) : (
+                                  <img
+                                    src={system.image}
+                                    alt=""
+                                    className="absolute transition-all duration-500 grayscale"
+                                    style={system.imageStyle || {
+                                      width: "100%",
+                                      height: "100%",
+                                      objectFit: "cover",
+                                      objectPosition: (system as any).objectPosition || "center",
+                                      top: 0,
+                                      left: 0
+                                    }}
+                                  />
+                                )}
                               </div>
 
                               {/* Translucent thumbnail instead of icon block */}
                               <div className={`w-16 h-12 overflow-hidden border-2 p-0.5 rounded-none relative z-10 shrink-0 transition-all duration-300 ${isDark ? "border-neutral-850 bg-neutral-900/40 group-hover:border-neutral-700" : "border-neutral-300 bg-neutral-50 group-hover:border-neutral-400"
                                 }`}>
-                                <img
-                                  src={system.image}
-                                  alt={system.title}
-                                  className="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 grayscale"
-                                />
+                                {system.images && system.images.length > 1 ? (
+                                  <div className={`grid h-full w-full gap-0.5 ${
+                                    isDark ? "bg-neutral-800" : "bg-neutral-300"
+                                  } ${system.images.length === 2 ? "grid-cols-2" : "grid-cols-2 grid-rows-2"}`}>
+                                    {system.images.map((imgUrl: string, imgIdx: number) => (
+                                      <img
+                                        key={imgIdx}
+                                        src={imgUrl}
+                                        alt={system.title}
+                                        className="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 grayscale"
+                                      />
+                                    ))}
+                                  </div>
+                                ) : (
+                                  <img
+                                    src={system.image}
+                                    alt={system.title}
+                                    className="absolute opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 grayscale"
+                                    style={system.imageStyle || {
+                                      width: "100%",
+                                      height: "100%",
+                                      objectFit: "cover",
+                                      objectPosition: (system as any).objectPosition || "center",
+                                      top: 0,
+                                      left: 0
+                                    }}
+                                  />
+                                )}
                               </div>
 
                               <div className="relative z-10">
@@ -2141,13 +2201,41 @@ export default function App() {
                   style={{ minHeight: "450px" }}
                 >
                   {/* Left Column: Image */}
-                  <div className="md:w-1/2 relative min-h-[250px] md:min-h-[450px] bg-neutral-950 border-r border-neutral-800">
-                    <img
-                      src={selectedSystem.image}
-                      alt={selectedSystem.title}
-                      className="absolute inset-0 w-full h-full object-cover"
-                    />
-                    <div className="absolute top-4 left-4 bg-black/70 border border-neutral-800 text-white font-mono text-[9px] tracking-widest uppercase px-3 py-1 rounded-none font-bold">
+                  <div className={`md:w-1/2 relative min-h-[250px] md:min-h-[450px] border-r overflow-hidden transition-colors duration-300 ${
+                    isDark ? "bg-[#0d0d0d] border-neutral-850" : "bg-neutral-50 border-black/10"
+                  }`}>
+                    {selectedSystem.images && selectedSystem.images.length > 1 ? (
+                      <div className={`absolute inset-0 grid h-full w-full gap-0.5 ${
+                        isDark ? "bg-neutral-850" : "bg-neutral-200"
+                      } ${
+                        selectedSystem.images.length === 2 ? "grid-cols-2" : "grid-cols-2 grid-rows-2"
+                      }`}>
+                        {selectedSystem.images.map((imgUrl: string, imgIdx: number) => (
+                          <div key={imgIdx} className={`relative w-full h-full ${
+                            isDark ? "bg-[#0d0d0d]" : "bg-neutral-50"
+                          }`}>
+                            <img
+                              src={imgUrl}
+                              alt={`${selectedSystem.title} ${imgIdx + 1}`}
+                              className="absolute inset-0 w-full h-full object-contain"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <img
+                        src={selectedSystem.image}
+                        alt={selectedSystem.title}
+                        className="absolute top-0 left-0"
+                        style={selectedSystem.imageStyle || {
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "cover",
+                          objectPosition: selectedSystem.objectPosition || "center"
+                        }}
+                      />
+                    )}
+                    <div className="absolute top-4 left-4 bg-black/70 border border-neutral-800 text-white font-mono text-[9px] tracking-widest uppercase px-3 py-1 rounded-none font-bold z-10">
                       SYSTEM METRICS
                     </div>
                   </div>

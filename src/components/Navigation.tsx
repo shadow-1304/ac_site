@@ -50,7 +50,7 @@ interface NavigationProps {
 export default function Navigation({ activeSection, onChangeSection, isDark, onToggleTheme }: NavigationProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const menuItems: { id: SectionType; label: string }[] = [
+  const menuItems: { id: SectionType | "service-portal"; label: string; url?: string }[] = [
     { id: "home", label: "Home" },
     { id: "about", label: "About" },
     { id: "services", label: "Services" },
@@ -58,6 +58,7 @@ export default function Navigation({ activeSection, onChangeSection, isDark, onT
     { id: "clients", label: "Partners" },
     { id: "achievements", label: "Achievements" },
     { id: "contact", label: "Contact" },
+    { id: "service-portal", label: "Service Portal", url: "https://service1.intelairgroup.com/Servicecrm.aspx" }
   ];
 
   // Coordinated close and section change
@@ -94,8 +95,20 @@ export default function Navigation({ activeSection, onChangeSection, isDark, onT
             </span>
           </div>
 
-          {/* Right: Inquire action with line roll hover */}
-          <div className="flex items-center justify-end">
+          {/* Right: Actions */}
+          <div className="flex items-center justify-end gap-4 sm:gap-6">
+            <a
+              href="https://service1.intelairgroup.com/Servicecrm.aspx"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="line-roll-container hidden sm:flex items-center gap-1 text-[9px] sm:text-xs font-mono tracking-[0.12em] sm:tracking-[0.18em] uppercase font-bold hover:text-blue-600 transition-colors cursor-pointer text-current"
+            >
+              <span className="line-mask">
+                <span className="line-roll" data-hover="SERVICE PORTAL">
+                  SERVICE PORTAL
+                </span>
+              </span>
+            </a>
             <button
               id="top-inquire-cta"
               onClick={() => handleLinkClick("contact")}
@@ -160,23 +173,40 @@ export default function Navigation({ activeSection, onChangeSection, isDark, onT
                     return (
                       <div key={item.id} className="overflow-hidden py-1">
                         <motion.div variants={itemVariants}>
-                          <button
-                            onClick={() => handleLinkClick(item.id)}
-                            className="text-left group cursor-pointer w-fit flex items-center gap-3 line-roll-container"
-                          >
-                            <span className={`font-sans text-[40px] leading-[1.1] font-light tracking-tight transition-all duration-300 block relative line-mask ${
-                              isActive 
-                                ? isDark ? "text-white font-normal" : "text-[#0a0a0a] font-normal"
-                                : "text-neutral-500 hover:text-current"
-                            }`}>
-                              <span className="line-roll block" data-hover={item.label.toUpperCase()}>
-                                {item.label.toUpperCase()}
+                          {item.url ? (
+                            <a
+                              href={item.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-left group cursor-pointer w-fit flex items-center gap-3 line-roll-container"
+                              onClick={() => setIsExpanded(false)}
+                            >
+                              <span className={`font-sans text-[40px] leading-[1.1] font-light tracking-tight transition-all duration-300 block relative line-mask text-neutral-500 hover:text-current`}>
+                                <span className="line-roll block" data-hover={item.label.toUpperCase()}>
+                                  {item.label.toUpperCase()}
+                                </span>
                               </span>
-                            </span>
-                            {isActive && (
-                              <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shadow-[0_0_8px_#2563eb] flex-shrink-0" />
-                            )}
-                          </button>
+                              <span className="w-1.5 h-1.5 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
+                            </a>
+                          ) : (
+                            <button
+                              onClick={() => handleLinkClick(item.id as SectionType)}
+                              className="text-left group cursor-pointer w-fit flex items-center gap-3 line-roll-container"
+                            >
+                              <span className={`font-sans text-[40px] leading-[1.1] font-light tracking-tight transition-all duration-300 block relative line-mask ${
+                                isActive 
+                                  ? isDark ? "text-white font-normal" : "text-[#0a0a0a] font-normal"
+                                  : "text-neutral-500 hover:text-current"
+                              }`}>
+                                <span className="line-roll block" data-hover={item.label.toUpperCase()}>
+                                  {item.label.toUpperCase()}
+                                </span>
+                              </span>
+                              {isActive && (
+                                <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shadow-[0_0_8px_#2563eb] flex-shrink-0" />
+                              )}
+                            </button>
+                          )}
                         </motion.div>
                       </div>
                     );
