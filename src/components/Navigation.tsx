@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { X } from "lucide-react";
 import { SectionType } from "../types";
@@ -49,6 +49,14 @@ interface NavigationProps {
 
 export default function Navigation({ activeSection, onChangeSection, isDark, onToggleTheme }: NavigationProps) {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(typeof window !== "undefined" ? window.innerWidth : 1200);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const menuItems: { id: SectionType | "service-portal"; label: string; url?: string }[] = [
     { id: "home", label: "Home" },
@@ -78,7 +86,7 @@ export default function Navigation({ activeSection, onChangeSection, isDark, onT
             : "bg-[#f3f0eccc]/90 border-black/5 text-[#0a0a0a]"
         }`}
       >
-        <div className="max-w-[1600px] mx-auto px-6 h-16 md:h-20 grid grid-cols-3 items-center w-full">
+        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 h-16 md:h-20 grid grid-cols-[1fr_auto_1fr] items-center w-full">
           
           {/* Left: Theme Switcher */}
           <div className="flex items-center justify-start">
@@ -147,12 +155,12 @@ export default function Navigation({ activeSection, onChangeSection, isDark, onT
               initial="hidden"
               animate="visible"
               exit="exit"
-              className={`relative w-full max-w-[450px] border shadow-[0_30px_70px_rgba(0,0,0,0.5)] p-10 flex flex-col justify-between z-10 rounded-[32px] pointer-events-auto ${
+              className={`relative w-full max-w-[450px] border shadow-[0_30px_70px_rgba(0,0,0,0.5)] p-6 sm:p-10 flex flex-col justify-between z-10 rounded-[32px] pointer-events-auto max-h-[85vh] overflow-y-auto calculator-modal-scroll-container ${
                 isDark 
                   ? "bg-[#121212f0]/95 border-white/[0.08] text-white" 
                   : "bg-[#fcfbfae6]/95 border-black/[0.08] text-[#0a0a0a]"
               }`}
-              style={{ minHeight: "660px", transformOrigin: "bottom center" }}
+              style={{ minHeight: "min(660px, 85vh)", transformOrigin: "bottom center" }}
             >
               {/* Soft top gradient line inside panel */}
               <div className={`absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent to-transparent pointer-events-none ${
@@ -160,13 +168,13 @@ export default function Navigation({ activeSection, onChangeSection, isDark, onT
               }`} />
 
               {/* Panel Header */}
-              <div className="flex flex-col gap-6">
+              <div className="flex flex-col gap-4 sm:gap-6">
                 <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-neutral-400 font-bold block">
                   MENU
                 </span>
 
                 {/* Main Menu Links */}
-                <div className="flex flex-col gap-3 select-none">
+                <div className="flex flex-col gap-1.5 sm:gap-3 select-none">
                   {menuItems.map((item) => {
                     const isActive = activeSection === item.id;
 
@@ -181,7 +189,7 @@ export default function Navigation({ activeSection, onChangeSection, isDark, onT
                               className="text-left group cursor-pointer w-fit flex items-center gap-3 line-roll-container"
                               onClick={() => setIsExpanded(false)}
                             >
-                              <span className={`font-sans text-[40px] leading-[1.1] font-light tracking-tight transition-all duration-300 block relative line-mask text-neutral-500 hover:text-current`}>
+                              <span className={`font-sans text-[26px] sm:text-[40px] leading-[1.1] font-light tracking-tight transition-all duration-300 block relative line-mask text-neutral-500 hover:text-current`}>
                                 <span className="line-roll block" data-hover={item.label.toUpperCase()}>
                                   {item.label.toUpperCase()}
                                 </span>
@@ -193,7 +201,7 @@ export default function Navigation({ activeSection, onChangeSection, isDark, onT
                               onClick={() => handleLinkClick(item.id as SectionType)}
                               className="text-left group cursor-pointer w-fit flex items-center gap-3 line-roll-container"
                             >
-                              <span className={`font-sans text-[40px] leading-[1.1] font-light tracking-tight transition-all duration-300 block relative line-mask ${
+                              <span className={`font-sans text-[26px] sm:text-[40px] leading-[1.1] font-light tracking-tight transition-all duration-300 block relative line-mask ${
                                 isActive 
                                   ? isDark ? "text-white font-normal" : "text-[#0a0a0a] font-normal"
                                   : "text-neutral-500 hover:text-current"
@@ -215,7 +223,7 @@ export default function Navigation({ activeSection, onChangeSection, isDark, onT
               </div>
 
               {/* Two Column Metadata & Action */}
-              <div className="flex flex-col gap-6 mt-8">
+              <div className="flex flex-col gap-4 sm:gap-6 mt-6 sm:mt-8">
                 <div className="overflow-hidden">
                   <motion.div 
                     variants={itemVariants}
@@ -269,7 +277,7 @@ export default function Navigation({ activeSection, onChangeSection, isDark, onT
             layout
             onClick={() => setIsExpanded(!isExpanded)}
             animate={{ 
-              width: isExpanded ? 54 : 380,
+              width: isExpanded ? 54 : Math.min(380, windowWidth - 32),
               borderRadius: 27
             }}
             transition={{ type: "spring", stiffness: 220, damping: 25 }}
@@ -278,7 +286,7 @@ export default function Navigation({ activeSection, onChangeSection, isDark, onT
                 ? "bg-[#222222cc]/80 border-white/[0.08] text-white hover:bg-[#2e2e2ecc]/80" 
                 : "bg-[#fcfbfacc]/80 border-black/[0.08] text-[#0a0a0a] hover:bg-[#f5f4f2cc]/80"
             }`}
-            style={{ padding: isExpanded ? 0 : "0 22px" }}
+            style={{ padding: isExpanded ? 0 : (windowWidth < 400 ? "0 14px" : "0 22px") }}
           >
             {/* Closed State Content */}
             <motion.div
@@ -288,7 +296,7 @@ export default function Navigation({ activeSection, onChangeSection, isDark, onT
               style={{ display: isExpanded ? "none" : "flex" }}
             >
               {/* Left: Real Company Logo (PNG) */}
-              <div className="flex items-center justify-start w-24 flex-shrink-0">
+              <div className="flex items-center justify-start w-16 sm:w-24 flex-shrink-0">
                 <img
                   src="/logo_Intel300.png"
                   alt="Intel Air Group"
@@ -300,14 +308,14 @@ export default function Navigation({ activeSection, onChangeSection, isDark, onT
               {/* Center: Active route name with dynamic sizing for ACHIEVEMENTS to prevent overflow */}
               <span className={`font-sans font-bold uppercase text-center flex-grow transition-all duration-300 ${
                 activeSection === "achievements" 
-                  ? "text-[9.5px] sm:text-xs tracking-[0.05em] sm:tracking-[0.15em]" 
-                  : "text-xs tracking-[0.2em]"
+                  ? "text-[9px] sm:text-xs tracking-[0.02em] sm:tracking-[0.15em]" 
+                  : "text-[10px] sm:text-xs tracking-[0.08em] sm:tracking-[0.2em]"
               }`}>
                 {activeSection === "clients" ? "PARTNERS" : activeSection === "achievements" ? "ACHIEVEMENTS" : activeSection.toUpperCase()}
               </span>
 
               {/* Right: Thin Hamburger icon */}
-              <div className="flex items-center justify-end w-24 flex-shrink-0 pr-1">
+              <div className="flex items-center justify-end w-16 sm:w-24 flex-shrink-0 pr-1">
                 <div className="flex flex-col gap-[4px] w-5 items-end justify-center">
                   <span className="h-[1px] w-full bg-current transition-colors"></span>
                   <span className="h-[1px] w-3/4 bg-current transition-colors"></span>

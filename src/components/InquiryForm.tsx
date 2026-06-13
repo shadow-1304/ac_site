@@ -12,6 +12,7 @@ export default function InquiryForm({ isDark, initialNotes = "", initialAcTypes 
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     org: "",
     selectedAcTypes: [] as string[],
     notes: ""
@@ -34,7 +35,7 @@ export default function InquiryForm({ isDark, initialNotes = "", initialAcTypes 
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || formData.selectedAcTypes.length === 0) return;
+    if (!formData.name || !formData.email || !formData.phone || formData.selectedAcTypes.length === 0) return;
 
     setLoading(true);
     setTimeout(() => {
@@ -144,21 +145,37 @@ export default function InquiryForm({ isDark, initialNotes = "", initialAcTypes 
                     }`}
                   />
                 </div>
-              </div>
 
-              <div className="flex flex-col gap-1.5">
-                <label className="text-[9px] font-mono tracking-widest text-neutral-500 uppercase font-bold">Organization / Firm</label>
-                <input
-                  type="text"
-                  value={formData.org}
-                  onChange={(e) => setFormData({ ...formData, org: e.target.value })}
-                  placeholder="Company name, e.g., Apex Health"
-                  className={`py-3 px-4 rounded-none border text-sm focus:outline-none focus:border-blue-600 transition-colors ${
-                    isDark 
-                      ? "bg-neutral-900/40 border-neutral-800 text-white placeholder-neutral-600" 
-                      : "bg-transparent border-black/25 text-neutral-900 placeholder-neutral-500"
-                  }`}
-                />
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[9px] font-mono tracking-widest text-neutral-500 uppercase font-bold">Mobile Number *</label>
+                  <input
+                    type="tel"
+                    required
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    placeholder="Enter mobile number"
+                    className={`py-3 px-4 rounded-none border text-sm focus:outline-none focus:border-blue-600 transition-colors ${
+                      isDark 
+                        ? "bg-neutral-900/40 border-neutral-800 text-white placeholder-neutral-600" 
+                        : "bg-transparent border-black/25 text-neutral-900 placeholder-neutral-500"
+                    }`}
+                  />
+                </div>
+
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[9px] font-mono tracking-widest text-neutral-500 uppercase font-bold">Organization / Firm</label>
+                  <input
+                    type="text"
+                    value={formData.org}
+                    onChange={(e) => setFormData({ ...formData, org: e.target.value })}
+                    placeholder="Company name, e.g., Apex Health"
+                    className={`py-3 px-4 rounded-none border text-sm focus:outline-none focus:border-blue-600 transition-colors ${
+                      isDark 
+                        ? "bg-neutral-900/40 border-neutral-800 text-white placeholder-neutral-600" 
+                        : "bg-transparent border-black/25 text-neutral-900 placeholder-neutral-500"
+                    }`}
+                  />
+                </div>
               </div>
 
               <div className="flex flex-col gap-1.5">
@@ -237,7 +254,7 @@ export default function InquiryForm({ isDark, initialNotes = "", initialAcTypes 
                 Inquiry Logged Into Design Ledger
               </h3>
               <p className={`text-sm leading-relaxed max-w-md mx-auto ${isDark ? "text-neutral-400" : "text-gray-500"}`}>
-                Thank you for selecting Intel Air Group, <strong>{formData.name}</strong>. Our mechanical estimations office has received your inquiry for: <strong>{formData.selectedAcTypes.join(", ")}</strong>. We will coordinate a direct project scope call shortly at <strong>{formData.email}</strong>.
+                Thank you for selecting Intel Air Group, <strong>{formData.name}</strong>. Our mechanical estimations office has received your inquiry for: <strong>{formData.selectedAcTypes.join(", ")}</strong>. We will coordinate a direct project scope call shortly at <strong>{formData.email}</strong> or <strong>{formData.phone}</strong>.
               </p>
             </div>
 
@@ -246,6 +263,7 @@ export default function InquiryForm({ isDark, initialNotes = "", initialAcTypes 
                 setFormData({
                   name: "",
                   email: "",
+                  phone: "",
                   org: "",
                   selectedAcTypes: [],
                   notes: ""

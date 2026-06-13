@@ -182,13 +182,13 @@ export default function App() {
                           <span>INTEL AIR GROUP • CLIMATE ARCHITECTS</span>
                         </motion.div>
 
-                        <h1 className={`text-4xl sm:text-6xl md:text-[76px] xl:text-[84px] leading-[0.85] font-bold tracking-tight uppercase mb-8 ${isDark ? "text-white" : "text-[#0a0a0a]"
+                        <h1 className={`text-4xl sm:text-6xl md:text-[76px] xl:text-[84px] leading-[0.95] sm:leading-[0.85] font-bold tracking-tight uppercase mb-8 ${isDark ? "text-white" : "text-[#0a0a0a]"
                           }`}>
                           <ScrollRevealText text="We engineer" /> <span className="text-blue-600 font-normal italic"><ScrollRevealText text="comfort." /></span><br />
                           <span className={isDark ? "text-neutral-700" : "text-gray-300"}><ScrollRevealText text="We shape" /></span> <ScrollRevealText text="better spaces." />
                         </h1>
 
-                        <p className={`mt-10 max-w-xl text-base sm:text-lg leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"
+                        <p className={`mt-6 sm:mt-10 max-w-xl text-base sm:text-lg leading-relaxed ${isDark ? "text-neutral-400" : "text-gray-500"
                           }`}>
                           <ScrollRevealText text="End-to-end HVAC design, supply, installation, and maintenance solutions for commercial, institutional, hospitality, and residential projects." delay={0.2} />
                         </p>
@@ -199,7 +199,7 @@ export default function App() {
                         initial={{ opacity: 0, y: 30, scale: 0.98 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         transition={{ duration: 1.65, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-                        className="lg:col-span-5 flex items-center justify-center relative w-full h-[450px] md:h-[500px] lg:h-[550px]"
+                        className="lg:col-span-5 flex items-center justify-center relative w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[550px]"
                       >
                         <ACSketch isDark={isDark} />
                       </motion.div>
@@ -229,16 +229,16 @@ export default function App() {
                         </div>
 
                         {/* Wind control buttons */}
-                        <div className={`flex items-center gap-2 p-1.5 rounded-none border font-mono text-xs ${isDark ? "bg-neutral-900/50 border-neutral-800" : "bg-transparent border-black/10"
+                        <div className={`flex items-center gap-1.5 sm:gap-2 p-1 sm:p-1.5 rounded-none border font-mono text-[10px] sm:text-xs ${isDark ? "bg-neutral-900/50 border-neutral-800" : "bg-transparent border-black/10"
                           }`}>
-                          <span className="text-[9px] text-neutral-400 uppercase tracking-[0.25em] px-2 font-bold">
+                          <span className="text-[8px] sm:text-[9px] text-neutral-400 uppercase tracking-[0.15em] sm:tracking-[0.25em] px-1 sm:px-2 font-bold">
                             FLOW VELOCITY:
                           </span>
                           {[1, 2.5, 5].map((multiplier) => (
                             <button
                               key={multiplier}
                               onClick={() => setCustomSpeedMultiplier(multiplier)}
-                              className={`px-3 py-1.5 rounded-none font-bold uppercase tracking-wider text-[10px] transition-colors cursor-pointer ${customSpeedMultiplier === multiplier
+                              className={`px-2 py-1 sm:px-3 sm:py-1.5 rounded-none font-bold uppercase tracking-wider text-[9px] sm:text-[10px] transition-colors cursor-pointer ${customSpeedMultiplier === multiplier
                                 ? "bg-black text-white dark:bg-white dark:text-black"
                                 : "hover:bg-neutral-500/10 text-neutral-500"
                                 }`}
@@ -252,7 +252,7 @@ export default function App() {
                       </div>
 
                       {/* Simulated Air Vector currents (Bespoke dynamic SVG wave pattern) */}
-                      <div className="h-44 flex items-center justify-center relative mt-6 bg-neutral-500/5 rounded-2xl border border-neutral-500/5 overflow-hidden">
+                      <div className="h-20 sm:h-28 md:h-40 flex items-center justify-center relative mt-6 bg-neutral-500/5 rounded-2xl border border-neutral-500/5 overflow-hidden">
                         <svg key={customSpeedMultiplier} viewBox="0 0 1000 150" className="w-full h-full text-blue-500" fill="none">
                           {/* Wave 1 - Ambient air carrier */}
                           <motion.path
@@ -1803,7 +1803,7 @@ export default function App() {
 
                       <h2 className={`text-4xl sm:text-6xl md:text-[5.5rem] font-bold tracking-tight uppercase leading-[0.85] ${isDark ? "text-white" : "text-[#0a0a0a]"
                         }`}>
-                        Transforming architectural ambitions into <span className="font-normal italic text-blue-600">perfect indoor climates</span>.
+                        <ScrollRevealText text="Transforming architectural ambitions into" /> <span className="font-normal italic text-blue-600"><ScrollRevealText text="perfect indoor climates" /></span>.
                       </h2>
                     </motion.div>
 
@@ -2083,10 +2083,10 @@ export default function App() {
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.95, y: 20 }}
                   transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-                  className={`relative w-full border shadow-2xl overflow-hidden rounded-none z-10 flex flex-col md:flex-row ${aspectRatio === "portrait" ? "max-w-3xl" : "max-w-5xl"
-                    } ${isDark ? "bg-[#0d0d0d] text-white border-neutral-800" : "bg-white text-neutral-900 border-black/10"
+                  className={`relative w-full border shadow-2xl overflow-y-auto md:overflow-hidden rounded-none z-10 flex flex-col md:flex-row ${aspectRatio === "portrait" ? "max-w-3xl" : "max-w-5xl"
+                    } max-h-[90vh] calculator-modal-scroll-container ${isDark ? "bg-[#0d0d0d] text-white border-neutral-800" : "bg-white text-neutral-900 border-black/10"
                     }`}
-                  style={{ minHeight: "500px" }}
+                  style={{ minHeight: "min(500px, 90vh)" }}
                 >
                   {/* Left Column: Image */}
                   <div className={`${aspectRatio === "portrait" ? "md:w-1/2" : "md:w-3/5"
@@ -2196,9 +2196,9 @@ export default function App() {
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.95, y: 20 }}
                   transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-                  className={`relative w-full border shadow-2xl overflow-hidden rounded-none z-10 flex flex-col md:flex-row max-w-4xl ${isDark ? "bg-[#0d0d0d] text-white border-neutral-800" : "bg-white text-neutral-900 border-black/10"
+                  className={`relative w-full border shadow-2xl overflow-y-auto md:overflow-hidden rounded-none z-10 flex flex-col md:flex-row max-w-4xl max-h-[90vh] calculator-modal-scroll-container ${isDark ? "bg-[#0d0d0d] text-white border-neutral-800" : "bg-white text-neutral-900 border-black/10"
                     }`}
-                  style={{ minHeight: "450px" }}
+                  style={{ minHeight: "min(450px, 90vh)" }}
                 >
                   {/* Left Column: Image */}
                   <div className={`md:w-1/2 relative min-h-[250px] md:min-h-[450px] border-r overflow-hidden transition-colors duration-300 ${

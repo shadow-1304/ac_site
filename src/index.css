@@ -236,8 +236,10 @@
 }
 
 .bg-paper-texture {
-  background-color: #f5f2eb; /* Warm premium magazine paper */
-  box-shadow: inset 0 0 100px rgba(90, 75, 55, 0.06); /* Soft paper vignetting shadow */
+  background-color: #f5f2eb;
+  /* Warm premium magazine paper */
+  box-shadow: inset 0 0 100px rgba(90, 75, 55, 0.06);
+  /* Soft paper vignetting shadow */
 }
 
 /* Paper grain overlay - fixed position to bypass scroll repaint costs */
