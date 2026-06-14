@@ -98,7 +98,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
             </motion.div>
 
             {/* ── Central Grid (Magazine Frontpage Layout) ── */}
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center justify-between flex-grow w-full py-4 md:py-6 overflow-hidden">
+            <div className="flex flex-col items-center justify-center md:grid md:grid-cols-12 gap-8 md:items-center md:justify-between flex-grow w-full py-4 md:py-6 overflow-hidden">
               
               {/* Left Column (Desktop Only - Editorial Intro) */}
               <motion.div

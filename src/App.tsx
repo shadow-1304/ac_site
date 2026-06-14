@@ -41,13 +41,13 @@ import ACSketch from "./components/ACSketch";
 import { ScrollRevealText, ScrollRevealLines, ParallaxImage, useSmoothScroll } from "./components/ScrollReveal";
 
 const PARTNER_LOGOS = [
-  { name: "Mitsubishi Electric", src: "/logos/mitshubishi.png", mitsubishiFilterInDark: true },
-  { name: "Blue Star", src: "/logos/bluestar.png", className: "h-22" },
-  { name: "Carrier", src: "/logos/carrier.png", className: "h-24" },
-  { name: "Hitachi", src: "/logos/Hitachi_logo_PNG1.png", invertInDark: true },
-  { name: "Midea", src: "/logos/.png" },
-  { name: "Toshiba", src: "/logos/482120c0fa2a71cb0408a4e0275fec3d.png", invertInDark: true, className: "h-24" },
-  { name: "Coldwave", src: "/logos/coldwave.png" }
+  { name: "Mitsubishi Electric", src: "/logos/mitshubishi.png", mitsubishiFilterInDark: true, url: "https://in.mitsubishielectric.com/" },
+  { name: "Blue Star", src: "/logos/bluestar.png", className: "h-22", url: "https://www.bluestarindia.com/" },
+  { name: "Carrier", src: "/logos/carrier.png", className: "h-24", url: "https://www.carrier.com/commercial/en/in/" },
+  { name: "Hitachi", src: "/logos/Hitachi_logo_PNG1.png", invertInDark: true, url: "https://www.hitachiaircon.in/" },
+  { name: "Midea", src: "/logos/.png", url: "https://www.midea.com/in/" },
+  { name: "Toshiba", src: "/logos/482120c0fa2a71cb0408a4e0275fec3d.png", invertInDark: true, className: "h-24", url: "https://www.toshibaac.in/" },
+  { name: "Coldwave", src: "/logos/coldwave.png", url: "https://coldwave.in/" }
 ];
 
 export default function App() {
@@ -75,6 +75,7 @@ export default function App() {
   const [aspectRatio, setAspectRatio] = useState<"portrait" | "landscape">("landscape");
   const [activeLightboxImage, setActiveLightboxImage] = useState<string | null>(null);
   const [selectedSystem, setSelectedSystem] = useState<any>(null);
+  const [isMarqueePaused, setIsMarqueePaused] = useState<boolean>(false);
 
   useEffect(() => {
     if (selectedProject?.image) {
@@ -1558,12 +1559,23 @@ export default function App() {
                       </span>
 
                       {/* Infinite Logo Marquee */}
-                      <div className="relative w-full overflow-hidden py-8 mask-image-fade">
-                        <div className="flex items-center animate-marquee gap-12 w-max">
+                      <div 
+                        className="relative w-full overflow-hidden py-8 mask-image-fade"
+                        onTouchStart={() => setIsMarqueePaused(true)}
+                        onTouchEnd={() => setIsMarqueePaused(false)}
+                        onTouchCancel={() => setIsMarqueePaused(false)}
+                      >
+                        <div 
+                          className="flex items-center animate-marquee gap-12 w-max"
+                          style={{ animationPlayState: isMarqueePaused ? 'paused' : undefined }}
+                        >
                           {[...PARTNER_LOGOS, ...PARTNER_LOGOS].map((logo, i) => (
-                            <div
+                            <a
                               key={i}
-                              className="flex items-center justify-center h-32 w-80 shrink-0 transition-all duration-300 group"
+                              href={logo.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center justify-center h-32 w-80 shrink-0 transition-all duration-300 group hover:scale-[1.05]"
                             >
                               <img
                                 src={logo.src}
@@ -1572,7 +1584,7 @@ export default function App() {
                                   } ${isDark && logo.invertInDark ? "brightness-0 invert" : ""} ${isDark && logo.mitsubishiFilterInDark ? "mitsubishi-dark-filter" : ""
                                   }`}
                               />
-                            </div>
+                            </a>
                           ))}
                         </div>
                       </div>

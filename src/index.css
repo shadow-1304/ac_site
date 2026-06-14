@@ -151,8 +151,10 @@
   animation: marquee 25s linear infinite;
 }
 
-.animate-marquee:hover {
-  animation-play-state: paused;
+@media (hover: hover) {
+  .animate-marquee:hover {
+    animation-play-state: paused;
+  }
 }
 
 .mask-image-fade {
