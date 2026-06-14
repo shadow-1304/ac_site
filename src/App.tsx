@@ -559,7 +559,7 @@ export default function App() {
                           ].map((comp, idx) => (
                             <div
                               key={idx}
-                              className={`p-4 border flex items-center gap-4 transition-all duration-300 hover:scale-[1.02] ${isDark
+                              className={`p-4 border flex flex-col sm:flex-row items-start sm:items-center gap-4 transition-all duration-300 hover:scale-[1.02] ${isDark
                                 ? "bg-neutral-900/40 border-neutral-850 hover:border-blue-500/40 hover:bg-neutral-900"
                                 : "bg-white border-neutral-200 hover:border-blue-500/40 hover:shadow-md"
                                 }`}

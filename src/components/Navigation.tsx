@@ -227,7 +227,7 @@ export default function Navigation({ activeSection, onChangeSection, isDark, onT
                 <div className="overflow-hidden">
                   <motion.div 
                     variants={itemVariants}
-                    className={`grid grid-cols-2 gap-6 border-t pt-6 ${
+                    className={`grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 border-t pt-6 ${
                       isDark ? "border-white/[0.08]" : "border-black/[0.08]"
                     }`}
                   >
@@ -236,11 +236,11 @@ export default function Navigation({ activeSection, onChangeSection, isDark, onT
                       <span className="hover:text-current transition-colors cursor-pointer w-fit">News</span>
                       <span className="hover:text-current transition-colors cursor-pointer w-fit">Showroom</span>
                     </div>
-
+ 
                     {/* Right Column */}
-                    <div className="flex flex-col gap-1.5 font-sans text-[13px] text-neutral-400 leading-normal text-right sm:text-left">
-                      <a href="tel:07940359594" className="hover:text-current transition-colors block w-fit ml-auto sm:ml-0">079 40359594</a>
-                      <a href="mailto:sales@intelairgroup.com" className="hover:text-current transition-colors block w-fit ml-auto sm:ml-0 font-medium">sales@intelairgroup.com</a>
+                    <div className="flex flex-col gap-1.5 font-sans text-[13px] text-neutral-400 leading-normal text-left sm:text-right">
+                      <a href="tel:07940359594" className="hover:text-current transition-colors block w-fit sm:ml-auto">079 40359594</a>
+                      <a href="mailto:sales@intelairgroup.com" className="hover:text-current transition-colors block w-fit sm:ml-auto font-medium">sales@intelairgroup.com</a>
                     </div>
                   </motion.div>
                 </div>
