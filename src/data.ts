@@ -541,6 +541,16 @@ export const PROJECTS: ProjectItem[] = [
 
   // --- Residence / Luxury Villas ---
   {
+    id: "parth-patel-residence",
+    title: "Parth Patel Residence",
+    client: "Mr. Parth Patel",
+    location: "Himmatnagar, Gujarat",
+    category: "Residence / Luxury Villas",
+    metrics: "60 TR VRF+Non-VRF",
+    image: "/projects/parth_patel_residence.jpg",
+    description: "Integrated premium HVAC systems combining 60 TR capacity of VRF and Non-VRF configurations tailored for a luxury private estate in Himmatnagar."
+  },
+  {
     id: "avant-living",
     title: "AVANT - evolved living",
     client: "Dwarkesh Anaya Homes LLP",
