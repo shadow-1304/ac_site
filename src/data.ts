@@ -546,7 +546,7 @@ export const PROJECTS: ProjectItem[] = [
     client: "Mr. Parth Patel",
     location: "Himmatnagar, Gujarat",
     category: "Residence / Luxury Villas",
-    metrics: "60 TR VRF+Non-VRF",
+    metrics: "60 TR Capacity",
     image: "/projects/parth_patel_residence.jpg",
     description: "Integrated premium HVAC systems combining 60 TR capacity of VRF and Non-VRF configurations tailored for a luxury private estate in Himmatnagar."
   },
