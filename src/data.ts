@@ -354,7 +354,7 @@ export const PROJECTS: ProjectItem[] = [
     client: "Transformers & Rectifiers India Ltd.",
     location: "Moraiya, Gujarat",
     category: "Commercial & Industrial Facilities",
-    metrics: "204 TR Capacity",
+    metrics: "240 TR Capacity",
     image: "/projects/transformers and rectifiers.jpeg",
     description: "Heavy industrial ventilation and package AC system commissioned for production zones and high-load control offices."
   },
@@ -449,7 +449,7 @@ export const PROJECTS: ProjectItem[] = [
     location: "Ahmedabad, Gujarat",
     category: "Educational Institutions",
     metrics: "148 TR Capacity",
-    image: "/projects/Svkm university.jpg.jpeg",
+    image: "/projects/svkm_university.png",
     description: "Modern climate control design and package HVAC system installations for clean, optimized climate control in university classrooms and administrative blocks."
   },
   {
