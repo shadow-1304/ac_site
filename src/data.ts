@@ -227,14 +227,22 @@ export const PROJECTS: ProjectItem[] = [
   {
     id: "highway-eats",
     title: "The Highway Eats",
+    client: "The Highway Eats",
+    location: "Vadodara, Gujarat",
     category: "Restaurants & Banquets",
-    metrics: "90 TR"
+    metrics: "90 TR Capacity",
+    image: "/projects/highway_eats.png",
+    description: "Hybrid VRF and non-VRF air conditioning systems engineered for the 24x7 highway restaurant, grand banquet hall, party plots, and hotel wings, ensuring round-the-clock cooling reliability and energy efficiency."
   },
   {
     id: "grand-dinnerbell",
-    title: "The Grand Dinnerbell",
+    title: "The Grand Dinnerbell Restaurant & Banquet",
+    client: "The Grand Dinnerbell",
+    location: "Ahmedabad, Gujarat",
     category: "Restaurants & Banquets",
-    metrics: "70 TR"
+    metrics: "70 TR Capacity",
+    image: "/projects/grand_dinnerbell.png",
+    description: "Centralized comfort air conditioning and dedicated ventilation system designed for high-footfall multi-cuisine dining spaces and celebratory banquet environments."
   },
 
   // --- Hotels, Resorts & Hospitality ---
@@ -331,14 +339,44 @@ export const PROJECTS: ProjectItem[] = [
     description: "Large-scale centralized air conditioning design and ducting layout for regional corporate headquarters, optimizing air flow and heat dissipation."
   },
   {
+    id: "taril-corporate-house",
+    title: "TARIL Corporate House",
+    client: "Transformers & Rectifiers India Ltd.",
+    location: "Moraiya, Ahmedabad, Gujarat",
+    category: "Commercial & Industrial Facilities",
+    metrics: "288 TR Capacity",
+    image: "/projects/taril_corporate_house.png",
+    description: "High-performance VRF air conditioning system engineered and commissioned for the modern corporate headquarters, delivering precise zoning climate control, optimal thermal efficiency, and whisper-quiet airflow across executive and administrative floors."
+  },
+  {
     id: "transformers-rectifiers",
     title: "Transformers & Rectifiers India Ltd.",
     client: "Transformers & Rectifiers India Ltd.",
     location: "Moraiya, Gujarat",
     category: "Commercial & Industrial Facilities",
-    metrics: "288 TR Capacity",
+    metrics: "204 TR Capacity",
     image: "/projects/transformers and rectifiers.jpeg",
     description: "Heavy industrial ventilation and package AC system commissioned for production zones and high-load control offices."
+  },
+  {
+    id: "stonyc",
+    title: "STONYC",
+    client: "STONYC Natural Stones",
+    location: "Ahmedabad, Gujarat",
+    category: "Commercial & Industrial Facilities",
+    metrics: "40 TR Capacity",
+    image: "/projects/stonyc.png",
+    description: "Custom 40 TR VRF air conditioning system installed for the architectural natural stone studio and experience center, maintaining ideal indoor air comfort and temperature consistency across sprawling display galleries."
+  },
+  {
+    id: "igr-ausom",
+    title: "IGR AuSom",
+    client: "IGR AuSom LLP",
+    location: "Ahmedabad, Gujarat",
+    category: "Commercial & Industrial Facilities",
+    metrics: "56 TR Capacity",
+    image: "/projects/igr_ausom.jpg",
+    description: "Hybrid VRF and non-VRF air conditioning systems engineered for the modern corporate office and administrative facility, ensuring zoned energy efficiency and optimum thermal comfort."
   },
   {
     id: "maruti-techlabs",
@@ -473,8 +511,12 @@ export const PROJECTS: ProjectItem[] = [
   {
     id: "panam-projects",
     title: "Panam Projects Furniture Showroom",
+    client: "Panam Projects Pvt. Ltd.",
+    location: "Ahmedabad, Gujarat",
     category: "Showrooms & Retail",
-    metrics: "79 TR"
+    metrics: "79 TR Capacity",
+    image: "/projects/panam_projects.png",
+    description: "Centralized comfort climate control and multi-floor air distribution designed for Panam Projects' expansive flagship furniture showroom and corporate experience center."
   },
   {
     id: "riyasat-showroom",
@@ -524,9 +566,13 @@ export const PROJECTS: ProjectItem[] = [
   },
   {
     id: "wood-element",
-    title: "The Wood Element",
+    title: "The Wood Element | House of Veneer",
+    client: "The Wood Element",
+    location: "Ahmedabad, Gujarat",
     category: "Showrooms & Retail",
-    metrics: "40 TR"
+    metrics: "40 TR Capacity",
+    image: "/projects/the_wood_element.jpg",
+    description: "Customized 40 TR VRF air conditioning system deployed for luxury architectural veneer and natural wood surface showroom, maintaining precise temperature and moisture stability to preserve exotic finishes while providing supreme comfort."
   },
   {
     id: "agora-mall",
@@ -569,6 +615,26 @@ export const PROJECTS: ProjectItem[] = [
     metrics: "1100 Units",
     image: "/projects/Swagat Agacia.jpg.jpeg",
     description: "High-volume HVAC execution involving the installation of more than 1,100 split air conditioning units, engineered to provide efficient and uniform cooling throughout the development"
+  },
+  {
+    id: "saral-sky-suites",
+    title: "Saral Sky Suites",
+    client: "Saral Group",
+    location: "Ahmedabad, Gujarat",
+    category: "Residence / Luxury Villas",
+    metrics: "280 Units",
+    image: "/projects/saral_sky_suites.png",
+    description: "Extensive residential HVAC deployment comprising 280 high-performance split air conditioning units, delivering dependable and energy-efficient climate control across multi-story luxury apartments."
+  },
+  {
+    id: "31-ivy",
+    title: "31 Ivy",
+    client: "31 Ivy Residences",
+    location: "Ahmedabad, Gujarat",
+    category: "Residence / Luxury Villas",
+    metrics: "150 Units",
+    image: "/projects/31_ivy.jpg",
+    description: "Comprehensive residential air conditioning infrastructure featuring 150 split AC units, engineered to deliver quiet, customized climate comfort for premium high-rise residences."
   },
   {
     id: "sohambhai-mehta-residence",
@@ -674,9 +740,13 @@ export const PROJECTS: ProjectItem[] = [
   },
   {
     id: "ratan-hospital",
-    title: "Ratan Hospital",
+    title: "Ratan Multi Speciality Hospital",
+    client: "Ratan Multi Speciality Hospital",
+    location: "Ahmedabad, Gujarat",
     category: "Hospitals / Healthcare",
-    metrics: "75 TR"
+    metrics: "75 TR Capacity",
+    image: "/projects/ratan_hospital.png",
+    description: "Multi-zone VRF air conditioning and medical ventilation networks installed for multi-specialty healthcare facilities, providing reliable temperature stability, patient comfort, and sterile clinical air quality."
   },
   {
     id: "karnavati-hospital",

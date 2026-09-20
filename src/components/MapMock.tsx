@@ -93,7 +93,7 @@ export default function MapMock({ isDark }: { isDark: boolean }) {
       x: 55,
       y: 80,
       type: "Commercial & Industrial",
-      capacity: "288 TR Capacity",
+      capacity: "204 TR Capacity",
       system: "Heavy Industrial Ventilation & Packaged AC System",
       coordinates: "22.9234° N, 72.4395° E"
     },
